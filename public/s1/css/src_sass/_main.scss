@@ -1,0 +1,242 @@
+/* Theme Name: Contrataciones Abiertas CDMX 
+Author: Gobierno Fácil
+Author URI: http://gobiernofacil.com/
+Version: 1.0
+*/
+
+
+$font: 'Stilu',Helvetica, sans-serif;  
+$color: #404040;
+
+html {
+	background: #fff;
+	text-rendering: optimizeLegibility !important;
+	-webkit-font-smoothing: antialiased !important;
+	min-height: 100%;
+	height: auto;
+}
+
+html,
+button,
+input,
+select,
+textarea {
+    color: $color;
+}
+
+body {
+	background: transparent;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+* {
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+}
+
+::-moz-selection {
+	background: rgb(65, 185, 184);
+    text-shadow: none;
+}
+
+::selection {
+	background: rgb(65, 185, 184);
+    text-shadow: none;
+}
+
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+
+
+img {
+    vertical-align: middle;
+}
+
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+
+textarea {
+    resize: vertical;
+}
+
+a {
+	text-decoration: none;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+h1, h2, h3, h4, h5, .cta, blockquote.feature,
+ #access, #insidenav, #pagination, .bloglist .more, blockquote {
+	font-family: $font;
+	font-weight: 500;
+}
+
+strong { font-weight: 700;}
+/* = HEADINGS */
+h1, h2, h3, h4, h5, h6 {
+	/* font-weight: normal; */
+	font-weight: 400;
+	font-style: normal;
+}
+
+h1 {
+	font-size: 3em;
+	font-weight: 500;
+}
+
+h2 {
+	font-size: 2em;
+	font-weight: 500;
+}
+
+h3 {
+	font-size: 1.3em;
+}
+
+	#jobs h3 {
+		font-weight: 500;
+	}
+
+h4 { /* 11px */
+	font-size: 1.2em;
+}
+
+
+
+h5 { /* 13px */
+	font-size: 1em;
+	/* font-weight: bold; */
+	/* font-weight: 500; */
+	letter-spacing: 2px;
+	color: rgb(128, 128, 128);
+}
+
+h6 { /* 13px */
+	font-size: 0.9em;
+	font-weight: bold;
+	text-transform: none;
+}
+
+#principals h6, .representative h6 {
+	font-weight: normal;
+}
+
+/* end type options */
+
+.break {
+	margin-bottom: 1.5em;
+}
+
+.single-work .break {
+	margin-bottom: 0.75em;
+}/* = TEXT */
+p, ul, ol, dl, table, form { /* 13px */
+	font-family: $font;
+	font-size: 16px;
+	margin: 0 0 1.5em 0;
+}
+/* = LINKS */
+a,
+a:link {
+	color: rgb(48, 45, 46);
+	background-color: transparent;
+	font-family: $font;
+	text-decoration: none;
+}
+
+	.alt a, .alt a:link {
+		color: gray;
+	}
+
+a:visited {
+	color: gray;
+	background-color: transparent;
+	text-decoration: none;
+}
+
+a:hover,
+a:active,
+a:focus {
+	background-color: transparent;
+	text-decoration: none;
+}
+
+
+	
+	/* = remove borders from links */
+	a.thumb, .share a, #controls a, .flex-control-nav a, .flex-direction-nav a, .viewer .close, #disqus_thread a {
+		border: none;
+	}
+/* = MEDIA 
+---------------------------------------------------
+	remember inline heights within markup will break proportional scaling
+*/
+
+img, object, embed, video {
+	max-width: 100%;
+	vertical-align: top;
+}
+
+figure {
+	/* margin-bottom: 1.5em; */
+}
+
+.left {
+	float: left;
+	margin: 0 1.5em 0 0;
+}
+
+
+.center {
+	text-align: center;
+	margin: 0 auto 1.5em auto;
+}
+
+/* remove search field browser styles */
+input[type="search"] { -webkit-appearance: textfield; -moz-box-sizing: content-box; -webkit-box-sizing: content-box; box-sizing: content-box; }
+input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; }
+
+/* ==========================================================================
+   Chrome Frame prompt
+   ========================================================================== */
+
+.chromeframe {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}

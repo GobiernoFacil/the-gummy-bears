@@ -1,0 +1,33 @@
+{
+  "name": "CDMX Open Contracting",
+  "version": "1.0.0",
+  "homepage": "https://github.com/GobiernoFacil/ocds-CDMX",
+  "authors": [
+    "el coruco <el.coruco@gmail.com>"
+  ],
+  "description": "Explica los contratos abiertos",
+  "main": "main.js",
+  "moduleType": [],
+  "keywords": [
+    "CDMX"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "backbone": "~1.2.3",
+    "requirejs": "~2.1.22",
+    "gsap": "~1.18.0",
+    "jquery": "~2.1.4",
+    "scrollmagic": "~2.0.5",
+    "text": "~2.0.14",
+    "velocity": "~1.2.3",
+    "d3": "~3.5.9",
+    "countdownjs": "~2.6.0"
+  }
+}

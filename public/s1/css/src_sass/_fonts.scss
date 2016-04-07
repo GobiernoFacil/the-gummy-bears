@@ -1,0 +1,142 @@
+@font-face {
+    font-family: 'Stilu';
+    src: url('fonts/stilu-bold-webfont.eot');
+    src: url('fonts/stilu-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/stilu-bold-webfont.woff2') format('woff2'),
+         url('fonts/stilu-bold-webfont.woff') format('woff'),
+         url('fonts/stilu-bold-webfont.ttf') format('truetype'),
+         url('fonts/stilu-bold-webfont.svg#stilubold') format('svg');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Stilu';
+    src: url('fonts/stilu-light-webfont.eot');
+    src: url('fonts/stilu-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/stilu-light-webfont.woff2') format('woff2'),
+         url('fonts/stilu-light-webfont.woff') format('woff'),
+         url('fonts/stilu-light-webfont.ttf') format('truetype'),
+         url('fonts/stilu-light-webfont.svg#stilulight') format('svg');
+    font-weight: 300;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'Stilu';
+    src: url('fonts/stilu-regular-webfont.eot');
+    src: url('fonts/stilu-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/stilu-regular-webfont.woff2') format('woff2'),
+         url('fonts/stilu-regular-webfont.woff') format('woff'),
+         url('fonts/stilu-regular-webfont.ttf') format('truetype'),
+         url('fonts/stilu-regular-webfont.svg#stiluregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Geomanist';
+    src: url('fonts/geomanist-extralight-webfont.eot');
+    src: url('fonts/geomanist-extralight-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/geomanist-extralight-webfont.woff2') format('woff2'),
+         url('fonts/geomanist-extralight-webfont.woff') format('woff'),
+         url('fonts/geomanist-extralight-webfont.ttf') format('truetype'),
+         url('fonts/geomanist-extralight-webfont.svg#geomanistextralight') format('svg');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Geomanist';
+    src: url('fonts/geomanist-light-webfont.eot');
+    src: url('fonts/geomanist-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/geomanist-light-webfont.woff2') format('woff2'),
+         url('fonts/geomanist-light-webfont.woff') format('woff'),
+         url('fonts/geomanist-light-webfont.ttf') format('truetype'),
+         url('fonts/geomanist-light-webfont.svg#geomanistlight') format('svg');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Geomanist';
+    src: url('fonts/geomanist-regular-webfont.eot');
+    src: url('fonts/geomanist-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/geomanist-regular-webfont.woff2') format('woff2'),
+         url('fonts/geomanist-regular-webfont.woff') format('woff'),
+         url('fonts/geomanist-regular-webfont.ttf') format('truetype'),
+         url('fonts/geomanist-regular-webfont.svg#geomanist_regular') format('svg');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Geomanist';
+    src: url('fonts/geomanist-medium-webfont.eot');
+    src: url('fonts/geomanist-medium-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/geomanist-medium-webfont.woff2') format('woff2'),
+         url('fonts/geomanist-medium-webfont.woff') format('woff'),
+         url('fonts/geomanist-medium-webfont.ttf') format('truetype'),
+         url('fonts/geomanist-medium-webfont.svg#geomanistmedium') format('svg');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Geomanist';
+    src: url('fonts/geomanist-bold-webfont.eot');
+    src: url('fonts/geomanist-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/geomanist-bold-webfont.woff2') format('woff2'),
+         url('fonts/geomanist-bold-webfont.woff') format('woff'),
+         url('fonts/geomanist-bold-webfont.ttf') format('truetype'),
+         url('fonts/geomanist-bold-webfont.svg#geomanistbold') format('svg');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Geomanist Ultra';
+    src: url('fonts/geomanist-ultra-webfont.eot');
+    src: url('fonts/geomanist-ultra-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/geomanist-ultra-webfont.woff2') format('woff2'),
+         url('fonts/geomanist-ultra-webfont.woff') format('woff'),
+         url('fonts/geomanist-ultra-webfont.ttf') format('truetype'),
+         url('fonts/geomanist-ultra-webfont.svg#geomanistultra') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+// Font stacks for easy inclusion and customization
+$font-family-sans-serif:  'Stilu', Helvetica, Arial, sans-serif;
+$font-family-serif:       Georgia, "Times New Roman", Times, serif;
+$font-family-monospace:   Monaco, Menlo, Consolas, "Courier New", monospace;
+
+$font-sans:       	 	$font-family-sans-serif; //500
+
+
+$font-title:			'Geomanist', Helvetica, Arial, sans-serif; 				
+$font-title-ultra:	    'Geomanist Ultra', Helvetica, Arial, sans-serif; 				
+
+// Generate a straightforward type scale
+
+$font-size-base:          15px;
+$font-size-large:         $font-size-base * 1.25; // ~18px
+$font-size-small:         $font-size-base * 0.85; // ~12px
+$font-size-mini:          $font-size-base * 0.75; // ~11px
+
+
+
+// Baseline for the line-height of the body
+// To be used in conjunction with $font-size-base
+$line-height-base:        1.4;
+
+// Enable the option to customize headings
+$headings-font-family:    inherit; // From $font-family-base
+$headings-font-weight:    500;
+
+$heading-main-h1: 76px;
+$headings-main-h2: 40px; 
+$headings-main-h3: 34px; 
+$headings-main-h4: 23.75px; 

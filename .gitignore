@@ -1,3 +1,13 @@
 /vendor
 /node_modules
+/public/storage
+Homestead.yaml
+Homestead.json
 .env
+.DS_Store
+public/js/bower_components
+public/s1/js/bower_components
+public/css/src_sass
+public/css/fonts
+config/database.php
+public/s1/css/fonts

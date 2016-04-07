@@ -1,0 +1,955 @@
+@import '_main';
+@import '_fonts';
+@import '_images';
+@import '_color';
+@import '_forms';
+@import '_layout';
+@import '_mixins';
+
+/* =Main content and comment content
+-------------------------------------------------------------- */
+
+html {
+	background: $gray_bgd;
+}
+
+div { font-family: $font-sans;}
+
+.center {text-align: center}
+.right { text-align: right}
+
+.cdmx {
+	background: $cdmx no-repeat;
+	background-size: auto 30px;
+	@include ir;
+	height: 30px;
+	width: 183px;
+}
+:focus {
+  outline: none;
+}
+$height_nav: 60px;
+
+section {
+	padding-top: $height_nav + 130px;
+	padding-bottom: $height_nav + 150px;
+}
+
+small {
+	font: 400 12px/1.2 $font-title;
+}
+
+sup {
+	font-size: 12px;
+	font-weight: 700;
+	a:link,
+	a:visited { color: $magenta;
+		border-bottom: 1px solid $magenta;
+		&:hover { color: $blue}
+	}
+}
+
+.divider {
+	padding: 25px 0;
+	margin: 25px 0;
+	display: block;
+}
+
+/* =Menu 
+-------------------------------------------------------------- */
+nav#menu { 
+	background: #fff;
+	@include box-shadow(1px, 2px, 5px, rgba(0, 0, 0, 0.3));
+	height: $height_nav;
+	position: fixed; 
+	padding-top: 16px;
+	top: 0; 
+	left: 0; 
+	bottom: auto; 
+	right: auto;
+	width: 100%;
+	z-index: 99999;
+	.container {
+		width: 95%;
+	}
+	h1 {
+		font-family: $font-title;
+		font-size: 16px;
+		padding-top: 6px;
+		text-align: center;
+		a { color: rgb(64,64,64);
+			&:hover { color: #777}
+		}
+	}
+	ul {
+		padding-top: 6px;
+		text-align: right;
+		li {
+			font-size: 12px;
+			display: inline-block;
+			margin-left: 20px;
+		}
+	}
+}
+
+.mobile {
+	display: none;
+}
+
+#menu-mobile {
+	display: none;
+		overflow: hidden;
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		background: rgba(0,0,0,0.92);
+		z-index: 999999999;
+		top:0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		color: white;
+		text-align: center;
+		h3 {
+			margin-top: 30px;
+			padding-bottom: 12px;
+			border-bottom: 3px solid white;
+			text-align: left;
+		}
+		.close {
+			background: $magenta;
+			color: white;
+			font-weight: 600;
+			margin-left: 30px;
+			padding: 1px 5px;
+			float: right;
+		}
+		li a {
+			border-bottom: 1px solid rgba(255,255,255,0.1);
+			color: white;
+			line-height: 50px;
+			display: block;
+		}
+	}
+
+#menu_scroll {
+	background: rgba(0,0,0,0.05);
+	@include rounded(10px 0  0 10px);
+	position: fixed;
+	right: 0;
+	margin-top: -2.5em;
+	top: 40%;
+	width: 50px;
+	z-index: 9999999;
+	&:hover { background: rgba(0,0,0,0.13);}
+	li { list-style: none;
+		margin: 30px 0 30px 15px;
+		height: 22px;
+		width: 30px;
+	}
+	a { 
+		background: rgba(255,255,255,0.4);
+		@include rounded(50%);
+		border: 1px solid rgba(0,0,0,0.1);
+		display: block;
+		width: 18px;
+		height: 18px;
+		&.current { background: white;
+			border: 2px solid $magenta;
+			&:hover {background:white;}
+		}
+		&:hover {background: rgba(255,255,255,0.9);
+			border: 2px solid rgba(0,0,0,0.7);
+		}
+	}
+}
+
+.bento_menu {
+	$bento_size: 20px;
+	background: $bento_menu;
+	background-size: $bento_size;
+	height: $bento_size;
+	width: $bento_size;
+	display: block;
+	float:right;
+}
+
+#countdown {
+	background: $blue;
+	color: white;
+	top: 90px;
+	padding: 10px;
+	position: fixed;
+	right: 0;
+	width: 190px;
+	z-index: 888888;
+	p { margin: 0;}
+	small { font-size: 12px;}
+	.number { font-size: 13px}
+}
+
+/* =Participacion / datos
+-------------------------------------------------------------- */
+.participacion,
+.lead.datos {
+	background: $magenta;
+	color: white;
+	h1 {
+		font-family:  $font-title;
+		font-size: $heading-main-h1;
+		font-weight: 300;
+		line-height: 1.2;
+		text-align: center;
+		span { font-weight: 500;}
+		span.mx { font-weight: 600;}
+		strong {
+			color: black;
+			font-family: $font-title;
+		}
+	}
+}
+
+.lead.datos { background: #8e878c;
+	h1 strong { color: white;}
+	a.btn.cta { 
+		background: $magenta;
+		color: white;
+		&:hover { background: #444}
+	}
+}
+
+
+code {
+	color: #9b9a9a;
+	display: block;
+	font-family: monospace;
+}
+
+/* =home sections 
+-------------------------------------------------------------- */
+.etapas,
+.win,
+.tools,
+.datos_pa_labanda  {
+	background: $gray_bgd;
+	color: $text_color;
+	h1 {
+		font-family:  $font-title;
+		font-weight: 400;
+		margin-bottom: 35px;
+		strong {
+			color: $magenta;
+			font-weight: 700;
+		}
+		span { font-weight: 600;}
+	}
+}
+
+/* =etapas 
+-------------------------------------------------------------- */
+.etapas,
+.datos_pa_labanda {
+	h1 {
+		font-size: $headings-main-h3;
+		a {
+			border-bottom: 1px dotted $magenta;
+			color: $text_color;
+			display: block;
+			font-family:  $font-title;
+			font-weight: 300;
+			&:hover { color: $magenta}
+		}
+	}
+	p{
+		font-family: $font-sans;
+		font-size: 18px;
+		line-height: 1.5;
+	}
+	a.btn {
+		background: $blue;
+		color: white;
+		padding: 10px;
+		height: auto;
+		line-height: 1.2;
+		display: block;
+		margin: 70px 0 0;
+		width: 90%;
+	}
+}
+
+/* =stages  */
+.stages {
+	height: 50px;
+	margin-top: 60px;
+	position: relative;
+	&:before { 
+		border-top: 4px solid #dd5aa0;
+		content: "";
+		width: 98%;
+		display: inline-block;
+		position: absolute;
+		top: 21px;
+		z-index: 0;
+	}
+	li {
+		list-style: none;
+		display: inline-block;
+		height: 50px;
+		margin: 0;
+		padding: 0;
+		position: relative;
+		width: 19.4%;
+		z-index: 1;
+		
+		&:first-child { a { margin-left: 0;}}
+		&:last-child { 
+			a { 
+				margin-right: 0;
+				float: right;
+			}
+		}
+	}
+}
+
+a.nav_stage {
+	background: #eaeaea;
+	border: 3px solid #dd5aa0;
+	@include rounded(50%);
+	display: block;
+	margin: 5px auto 0;
+	height: 40px;
+	width: 40px;
+	@include transition(all .3s ease);
+	svg {
+    	margin: 3px auto;
+		display: block;	
+	@include transition(all .3s ease);
+    }
+	&:hover,
+	&.current {
+		background: white;
+		border: 3px solid $magenta;
+		margin-top: 0;
+		height: 50px;
+		width: 50px;
+		svg {
+			height: 35px;
+			width: 35px;
+			path {fill: $magenta;}
+		}
+	}
+}
+
+.pasos {
+	margin-top: 40px;
+	h2 {
+		font-family: $font-title;
+		font-size: 34px;
+		font-weight: 400;
+		margin-bottom: 30px;
+		text-transform: uppercase;
+		text-align: center;
+		b {
+			background: $i_planeacion no-repeat 50% 100%;
+			display: inline-block;
+			height: 42px;
+			width: 30px;
+		}
+	}
+	.slide { position: relative;}
+	.description {
+		background: white;
+		@include rounded(50%);
+		display: inline-block;
+		position: absolute;
+		margin: 0 0 0 20px;
+		height: 101px;
+		width: 101px;
+		@include transition(background .3s ease);
+		&.a { right: 0;}
+		&.b { bottom: 0;}
+		p {
+			font-family: $font-title;
+			font-size: 13px;
+			padding-top: 25px;
+			text-align: center;
+		}
+		&:hover { background: $yellow}
+	}
+	.licitacion {
+		h2 b { background-image: $i_licitacion}
+		.main_pic {
+			background: $yellow;
+			border: 11px solid darken($yellow, 4%);
+			svg {margin: 18px auto;}
+		}
+	}
+	.adjudicacion {
+		h2 b { background-image: $i_adjudicacion}
+		.main_pic {
+			background: #71a571;
+			border: 11px solid darken(#71a571, 4%);
+			svg {margin: 0 auto;}
+		}
+	}
+	.contrato {
+		h2 b { background-image: $i_contrato}
+		.main_pic {
+			background: #C10A7B;
+			border: 11px solid darken(#C10A7B, 4%);
+			svg {margin: 15px auto;}
+		}
+	}
+	.implementacion {
+		h2 b { background-image: $i_implementacion}
+		.main_pic { 
+			background:#d34a4a ;
+			border: 11px solid #cc2d12;
+		}
+	}
+}
+.main_pic {
+	background: $blue;
+	border: 11px solid darken($blue, 4%);
+	@include rounded(50%);
+	display: block;
+	margin: 0 auto;
+	height: 260px;
+	width: 260px;
+	svg {
+		display: block;	
+		margin: 30px auto;
+	}
+}
+ 
+/* =win 
+-------------------------------------------------------------- */
+.win {
+	h1 {
+		font-size: $headings-main-h2;
+		text-align: center;
+	}
+	.quote {
+		border-bottom: 1px solid $magenta;
+		border-top: 1px solid $magenta;
+		margin-bottom: 47px;
+		p {
+			padding-top: 25px;
+			font-family: $font-title;
+			font-size: 21px;
+			font-weight: 300;
+			text-align: center;
+			strong {
+				font-size: 17px;
+				font-weight: 600
+			}
+			span { color: $magenta}
+		}
+	}
+	h3, p {
+		text-align: center;
+	}
+	h3 { font-family: $font-title;
+		font-size: 16px;
+		font-weight: 600;
+	}
+	p { font-size: 13px;}
+}
+div.forthewin {
+	min-height: 200px;
+	position: relative;
+	&:after {
+		background: white;
+		content: "";
+		@include rounded(50%);
+		width: 50%;
+		height: 110px;
+		display: block;
+		position: absolute;
+		z-index: 0;
+		bottom: 20px;
+		left: 25%;
+	}
+	svg {
+		position: relative;
+		display: block;
+		margin: 0 auto;
+		z-index: 9;
+	}
+}
+
+
+/* =tools 
+-------------------------------------------------------------- */
+.tools {
+	h1 {
+		font-size: $headings-main-h2;
+		text-align: center;
+	}
+	h2 { font-size: 24px;
+		font-weight: 700;
+		margin-bottom: 20px;
+	}
+	.slide {
+		margin-top: 40px;
+		margin-bottom: 126px;
+	}
+	a.btn {
+		background: $blue;
+		color: white;
+		display: block;
+		margin: 10px auto 0;
+		width: 300px;
+	}
+	li { list-style: none;
+		display: inline-block;
+		margin: 0 5px 0 0;
+	}
+	///btn nav 
+	.api,
+	.data,
+	.sm {
+		background: $api no-repeat 50%;;
+		@include ir;
+		@include opacity_el(0.3);
+		height: 22px;
+		margin-right: 27px;
+		width: 27px;
+		&:hover,
+		&.current {@include opacity_el(1); }
+	}
+	.data { background-image: $dataviz; }
+	.sm {	background-image: $sm;} 
+}
+
+
+//// codigo
+.codigo {
+	background: white;
+	padding: 30px 20px;
+	p { font-size: 14px}
+	ul { margin-left: 15px;}
+	li { list-style: none;
+		margin-bottom: 15px;
+	}
+	code { margin-left: 15px;
+		.box { 
+			font-family: monospace;
+			margin-left: 15px;
+			display: block;
+		}
+		word-break: break-all;
+	}
+}
+
+.glosario .codigo {
+	padding: 70px 0 90px;
+	ul { margin: 20px 35px;}
+	li { list-style: disc;
+		font-size: 14px;
+		ul { margin-left: 30px;
+			margin-bottom: 40px;
+			li { margin-bottom: 10px;}
+		}
+	}
+	.ref {
+		margin-left: 20px;
+		color: #777;
+		font-size: 13px;
+		sup {
+			display: inline-block;
+			width:10px;
+		}
+	}	
+}
+
+
+.datos_pa_labanda {
+	h2 {
+		font-family: $font-title;
+		border-bottom: 1px solid $black-20;
+		font-size: 24px;
+		margin-bottom: 20px;
+		padding-bottom: 15px;
+		text-transform: uppercase;
+		text-align: center;
+	}
+	a.btn.default {
+		background: $blue;
+		color: white;
+		padding: 10px;
+		display: inline-block;
+		height: auto;
+		line-height: 1.3;
+		&:hover { background: #444;}
+	}
+}
+.usa_datos {
+	margin:0 0 30px 25px;
+	li { 
+		list-style: none;
+		a {
+			display: block;
+			margin-bottom: 18px;
+			padding-left: 28px;
+			position: relative;
+			&.current,
+			&:hover {
+				color: $magenta;
+				&:before,
+				&:after { @include opacity_el(1)}
+			}
+			&:before,
+			&:after {
+				@include rounded(50%);
+				content: "";
+				display: inline-block;
+				position: absolute;
+				@include opacity_el(0.5);
+			}
+			&:before {
+				background: white;
+				border: 3px solid $magenta;
+				height: 15px;
+				width: 15px;
+				left: 0;
+			}
+			&:after {
+				background: $magenta;
+				height: 11px;
+				width: 11px;
+				left: 5px;
+				top: 5px;
+			}
+		}
+	}
+}
+
+/* =BTN 
+-------------------------------------------------------------- */
+a.btn {
+	background: $black-90;
+	color: $magenta;
+	@include rounded(10px);
+	text-align: center;
+	font-family:  $font-title;
+	font-size: 18px;
+	font-weight: 600;
+	height: 55px;
+	line-height: 55px;
+	@include transition(all .3s ease);
+	&.cta {
+		background: white;
+		margin: 90px auto 0;
+		width: 233px;
+		display: block;
+	}
+	&:hover { background: $black-80;
+		color: white;
+	}
+}
+
+
+
+/* =FOOTER
+-------------------------------------------------------------- */
+footer {
+	background: #404041;
+	color: white;
+	.partners {
+		background: white;
+		margin-bottom: 76px;
+		padding: 60px 0 127px;
+		text-align: center;
+		h4 {
+			color: #444;
+			font-family: $font-title;
+			font-size: 18px;
+			margin-bottom: 55px;
+			text-transform: uppercase;
+		}
+		.imco,
+		.bloomberg,
+		.ocds {
+			background: $bloomberg no-repeat 50%;
+			background-size: auto 24px;
+			@include ir;
+			display: inline-block;
+			margin: 0 auto;
+			height: 55px;
+			width: 100%;
+		}
+		.imco {
+			background-image: $imco;
+			background-size: auto 55px;
+		}
+		.ocds {
+			background-image: $ocds;
+			background-size: auto 29px;
+		}
+	}
+	h3 {
+		font-family: $font-title;
+		font-size: 24px;
+	}
+	.author { 
+		padding: 40px 0 110px;
+		text-align: right;
+		p {font-size: 12px;}
+		a { margin: 5px 0 0;
+			display: block;
+			float: right;
+		}
+	}
+	.copy {
+		background: $pink_taco;
+		padding: 14px 0;
+		p { font-size: 12px;
+			margin: 0;
+		}
+	}
+	.cdmx_w {
+		background: $cdmx_white;
+		@include ir;
+		height: 55px;
+		margin-bottom: 20px;
+		width: 242px;
+	}
+}
+
+/* =Gobierno Fácil brand
+-------------------------------------------------------------- */
+.gobiernofacil {
+	background: $gb_logo no-repeat 0;
+	@include ir;
+	background-size: auto 39px;
+	width: 242px;
+	height: 39px;
+}
+
+/* =Media queries
+-------------------------------------------------------------- */
+
+@media  screen and (max-width: 480px) {
+	//menu
+	.mobile {
+		display: block;
+	}
+	.cdmx {
+		background-size: auto 15px;
+		width: 73px;
+	}
+	nav#menu h1 { 
+		line-height: 1;
+		font-size: 14px;
+		padding: 0;
+	}
+	
+	.nav_links,
+	#menu_scroll { display: none;}
+	
+	.datos_pa_labanda a.btn.default {
+		display: inline-block;
+		height: auto;
+		font-size: 14px;
+		line-height: 1.2;
+		margin-bottom: 25px;
+	}
+	
+	#countdown {
+		padding: 2px 0;
+		width: 100%;
+		text-align: center;
+		top: 60px;
+		p,
+		.number { font-size: 12px;		}
+	}
+		
+	section {
+		padding-top: $height_nav + 60px;
+		padding-bottom: $height_nav + 70px;
+	}
+	.lead.datos h1,
+	.participacion h1,
+	.etapas h1,
+	.win h1,
+	.tools h1,
+	.datos_pa_labanda h1 { font-size: 1.7em;}
+	
+	.win .quote p,
+	.win .quote p strong  { font-size: 15px;}
+	
+	a.btn.cta {
+		font-size: 14px;
+		height: 35px;
+		line-height: 35px;
+	    margin: 40px auto 0;
+		width: 180px;
+	}
+	div,
+	.datos_pa_labanda p { font-size: 13px;
+		line-height: 1.5;
+	}
+	.stages li {    width: 18.5%;}
+	
+	.tools { 
+		text-align: center;
+		.slide { margin-bottom: 50px;}
+		a.btn {
+			font-size: 14px; 
+			height: 35px;
+			line-height: 35px;
+			width: 230px;
+		}
+	}
+	
+	// datos
+	.usa_datos li a { font-size: 14px;}
+	
+	footer {
+		text-align: center;
+		.cdmx_w { 
+			margin: 0 auto;
+		}
+		h3 { font-size: 18px;}
+		.partners {
+			padding: 40px 0 60px;
+			h4 { margin-bottom: 15px;} 
+			.ocds {     background-size: 100% auto;}
+		}
+		.copy,
+		.author,
+		.copy .right { text-align: center;}
+		.copy p { font-size: 11px;}
+		.author {
+			padding: 40px 0 30px;
+			a { 
+				float: none;
+				margin: 5px auto;
+			}
+		}
+	}
+}
+
+@media  screen and (min-width: 481px) and  (max-width:767px) {
+	//menu
+	.mobile {
+		display: block;
+	}
+	.nav_links,
+	#menu_scroll { display: none;}
+	
+	.cdmx {
+		background-size: auto 20px;
+	}
+	
+	#countdown {
+		padding: 3px 0;
+		width: 100%;
+		text-align: center;
+		top: 60px;
+		p,
+		.number { font-size: 12px;		}
+	}
+	
+	section {
+		padding-top: $height_nav + 80px;
+		padding-bottom: $height_nav + 70px;
+	}
+	.lead.datos h1,
+	.participacion h1,
+	.etapas h1,
+	.win h1,
+	.tools h1,
+	.datos_pa_labanda h1 { font-size: 1.7em;}
+	
+	.win .quote p,
+	.win .quote p strong  { font-size: 15px;}
+	a.btn.cta {
+		font-size: 14px;
+		height: 35px;
+		line-height: 35px;
+	    margin: 40px auto 0;
+		width: 180px;
+	}
+	div,
+	.datos_pa_labanda p { font-size: 13px;
+		line-height: 1.5;
+	}
+	.stages li {    width: 18.5%;}
+	
+	.tools { 
+		text-align: center;
+		.slide { margin-bottom: 50px;}
+		a.btn {
+			font-size: 14px; 
+			height: 35px;
+			line-height: 35px;
+			width: 230px;
+		}
+	}
+	
+	// datos
+	.usa_datos li a { font-size: 14px;}
+	
+	footer {
+		text-align: center;
+		.cdmx_w { 
+			margin: 0 auto;
+		}
+		h3 { font-size: 18px;}
+		.partners {
+			padding: 40px 0 60px;
+			h4 { margin-bottom: 15px;} 
+			.ocds {     background-size: 100% auto;}
+		}
+		.copy,
+		.author,
+		.copy .right { text-align: center;}
+		.copy p { font-size: 11px;}
+		.author {
+			padding: 40px 0 30px;
+			a { 
+				float: none;
+				margin: 5px auto;
+			}
+		}
+	}
+}
+
+@media screen and (min-width:768px) and (max-width:991px) {
+	//menu
+	.mobile {
+		display: block;
+	}
+	.nav_links { display: none;}
+	section {
+		padding-top: $height_nav + 60px;
+		padding-bottom: $height_nav + 70px;
+	}
+		
+	.stages li {width: 19%;}
+}
+
+@media screen and (max-width:992px){
+
+}
+
+@media screen and (min-width:992px) and (max-width:1199px) {
+	nav#menu ul li {
+		font-size: 11px;
+		margin-left: 4px;
+	}
+	.stages li {width: 19.2%;}
+}
+
+
+
+
+/* =Print
+----------------------------------------------- */
+
+@media print {
+
+	
+}

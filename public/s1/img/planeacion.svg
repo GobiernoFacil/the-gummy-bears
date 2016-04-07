@@ -1,0 +1,48 @@
+<svg version="1.1" id="planeacion_pic" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="139.711px" height="172.024px" viewBox="0 0 139.711 172.024" enable-background="new 0 0 139.711 172.024"
+	 xml:space="preserve">
+<g>
+	<rect x="3.794" y="14.808" fill="#818285" width="132.122" height="154.881"/>
+	<rect x="8.74" y="19.998" fill="#FFFFFF" width="121.874" height="143.928"/>
+	<path fill="#D4D2CF" d="M87.986,11.254H77.334V9.335c0-3.866-3.133-7-7-7h-2.155c-3.866,0-7,3.134-7,7v1.919h-9.812
+		c-4.068,0-5.365,3.134-5.365,7v1.028c0,3.866,1.297,7,5.365,7h36.62c4.068,0,5.365-3.134,5.365-7v-1.028
+		C93.352,14.389,92.055,11.254,87.986,11.254z M73.428,12.123c0,1.876-1.521,3.398-3.398,3.398h-1.046
+		c-1.877,0-3.398-1.522-3.398-3.398v-1.315c0-1.877,1.521-3.398,3.398-3.398h1.046c1.878,0,3.398,1.521,3.398,3.398V12.123z"/>
+	
+		<line fill="none" stroke="#D1D2D3" stroke-width="3.2361" stroke-linecap="round" stroke-miterlimit="10" x1="52.705" y1="53.042" x2="114.01" y2="53.042"/>
+	
+		<line fill="none" stroke="#D1D2D3" stroke-width="3.2361" stroke-linecap="round" stroke-miterlimit="10" x1="52.705" y1="60.999" x2="114.01" y2="60.999"/>
+	
+		<line fill="none" stroke="#D1D2D3" stroke-width="3.2361" stroke-linecap="round" stroke-miterlimit="10" x1="52.454" y1="85.373" x2="114.01" y2="85.373"/>
+	
+		<line fill="none" stroke="#D1D2D3" stroke-width="3.2361" stroke-linecap="round" stroke-miterlimit="10" x1="52.454" y1="93.328" x2="114.01" y2="93.328"/>
+	
+		<line fill="none" stroke="#D1D2D3" stroke-width="3.2361" stroke-linecap="round" stroke-miterlimit="10" x1="27.854" y1="111.984" x2="114.01" y2="111.984"/>
+	
+		<line fill="none" stroke="#D1D2D3" stroke-width="3.2361" stroke-linecap="round" stroke-miterlimit="10" x1="27.854" y1="122.939" x2="114.01" y2="122.939"/>
+	
+		<line fill="none" stroke="#D1D2D3" stroke-width="3.2361" stroke-linecap="round" stroke-miterlimit="10" x1="27.854" y1="133.873" x2="114.01" y2="133.873"/>
+	
+		<line fill="none" stroke="#D1D2D3" stroke-width="3.2361" stroke-linecap="round" stroke-miterlimit="10" x1="27.854" y1="145.787" x2="114.01" y2="145.787"/>
+	
+		<circle fill="none" stroke="#D1D2D3" stroke-width="3.2361" stroke-linecap="round" stroke-miterlimit="10" cx="32.799" cy="56.288" r="9.123"/>
+	<g>
+		<g>
+			<path fill="#F05A55" d="M27.575,56.007c1.01,1.722,2.019,3.444,3.028,5.167c0.502,0.856,1.755,1.047,2.457,0.316
+				c5.153-5.368,10.307-10.735,15.46-16.103c1.396-1.455-0.812-3.669-2.212-2.212c-5.153,5.368-10.307,10.735-15.46,16.103
+				c0.819,0.105,1.638,0.211,2.457,0.316c-1.01-1.722-2.019-3.444-3.028-5.167C29.257,52.689,26.553,54.263,27.575,56.007
+				L27.575,56.007z"/>
+		</g>
+	</g>
+	
+		<circle fill="none" stroke="#D1D2D3" stroke-width="3.2361" stroke-linecap="round" stroke-miterlimit="10" cx="32.799" cy="87.292" r="9.123"/>
+	<g>
+		<g>
+			<path fill="#F05A55" d="M27.575,87.012c1.01,1.722,2.019,3.444,3.028,5.166c0.515,0.878,1.736,1.021,2.457,0.316
+				c5.153-5.034,10.307-10.067,15.46-15.102c1.445-1.412-0.769-3.622-2.212-2.212c-5.153,5.034-10.307,10.068-15.46,15.103
+				c0.819,0.105,1.638,0.211,2.457,0.316c-1.01-1.723-2.019-3.445-3.028-5.167C29.257,83.694,26.553,85.268,27.575,87.012
+				L27.575,87.012z"/>
+		</g>
+	</g>
+</g>
+	</svg>
