@@ -392,7 +392,9 @@ class UpdateContracts extends Command {
         $data      = ['dependencia' => '901', "ejercicio" => $year]; // harcoded stuff
         $excercise = $this->apiCall($data, $this->apiContratos);
         if(!is_array($excercise)){
-          $this->error($excercise); 
+          $x = var_export($excercise, true);
+          $this->info($x);
+          $this->error($x); 
           die(":D");
         }
         $contracts = array_merge($contracts, $excercise);
