@@ -391,7 +391,10 @@ class UpdateContracts extends Command {
         $year      = date("Y") - $i;
         $data      = ['dependencia' => '901', "ejercicio" => $year]; // harcoded stuff
         $excercise = $this->apiCall($data, $this->apiContratos);
-        if(!is_array($excercise)) $this->error($excercise) die(":D");
+        if(!is_array($excercise)){
+          $this->error($excercise); 
+          die(":D");
+        }
         $contracts = array_merge($contracts, $excercise);
       }
 
