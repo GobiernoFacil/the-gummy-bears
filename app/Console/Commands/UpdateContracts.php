@@ -24,9 +24,9 @@ class UpdateContracts extends Command {
   * T H E   E N D P O I N T S  
   *
   */
-  public $apiContratos   = 'http://187.141.34.209:9009/ocpcdmx/listarcontratos';
-  public $apiContrato    = 'http://187.141.34.209:9009/ocpcdmx/contratos';
-  public $apiProveedores = 'http://187.141.34.209:9009/ocpcdmx/cproveedores';
+  public $apiContratos   = 'http://10.1.129.11:9009/ocpcdmx/listarcontratos';
+  public $apiContrato    = 'http://10.1.129.11:9009/ocpcdmx/contratos';
+  public $apiProveedores = 'http://10.1.129.11:9009/ocpcdmx/cproveedores';
 	/**
 	 * The console command name.
 	 *
