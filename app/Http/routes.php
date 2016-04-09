@@ -26,3 +26,5 @@ Route::get('/', "Frontend@index");
 Route::get('home2', "Frontend@indexv2");
 
 Route::get('v2', "Contracts@index");
+Route::get('dependencias', "Offices@index");
+Route::get('proveedor/{id}', "Suppliers@show");

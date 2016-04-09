@@ -16,6 +16,7 @@ use App\Models\SingleContract;
 use App\Models\Supplier;
 use App\Models\Tender;
 use App\Models\Tenderer;
+use App\Models\TenderTenderer;
 
 
 class UpdateContracts extends Command {
@@ -24,9 +25,11 @@ class UpdateContracts extends Command {
   * T H E   E N D P O I N T S  
   *
   */
-  public $apiContratos   = 'http://10.1.129.11:9009/ocpcdmx/listarcontratos';
-  public $apiContrato    = 'http://10.1.129.11:9009/ocpcdmx/contratos';
-  public $apiProveedores = 'http://10.1.129.11:9009/ocpcdmx/cproveedores';
+  public $apiContratos;
+  public $apiContrato;
+  public $apiProveedores;
+
+
 	/**
 	 * The console command name.
 	 *
@@ -49,6 +52,21 @@ class UpdateContracts extends Command {
 	public function __construct()
 	{
 		parent::__construct();
+
+    $endpoints = env('ENDPOINTS', 'production');
+
+    if($endpoints == 'production'){
+      // SERVER ENDPOINTS
+      $this->apiContratos   = 'http://10.1.129.11:9009/ocpcdmx/listarcontratos';
+      $this->apiContrato    = 'http://10.1.129.11:9009/ocpcdmx/contratos';
+      $this->apiProveedores = 'http://10.1.129.11:9009/ocpcdmx/cproveedores';
+    }
+    // PUBLIC ENDPOINTS
+    else{
+      $this->apiContratos   = 'http://187.141.34.209:9009/ocpcdmx/listarcontratos';
+      $this->apiContrato    = 'http://187.141.34.209:9009/ocpcdmx/contratos';
+      $this->apiProveedores = 'http://187.141.34.209:9009/ocpcdmx/cproveedores';
+    }
 	}
 
 	/**
@@ -202,9 +220,23 @@ class UpdateContracts extends Command {
     private function saveTenderers($tender, $data){
       if(count($data->tenderers)){
         foreach($data->tenderers as $tn){
+
+          /*
           $tenderer = $tender->tenderers()->firstOrCreate([
             "rfc" => $tn->identifier->id
           ]);
+          */
+
+          $tenderer = Tenderer::firstOrCreate([
+            "rfc" => $tn->identifier->id
+          ]);
+
+          $relation = TenderTenderer::firstOrCreate([
+            'tender_id'   => $tender->id,
+            'tenderer_id' => $tenderer->id
+          ]);
+
+          // TenderTenderer
 
           $tenderer->name         = $tn->name;
           $tenderer->street       = $tn->address->streetAddress;
