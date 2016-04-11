@@ -17,6 +17,7 @@ Route::get('home2', "Frontend@indexv2");
 
 /// contracts
 Route::get('v2', "Contracts@index");
+Route::get('contratos', "Contracts@index");
 Route::get('contrato/{ocid}', "Contracts@show");
 /// offices
 Route::get('dependencias', "Offices@index");
