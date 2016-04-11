@@ -20,7 +20,7 @@
           <div class="row">
             <div class="col-sm-4">
               <p class="title_section">COMPRADOR</p>
-              <p><a href="/dependencia.php">{{ $elcontrato->buyer->name }}</a></p>
+              <p><a href="{{ url('dependencias') }}">{{ !empty($elcontrato->buyer->name) ? $elcontrato->buyer->name : ''}}</a></p>
             </div>
           </div>
         </div>
