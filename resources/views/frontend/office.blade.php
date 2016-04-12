@@ -53,7 +53,7 @@
 				<div class="divider"></div>
 				<div id="linemap">
 				  <h3>Total por contrato</h3>
-				  <p>información recopilada desde <span id="tremmap-data-from"></span></p>
+				  <p>información recopilada desde <span id="tremmap-data-from">diciembre de 2015</span></p>
 				</div>		
 
 			</div>
@@ -115,6 +115,7 @@
 		</div>
 		
 		<div class="col-sm-12">
+			<!--
 			<div class="box">
 				<div class="row">
 					<div class="col-sm-6">
@@ -146,6 +147,7 @@
 					</li>
 				</ul>
 			</div>
+			-->
 		</div>
 		
 	</div>
