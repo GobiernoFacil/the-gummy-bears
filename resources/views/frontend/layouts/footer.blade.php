@@ -52,13 +52,13 @@
 
 
 @if ($body_class == 'home2')
-<script data-main="/js/apps/home/main" src="/js/bower_components/requirejs/require.js"></script>
+<script data-main="{{ url('js/apps/home/main') }}" src="{{ url('js/bower_components/requirejs/require.js') }}"></script>
 @endif
 @if ($body_class == 'contract single')
-<script data-main="/js/apps/contrato-landing/main" src="/js/bower_components/requirejs/require.js"></script>
+<script data-main="{{ url('js/apps/contrato-landing/main') }}" src="{{ url('js/bower_components/requirejs/require.js') }}"></script>
 @endif
 @if ($body_class == 'proveedor')
-<script data-main="/js/apps/dependencia/main" src="/js/bower_components/requirejs/require.js"></script>
+<script data-main="{{ url('js/apps/dependencia/main') }}" src="{{ url('js/bower_components/requirejs/require.js') }}"></script>
 @endif
 <script src="/js/main.js"></script>
 
