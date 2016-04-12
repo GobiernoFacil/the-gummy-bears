@@ -19,7 +19,7 @@
               <p class="title_section">PROVEEDOR</p>
               <?php foreach($elcontrato->awards as $award):?>
                 <?php if ($contract->award_id == $award->local_id):?>
-                  <p><a href="{{ url('proveedor/' . $award->suppliers[0]->id) }}"><?php echo $award->suppliers[0]->name;?></a></p>
+                  <p><a href="{{ url('proveedor/' . $award->suppliers[0]->rfc) }}"><?php echo $award->suppliers[0]->name;?></a></p>
                 <?php endif;?>
               <?php endforeach;?>
             </div> 
