@@ -7,7 +7,7 @@
 // @url     : http://gobiernofacil.com
 
 require.config({
-  baseUrl : "/js/apps/dependencia",
+  baseUrl : "js/apps/dependencia",
   paths : {
     /*
     d3          : "../../bower_components/d3/d3",

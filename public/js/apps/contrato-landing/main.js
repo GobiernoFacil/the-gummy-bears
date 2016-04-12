@@ -7,7 +7,7 @@
 // @url     : http://gobiernofacil.com
 
 require.config({
-  baseUrl : "/js/apps/contrato-landing",
+  baseUrl : "js/apps/contrato-landing",
   paths : {
     /*
     d3          : "../../bower_components/d3/d3",
