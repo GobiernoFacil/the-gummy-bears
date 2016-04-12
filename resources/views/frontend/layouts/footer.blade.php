@@ -48,7 +48,7 @@
 	</div><!--page ends-->
 </div>	<!--pages stack ends-->
 <button class="menu-button"><span>Menu</span></button>
-<script src="/js/modernizr-custom.js"></script>
+<script src="{{ url('js/modernizr-custom.js') }}"></script>
 
 
 @if ($body_class == 'home2')
