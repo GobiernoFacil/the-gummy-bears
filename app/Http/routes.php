@@ -21,5 +21,6 @@ Route::get('contratos', "Contracts@index");
 Route::get('contrato/{ocid}', "Contracts@show");
 /// offices
 Route::get('dependencias', "Offices@index");
+Route::get('dependencia/{id}', "Offices@show");
 /// suppliers
 Route::get('proveedor/{id}', "Suppliers@show");
