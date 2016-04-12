@@ -73,7 +73,7 @@
 					<div class="col-sm-3">
 						<p>PROMEDIO POR ADJUDICACIÓN (MXN)</p>
 						
-						<h2 id="gasto-promedio-money"><span>$</span> {{ number_format($total / $total_awards,2,'.',',') }} </h2>
+						<h2 id="gasto-promedio-money"><span>$</span> {{ $total_awards > 0 ? number_format($total / $total_awards,2,'.',',') : '0' }} </h2>
 					</div>
 					
 				</div>

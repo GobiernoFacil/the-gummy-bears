@@ -1,15 +1,15 @@
-        <div id="tender" class="container_info {{$elcontrato->awards->count() ? 'hide' : ''}}">
-          <div class="row divider">
-            <div class="col-sm-12">
-              <p class="title_section">Licitación</p>
-              <h1><?php echo $elcontrato->tender->title;?></h1>
-              <h2>{{$ocid}} 
-              <span class="label <?php echo $elcontrato->tender->status;?>">
-              <?php echo $elcontrato->tender->status == "complete" ? 'COMPLETO' : '';?></span>
-              </h2>
-              <p class="lead"><?php echo $elcontrato->tender->description;?></p>
-            </div>
-          </div>
+<div id="tender" class="container_info {{$elcontrato->awards->count() ? 'hide' : ''}}">
+    <div class="row divider">
+      <div class="col-sm-12">
+        <p class="title_section">Licitación</p>
+        <h1>{{ $elcontrato->tender->title }}</h1>
+        <h2>{{$ocid}} 
+        <span class="label <?php echo $elcontrato->tender->status;?>">
+        <?php echo $elcontrato->tender->status == "complete" ? 'COMPLETO' : '';?></span>
+        </h2>
+        <p class="lead"><?php echo $elcontrato->tender->description;?></p>
+      </div>
+    </div>
           <div class="row divider">
             <div class="col-sm-4">
               <p class="title_section">PRESUPUESTO (MXN)</p>
@@ -121,7 +121,7 @@
               @if ($elcontrato->tender->tenderers->count())
               <ol>
                 <?php foreach ($elcontrato->tender->tenderers as $tendererers):?>
-                <li><a href="#"><?php echo $tendererers->name;?></a> - <?php echo $tendererers->region;?></li>
+                <li><a href="{{ url('proveedor/'. $tendererers->rfc) }}"><?php echo $tendererers->name;?></a> - <?php echo $tendererers->region;?></li>
                 <?php endforeach;?> 
               </ol>
               @endif
