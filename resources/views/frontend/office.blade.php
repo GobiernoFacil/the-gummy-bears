@@ -18,23 +18,35 @@
 				</p>
 				
 				<div class="divider"></div>
+				<?php $amount_contract		= 0;?>
+				@foreach($contracts as $contract)
+					@if($contract->releases->count())
+					<?php $r = $contract->releases->last(); 
+					 	  $single_contracts 	= $r->singlecontracts;
+					 	  $total_contracts		= $single_contracts->count();
+					 	  ?>
+					 	  @foreach($single_contracts as $s)
+					 	  	<?php $amount_contract+= $s->amount;?>
+					 	  @endforeach
+					@endif
+				@endforeach
 				
 				<div class="row">
 					<div class="col-sm-3">
 						<p>CONTRATACIONES TOTAL(MXN)</p>
-						<h2 id="contrataciones-total-money"><span>$</span>0 <span>MILLONES</span></h2>
+						<h2 id="contrataciones-total-money"><span>$</span>{{ number_format($amount_contract,2,'.',',') }}</h2>
 					</div>
 					<div class="col-sm-3">
 						<p>LICITACIONES</p>
-						<h2 id="licitaciones-total-num">11</h2>
+						<h2 id="licitaciones-total-num">{{$r->tender->count()}}</h2>
 					</div>
 					<div class="col-sm-3">
 						<p>ADJUDICACIONES</p>
-						<h2 id="adjudicaciones-total-num">0</h2>
+						<h2 id="adjudicaciones-total-num">{{ $awards->count() }}</h2>
 					</div>
 					<div class="col-sm-3">
-						<p>PROMEDIO POR LICITACIÓN (MXN)</p>
-						<h2 id="gasto-promedio-money"><span>$</span>0 <span>MILLONES</span></h2>
+						<p>PROMEDIO POR CONTRATACIÓN (MXN)</p>
+						<h2 id="gasto-promedio-money"><span>$</span> {{ number_format($amount_contract / $singlecontracts->count(),2,'.',',') }}</h2>
 					</div>
 					
 				</div>
@@ -59,15 +71,20 @@
 					</div>
 				</div>
 				<ul id="lucky-providers">
+					@foreach($suppliers as $sp)
+					@foreach($awards as $aw)
+						@if($sp->award_id == $aw->id)
 					<li class="row">
 						<span class="col-sm-8">
-							<a href="#">ABASTECEDORA ARAGONESA SA DE CV</a>
+							<a href="{{ url('proveedor/' . $sp->rfc) }}">{{$sp->name}}</a>
 						</span>
 						<span class="col-sm-4 right">
-							$4,123,084
+							${{$aw->value}}
 						</span>
 					</li>
-					
+						@endif
+					@endforeach
+					@endforeach
 				</ul>
 			</div>
 		</div>
@@ -76,21 +93,23 @@
 			<div class="box">
 				<div class="row">
 					<div class="col-sm-8">
-						<h3>Licitaciones más costosas</h3>
+						<h3>Contrataciones más costosas</h3>
 					</div>
 					<div class="col-sm-4">
 						<p class="right">TOTAL (MXN)</p>
 					</div>
 				</div>
 				<ul id="licitaciones-costosas">
+					@foreach($topcontracts as $tp)
 					<li class="row">
 						<span class="col-sm-8">
-							<a href="#">PAPELERIA PARA EL ALMACÉN CENTRAL</a>
+							<a href="#">{{$tp->description}}</a>
 						</span>
 						<span class="col-sm-4 right">
-							$4,123,084
+						{{ number_format($tp->amount,2,'.',',') }}
 						</span>
 					</li>
+					@endforeach
 				</ul>
 			</div>
 		</div>
