@@ -60,7 +60,7 @@
 @if ($body_class == 'proveedor')
 <script data-main="{{ url('js/apps/dependencia/main') }}" src="{{ url('js/bower_components/requirejs/require.js') }}"></script>
 @endif
-<script src="/js/main.js"></script>
+<script src="{{ url('js/main.js')}}"></script>
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
