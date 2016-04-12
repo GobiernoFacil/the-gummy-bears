@@ -100,15 +100,26 @@
 					</div>
 				</div>
 				<ul id="licitaciones-costosas">
-					@foreach($topcontracts as $tp)
-					<li class="row">
-						<span class="col-sm-8">
-							<a href="#">{{$tp->description}}</a>
-						</span>
-						<span class="col-sm-4 right">
-						{{ number_format($tp->amount,2,'.',',') }}
-						</span>
-					</li>
+					@foreach ($contracts as $contract)
+					<?php $contract_ocdsid = $contract->ocdsid;
+						  $r = $contract->releases->last();
+					?>
+						@if($contract->releases->count())
+						<?php $ss = $r->singlecontracts;?>
+							@foreach($topcontracts as $tp)
+							<?php $reg = $ss->where('amount', $tp->amount)->first();?>
+							@if	( $reg )
+							<li class="row">
+								<span class="col-sm-8">
+									<a href="{{ url('contrato/'. $contract_ocdsid) }}">{{$tp->description}}</a>
+								</span>
+								<span class="col-sm-4 right">
+								${{ number_format($tp->amount,2,'.',',') }}
+								</span>
+							</li>
+							@endif
+							@endforeach
+						@endif
 					@endforeach
 				</ul>
 			</div>
