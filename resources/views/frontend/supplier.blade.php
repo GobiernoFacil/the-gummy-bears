@@ -1,82 +1,93 @@
 @extends('frontend.layouts.master')
 
 @section('content')
+
 <div class="container">
 	<div class="row list">
 		<div class="col-sm-12">
 			<div class="box">
 				<p>Proveedor</p>
 				<h1 id="publisher-name">
-					@if($supplier->url && $supplier->url != "No Capturado")
-					<a href="{{$supplier->url}}">{{$supplier->name}}</a>
+					@if($tenderer->url && $tenderer->url != "No Capturado")
+					<a href="{{$tenderer->url}}">{{$tenderer->name}}</a>
 					@else
-					{{$supplier->name}}
+					{{$tenderer->name}}
 					@endif
 					</h1>
+				<div class="divider"></div>
 					<div class="row">
 						<div class="col-sm-6">
-							<h3>RFC: <strong>{{$supplier->rfc}}</strong></h3>
+							<h3>RFC: <strong>{{$tenderer->rfc}}</strong></h3>
 						</div>
 						<div class="col-sm-6">
-							<p>Contacto: <strong>{{$supplier->contact_name}}</strong></p>
+							<p>Contacto: <strong>{{$tenderer->contact_name}}</strong></p>
 						</div>
 					</div>
 				<div class="divider"></div>
 				<div class="row">
 					<div class="col-sm-6">
-						<p>Dirección: 
-						  <span id="address-streetAddress">{{ $supplier->street ? $supplier->street . '. ' : '' }}</span>
-						  <span id="address-locality">{!! $supplier->locality ? $supplier->locality . '. <br>' : '' !!}</span>
-						  <span id="address-region">{{ $supplier->region ? $supplier->region . '. ' : '' }}</span>
-						  CP. <span id="address-postalCode">{{ $supplier->zip ? $supplier->zip . '. ': '' }}</span>
-						  {{ $supplier->country ? $supplier->country : '' }}
+						<p>Dirección: <br>
+						  <span id="address-streetAddress">{!! $tenderer->street ? $tenderer->street . '. <br>' : '' !!}</span>
+						  <span id="address-locality">{!! $tenderer->locality ? $tenderer->locality . '. <br>' : '' !!}</span>
+						  <span id="address-region">{{ $tenderer->region ? $tenderer->region . '. ' : '' }}</span>
+						  CP. <span id="address-postalCode">{{ $tenderer->zip ? $tenderer->zip . '. ': '' }}</span>
+						  {{ $tenderer->country ? $tenderer->country : '' }}
 						</p>
 					</div>
 					<div class="col-sm-3">
-						<p>Correo: {{ $supplier->email ? $supplier->email . '. ' : '' }}</p>
+						<p>Correo:<br> {{ $tenderer->email ? $tenderer->email . '. ' : '' }}</p>
 					</div>
 					<div class="col-sm-3">
-						<p>Tel.: {!! $supplier->phone ? '<strong>' . $supplier->phone . '</strong><br>': '' !!}
-							Fax: {!! $supplier->fax ? $supplier->fax : '' !!}
+						<p>Tel.: {!! $tenderer->phone ? '<strong>' . $tenderer->phone . '</strong><br>': '' !!}
+							Fax: {!! $tenderer->fax ? $tenderer->fax : '' !!}
 						</p>
 					</div>
 				</div>
 				<div class="divider"></div>
 				
 				<div class="row">
+					<?php $total = 0;
+						  $total_awards = 0;
+					?>
+						@foreach ($awards as $award)
+						@foreach ($suppliers as $supplier)
+							@if($supplier->award_id == $award->id)
+							<?php $total = $total + $award->value;
+								$total_awards++;
+							?>
+							@endif
+						@endforeach
+						@endforeach
 					<div class="col-sm-3">
-						<p>CONTRATACIONES TOTAL(MXN)</p>
-						<h2 id="contrataciones-total-money"><span>$</span>0 <span>MILLONES</span></h2>
+						<p>ADJUDICACIONES TOTAL(MXN)</p>
+						<h2 id="contrataciones-total-money"><span>$</span>{{ number_format($total,2,'.',',') }}</h2>
 					</div>
 					<div class="col-sm-3">
 						<p>LICITACIONES</p>
-						<h2 id="licitaciones-total-num">11</h2>
+						<h2 id="licitaciones-total-num">{{$tender_tenderer->count()}}</h2>
 					</div>
 					<div class="col-sm-3">
 						<p>ADJUDICACIONES</p>
-						<h2 id="adjudicaciones-total-num">0</h2>
+						<h2 id="adjudicaciones-total-num">{{ $total_awards }}</h2>
 					</div>
 					<div class="col-sm-3">
-						<p>PROMEDIO POR LICITACIÓN (MXN)</p>
-						<h2 id="gasto-promedio-money"><span>$</span>0 <span>MILLONES</span></h2>
+						<p>PROMEDIO POR ADJUDICACIÓN (MXN)</p>
+						
+						<h2 id="gasto-promedio-money"><span>$</span> {{ $total_awards > 0 ? number_format($total / $total_awards,2,'.',',') : '0' }} </h2>
 					</div>
 					
 				</div>
-				<div class="divider"></div>
-				<div id="linemap">
-				  <h3>Total por contrato</h3>
-				  <p>información recopilada desde <span id="tremmap-data-from"></span></p>
-				</div>		
+					
 
 			</div>
 
 		</div>
-		
+		@if($total_awards > 0)
 		<div class="col-sm-6">
 			<div class="box">
 				<div class="row">
 					<div class="col-sm-8">
-						<h3>Proveedores más beneficiados</h3>
+						<h3>Adjudicaciones con dependencias</h3>
 					</div>
 					<div class="col-sm-4">
 						<p class="right">TOTAL (MXN)</p>
@@ -85,10 +96,10 @@
 				<ul id="lucky-providers">
 					<li class="row">
 						<span class="col-sm-8">
-							<a href="#">ABASTECEDORA ARAGONESA SA DE CV</a>
+							<a href="{{ url('dependencias') }}">SEFIN</a>
 						</span>
 						<span class="col-sm-4 right">
-							$4,123,084
+							${{ number_format($total,2,'.',',') }}
 						</span>
 					</li>
 					
@@ -100,31 +111,48 @@
 			<div class="box">
 				<div class="row">
 					<div class="col-sm-8">
-						<h3>Licitaciones más costosas</h3>
+						<h3>Adjudicaciones más costosas</h3>
 					</div>
 					<div class="col-sm-4">
 						<p class="right">TOTAL (MXN)</p>
 					</div>
 				</div>
 				<ul id="licitaciones-costosas">
-					<li class="row">
-						<span class="col-sm-8">
-							<a href="#">PAPELERIA PARA EL ALMACÉN CENTRAL</a>
-						</span>
-						<span class="col-sm-4 right">
-							$4,123,084
-						</span>
-					</li>
+					@foreach($contracts as $contract)
+					<?php $contract_ocdsid = $contract->ocdsid;
+						  $r = $contract->releases->last();?>
+						@if($contract->releases->count())
+							@foreach($awards as $award)
+							    @if ($r->id == $award->release_id)
+							    @foreach ($suppliers as $supplier)
+									@if($supplier->award_id == $award->id)
+									<li class="row">
+									  <span class="col-sm-8">
+									  	<a href="{{ url('contrato/'. $contract_ocdsid)}}">{{ $award->title }}</a>
+									  </span>
+									  <span class="col-sm-4 right">
+									  	${{ number_format($award->value,2,'.',',') }}
+									  </span>
+									</li>
+									@endif
+								@endforeach
+							    
+							    @endif
+							@endforeach
+						@endif
+					@endforeach
 				</ul>
 			</div>
 		</div>
+		@endif
 		
 		<div class="col-sm-12">
 			<div class="box">
 				<div class="row">
 					<div class="col-sm-6">
-						<h3>Todas las licitaciones: <strong id="award-counter-filter">1</strong></h3>
+						<h3>Todas las licitaciones: <strong id="award-counter-filter">{{$tender_tenderer->count()}}</strong></h3>
 					</div>
+					<!---
 					<div class="col-sm-6">
 						<form>
 				  <p>
@@ -135,20 +163,35 @@
 				    </select>
 				  </p>
 				</form>
-					</div>
+					</div>-->
 				</div>
 				<ul id="awards-by-filter">
-					<li class="row">
-						<span class="col-sm-6">
-							<a href="#">PAPELERIA PARA EL ALMACÉN CENTRAL</a>
-						</span>
-						<span class="col-sm-3">
-							01-01-2015
-						</span>
-						<span class="col-sm-3 right">
-							$4,123,084
-						</span>
-					</li>
+					@foreach($contracts as $contract)
+					<?php $contract_ocdsid = $contract->ocdsid;
+						  $r = $contract->releases->last();?>
+						@if($contract->releases->count())
+						@foreach($tenders as $t)
+						 @if ($r->id == $t->release_id)
+							@foreach($tender_tenderer as $tt)
+							    @if ($t->id == $tt->tender_id)
+							<li class="row">
+								<span class="col-sm-6">
+									<a href="{{ url('contrato/' . $contract_ocdsid ) }}">{{$t->title}}</a><br>
+									{{$t->description}}
+								</span>
+								<span class="col-sm-3">
+									{{$t->tender_start}}
+								</span>
+								<span class="col-sm-3 right">
+									${{ number_format($t->amount,2,'.',',') }}
+								</span>
+							</li>
+							@endif
+							@endforeach
+							@endif
+						@endforeach
+						@endif
+					@endforeach
 				</ul>
 			</div>
 		</div>

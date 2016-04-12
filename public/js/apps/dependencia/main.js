@@ -9,6 +9,7 @@
 require.config({
   baseUrl : "/js/apps/dependencia",
   paths : {
+    /*
     d3          : "../../bower_components/d3/d3",
     jquery      : "../../bower_components/jquery/dist/jquery.min",
     backbone    : "../../bower_components/backbone/backbone",
@@ -18,6 +19,18 @@ require.config({
     TweenLite   : "../../bower_components/gsap/src/minified/TweenLite.min",
     TweenMax    : "../../bower_components/gsap/src/minified/TweenMax.min",
     ScrollToPlugin : "../../bower_components/gsap/src/minified/plugins/ScrollToPlugin.min",
+    */
+    jquery         : "../../libraries/jquery.min",
+    backbone       : "../../libraries/backbone",
+    underscore     : "../../libraries/underscore-min",
+    text           : "../../libraries/text",
+    d3             : "../../libraries/d3",
+    ScrollMagic    : "../../libraries/ScrollMagic",
+    TimelineMax    : "../../libraries/TimelineMax.min",
+    TweenLite      : "../../libraries/TweenLite.min",
+    TweenMax       : "../../libraries/TweenMax.min",
+    splitText      : "../../libraries/SplitText.min",
+    ScrollToPlugin : "../../libraries/ScrollToPlugin.min",
   },
   shim : {
     backbone : {

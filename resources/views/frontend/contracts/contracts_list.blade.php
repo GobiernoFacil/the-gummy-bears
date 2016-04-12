@@ -123,7 +123,7 @@
 						<!--icons-->
 					<div class="icons">
 						<div class="col-sm-4">
-							<p>Comprador: <a href="#">{{ $buyer_name ? $buyer_name : "No está definido" }}</a></p>
+							<p>Comprador: <a href="{{ $buyer_name ? url('dependencias')  : '#'}}">{{ $buyer_name ? $buyer_name : "No está definido" }}</a></p>
 						</div>
 						<div class="col-sm-4">
 							@if($awards->count())

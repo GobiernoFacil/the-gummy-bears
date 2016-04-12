@@ -11,20 +11,16 @@
 |
 */
 
-/*
- Route::get('/', 'WelcomeController@index');
-
-Route::get('home', 'HomeController@index');
-
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-]);
-*/
 
 Route::get('/', "Frontend@index");
 Route::get('home2', "Frontend@indexv2");
 
+/// contracts
 Route::get('v2', "Contracts@index");
+Route::get('contratos', "Contracts@index");
+Route::get('contrato/{ocid}', "Contracts@show");
+/// offices
 Route::get('dependencias', "Offices@index");
+Route::get('dependencia/{id}', "Offices@show");
+/// suppliers
 Route::get('proveedor/{id}', "Suppliers@show");

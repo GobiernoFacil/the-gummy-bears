@@ -1,7 +1,7 @@
 <div id="contracts" class="container_info">
 	<?php $count = 0;?>
 	@foreach($elcontrato->singlecontracts as $contract)
-	<div id="contract-<?php echo $contract->id;?>" class="sub_container {{$count > 0 ? 'hide' : ''}}">
+	<div id="contract-{{ $contract->id }}" class="sub_container {{$count > 0 ? 'hide' : ''}}">
           <div class="row divider">
             <div class="col-sm-12">
               <p class="title_section">Contrato</p>
@@ -19,7 +19,7 @@
               <p class="title_section">PROVEEDOR</p>
               <?php foreach($elcontrato->awards as $award):?>
                 <?php if ($contract->award_id == $award->local_id):?>
-                  <p><a href="{{ url('proveedor/' . $award->suppliers[0]->id) }}"><?php echo $award->suppliers[0]->name;?></a></p>
+                  <p><a href="{{ url('proveedor/' . $award->suppliers[0]->rfc) }}"><?php echo $award->suppliers[0]->name;?></a></p>
                 <?php endif;?>
               <?php endforeach;?>
             </div> 
@@ -27,12 +27,18 @@
           <div class="row divider">
             <div class="col-sm-5">
               <p class="title_section">COMPRADOR</p>
-              <p><a href="/dependencia.php"><?php echo $elcontrato->buyer->name;?></a></p>
+              <p><a href="{{ url('dependencias') }}"><?php echo $elcontrato->buyer->name;?></a></p>
             </div>
             <div class="col-sm-3">
               <p class="title_section">FECHA DE FIRMA</p>
-              <?php $time_contract = strtotime($contract->dateSigned);?>
-              <p><?php echo date('d/m/Y',$time_contract);?></p>
+              <p>
+              @if ($contract->date_signed)
+              <?php $time_contract = strtotime($contract->date_signed);?>
+              <?php echo date('d/m/Y',$time_contract);?>
+              @else
+              Sin Fecha de Firma
+              @endif
+              </p>
             </div>
             <div class="col-sm-4">
               <p class="title_section">PERÍODO</p>

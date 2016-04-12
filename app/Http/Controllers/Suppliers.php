@@ -5,8 +5,12 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Models\Contract;
+use App\Models\Supplier;
 use App\Models\Tenderer;
+use App\Models\TenderTenderer;
 use App\Models\Tender;
+use App\Models\SingleContract;
+use App\Models\Award;
 
 class Suppliers extends Controller {
 	//
@@ -19,17 +23,30 @@ class Suppliers extends Controller {
 	//
 	// Supplier 
 	//
-	public function show($id){
-		$supplier 			     = Tenderer::where("id", $id)->get()->first();
-		$contracts 			     = Contract::all();
-		$data                = [];
-		$data['title']       = $supplier->name;
-		$data['description'] = 'Proveedor';
-		$data['og_image']	   = "img/og/contrato-cdmx.png";
-		$data['body_class']  = 'proveedor';
+	public function show($rfc){
+		$tenderer 			 		= Tenderer::where("rfc", $rfc)->get()->first();							 		
+		$tender_tenderer 	 		= TenderTenderer::where("tenderer_id", $tenderer->id)->get();
+		$tenders			 		= Tender::all();
+		$suppliers 			 		= Supplier::where("rfc", $rfc)->get();
+							 		
+		$contracts 			 		= Contract::all();
+		$awards 			 		= Award::all();
+		$singlecontracts 	 		= SingleContract::all();
+		$data                		= [];
+		$data['title']       		= $tenderer->name;
+		$data['description'] 		= 'Proveedor';
+		$data['og_image']	 		= "img/og/contrato-cdmx.png";
+		$data['body_class']  		= 'proveedor';
 		
-		$data['contracts']  = $contracts;
-		$data['supplier']   = $supplier;
+		$data['contracts']  		= $contracts;
+		$data['tenderer']   		= $tenderer;
+		$data['suppliers']   		= $suppliers;
+		$data['sicon']  			= $singlecontracts;
+		$data['awards']   			= $awards;
+		$data['tender_tenderer']   	= $tender_tenderer;
+		$data['tenders']   	= $tenders;
+							
+
 		
 		return view("frontend.supplier")->with($data);
 	}

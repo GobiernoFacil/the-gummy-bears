@@ -23,7 +23,7 @@
 	            @if($award->suppliers->count())
                 <p class="title_section">Proveedor</p>
                 	@foreach($award->suppliers as $supplier)
-                	<p><a href="#">{{$supplier->name}}</a></p>
+                	<p><a href="{{ url('proveedor/'.$supplier->rfc) }}">{{$supplier->name}}</a></p>
                 	@endforeach
                  @endif 
               </div>

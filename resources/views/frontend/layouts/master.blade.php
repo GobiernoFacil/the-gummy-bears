@@ -9,8 +9,8 @@
         <title>{{ !empty($title) ?   $title  : "" }}</title>
 		<meta name="description" content="{{ !empty($description) ? $description : "" }}">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css"  href="/css/normalize.css">
-		<link rel="stylesheet" type="text/css" href="/css/styles.css"/>
+		<link rel="stylesheet" type="text/css"  href="{{ url('css/normalize.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url('css/styles.css') }}"/>
 		<!--	 FB-->
 		<meta property="og:title" content="{{  !empty($title) ?   $title  : '' }}"/>
 		<meta property="og:site_name" content="Contrataciones Abiertas de la CDMX"/>
@@ -20,9 +20,9 @@
 		@else
 		<meta property="og:image" content="{{ url('img/cdmx_og.png') }}"/>
 		@endif
-		<meta property="fb:app_id" content=""/>		<link rel="shortcut icon" href="img/icon/CDMX_16.png" sizes="16x16">
-		<link rel="shortcut icon" href="img/icon/CDMX_32.png" sizes="32x32">
-		<link rel="shortcut icon" href="img/icon/CDMX_64.png" sizes="64x64">
+		<meta property="fb:app_id" content=""/>		<link rel="shortcut icon" href="{{ url('img/icon/CDMX_16.png') }}" sizes="16x16">
+		<link rel="shortcut icon" href="{{ url('img/icon/CDMX_32.png') }}" sizes="32x32">
+		<link rel="shortcut icon" href="{{ url('img/icon/CDMX_64.png') }}" sizes="64x64">
 <!--
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::	

@@ -9,6 +9,7 @@
 require.config({
   baseUrl : "/js/apps/home",
   paths : {
+    /*
     jquery     : "../../bower_components/jquery/dist/jquery.min",
     backbone   : "../../bower_components/backbone/backbone",
     underscore : "../../bower_components/underscore/underscore-min",
@@ -21,6 +22,19 @@ require.config({
     TweenMax    : "../../bower_components/gsap/src/minified/TweenMax.min",
     splitText   : "../../bower_components/gsap/src/minified/utils/SplitText.min",
     ScrollToPlugin : "../../bower_components/gsap/src/minified/plugins/ScrollToPlugin.min",
+    */
+    jquery         : "../../libraries/jquery.min",
+    backbone       : "../../libraries/backbone",
+    underscore     : "../../libraries/underscore-min",
+    text           : "../../libraries/text",
+    d3             : "../../libraries/d3",
+    ScrollMagic    : "../../libraries/ScrollMagic",
+    TimelineMax    : "../../libraries/TimelineMax.min",
+    TweenLite      : "../../libraries/TweenLite.min",
+    TweenMax       : "../../libraries/TweenMax.min",
+    splitText      : "../../libraries/SplitText.min",
+    ScrollToPlugin : "../../libraries/ScrollToPlugin.min",
+    "ScrollMagic.animation.gsap" : "../../libraries/animation.gsap",
   },
   shim : {
     backbone : {
