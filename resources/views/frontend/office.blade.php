@@ -152,6 +152,5 @@
 		
 	</div>
 </div>
-<script data-main="/js/apps/dependencia/main" src="/js/bower_components/requirejs/require.js"></script>
 
 @endsection
