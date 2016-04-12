@@ -133,7 +133,7 @@
               <ol>
                 <?php foreach ($elcontrato->awards as $award):?>
                 <?php foreach ($award->suppliers as $supplier):?>
-                <li><a href="#"><?php echo $supplier->name;?></a></li>
+                <li><a href="{{ url('proveedor/'. $supplier->rfc) }}"><?php echo $supplier->name;?></a></li>
                 <?php endforeach;?> 
                 <?php endforeach;?> 
               </ol>
