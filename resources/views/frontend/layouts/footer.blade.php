@@ -65,6 +65,9 @@
 @if ($body_class == 'proveedor' || $body_class == 'dependencia')
 <script data-main="{{ url('js/apps/dependencia/main') }}" src="{{ url('js/bower_components/requirejs/require.js') }}"></script>
 @endif
+@if ($body_class == 'queson')
+<script data-main="{{ url('js/apps/quees/main') }}" src="{{ url('js/bower_components/requirejs/require.js') }}"></script>
+@endif
 <script src="{{ url('js/main.js')}}"></script>
 
 <script>
