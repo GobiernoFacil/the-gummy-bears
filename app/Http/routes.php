@@ -24,7 +24,9 @@ Route::get('dependencias', "Offices@index");
 Route::get('dependencia/{id}', "Offices@show");
 /// suppliers
 Route::get('proveedor/{id}', "Suppliers@show");
-/// glossary
-Route::get('que-son', "Frontend@openc");
+/// what
+Route::get('que-son', "Frontend@whatis");
+/// open data
+Route::get('datos-abiertos', "Frontend@opendata");
 /// glossary
 Route::get('glosario', "Frontend@glossary");
