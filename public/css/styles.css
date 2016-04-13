@@ -1558,9 +1558,10 @@ div.forthewin {
     margin-left: 15px;
     word-break: break-all; }
     .codigo code .box {
+      display: block;
       font-family: monospace;
-      margin-left: 15px;
-      display: block; }
+      margin: 0 0 0 15px;
+      padding: 0; }
 
 .glosario .codigo {
   padding: 70px 0 90px; }
