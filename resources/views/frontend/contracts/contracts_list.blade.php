@@ -203,6 +203,5 @@
 <script>
 	var DATA = <?php echo json_encode($contract_data); ?>;
 </script>
-<script data-main="/js/apps/home-v2/main" src="js/bower_components/requirejs/require.js"></script>
 
 @endsection

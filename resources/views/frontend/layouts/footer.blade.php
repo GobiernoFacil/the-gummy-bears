@@ -56,6 +56,9 @@
 @if ($body_class == 'home2')
 <script data-main="{{ url('js/apps/home/main') }}" src="{{ url('js/bower_components/requirejs/require.js') }}"></script>
 @endif
+@if ($body_class == 'contract')
+<script data-main="{{ url('js/apps/home-v2/main') }}" src="{{ url('js/bower_components/requirejs/require.js') }}"></script>
+@endif
 @if ($body_class == 'contract single')
 <script data-main="{{ url('js/apps/contrato-landing/main') }}" src="{{ url('js/bower_components/requirejs/require.js') }}"></script>
 @endif
