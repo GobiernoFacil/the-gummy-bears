@@ -38,15 +38,28 @@ class Frontend extends Controller {
 	
 	//
 	//
-	//openc
+	//whatis
 	//
-	public function openc(){
+	public function whatis(){
 		$data                = [];
 		$data['title']       = 'Qué son las Contrataciones Abiertas de la CDMX';
 		$data['description'] = 'Qué son las Contrataciones Abiertas de la Ciudad de México';
 		$og_image			 = "img/og/contrataciones-abiertas-cdmx.png";
 		$data['body_class']  = 'queson';
 		return view("frontend.what")->with($data);
+	}
+	
+	//
+	//
+	//opendata
+	//
+	public function opendata(){
+		$data                = [];
+		$data['title']       = 'Cómo usar los datos de las Contrataciones Abiertas de la Ciudad de México';
+		$data['description'] = 'Información para usar el estándar de datos para las contrataciones públicas de la CDMX';
+		$og_image			 = "img/og/contrataciones-abiertas-cdmx.png";
+		$data['body_class']  = 'datos';
+		return view("frontend.opendata")->with($data);
 	}
 	
 	//
