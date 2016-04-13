@@ -21,6 +21,12 @@ class ApiCDMX extends Controller {
 	}
 
 	public function getByYear($year){
+		$year = (int)$year;
+		if(!$year){
+			header("HTTP/1.0 400 invalid year");
+			die();
+		}
+
 		$contracts = Contract::where("ejercicio", $year)->get();
 		return response()->json($contracts)->header('Access-Control-Allow-Origin', '*');
 		// 400 Bad Request
