@@ -38,6 +38,19 @@ class Frontend extends Controller {
 	
 	//
 	//
+	//openc
+	//
+	public function openc(){
+		$data                = [];
+		$data['title']       = 'Qué son las Contrataciones Abiertas de la CDMX';
+		$data['description'] = 'Qué son las Contrataciones Abiertas de la Ciudad de México';
+		$og_image			 = "img/og/contrataciones-abiertas-cdmx.png";
+		$data['body_class']  = 'queson';
+		return view("frontend.what")->with($data);
+	}
+	
+	//
+	//
 	//Glosario
 	//
 	public function glossary(){
