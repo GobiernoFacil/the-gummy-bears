@@ -48,8 +48,10 @@
 	</div><!--page ends-->
 </div>	<!--pages stack ends-->
 <button class="menu-button"><span>Menu</span></button>
+<script>
+  var BASE_PATH  = "{{url('/')}}";
+</script>
 <script src="{{ url('js/modernizr-custom.js') }}"></script>
-
 
 @if ($body_class == 'home2')
 <script data-main="{{ url('js/apps/home/main') }}" src="{{ url('js/bower_components/requirejs/require.js') }}"></script>
