@@ -34,3 +34,13 @@ Route::get('contacto', "Frontend@contact");
 Route::get('privacidad', "Frontend@terms");
 /// glossary
 Route::get('glosario', "Frontend@glossary");
+
+/*
+.......................................
+. T H E   A P I   M I D D L E W A R E .
+.......................................
+*/
+Route::get('api/contratos/todos', 'ApiCDMX@listAll');
+Route::get('api/contratos/ejercicio/{year}', 'ApiCDMX@getByYear');
+
+Route::get('api/proveedores/todos', 'ApiCDMX@listAllProviders');
