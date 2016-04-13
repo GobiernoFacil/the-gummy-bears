@@ -25,4 +25,6 @@ Route::get('dependencia/{id}', "Offices@show");
 /// suppliers
 Route::get('proveedor/{id}', "Suppliers@show");
 /// glossary
+Route::get('que-son', "Frontend@openc");
+/// glossary
 Route::get('glosario', "Frontend@glossary");
