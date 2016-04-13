@@ -7,13 +7,13 @@
 // @url     : http://gobiernofacil.com
 
 require.config({
-  baseUrl : "js/apps/home-v2",
+  baseUrl : BASE_PATH  + "/js/apps/home-v2",
   paths : {
-    jquery     : "../../bower_components/jquery/dist/jquery.min",
-    backbone   : "../../bower_components/backbone/backbone",
-    underscore : "../../bower_components/underscore/underscore-min",
-    text       : "../../bower_components/text/text",
-    d3         : "../../bower_components/d3/d3"
+    jquery     : BASE_PATH  + "/js/bower_components/jquery/dist/jquery.min",
+    backbone   : BASE_PATH  + "/js/bower_components/backbone/backbone",
+    underscore : BASE_PATH  + "/js/bower_components/underscore/underscore-min",
+    text       : BASE_PATH  + "/js/bower_components/text/text",
+    d3         : BASE_PATH  + "/js/bower_components/d3/d3"
   },
   shim : {
     backbone : {

@@ -7,17 +7,17 @@
 // @url     : http://gobiernofacil.com
 
 require.config({
-  baseUrl : "js/apps/provider",
+  baseUrl : BASE_PATH  + "/js/apps/provider",
   paths : {
-    d3          : "../../bower_components/d3/d3",
-    jquery      : "../../bower_components/jquery/dist/jquery.min",
-    backbone    : "../../bower_components/backbone/backbone",
-    underscore  : "../../bower_components/underscore/underscore-min",
-    text        : "../../bower_components/requirejs-text/text",
-    TimelineMax : "../../bower_components/gsap/src/minified/TimelineMax.min",
-    TweenLite   : "../../bower_components/gsap/src/minified/TweenLite.min",
-    TweenMax    : "../../bower_components/gsap/src/minified/TweenMax.min",
-    ScrollToPlugin : "../../bower_components/gsap/src/minified/plugins/ScrollToPlugin.min",
+    d3          : BASE_PATH  + "/js/libraries/d3/d3",
+    jquery      : BASE_PATH  + "/js/libraries/jquery/dist/jquery.min",
+    backbone    : BASE_PATH  + "/js/libraries/backbone/backbone",
+    underscore  : BASE_PATH  + "/js/libraries/underscore/underscore-min",
+    text        : BASE_PATH  + "/js/libraries/requirejs-text/text",
+    TimelineMax : BASE_PATH  + "/js/libraries/gsap/src/minified/TimelineMax.min",
+    TweenLite   : BASE_PATH  + "/js/libraries/gsap/src/minified/TweenLite.min",
+    TweenMax    : BASE_PATH  + "/js/libraries/gsap/src/minified/TweenMax.min",
+    ScrollToPlugin : BASE_PATH  + "/js/libraries/gsap/src/minified/plugins/ScrollToPlugin.min",
   },
   shim : {
     backbone : {

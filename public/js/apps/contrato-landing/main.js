@@ -7,7 +7,7 @@
 // @url     : http://gobiernofacil.com
 
 require.config({
-  baseUrl : "js/apps/contrato-landing",
+  baseUrl : BASE_PATH  + "/js/apps/contrato-landing",
   paths : {
     /*
     d3          : "../../bower_components/d3/d3",
@@ -20,17 +20,17 @@ require.config({
     TweenMax    : "../../bower_components/gsap/src/minified/TweenMax.min",
     ScrollToPlugin : "../../bower_components/gsap/src/minified/plugins/ScrollToPlugin.min",
     */
-    jquery         : "../../libraries/jquery.min",
-    backbone       : "../../libraries/backbone",
-    underscore     : "../../libraries/underscore-min",
-    text           : "../../libraries/text",
-    d3             : "../../libraries/d3",
-    ScrollMagic    : "../../libraries/ScrollMagic",
-    TimelineMax    : "../../libraries/TimelineMax.min",
-    TweenLite      : "../../libraries/TweenLite.min",
-    TweenMax       : "../../libraries/TweenMax.min",
-    splitText      : "../../libraries/SplitText.min",
-    ScrollToPlugin : "../../libraries/ScrollToPlugin.min",
+    jquery         : BASE_PATH  + "/js/libraries/jquery.min",
+    backbone       : BASE_PATH  + "/js/libraries/backbone",
+    underscore     : BASE_PATH  + "/js/libraries/underscore-min",
+    text           : BASE_PATH  + "/js/libraries/text",
+    d3             : BASE_PATH  + "/js/libraries/d3",
+    ScrollMagic    : BASE_PATH  + "/js/libraries/ScrollMagic",
+    TimelineMax    : BASE_PATH  + "/js/libraries/TimelineMax.min",
+    TweenLite      : BASE_PATH  + "/js/libraries/TweenLite.min",
+    TweenMax       : BASE_PATH  + "/js/libraries/TweenMax.min",
+    splitText      : BASE_PATH  + "/js/libraries/SplitText.min",
+    ScrollToPlugin : BASE_PATH  + "/js/libraries/ScrollToPlugin.min",
   },
   shim : {
     backbone : {
