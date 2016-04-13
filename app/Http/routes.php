@@ -24,3 +24,5 @@ Route::get('dependencias', "Offices@index");
 Route::get('dependencia/{id}', "Offices@show");
 /// suppliers
 Route::get('proveedor/{id}', "Suppliers@show");
+/// glossary
+Route::get('glosario', "Frontend@glossary");

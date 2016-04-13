@@ -35,5 +35,18 @@ class Frontend extends Controller {
     $data['body_class']  = 'home2';
     return view("frontend.homev2")->with($data);
 	}
+	
+	//
+	//
+	//Glosario
+	//
+	public function glossary(){
+		$data                = [];
+		$data['title']       = 'Glosario de Contrataciones Abiertas de la CDMX';
+		$data['description'] = 'Glosario de Contrataciones Abiertas de la Ciudad de México';
+		$og_image			 = "img/og/contrataciones-abiertas-cdmx.png";
+		$data['body_class']  = 'glosario';
+		return view("frontend.glossary")->with($data);
+	}
 
 }
