@@ -28,5 +28,9 @@ Route::get('proveedor/{id}', "Suppliers@show");
 Route::get('que-son', "Frontend@whatis");
 /// open data
 Route::get('datos-abiertos', "Frontend@opendata");
+/// contacto
+Route::get('contacto', "Frontend@contact");
+/// terms
+Route::get('privacidad', "Frontend@terms");
 /// glossary
 Route::get('glosario', "Frontend@glossary");

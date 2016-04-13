@@ -64,6 +64,32 @@ class Frontend extends Controller {
 	
 	//
 	//
+	//Contacto
+	//
+	public function contact(){
+		$data                = [];
+		$data['title']       = 'Contacto | Contrataciones Abiertas de la CDMX';
+		$data['description'] = 'Contacto | Contrataciones Abiertas de la Ciudad de México';
+		$og_image			 = "img/og/contrataciones-abiertas-cdmx.png";
+		$data['body_class']  = 'contact';
+		return view("frontend.contact")->with($data);
+	}
+	
+	//
+	//
+	//terms
+	//
+	public function terms(){
+		$data                = [];
+		$data['title']       = 'Privacidad y Términos | Contrataciones Abiertas de la CDMX';
+		$data['description'] = 'Privacidad y Términos | Contrataciones Abiertas de la Ciudad de México';
+		$og_image			 = "img/og/contrataciones-abiertas-cdmx.png";
+		$data['body_class']  = 'terms';
+		return view("frontend.terms")->with($data);
+	}
+	
+	//
+	//
 	//Glosario
 	//
 	public function glossary(){
