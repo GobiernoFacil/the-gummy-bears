@@ -83,7 +83,7 @@ define(function(require){
 	    	r 				 = new TimelineMax();
 	    
 	    r.add(TweenMax.to(bought, 1, {
-		    		amount:"+=17", 
+		    		amount:"+=20", 
 		    		roundProps:"amount", 
 		    		onUpdate: function () {  
 			    		amountDisplay.innerHTML = Math.ceil(bought.amount);
@@ -92,7 +92,7 @@ define(function(require){
 			    })
 		);
 		r.add(TweenMax.to(number, 1, {
-		    		tender:"+=16", 
+		    		tender:"+=18", 
 		    		roundProps:"tender", 
 		    		onUpdate: function () {  
 			    		tenderDisplay.innerHTML = Math.ceil(number.tender);
@@ -101,7 +101,7 @@ define(function(require){
 			    })
 		);
 		r.add(TweenMax.to(numbers, 1, {
-		    		contracts:"+=4", 
+		    		contracts:"+=11", 
 		    		roundProps:"contracts", 
 		    		onUpdate: function () {  
 			    		contractDisplay.innerHTML = Math.ceil(numbers.contracts);
