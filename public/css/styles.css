@@ -2101,6 +2101,9 @@ b.budget {
 
 /* =FOOTER
 -------------------------------------------------------------- */
+.dependencia h3, .proveedor h3 {
+  color: white; }
+
 footer {
   background: #404041;
   color: white; }
