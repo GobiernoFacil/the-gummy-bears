@@ -40,7 +40,7 @@
 </div>	
 
 <div class="col-sm-12">
-	<a href="datos.php" class="btn">Descubre como  usar los datos</a>
+	<a href="{{ url('datos-abiertos') }}" class="btn">Descubre como  usar los datos</a>
 </div>
 <div class="col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-8">
 	<p><small>* En febrero de 2016 el sitio contará con contrataciones de SEFIN realizadas a partir de diciembre de 2015</small></p>
