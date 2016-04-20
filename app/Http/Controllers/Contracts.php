@@ -11,7 +11,7 @@ class Contracts extends Controller {
 	// Contracts list
 	//	
 	public function index(){
-		$contracts 			     = Contract::all();
+		$contracts 			 = Contract::all();
 		$data                = [];
 		$data['title']       = 'Lista de Contrataciones Abiertas de la CDMX';
 		$data['description'] = 'Lista de contratos abiertos de la Ciudad de México';
@@ -27,7 +27,7 @@ class Contracts extends Controller {
 	//
 	// Show Contract
 	//
-  public function show($ocid){
+	public function show($ocid){
     // [1] Validate ocid & redirect if not valid
     $r = preg_match('/^[\w-]+$/', $ocid);
     if(!$r) return redirect("contratos");
