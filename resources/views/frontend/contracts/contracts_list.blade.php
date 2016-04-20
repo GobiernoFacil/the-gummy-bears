@@ -3,30 +3,21 @@
 @section('content')
 
 <?php
-	date_default_timezone_set('America/Mexico_City');
-	/* UGLY HACK */
-	$d = array_diff(scandir("./js/newdata"), ['..', '.', '.DS_Store']);
-  $loscontracts = [];
-  foreach($d as $elcontract){
-  	$f = file_get_contents("./js/newdata/" . $elcontract);
-    $j = json_decode($f);
-
-    if($j){
-      $id = $j->releases[0]->ocid;
-      $loscontracts[str_replace("/", "-", $id)] = $j;
-    }
-  }
-
+  $total_contracts = 0;
   $contract_data = [];
-  foreach ($loscontracts as $key => $value) {
-  	$contract_data[] = [
-  	"id"        => $key,
-  	"title"     => $value->releases[0]->planning->budget->project,
-	  "budget"    => $value->releases[0]->planning->budget->amount->amount,
-		"buyer"     => $value->releases[0]->buyer,
-	  "awards"    => $value->releases[0]->awards,
-		"contracts" => $value->releases[0]->contracts
-		];
+  foreach ($contracts as $elcontract) {
+	if ($elcontract->releases->count()) {
+		$total_contracts++;
+		$r = $elcontract->releases->last();
+		$contract_data[] = [
+		  "id"        =>  $elcontract->ocdsid,
+		  "title"     => $r->planning->project,
+		  "budget"    => $r->planning->amount,
+		  "buyer"     => $r->buyer,
+		  "awards"    => $r->awards,
+		  "contracts" => $r->singlecontracts
+		  ];
+	}
   }
 
   $total_money = array_reduce($contract_data,function($v1, $v2){
@@ -40,8 +31,8 @@
 			<!--Contratos-->
 			</div>
 			<div class="col-sm-7 right">
-			<!--	<a href="#" class="advanced_search">Advanced Search</a>
-				<a href="#" id="dependencia-a" class="ladependencia empresa">Proveedores</a>-->
+				<a href="#" class="advanced_search">Advanced Search</a>
+				<a href="#" id="dependencia-a" class="ladependencia empresa">Proveedores</a>
 				<a href="#" id="dependencia-a" class="ladependencia live">Dependencia</a>
 			</div>
 		</nav>
@@ -54,7 +45,7 @@
 			<p><span>DEPENDENCIA</span>SEFIN</p>
 		</div>
 		<div class="col-sm-4 center">
-			<p><span>LICITACIONES POR DEPENDENCIA</span> <strong><?php echo count($contracts); ?></strong></p>
+			<p><span>LICITACIONES POR DEPENDENCIA</span> <strong><?php echo $total_contracts; ?></strong></p>
 		</div>
 		<div class="col-sm-4">
 			<p><span>TOTAL (MXN)</span>$<strong><?php echo (int)($total_money/1000000); ?></strong> millones </p>
@@ -89,7 +80,7 @@
 		<div class="col-sm-12">			
 			<ul class="list">
 			@foreach($contracts as $contract)
-				<?php $contract_ocdsid = $contract->ocdsid?>
+				<?php $contract_ocdsid = $contract->ocdsid;?>
 				@if($contract->releases->count())
 					<?php $r = $contract->releases->last(); 
 						// aquí se capturan los datos para la lista  
