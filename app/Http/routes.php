@@ -23,6 +23,7 @@ Route::get('contrato/{ocid}', "Contracts@show");
 Route::get('dependencias', "Offices@index");
 Route::get('dependencia/{id}', "Offices@show");
 /// suppliers
+Route::get('proveedores', "Suppliers@index");
 Route::get('proveedor/{id}', "Suppliers@show");
 /// what
 Route::get('que-son', "Frontend@whatis");
