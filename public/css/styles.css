@@ -1015,6 +1015,16 @@ h2.title_section {
   border: none;
   outline: none;
   background: transparent; }
+  .menu-button:hover {
+    color: #ee407c; }
+    .menu-button:hover:before, .menu-button:hover:after, .menu-button:hover span {
+      background: #ee407c; }
+  .menu-button b {
+    font: 300 16px 'Stilu', Helvetica, Arial, sans-serif;
+    position: absolute;
+    right: 38px;
+    top: 3px;
+    text-transform: uppercase; }
   .menu-button:before, .menu-button:after, .menu-button span {
     background: #5f656f; }
   .menu-button:before, .menu-button:after {

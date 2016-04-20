@@ -47,7 +47,7 @@
 	
 	</div><!--page ends-->
 </div>	<!--pages stack ends-->
-<button class="menu-button"><span>Menu</span></button>
+<button class="menu-button"><b>Menú</b><span>Menu</span></button>
 <script>
   var BASE_PATH  = "{{url('/')}}";
 </script>
