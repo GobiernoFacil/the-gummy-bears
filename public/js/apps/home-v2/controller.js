@@ -73,36 +73,7 @@ define(function(require){
   
 
 
-    //
-    //
-    //
-    set_employees_data : function(){
-      this.employees = new Backbone.Collection(Employees);
-      var data = [
-        {
-          name  : "1-10",
-          employes_num : 10,
-          value : this.employees.findWhere({employes_num : 10}).get("total")
-        },
-        {
-          name  : "11-50",
-          employes_num : 50,
-          value : this.employees.findWhere({employes_num : 50}).get("total")
-        },
-        {
-          name  : "51-250",
-          employes_num : 250,
-          value : this.employees.findWhere({employes_num : 250}).get("total")
-        },
-        {
-          name         : "250+",
-          employes_num : 251,
-          value        : this.employees.findWhere({employes_num : 251}).get("total")
-        }
-      ];
-
-      return data;
-    },
+ 
 
     
 
