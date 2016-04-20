@@ -1642,7 +1642,7 @@ div.forthewin {
 
 /* =Home2 
 -------------------------------------------------------------- */
-.home2 nav#menu, .dependencia nav#menu, .proveedor nav#menu {
+.home2 nav#menu, .dependencia nav#menu, .proveedor nav#menu, .error nav#menu {
   position: relative; }
 
 .viz_home {
@@ -2170,6 +2170,19 @@ footer {
     height: 55px;
     margin-bottom: 20px;
     width: 242px; }
+
+/* =Error
+-------------------------------------------------------------- */
+.error h1 {
+  color: #777;
+  padding-bottom: 30px;
+  text-transform: uppercase; }
+.error p.info {
+  color: #555; }
+.error .btn {
+  background: #ee407c;
+  color: white;
+  padding: 10px; }
 
 /* =Gobierno Fácil brand
 -------------------------------------------------------------- */

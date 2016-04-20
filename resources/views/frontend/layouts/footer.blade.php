@@ -53,7 +53,7 @@
 </script>
 <script src="{{ url('js/modernizr-custom.js') }}"></script>
 
-@if ($body_class == 'home2' || $body_class == 'glosario' || $body_class == 'contact' || $body_class == 'terms')
+@if ($body_class == 'home2' || $body_class == 'glosario' || $body_class == 'contact' || $body_class == 'terms' || $body_class == 'error')
 <script data-main="{{ url('js/apps/home/main') }}" src="{{ url('js/bower_components/requirejs/require.js') }}"></script>
 @endif
 @if ($body_class == 'contract')
