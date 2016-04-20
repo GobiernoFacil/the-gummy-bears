@@ -79,8 +79,15 @@ define(function(require){
       var that   = this,
           rects  = this.svg.selectAll(".rect"),
           labels = this.svg.selectAll(".label"),
-          paths  = this.svg.selectAll(".clip"); 
-
+          paths  = this.svg.selectAll(".clip"),
+          maxval = d3.max(this.data, function(d){
+		  			  return d.value;}),
+		  minval = d3.min(this.data, function(d){
+		  			  return d.value;}),
+          format = d3.format('.3s'),
+          formatn = d3.format(','); 
+          console.log(minval);
+          
       rects.data(this.tree).enter()
         .append("rect")
           .attr("class", "rect")
@@ -101,10 +108,14 @@ define(function(require){
             return d.dy;
           })
           .on("mouseover", function(d){
-            that.controller.create_tooltip_b({name:d.title, total:d.value});
+	        if (d.value <= 500000) {
+            	that.controller.create_tooltip_b({name:d.title, total:format(d.value)});
+            }
           })
           .on("mouseout", function(d){
-            that.controller.remove_tooltip();
+	        if (d.value <= 500000) {
+            	that.controller.remove_tooltip();
+            }
           })
           .on("click", function(d){
             console.log(d);
@@ -119,7 +130,7 @@ define(function(require){
           .attr("dy", ".35em")
           .text(function(d){
 	          /// por ahora
-	          if (d.value >= 421999 && d.value < 15807879.659999998) {
+	          if (d.value >= 500000 && (d.value == maxval || d.value < maxval )) {
 		          return d.title;
 	          }
           });
@@ -132,8 +143,8 @@ define(function(require){
           .attr("dy", ".35em")
           .text(function(d){
 	          /// por ahora
-	          if (d.value >= 421999 && d.value < 15807879.659999998) {
-		          return "$" + d.value;
+	          if (d.value >= 500000 && (d.value == maxval || d.value < maxval )) {
+		          return "$" + format(d.value);
 	          }
             
           });
