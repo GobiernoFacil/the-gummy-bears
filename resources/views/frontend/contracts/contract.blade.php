@@ -3,9 +3,9 @@
 @section('content')
 
 <div class="breadcrumb">
-  <div class="container">
-    <a href="/v2"><strong>&lt;</strong> Lista de Licitaciones</a>
-  </div>
+	<div class="col-sm-12">
+    <a href="{{ url('contratos')}}"><strong>&lt;</strong> Lista de Contratos</a>
+	</div>
 </div>
 <article>
   <div class="col-sm-3 sidebar">
