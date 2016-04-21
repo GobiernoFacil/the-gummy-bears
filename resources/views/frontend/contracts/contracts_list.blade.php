@@ -45,10 +45,10 @@
 			<p><span>DEPENDENCIA</span>SEFIN</p>
 		</div>
 		<div class="col-sm-4 center">
-			<p><span>LICITACIONES POR DEPENDENCIA</span> <strong><?php echo $total_contracts; ?></strong></p>
+			<p><span>LICITACIONES POR DEPENDENCIA</span> <strong>{{ $total_contracts }}</strong></p>
 		</div>
 		<div class="col-sm-4">
-			<p><span>TOTAL (MXN)</span>$<strong><?php echo (int)($total_money/1000000); ?></strong> millones </p>
+			<p><span>TOTAL (MXN)</span>$<strong>{{ (int)($total_money/1000000) }}</strong> millones </p>
 		</div>
 	</header>
 	<p id="publisher-name"></p>
@@ -120,13 +120,13 @@
 						<div class="col-sm-4">
 							@if($awards->count())
 							<p>{{$awards->count() == 1 ? 'Proveedor: ' : 'Proveedores'}} 
-								<a href="#"><?php // echo $first_supplier; ?></a>
-							</p>
+							<br>
 								@foreach ($awards as $award)
 									@foreach($award->suppliers as $supplier)
-									{{$supplier->name}}
+									<a href="{{ url('proveedor/'. $supplier->rfc) }}">{{$supplier->name}}</a>
 									@endforeach
 								@endforeach
+							</p>
 							@endif
 						</div>
 						
