@@ -1,7 +1,7 @@
         <div id="planning" class="container_info hide">
           <div class="row divider">
             <div class="col-sm-12">
-              <p class="title_section">Planeación</p>
+              <p class="title_section">Etapa: Planeación</p>
               <h1>{{ $elcontrato->planning->project }}</h1>
               <h2>{{ $ocid }}</h2>
             </div>

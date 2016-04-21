@@ -4,7 +4,7 @@
           <div id="award-<?php echo $award->id;?>" class="sub_container {{$count > 0 ? 'hide' : ''}}">
             <div class="row divider">
               <div class="col-sm-12">
-                <p class="title_section">Adjudicación</p>
+                <p class="title_section">Etapa: Adjudicación</p>
                 <h1><?php echo $award->title;?></h1>
                 <h2>ID: <?php echo $award->id;?> <span class="label <?php echo $award->status;?>"><?php echo $award->status == "active" ? "ACTIVO":"";?></span></h2>
               </div>

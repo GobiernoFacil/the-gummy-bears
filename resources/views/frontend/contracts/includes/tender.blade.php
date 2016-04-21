@@ -1,7 +1,7 @@
 <div id="tender" class="container_info {{$elcontrato->awards->count() ? 'hide' : ''}}">
     <div class="row divider">
       <div class="col-sm-12">
-        <p class="title_section">Licitación</p>
+        <p class="title_section">Etapa: Licitación</p>
         <h1>{{ $elcontrato->tender->title }}</h1>
         <h2>{{$ocid}} 
         <span class="label <?php echo $elcontrato->tender->status;?>">

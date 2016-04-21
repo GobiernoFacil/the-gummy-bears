@@ -11,10 +11,10 @@
   <div class="col-sm-3 sidebar">
     <div class="header">
       <?php if ($elcontrato->tender):?>
-      <h3>LICITACIÓN</h3>
+      <h3>PROCESO DE CONTRATACIÓN</h3>
       <h2><?php echo $elcontrato->tender->title;?></h2>
       <?php else:?>
-      <h3>PLANEACIÓN</h3>
+      <h3>PLANEACIÓN DE CONTRATACIÓN</h3>
       <h2><?php echo $elcontrato->planning->budget->project;?></h2>
       <?php endif;?>
     </div>

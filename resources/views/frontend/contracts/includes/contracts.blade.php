@@ -4,7 +4,7 @@
 	<div id="contract-{{ $contract->id }}" class="sub_container {{$count > 0 ? 'hide' : ''}}">
           <div class="row divider">
             <div class="col-sm-12">
-              <p class="title_section">Contrato</p>
+              <p class="title_section">Etapa: Contratación</p>
               <h1><?php echo $contract->description;?></h1>
               <h2><?php echo $contract->title;?> <span class="label <?php echo $contract->status;?>">
               <?php echo $contract->status == "active" ? "ACTIVO" : "";?></span></h2>
