@@ -61,12 +61,12 @@ define(function(require){
     initialize : function(){
     
 
-      // BY EMPLOYEES
+      // TREEMAP
       this.treemap = new Treemap({
         controller : this,
         data       : DATA,
         el         : "#treemap",
-        _url       : "/contrato/",
+        _url       : BASE_PATH + "/contrato/",
         _selector  : "budget"
       });
     },
