@@ -36,7 +36,7 @@ class Contracts extends Controller {
 	// Contracts list
 	//	
 	public function index(){
-		$contracts 			 = Contract::all();
+		$contracts 			 = Contract::orderBy("published_date",'desc')->get();
 		$data                = [];
 		$data['title']       = 'Lista de Contrataciones Abiertas de la CDMX';
 		$data['description'] = 'Lista de contratos abiertos de la Ciudad de México';
