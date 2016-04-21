@@ -108,12 +108,12 @@ define(function(require){
             return d.dy;
           })
           .on("mouseover", function(d){
-	        if (d.value <= 500000) {
+	        if (d.value <= 429000) {
             	that.controller.create_tooltip_b({name:d.title, total:format(d.value)});
             }
           })
           .on("mouseout", function(d){
-	        if (d.value <= 500000) {
+	        if (d.value <= 429000) {
             	that.controller.remove_tooltip();
             }
           })
@@ -130,7 +130,7 @@ define(function(require){
           .attr("dy", ".35em")
           .text(function(d){
 	          /// por ahora
-	          if (d.value >= 500000 && (d.value == maxval || d.value < maxval )) {
+	          if (d.value >= 429000 && (d.value == maxval || d.value < maxval )) {
 		          return d.title;
 	          }
           });
@@ -143,7 +143,7 @@ define(function(require){
           .attr("dy", ".35em")
           .text(function(d){
 	          /// por ahora
-	          if (d.value >= 500000 && (d.value == maxval || d.value < maxval )) {
+	          if (d.value >= 429000 && (d.value == maxval || d.value < maxval )) {
 		          return "$" + format(d.value);
 	          }
             
