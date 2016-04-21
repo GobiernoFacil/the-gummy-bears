@@ -29,7 +29,7 @@ licitaciones({{$tenders->count()}})</h1>
     {{$award->title}}<br>
     contratos: <br>
     <ul>
-    @foreach($award->release->singlecontracts as $contract)
+    @foreach($award->release->singlecontracts->where("award_id", $award->local_id) as $contract)
       <li>
       {{$contract->title}}<br>
       ${{number_format($contract->amount)}}<br>
