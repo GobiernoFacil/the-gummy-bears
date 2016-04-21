@@ -31,14 +31,8 @@
 		<div class="copy">
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-3">
-						<p>® 2015 Gobierno del Distrito Federal</p>
-					</div>
-					<div class="col-sm-4">
-						<p class="center">¿Dudas?  compras@df.gob.mx</p>
-					</div>
-					<div class="col-sm-5">
-						<p class="right">Plaza de la Constitución S/N Primer Piso, Centro, Cuauhtémoc, C.P. 06010</p>
+					<div class="col-sm-10 col-sm-offset-1">
+						<p class="center">® 2015 - {{ date("Y") }} Gobierno de la Ciudad de México</p>
 					</div>
 				</div>
 			</div>
