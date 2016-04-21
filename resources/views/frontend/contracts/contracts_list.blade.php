@@ -32,8 +32,8 @@
 			</div>
 			<div class="col-sm-7 right">
 				<a href="#" class="advanced_search">Advanced Search</a>
-				<a href="#" id="dependencia-a" class="ladependencia empresa">Proveedores</a>
-				<a href="#" id="dependencia-a" class="ladependencia live">Dependencia</a>
+				<a href="{{ url('proveedores') }}" id="dependencia-a" class="ladependencia empresa">Proveedores</a>
+				<a href="{{ url('contratos') }}" id="dependencia-a" class="ladependencia live">Dependencia</a>
 			</div>
 		</nav>
 	</div>
@@ -99,7 +99,7 @@
 						//single contracts 
 						$single_contracts 	= $r->singlecontracts;
 					?>
-					<li class="row tender planning {{ empty($awards) ? '' : 'award' }} {{ empty($contracts) ? '' : 'contract'}}">
+					<li class="row tender planning {{ $awards->count() ? 'award' : '' }} {{ $single_contracts->count() ? 'contract' : ''}}">
 						<!--top-->
 						<div class="col-sm-9 top">
 							<h2><a href="{{ url('contrato/' . $contract_ocdsid) }}">{{ $tender_title }} 

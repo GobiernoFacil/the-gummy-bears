@@ -1015,6 +1015,16 @@ h2.title_section {
   border: none;
   outline: none;
   background: transparent; }
+  .menu-button:hover {
+    color: #ee407c; }
+    .menu-button:hover:before, .menu-button:hover:after, .menu-button:hover span {
+      background: #ee407c; }
+  .menu-button b {
+    font: 300 16px 'Stilu', Helvetica, Arial, sans-serif;
+    position: absolute;
+    right: 38px;
+    top: 3px;
+    text-transform: uppercase; }
   .menu-button:before, .menu-button:after, .menu-button span {
     background: #5f656f; }
   .menu-button:before, .menu-button:after {
@@ -1642,7 +1652,7 @@ div.forthewin {
 
 /* =Home2 
 -------------------------------------------------------------- */
-.home2 nav#menu, .dependencia nav#menu, .proveedor nav#menu {
+.home2 nav#menu, .dependencia nav#menu, .proveedor nav#menu, .error nav#menu {
   position: relative; }
 
 .viz_home {
@@ -2170,6 +2180,19 @@ footer {
     height: 55px;
     margin-bottom: 20px;
     width: 242px; }
+
+/* =Error
+-------------------------------------------------------------- */
+.error h1 {
+  color: #777;
+  padding-bottom: 30px;
+  text-transform: uppercase; }
+.error p.info {
+  color: #555; }
+.error .btn {
+  background: #ee407c;
+  color: white;
+  padding: 10px; }
 
 /* =Gobierno Fácil brand
 -------------------------------------------------------------- */
