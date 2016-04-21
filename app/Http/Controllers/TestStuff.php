@@ -23,7 +23,34 @@ class TestStuff extends Controller {
 
 	public function index()
 	{
-		
+    $suppliers = Supplier::all();
+    $contracts = Contract::with("releases")->get();
+    $tenders = Tender::all();
+
+
+		return view('test')->with([
+      "suppliers" => $suppliers,
+      "contracts" => $contracts,
+      "tenders" => $tenders
+      ]);
 	}
+
+  public function supplier($rfc){
+    $supplier = Supplier::where("rfc", $rfc)->get()->first();
+    
+    $tenders = Tender::whereHas("tenderers", function($query) use($supplier){
+      $query->where("rfc", $supplier->rfc);
+    })->get();
+    
+    $awards = Award::whereHas("suppliers", function($query) use($supplier){
+       $query->where("rfc", $supplier->rfc);
+    })->get();
+
+    return view('test2')->with([
+      "supplier" => $supplier,
+      "tenders"  => $tenders,
+      "awards"   => $awards
+    ]);
+  }
 
 }

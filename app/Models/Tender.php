@@ -25,4 +25,8 @@ class Tender extends Model
   public function contracts(){
     return $this->hasMany('App\Models\SingleContract');
   }
+
+  public function release(){
+    return $this->belongsTo('App\Models\Release');
+  }
 }

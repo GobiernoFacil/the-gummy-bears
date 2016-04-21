@@ -20,7 +20,6 @@ Route::get('v2', "Contracts@index");
 Route::get('contratos', "Contracts@index");
 Route::get('contrato/{ocid}', "Contracts@show");
 Route::get('descargar/contrato/{ocid}', "ContractGetter@getJSON"); // donwload JSON
-Route::get('contrato/json/{ocid}', "Contracts@showRaw"); // show JSON with format
 /// offices
 Route::get('dependencias', "Offices@index");
 Route::get('dependencia/{id}', "Offices@show");
@@ -46,3 +45,13 @@ Route::get('glosario', "Frontend@glossary");
 Route::get('api/contratos/todos', 'ApiCDMX@listAll');
 Route::get('api/contratos/ejercicio/{year}', 'ApiCDMX@getByYear');
 Route::get('api/proveedores/todos', 'ApiCDMX@listAllProviders');
+Route::get('api/contrato/{key}', 'ApiCDMX@getJSON');
+
+/*
+.......................................
+. T H E   T E S T   R O U T E S 
+.......................................
+*/
+Route::get('contrato/json/{ocid}', "Contracts@showRaw"); // show JSON with format
+Route::get('test/suppliers', "TestStuff@index");
+Route::get('test/supplier/{key}', "TestStuff@supplier");
