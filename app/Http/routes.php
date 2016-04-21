@@ -19,7 +19,8 @@ Route::get('home2', "Frontend@indexv2");
 Route::get('v2', "Contracts@index");
 Route::get('contratos', "Contracts@index");
 Route::get('contrato/{ocid}', "Contracts@show");
-Route::get('descargar/contrato/{ocid}', "ContractGetter@getJSON");
+Route::get('descargar/contrato/{ocid}', "ContractGetter@getJSON"); // donwload JSON
+Route::get('contrato/json/{ocid}', "Contracts@showRaw"); // show JSON with format
 /// offices
 Route::get('dependencias', "Offices@index");
 Route::get('dependencia/{id}', "Offices@show");

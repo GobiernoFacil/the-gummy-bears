@@ -25,20 +25,20 @@ class ContractGetter extends Controller {
 	{
 		//parent::__construct();
 
-    $endpoints = env('ENDPOINTS', 'production');
+      $endpoints = env('ENDPOINTS', 'production');
 
-    if($endpoints == 'production'){
+      if($endpoints == 'production'){
       // SERVER ENDPOINTS
-      $this->apiContratos   = 'http://10.1.129.11:9009/ocpcdmx/listarcontratos';
-      $this->apiContrato    = 'http://10.1.129.11:9009/ocpcdmx/contratos';
-      $this->apiProveedores = 'http://10.1.129.11:9009/ocpcdmx/cproveedores';
-    }
+        $this->apiContratos   = 'http://10.1.129.11:9009/ocpcdmx/listarcontratos';
+        $this->apiContrato    = 'http://10.1.129.11:9009/ocpcdmx/contratos';
+        $this->apiProveedores = 'http://10.1.129.11:9009/ocpcdmx/cproveedores';
+      }
     // PUBLIC ENDPOINTS
-    else{
-      $this->apiContratos   = 'http://187.141.34.209:9009/ocpcdmx/listarcontratos';
-      $this->apiContrato    = 'http://187.141.34.209:9009/ocpcdmx/contratos';
-      $this->apiProveedores = 'http://187.141.34.209:9009/ocpcdmx/cproveedores';
-    }
+      else{
+        $this->apiContratos   = 'http://187.141.34.209:9009/ocpcdmx/listarcontratos';
+        $this->apiContrato    = 'http://187.141.34.209:9009/ocpcdmx/contratos';
+        $this->apiProveedores = 'http://187.141.34.209:9009/ocpcdmx/cproveedores';
+      }
 	}
 
 	/**
