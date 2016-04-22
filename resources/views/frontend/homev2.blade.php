@@ -5,14 +5,15 @@
 <section class="lead homev2">
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-10 col-xs-10 col-sm-offset-1 col-xs-offset-1">
+			<div class="col-sm-12 col-xs-10 col-sm-offset-0 col-xs-offset-1">
 				<h1><strong>¿Cómo compra <span class="mx">tu</span> gobierno?</strong></h1>
-				<div class="row">
-					<div class="col-sm-10 col-xs-10 col-sm-offset-1 col-xs-offset-1">
-						<p class="info center">La <strong>CD<span class="mx">MX</span></strong> 
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-8 col-xs-10 col-sm-offset-2 col-xs-offset-1">
+				<p class="info center">La <strong>CD<span class="mx">MX</span></strong> 
 							es la primera ciudad en el mundo en publicar información sobre todo su proceso de contrataciones.*</p>
-					</div>
-				</div>
+			
 				<div class="bill">
 					<div class="row">
 						<div class="col-sm-4 col-sm-offset-2">
@@ -27,7 +28,14 @@
 					</div>
 				</div>
 				<p class="footnote center">*Información disponible a partir de diciembre de 2015 en la Secretaría de Finanzas</p>
-				<a href="{{ url('contratos') }}" class="btn cta">Explora las compras de la <strong>CDMX</strong></a>
+				<div class="row">
+					<div class="col-sm-6">
+						<a href="{{ url('contratos') }}" class="btn cta">Explora las compras de la <strong>CDMX &#x2794;</strong> </a>
+					</div>
+					<div class="col-sm-6">
+						<a href="#" class="btn cta scroll">Conoce el proceso de una compra <strong><b>&#x2794;</b></strong></a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

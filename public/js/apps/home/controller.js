@@ -40,6 +40,9 @@ define(function(require){
     events :{
 	    // STANDAR
 		"click .stages a"     : "show_step",
+		
+		// NAVIGATION
+		"click .cta.scroll"   : "move_to_second",
     },
 
     //
@@ -58,9 +61,33 @@ define(function(require){
     //
     initialize : function(){
       this.count_amount();
+      this.set_animation_controller();
     },
   
-
+	set_animation_controller : function(){
+      this.animation = new ScrollMagic.Controller();
+      this.set_first_scene();
+      this.set_second_scene();
+    },
+    
+    set_first_scene : function(){
+      var that = this;
+      this.scene1 = new ScrollMagic.Scene({
+        triggerElement : ".lead.homev2",
+        duration : 400,
+      })
+      .addTo(this.animation)
+    },
+	
+	set_second_scene : function(){
+      var that = this;
+      this.scene2 = new ScrollMagic.Scene({
+        triggerElement : ".etapas .container",
+        duration : 300,
+        offset : -100
+      })
+      .addTo(this.animation)
+    },
 
 
    
@@ -128,6 +155,12 @@ define(function(require){
       var m         = new TimelineMax();
       m.add(TweenMax.from(".slide."+div, .6, {opacity : 0}));
       m.staggerFrom(".slide."+ div +" .description", .5, {opacity:0, scale:0}, .1, "+=0");
+    },
+    
+    move_to_second : function(e){
+      if(e) e.preventDefault(); 
+      var y = this.scene2.triggerPosition();
+      TweenMax.to(window, 1, {scrollTo:{y: y}, ease:Power2.easeOut});
     },
 
   });

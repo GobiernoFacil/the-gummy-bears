@@ -1228,12 +1228,14 @@ nav#menu {
 .lead.homev2 {
   background: white;
   color: #263333;
-  padding-top: 100px; }
-  .lead.homev2 h1 strong {
-    color: #263333;
-    display: block; }
-  .lead.homev2 h1 span {
-    color: #ee407c; }
+  padding-top: 60px; }
+  .lead.homev2 h1 {
+    font-weight: 500; }
+    .lead.homev2 h1 strong {
+      color: #263333;
+      display: block; }
+    .lead.homev2 h1 span {
+      color: #ee407c; }
   .lead.homev2 span.mx {
     color: #eb008b; }
   .lead.homev2 p.info {
@@ -1249,6 +1251,15 @@ nav#menu {
     display: block;
     margin-top: 50px;
     width: 365px; }
+    .lead.homev2 a.btn.cta.scroll {
+      background: #999; }
+      .lead.homev2 a.btn.cta.scroll b {
+        display: inline-block;
+        -moz-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg); }
     .lead.homev2 a.btn.cta:hover {
       background: #444; }
   .lead.homev2 .bill {
