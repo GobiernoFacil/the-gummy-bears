@@ -44,6 +44,10 @@
 <button class="menu-button"><b>Menú</b><span>Menu</span></button>
 <script>
   var BASE_PATH  = "{{url('/')}}";
+  @if($body_class == 'home2')
+  var AMOUNT  	 	= {{ $contracts_amount}};  
+  var NUMBER_CON  	= {{ $contracts_number}};  
+  @endif 
 </script>
 <script src="{{ url('js/modernizr-custom.js') }}"></script>
 

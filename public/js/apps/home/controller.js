@@ -77,31 +77,13 @@ define(function(require){
 	    var bought 			= {amount:0},
 	    	number 			= {tender:0},
 	    	numbers 			= {contracts:0},
-	    	amountDisplay	= document.getElementById("amount"),
-	    	tenderDisplay	= document.getElementById("tender"),
 	    	contractDisplay	= document.getElementById("contracts");
+	    	amountDisplay	= document.getElementById("amount"),
+	    //	tenderDisplay	= document.getElementById("tender"),
 	    	r 				 = new TimelineMax();
 	    
-	    r.add(TweenMax.to(bought, 1, {
-		    		amount:"+=20", 
-		    		roundProps:"amount", 
-		    		onUpdate: function () {  
-			    		amountDisplay.innerHTML = Math.ceil(bought.amount);
-			    	}, 
-			    	ease:Circ.easeOut
-			    })
-		);
-		r.add(TweenMax.to(number, 1, {
-		    		tender:"+=18", 
-		    		roundProps:"tender", 
-		    		onUpdate: function () {  
-			    		tenderDisplay.innerHTML = Math.ceil(number.tender);
-			    	}, 
-			    	ease:Circ.easeOut
-			    })
-		);
-		r.add(TweenMax.to(numbers, 1, {
-		    		contracts:"+=11", 
+	    r.add(TweenMax.to(numbers, 1, {
+		    		contracts:"+="+NUMBER_CON, 
 		    		roundProps:"contracts", 
 		    		onUpdate: function () {  
 			    		contractDisplay.innerHTML = Math.ceil(numbers.contracts);
@@ -109,6 +91,26 @@ define(function(require){
 			    	ease:Circ.easeOut
 			    })
 		);
+		
+	    r.add(TweenMax.to(bought, 1, {
+		    		amount:"+="+(AMOUNT/1000000), 
+		    		roundProps:"amount", 
+		    		onUpdate: function () {  
+			    		amountDisplay.innerHTML = Math.ceil(bought.amount);
+			    	}, 
+			    	ease:Circ.easeOut
+			    })
+		);
+	/*	r.add(TweenMax.to(number, 1, {
+		    		tender:"+=18", 
+		    		roundProps:"tender", 
+		    		onUpdate: function () {  
+			    		tenderDisplay.innerHTML = Math.ceil(number.tender);
+			    	}, 
+			    	ease:Circ.easeOut
+			    })
+		);*/
+		
     },
     
     

@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use App\Models\SingleContract;
 
 class Frontend extends Controller {
 
@@ -28,12 +29,18 @@ class Frontend extends Controller {
 	//HOME
 	//
 	public function indexv2(){
+		$contracts_amount	 = SingleContract::sum('amount');
+		$contracts_number	 = SingleContract::all()->count();
 		$data                = [];
-    $data['title']       = 'Contrataciones Abiertas de la CDMX';
-    $data['description'] = 'Contrataciones Abiertas de la Ciudad de México';
-		$og_image			       = "img/og/contrataciones-abiertas-cdmx.png";
-    $data['body_class']  = 'home2';
-    return view("frontend.homev2")->with($data);
+		$data['title']       = 'Contrataciones Abiertas de la CDMX';
+		$data['description'] = 'Contrataciones Abiertas de la Ciudad de México';
+		$og_image			 = "img/og/contrataciones-abiertas-cdmx.png";
+		$data['body_class']  = 'home2';
+		
+		$data['contracts_amount']  = $contracts_amount;
+		$data['contracts_number']  = $contracts_number;
+
+		return view("frontend.homev2")->with($data);
 	}
 	
 	//

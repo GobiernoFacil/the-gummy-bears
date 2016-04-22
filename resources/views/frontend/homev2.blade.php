@@ -6,27 +6,28 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-10 col-xs-10 col-sm-offset-1 col-xs-offset-1">
-				<h1><strong>Contrataciones Abiertas</strong> de la 
-				CD<span class="mx">MX</span>
-				</h1>
-				<p class="center">Consulta la información de contrataciones realizadas por la CDMX desde diciembre de 2015.</p>
+				<h1><strong>¿Cómo compra <span class="mx">tu</span> gobierno?</strong></h1>
+				<div class="row">
+					<div class="col-sm-10 col-xs-10 col-sm-offset-1 col-xs-offset-1">
+						<p class="info center">La <strong>CD<span class="mx">MX</span></strong> 
+							es la primera ciudad en el mundo en publicar información sobre todo su proceso de contrataciones.*</p>
+					</div>
+				</div>
 				<div class="bill">
 					<div class="row">
+						<div class="col-sm-4 col-sm-offset-2">
+							<h3><span id="contracts">0</span></h3>
+							<p>Contrataciones</p>
+						</div>
 						<div class="col-sm-4">
 							<h3>$<strong><span id="amount">0</span></strong></h3>
 							<p>Millones (MXN)</p>
 						</div>
-						<div class="col-sm-4">
-							<h3><span id="tender">0</span></h3>
-							<p>licitaciones</p>
-						</div>
-						<div class="col-sm-4">
-							<h3><span id="contracts">0</span></h3>
-							<p>Contrataciones</p>
-						</div>
+						
 					</div>
 				</div>
-				<a href="{{ url('contratos') }}" class="btn cta">Explora las contrataciones de la CDMX</a>
+				<p class="footnote center">*Información disponible a partir de diciembre de 2015 en la Secretaría de Finanzas</p>
+				<a href="{{ url('contratos') }}" class="btn cta">Explora las compras de la <strong>CDMX</strong></a>
 			</div>
 		</div>
 	</div>
