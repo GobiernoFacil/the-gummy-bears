@@ -1234,8 +1234,15 @@ nav#menu {
     display: block; }
   .lead.homev2 h1 span {
     color: #ee407c; }
-  .lead.homev2 p {
+  .lead.homev2 span.mx {
+    color: #eb008b; }
+  .lead.homev2 p.info {
+    font-size: 21px;
     margin: 30px 0; }
+  .lead.homev2 p.footnote {
+    font-size: 11px;
+    margin: 0;
+    padding: 15px 0 0; }
   .lead.homev2 a.btn.cta {
     background: #eb008b;
     color: white;
