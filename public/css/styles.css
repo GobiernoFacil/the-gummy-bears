@@ -1215,6 +1215,9 @@ nav#menu {
       color: black;
       font-family: 'Geomanist', Helvetica, Arial, sans-serif; }
 
+.participacion h1 {
+  font-size: 65px; }
+
 .lead.datos {
   background: #8e878c; }
   .lead.datos h1 strong {
