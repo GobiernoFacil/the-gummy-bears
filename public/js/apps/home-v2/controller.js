@@ -15,6 +15,7 @@ define(function(require){
       d3        = require("d3"),
      
       Treemap   = require("views/treemap_view"), 
+      Bubbles   = require("views/pack_view"), 
     
       TooltipA  = require("text!templates/tooltip_a.html"),
       TooltipB  = require("text!templates/tooltip_b.html"),
@@ -66,6 +67,20 @@ define(function(require){
         controller : this,
         data       : DATA,
         el         : "#treemap",
+        _url       : BASE_PATH + "/contrato/",
+        _selector  : "budget"
+      });
+
+      // BUBBLES
+      this.bubbles = new Bubbles({
+        controller : this,
+        data       : DATA.map(function(d){
+                       return {
+                         "name"  : d.title,
+                         "total" : d.budget 
+                       };
+                     }),
+        el         : "#bubbles",
         _url       : BASE_PATH + "/contrato/",
         _selector  : "budget"
       });
