@@ -131,14 +131,14 @@ define(function(require){
           .attr("cx", function(d){ return d.x})
           .attr("cy", function(d){ return d.y})
           .attr("class", function(d){ return d._class})
-          .attr("stroke", "black")
+          .attr("stroke", "rgb(193, 5, 126)") // rgb(235, 0, 139)
           //.attr("fill", "black")
           //.attr("stroke", "white")
-          .attr("stroke-width", 1)
+          .attr("stroke-width", 1.5)
           .attr("y", function(d){ return d.y})
           .attr("width", function(d){ return d.dx})
           .attr("height", function(d){ return d.dy})
-          .attr("fill", function(d,i){ return Colors(i)});
+          .attr("fill", function(d,i){ return "#EE47AA" });//Colors(i)
 
     /*
       var root = {collection : this.collection, name : "trusts", _class : "root"},

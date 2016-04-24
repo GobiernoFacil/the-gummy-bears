@@ -264,6 +264,10 @@ input[type="search"]::-webkit-search-decoration {
 .select_type {
   margin-top: 70px; }
 
+circle.root {
+  fill: none;
+  stroke: none; }
+
 .wrapper, .wrap {
   width: 90%;
   margin: 0 auto; }
@@ -2052,20 +2056,25 @@ ul.timeline {
 
 /* Dataviz 
 -------------------------------------------------------------- */
-#treemap {
+#treemap, #bubbles {
   padding: 60px 0 80px; }
-  #treemap svg {
+  #treemap svg, #bubbles svg {
     margin: 40px auto 0;
     width: 800px;
     display: block;
     cursor: pointer; }
-    #treemap svg rect {
+    #treemap svg rect, #bubbles svg rect {
       stroke-width: 2px; }
-    #treemap svg text {
+    #treemap svg text, #bubbles svg text {
       fill: rgba(255, 255, 255, 0.6); }
-      #treemap svg text.label_amount {
+      #treemap svg text.label_amount, #bubbles svg text.label_amount {
         fill: white;
         font-size: 20px; }
+
+#bubbles {
+  padding: 30px 0; }
+  #bubbles svg {
+    cursor: inherit; }
 
 .tooltip-container {
   background: rgba(0, 0, 0, 0.8);
