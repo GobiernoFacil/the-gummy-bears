@@ -1484,7 +1484,7 @@ a.nav_stage {
 .win .quote {
   border-bottom: 1px solid #eb008b;
   border-top: 1px solid #eb008b;
-  margin-bottom: 47px; }
+  margin-top: 47px; }
   .win .quote p {
     padding-top: 25px;
     font-family: 'Geomanist', Helvetica, Arial, sans-serif;
@@ -1496,13 +1496,15 @@ a.nav_stage {
       font-weight: 600; }
     .win .quote p span {
       color: #eb008b; }
-.win h3, .win p {
+.win h3, .win p, .win li {
   text-align: center; }
 .win h3 {
   font-family: 'Geomanist', Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-weight: 600; }
-.win p {
+.win li {
+  list-style: none; }
+.win p, .win li {
   font-size: 13px; }
 
 div.forthewin {
