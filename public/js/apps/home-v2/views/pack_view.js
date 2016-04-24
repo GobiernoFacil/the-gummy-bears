@@ -131,10 +131,10 @@ define(function(require){
           .attr("cx", function(d){ return d.x})
           .attr("cy", function(d){ return d.y})
           .attr("class", function(d){ return d._class})
-          //.attr("stroke", "black")
+          .attr("stroke", "black")
           //.attr("fill", "black")
           //.attr("stroke", "white")
-          //.attr("stroke-width", 1);
+          .attr("stroke-width", 1)
           .attr("y", function(d){ return d.y})
           .attr("width", function(d){ return d.dx})
           .attr("height", function(d){ return d.dy})

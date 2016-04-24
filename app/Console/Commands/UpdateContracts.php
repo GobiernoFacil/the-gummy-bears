@@ -7,6 +7,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use App\Models\Award;
 use App\Models\Buyer;
 use App\Models\Contract;
+use App\Models\ContractHistory;
 use App\Models\Item;
 use App\Models\Planning;
 use App\Models\Provider;
@@ -116,8 +117,36 @@ class UpdateContracts extends Command {
           $this->error('la información de ' . $contract->ocdsid . ' no está disponible');
         }
       }
-		//
+
+      // GENERATE HISTORY DATA
+      $this->makeHistory();
+
 	}
+
+  private function makeHistory(){
+    $contracts = Contract::all();
+    foreach($contracts as $contract){
+      if(!$contract->releases->count()){
+        $this->error('el contrato' . $contract->ocdsid . ' no tiene ningún release');
+      }
+      else{
+        foreach($contract->releases as $release){
+          $history = ContractHistory::firstOrCreate([
+            "contract_id" => $contract->id,
+            "release_id"  => $release->id
+          ]);
+
+          $history->ocdsid    = $contract->ocdsid;
+          $history->planning  = $release->planning->amount;
+          $history->tender    = $release->tender->amount;
+          $history->awards    = $release->awards->sum('value');
+          $history->contracts = $release->singlecontracts->sum('amount');
+          $history->date      = $release->date;
+          $history->update();
+        }
+      }
+    }
+  }
 
   //
     // [ U P D A T E   R E L E A S E S ]

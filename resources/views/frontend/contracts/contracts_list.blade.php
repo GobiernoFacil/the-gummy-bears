@@ -56,7 +56,13 @@
 	<p id="contratos-total-money"></p>
 	
 	<div id="treemap"></div>
-	<div id="bubbles"></div>
+	<div id="bubbles">
+		<form>
+		  <select>
+		  	<option></option>
+		  </select>
+		</form>
+	</div>
 </div>
 
 <!-- container-->
