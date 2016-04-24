@@ -32,7 +32,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-10 col-sm-offset-1">
-						<p class="center">® 2015 - {{ date("Y") }} Gobierno de la Ciudad de México</p>
+						<p class="center">® 2015 - {{ date("Y") }} Gobierno de la Ciudad de México | <a href="mailto:contratacionesabiertas@cdmx.gob.mx">contratacionesabiertas@cdmx.gob.mx</a></p>
 					</div>
 				</div>
 			</div>
