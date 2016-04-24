@@ -5,6 +5,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
 use App\Models\Award;
+use App\Models\AwardProvider;
 use App\Models\Buyer;
 use App\Models\Contract;
 use App\Models\ContractHistory;
@@ -17,6 +18,7 @@ use App\Models\SingleContract;
 use App\Models\Supplier;
 use App\Models\Tender;
 use App\Models\Tenderer;
+use App\Models\TenderProvider;
 use App\Models\TenderTenderer;
 
 
@@ -109,7 +111,6 @@ class UpdateContracts extends Command {
           // 4. saveTender
           //     - saveTenderers
           //     - saveItems
-          // 5. saveBuyer
           $releases = $this->saveReleases($contract, $response);
           $this->info('se guardó la información completa de: ' . $contract->ocdsid);
         }
@@ -117,36 +118,7 @@ class UpdateContracts extends Command {
           $this->error('la información de ' . $contract->ocdsid . ' no está disponible');
         }
       }
-
-      // GENERATE HISTORY DATA
-      $this->makeHistory();
-
 	}
-
-  private function makeHistory(){
-    $contracts = Contract::all();
-    foreach($contracts as $contract){
-      if(!$contract->releases->count()){
-        $this->error('el contrato' . $contract->ocdsid . ' no tiene ningún release');
-      }
-      else{
-        foreach($contract->releases as $release){
-          $history = ContractHistory::firstOrCreate([
-            "contract_id" => $contract->id,
-            "release_id"  => $release->id
-          ]);
-
-          $history->ocdsid    = $contract->ocdsid;
-          $history->planning  = $release->planning->amount;
-          $history->tender    = $release->tender->amount;
-          $history->awards    = $release->awards->sum('value');
-          $history->contracts = $release->singlecontracts->sum('amount');
-          $history->date      = $release->date;
-          $history->update();
-        }
-      }
-    }
-  }
 
   //
     // [ U P D A T E   R E L E A S E S ]
@@ -239,6 +211,7 @@ class UpdateContracts extends Command {
         $tender->update();
         $this->saveItems($tender, $tn);
         $this->saveTenderers($tender, $tn);
+         $this->saveProviers($tender, $tn, "tender");
       }
     }
 
@@ -354,6 +327,7 @@ class UpdateContracts extends Command {
           $award->update();
           $this->saveItems($award, $aw);
           $this->saveSuppliers($award, $aw);
+          $this->saveProviers($award, $aw, "award");
         }
       }
       else{
@@ -386,6 +360,58 @@ class UpdateContracts extends Command {
           $supplier->url          = $sup->contactPoint->url;
 
           $supplier->update();
+        }
+      }
+    }
+
+    //
+    // [ UPDATE PROVIDERS ]
+    //
+    //
+    private function saveProviers($event, $data, $type){
+      if($type == "award"){
+        $providers = $data->suppliers;
+      }
+      elseif($type == "tender"){
+        $providers = $data->tenderers;
+      }
+      else{
+        $providers = [];
+      }
+
+      foreach($providers as $sup){
+        $provider = Provider::firstOrCreate([
+            "rfc"      => $sup->identifier->id
+        ]);
+
+        $provider->name         = $sup->name;
+        $provider->street       = $sup->address->streetAddress;
+        $provider->locality     = $sup->address->locality;
+        $provider->region       = $sup->address->region;
+        $provider->zip          = $sup->address->postalCode;
+        $provider->country      = $sup->address->countryName;
+        $provider->contact_name = $sup->contactPoint->name;
+        $provider->email        = $sup->contactPoint->email;
+        $provider->phone        = $sup->contactPoint->telephone;
+        $provider->fax          = $sup->contactPoint->faxNumber;
+        $provider->url          = $sup->contactPoint->url;
+
+        $provider->update();
+
+        if($type == "tender"){
+          $rel = TenderProvider::firstOrCreate([
+            "provider_id" => $provider->id,
+            "tender_id"   => $event->id
+          ]);
+        }
+        elseif($type == "award"){
+          $rel = AwardProvider::firstOrCreate([
+            "provider_id" => $provider->id,
+            "award_id"   => $event->id
+          ]);
+        }
+        else{
+          // O_____O
         }
       }
     }

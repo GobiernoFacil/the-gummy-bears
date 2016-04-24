@@ -12,7 +12,8 @@ class Kernel extends ConsoleKernel {
 	 */
 	protected $commands = [
 		'App\Console\Commands\Inspire',
-		'App\Console\Commands\UpdateContracts'
+		'App\Console\Commands\UpdateContracts',
+		'App\Console\Commands\OptimizeQueries'
 	];
 
 	/**

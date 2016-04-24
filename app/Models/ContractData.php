@@ -2,9 +2,9 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class ContractHistory extends Model {
-  protected $table = "contracts_history";
-  protected $fillable = ["contract_id", "release_id"];
+class ContractData extends Model {
+  protected $table = "contracts_data";
+  protected $fillable = ["contract_id"];
 	//
 
   public function contract(){
