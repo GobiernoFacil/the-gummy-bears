@@ -18,9 +18,9 @@ class Award extends Model
   }
 
   public function providers(){
-    return $this->belongsToMany('App\Models\Provider');
+    return $this->belongsToMany('App\Models\Provider', 'provider_award');
   }
-  
+
 
   public function release(){
     return $this->belongsTo('App\Models\Release');

@@ -16,6 +16,7 @@
 				  CP.<span id="address-postalCode">06720</span>
 				</p>
 				
+
 				<div class="divider"></div>
 				<?php $amount_contract		= 0;?>
 				@foreach($contracts as $contract)
@@ -29,6 +30,7 @@
 					 	  @endforeach
 					@endif
 				@endforeach
+
 				
 				<div class="row">
 					<div class="col-sm-3">
@@ -48,6 +50,7 @@
 						<h2 id="gasto-promedio-money"><span>$</span> {{ number_format($amount_contract / $singlecontracts->count(),2,'.',',') }}</h2>
 					</div>
 					
+
 				</div>
 				<div class="divider"></div>
 				<div id="linemap">
@@ -71,7 +74,7 @@
 				</div>
 				<ul id="lucky-providers">
 					@foreach($providers as $sp)
-					{{$sp->awards}}
+					<?php // {{$sp->awards}} ?>
 					@foreach($awards as $aw)
 						@if($sp->award_id == $aw->id)
 					<li class="row">
@@ -88,7 +91,6 @@
 				</ul>
 			</div>
 		</div>
-		
 		<div class="col-sm-6">
 			<div class="box">
 				<div class="row">

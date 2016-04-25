@@ -50,8 +50,6 @@ class Offices extends Controller {
 		$data['topcontracts']   	 = $topcontracts;
 		$data['providers']   	 = $providers;
 		
-		
-		
 		return view("frontend.office")->with($data);
 	}
 }
