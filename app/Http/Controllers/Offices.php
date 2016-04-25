@@ -9,6 +9,7 @@ use App\Models\Contract;
 use App\Models\Award;
 use App\Models\SingleContract;
 use App\Models\Supplier;
+use App\Models\Provider;
 
 class Offices extends Controller {
 	//
@@ -16,7 +17,7 @@ class Offices extends Controller {
 	//	
 	//
 	public function index(){
-		$contracts 			     = Contract::all();
+		$contracts 			 = Contract::all();
 		$data                = [];
 		$data['title']       = 'Dependencias de la CDMX con Contrataciones Abiertas';
 		$data['description'] = 'Dependencias de la CDMX con Contrataciones Abiertas';
@@ -34,7 +35,8 @@ class Offices extends Controller {
 		$singlecontracts 	 = SingleContract::all();
 		$topcontracts 	 	 = SingleContract::orderby('amount', 'desc')->take(5)->get();;
 		$suppliers 			 = Supplier::all();
-
+		$providers			 = Provider::all();
+		
 		$data                = [];
 		$data['title']       = 'Dependencias de la CDMX con Contrataciones Abiertas';
 		$data['description'] = 'Dependencias de la CDMX con Contrataciones Abiertas';
@@ -46,6 +48,7 @@ class Offices extends Controller {
 		$data['suppliers']   	 = $suppliers;
 		$data['singlecontracts']   	 = $singlecontracts;
 		$data['topcontracts']   	 = $topcontracts;
+		$data['providers']   	 = $providers;
 		
 		
 		

@@ -5,7 +5,6 @@
 	<div class="row list">
 		<div class="col-sm-12">
 			<div class="box">
-		
 				<p>Dependencia</p>
 				<h1 id="publisher-name"><a href="http://www.finanzas.df.gob.mx/">Secretaría de Finanzas</a></h1>
 				<div class="divider"></div>
@@ -64,14 +63,15 @@
 			<div class="box">
 				<div class="row">
 					<div class="col-sm-8">
-						<h3>Proveedores más beneficiados</h3>
+						<h3>Proveedores</h3>
 					</div>
 					<div class="col-sm-4">
 						<p class="right">TOTAL (MXN)</p>
 					</div>
 				</div>
 				<ul id="lucky-providers">
-					@foreach($suppliers as $sp)
+					@foreach($providers as $sp)
+					{{$sp->awards}}
 					@foreach($awards as $aw)
 						@if($sp->award_id == $aw->id)
 					<li class="row">
@@ -93,7 +93,7 @@
 			<div class="box">
 				<div class="row">
 					<div class="col-sm-8">
-						<h3>Contrataciones más costosas</h3>
+						<h3>Contrataciones</h3>
 					</div>
 					<div class="col-sm-4">
 						<p class="right">TOTAL (MXN)</p>
