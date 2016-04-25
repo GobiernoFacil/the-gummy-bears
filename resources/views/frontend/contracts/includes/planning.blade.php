@@ -14,13 +14,13 @@
             <div class="col-sm-6">
               <p class="title_section">Fecha</p>
               <?php $time_planning = strtotime($elcontrato->date);?>
-              <p><?php echo date('d/m/Y',$time_planning);?> </p>
+              <p>{{ date('d/m/Y',$time_planning)}} </p>
             </div>
           </div>
           <div class="row">
             <div class="col-sm-4">
               <p class="title_section">COMPRADOR</p>
-              <p><a href="{{ url('dependencias') }}">{{ !empty($elcontrato->buyer->name) ? $elcontrato->buyer->name : ''}}</a></p>
+              <p><a href="{{ url('dependencia/'. $elcontrato->buyer->id ) }}">{{ !empty($elcontrato->buyer->name) ? $elcontrato->buyer->name : ''}}</a></p>
             </div>
           </div>
         </div>
