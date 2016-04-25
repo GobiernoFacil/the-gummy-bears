@@ -6,9 +6,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12 col-xs-10 col-sm-offset-0 col-xs-offset-1">
-					<h1>
-						Un <span>estándar de datos</span> para las <span>contrataciones públicas</span> 
-						de la <span>CD</span><strong>MX</strong>
+					<h1><span>Gobierno abierto + Datos abiertos</span> ¿Cómo utilizar los datos?
 					</h1>
 					<a href="#" class="btn cta">¿Cómo usarlo?</a>
 				</div>
@@ -22,10 +20,9 @@
 			<div class="row">
 				<div class="col-sm-6">
 					<h1>¿Cómo utilizar los datos?</h1>
-					<p>El uso de un Estándar de Datos para las Contrataciones Abiertas ayudará a reducir la corrupción en el proceso de contratación, permitiendo a los gobiernos conseguir una mejor rentabilidad de sus inversiones y asegurar la producción de bienes y servicios de alta calidad para los ciudadanos.
-					</p>
-					<p>El Estándar de Datos le dará a los interesados acceso a datos vinculados, permitiéndoles usar los datos sobre contrataciones de una forma más efectiva.</p>
-					
+					<p>El uso de un <strong>Estándar de Datos para Contrataciones Abiertas</strong> forma parte de la estrategia del Gobierno de la CD<span class="mx">MX</span> para garantizar a sus ciudadanos un <strong>Gobierno abierto</strong>.</p>
+					<p>Este estándar ayudará a prevenir y reducir la corrupción en el proceso de contratación, permitiendo conseguir una mejor rentabilidad de las inversiones y asegurar así bienes y servicios de alta calidad para los ciudadanos.</p>
+					<p>El Estándar le dará a los interesados acceso a datos vinculados, permitiéndoles usar los datos sobre contrataciones de un forma más efectiva.</p>
 					<!-- usar nav-->
 					<ul class="usa_datos">
 						<li><a href="#" id="btn-listar-contratos" class="current">Listar contratos</a></li>
@@ -33,7 +30,7 @@
 						<li><a href="#"	id="btn-proveedores">Catálogo de Proveedores</a></li>
 						<li><a href="#"	id="btn-web-service">Servicio Web Contrato</a></li>
 					</ul>
-					<a href="http://ocds.open-contracting.org/standard/r/1__0__0/en/standard/intro/" class="btn default">Más información del Estándar de Contrataciones Abiertas</a>
+					<a href="http://standard.open-contracting.org/latest/es/" class="btn default">Más información del Estándar de Contrataciones Abiertas</a>
 				</div>
 				<div class="col-sm-6">
 					<div class="codigo">
