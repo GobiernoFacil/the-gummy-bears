@@ -19,7 +19,7 @@ define(function(require){
   // D E F I N E   T H E   S E T U P   V A R I A B L E S
   // --------------------------------------------------------------------------------
   //
-     Colors     = d3.scale.category20();
+     Colors     = d3.scale.category20(),
 
   //
   // D E F I N E   T H E   D 3   V A R I A B L E S

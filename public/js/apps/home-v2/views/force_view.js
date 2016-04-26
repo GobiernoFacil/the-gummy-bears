@@ -19,15 +19,15 @@ define(function(require){
   // D E F I N E   T H E   S E T U P   V A R I A B L E S
   // --------------------------------------------------------------------------------
   //
-     Colors     = d3.scale.category20();
+     Colors     = d3.scale.category20(),
 
   //
   // D E F I N E   T H E   D 3   V A R I A B L E S
   // --------------------------------------------------------------------------------
   //
   SVG = {
-    width  : 700,
-    height : 700,
+    width  : 800,
+    height : 500,
     margin : {
       top    : 10,
       right  : 10,
@@ -72,6 +72,7 @@ define(function(require){
     initialize : function(settings){
       this.collection = new Backbone.Collection(settings.data);
       this.data       = settings.data;
+      // this.render_pack();
       this.render();
       //this.definitions = new Backbone.Collection(Definitions);
     },
@@ -85,36 +86,93 @@ define(function(require){
     // Genera el HTML del elemento seleccionado
     //
     render : function(e){
-      var chart = d3.select(this.el).append("svg:svg")
+      console.log(this.data);
+
+      function charge(d) {
+        return -Math.pow(d.radius, 2) / 8;
+      }
+
+      function moveToCenter(alpha) {
+        return function (d) {
+          d.x = d.x + (center.x - d.x) * damper * alpha;
+          d.y = d.y + (center.y - d.y) * damper * alpha;
+        };
+      }
+
+       var radiusScale = d3.scale.pow()
+            .exponent(0.5)
+            .range([2, 85]);
+      var maxAmount = d3.max(this.data, function (d) { return +d.total; });
+      radiusScale.domain([0, maxAmount]);
+
+      function createNodes(rawData) {
+        // Use map() to convert raw data into node data.
+        // Checkout http://learnjsdata.com/ for more on
+        // working with data.
+        var myNodes = rawData.map(function (d) {
+        return {
+            //id: d.id,
+            radius: radiusScale(+d.total),
+            value: d.total,
+            name: d.name,
+            x: Math.random() * 900,
+            y: Math.random() * 800
+          };
+        });
+
+        // sort them to prevent occlusion of smaller nodes.
+        myNodes.sort(function (a, b) { return b.value - a.value; });
+
+        return myNodes;
+      }
+
+       var sss   = d3.select(this.el),
+          svg = sss.append("svg:svg")
                   .attr("width", SVG.width)
                   .attr("height", SVG.height);
 
-       var force = d3.layout.force()
-    .nodes(this.data)
-    //.links(links)
-    .size([SVG.width, SVG.height])
-    .linkStrength(0.1)
-    .friction(0.9)
-    .linkDistance(20)
-    .charge(-30)
-    .gravity(0.1)
-    .theta(0.8)
-    .alpha(0.1)
-    .start();
 
+      var center  = { x: SVG.width / 2, y: SVG.height / 2 },
+          damper  = 0.102,
+          //svg     = this.svg,
+          bubbles = null,
+          nodes   = [],
+          force   = d3.layout.force()
+                      .size([SVG.width, SVG.height])
+                      .charge(charge)
+                      .gravity(-0.015)
+                      .friction(.9);
 
+      nodes = createNodes(this.data);
+      force.nodes(nodes);
 
-      var stuff = chart.selectAll(".dots").data(this.data).enter()
-      .append("circle")
-      .attr("r", 10);
+      console.log(svg);
+      bubbles = svg.selectAll('.bubble')
+      .data(nodes);
 
-      force.on("tick", function(e,x){
-        console.log(e,x);
+      bubbles.enter().append('circle')
+      .classed('bubble', true)
+      .attr('r', 0)
+      .attr('fill', function (d) { return "red";/*fillColor(d.group);*/ })
+      .attr('stroke', function (d) { return "black" })
+      .attr('stroke-width', 2)
+      //.on('mouseover', showDetail)
+      //.on('mouseout', hideDetail);
+
+      bubbles.transition()
+      .duration(2000)
+      .attr('r', function (d) { return d.radius; });
+
+      
+      force.on('tick', function (e) {
+        bubbles.each(moveToCenter(e.alpha))
+          .attr('cx', function (d) { return d.x; })
+          .attr('cy', function (d) { return d.y; });
       });
 
+      force.start();
       return this;
     }
-
   });
     
 
