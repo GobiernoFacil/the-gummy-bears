@@ -46,21 +46,10 @@
 				<div class="divider"></div>
 				
 				<div class="row">
-					<?php $total = 0;
-						  $total_awards = 0;
-					?>
-						@foreach ($awards as $award)
-						@foreach ($suppliers as $supplier)
-							@if($supplier->award_id == $award->id)
-							<?php $total = $total + $award->value;
-								$total_awards++;
-							?>
-							@endif
-						@endforeach
-						@endforeach
+					
 					<div class="col-sm-3">
 						<p>ADJUDICACIONES TOTAL(MXN)</p>
-						<h2 id="contrataciones-total-money"><span>$</span>{{ number_format($total,2,'.',',') }}</h2>
+						<h2 id="contrataciones-total-money"><span>$</span>{{ number_format($supplier->awards->sum('value'),2,'.',',') }}</h2>
 					</div>
 					<div class="col-sm-3">
 						<p>LICITACIONES</p>
@@ -68,12 +57,12 @@
 					</div>
 					<div class="col-sm-3">
 						<p>ADJUDICACIONES</p>
-						<h2 id="adjudicaciones-total-num">{{ $total_awards }}</h2>
+						<h2 id="adjudicaciones-total-num">{{ $supplier->awards->count() }}</h2>
 					</div>
 					<div class="col-sm-3">
 						<p>PROMEDIO POR ADJUDICACIÓN (MXN)</p>
 						
-						<h2 id="gasto-promedio-money"><span>$</span> {{ $total_awards > 0 ? number_format($total / $total_awards,2,'.',',') : '0' }} </h2>
+						<h2 id="gasto-promedio-money"><span>$</span> {{ $supplier->awards->count() ? number_format($supplier->awards->sum('value') / $supplier->awards->count(),2,'.',',') : '0' }} </h2>
 					</div>
 					
 				</div>
@@ -82,7 +71,7 @@
 			</div>
 
 		</div>
-		@if($total_awards > 0)
+		@if($supplier->awards->count() > 0)
 		<div class="col-sm-6">
 			<div class="box">
 				<div class="row">
@@ -96,10 +85,10 @@
 				<ul id="lucky-providers">
 					<li class="row">
 						<span class="col-sm-8">
-							<a href="{{ url('dependencias') }}">SEFIN</a>
+							<a href="{{ url('dependencia/1') }}">Secretaría de Finanzas</a>
 						</span>
 						<span class="col-sm-4 right">
-							${{ number_format($total,2,'.',',') }}
+							${{ number_format($supplier->awards->sum('value'),2,'.',',') }}
 						</span>
 					</li>
 					
@@ -111,7 +100,7 @@
 			<div class="box">
 				<div class="row">
 					<div class="col-sm-8">
-						<h3>Adjudicaciones más costosas</h3>
+						<h3>Adjudicaciones</h3>
 					</div>
 					<div class="col-sm-4">
 						<p class="right">TOTAL (MXN)</p>
@@ -124,8 +113,8 @@
 						@if($contract->releases->count())
 							@foreach($awards as $award)
 							    @if ($r->id == $award->release_id)
-							    @foreach ($suppliers as $supplier)
-									@if($supplier->award_id == $award->id)
+								@foreach ($supplier->awards as $ar)
+									@if($ar->id == $award->id)
 									<li class="row">
 									  <span class="col-sm-8">
 									  	<a href="{{ url('contrato/'. $contract_ocdsid)}}">{{ $award->title }}</a>
@@ -136,7 +125,6 @@
 									</li>
 									@endif
 								@endforeach
-							    
 							    @endif
 							@endforeach
 						@endif

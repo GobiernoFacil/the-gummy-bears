@@ -61,8 +61,8 @@ define(function(require){
     //
     //
     initialize : function(){
-    
 
+      console.log(DATA);
       // TREEMAP
       this.treemap = new Treemap({
         controller : this,

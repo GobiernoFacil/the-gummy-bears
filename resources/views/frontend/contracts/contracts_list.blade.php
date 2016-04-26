@@ -54,6 +54,7 @@
 	<p id="publisher-name"></p>
 	<p id="contratos-total-num"></p>
 	<p id="contratos-total-money"></p>
+
 	<!--
 	<div id="treemap"></div>-->
 	<div id="force"></div>

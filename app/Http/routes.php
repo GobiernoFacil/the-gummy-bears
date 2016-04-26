@@ -46,6 +46,7 @@ Route::get('api/contratos/todos', 'ApiCDMX@listAll');
 Route::get('api/contratos/ejercicio/{year}', 'ApiCDMX@getByYear');
 Route::get('api/proveedores/todos', 'ApiCDMX@listAllProviders');
 Route::get('api/contrato/{key}', 'ApiCDMX@getJSON');
+Route::get('api/contratos/buscar/{page?}', 'ApiCDMX@search');
 
 /*
 .......................................
