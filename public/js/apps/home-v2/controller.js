@@ -16,6 +16,7 @@ define(function(require){
      
       Treemap   = require("views/treemap_view"), 
       Bubbles   = require("views/pack_view"), 
+      Force     = require("views/force_view"), 
     
       TooltipA  = require("text!templates/tooltip_a.html"),
       TooltipB  = require("text!templates/tooltip_b.html"),
@@ -81,6 +82,20 @@ define(function(require){
                        };
                      }),
         el         : "#bubbles",
+        _url       : BASE_PATH + "/contrato/",
+        _selector  : "budget"
+      });
+
+      // FORCE
+      this.force = new Force({
+        controller : this,
+        data       : DATA.map(function(d){
+                       return {
+                         "name"  : d.title,
+                         "total" : d.budget 
+                       };
+                     }),
+        el         : "#force",
         _url       : BASE_PATH + "/contrato/",
         _selector  : "budget"
       });

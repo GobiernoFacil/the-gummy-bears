@@ -56,6 +56,7 @@
 	<p id="contratos-total-money"></p>
 	<!--
 	<div id="treemap"></div>-->
+	<div id="force"></div>
 	<div id="bubbles">
 		<form>
 		  <select>

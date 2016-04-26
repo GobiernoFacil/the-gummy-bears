@@ -125,7 +125,6 @@ define(function(require){
       
       enter.append("svg:circle")
           .attr("r", function(d){ 
-            console.log(d)
             return d.r
           })
           .attr("cx", function(d){ return d.x})
