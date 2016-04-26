@@ -5,8 +5,10 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
 use App\Models\Award;
+use App\Models\AwardProvider;
 use App\Models\Buyer;
 use App\Models\Contract;
+use App\Models\ContractHistory;
 use App\Models\Item;
 use App\Models\Planning;
 use App\Models\Provider;
@@ -16,6 +18,7 @@ use App\Models\SingleContract;
 use App\Models\Supplier;
 use App\Models\Tender;
 use App\Models\Tenderer;
+use App\Models\TenderProvider;
 use App\Models\TenderTenderer;
 
 
@@ -108,7 +111,6 @@ class UpdateContracts extends Command {
           // 4. saveTender
           //     - saveTenderers
           //     - saveItems
-          // 5. saveBuyer
           $releases = $this->saveReleases($contract, $response);
           $this->info('se guardó la información completa de: ' . $contract->ocdsid);
         }
@@ -116,7 +118,6 @@ class UpdateContracts extends Command {
           $this->error('la información de ' . $contract->ocdsid . ' no está disponible');
         }
       }
-		//
 	}
 
   //
@@ -210,6 +211,7 @@ class UpdateContracts extends Command {
         $tender->update();
         $this->saveItems($tender, $tn);
         $this->saveTenderers($tender, $tn);
+         $this->saveProviers($tender, $tn, "tender");
       }
     }
 
@@ -325,6 +327,7 @@ class UpdateContracts extends Command {
           $award->update();
           $this->saveItems($award, $aw);
           $this->saveSuppliers($award, $aw);
+          $this->saveProviers($award, $aw, "award");
         }
       }
       else{
@@ -357,6 +360,58 @@ class UpdateContracts extends Command {
           $supplier->url          = $sup->contactPoint->url;
 
           $supplier->update();
+        }
+      }
+    }
+
+    //
+    // [ UPDATE PROVIDERS ]
+    //
+    //
+    private function saveProviers($event, $data, $type){
+      if($type == "award"){
+        $providers = $data->suppliers;
+      }
+      elseif($type == "tender"){
+        $providers = $data->tenderers;
+      }
+      else{
+        $providers = [];
+      }
+
+      foreach($providers as $sup){
+        $provider = Provider::firstOrCreate([
+            "rfc"      => $sup->identifier->id
+        ]);
+
+        $provider->name         = $sup->name;
+        $provider->street       = $sup->address->streetAddress;
+        $provider->locality     = $sup->address->locality;
+        $provider->region       = $sup->address->region;
+        $provider->zip          = $sup->address->postalCode;
+        $provider->country      = $sup->address->countryName;
+        $provider->contact_name = $sup->contactPoint->name;
+        $provider->email        = $sup->contactPoint->email;
+        $provider->phone        = $sup->contactPoint->telephone;
+        $provider->fax          = $sup->contactPoint->faxNumber;
+        $provider->url          = $sup->contactPoint->url;
+
+        $provider->update();
+
+        if($type == "tender"){
+          $rel = TenderProvider::firstOrCreate([
+            "provider_id" => $provider->id,
+            "tender_id"   => $event->id
+          ]);
+        }
+        elseif($type == "award"){
+          $rel = AwardProvider::firstOrCreate([
+            "provider_id" => $provider->id,
+            "award_id"   => $event->id
+          ]);
+        }
+        else{
+          // O_____O
         }
       }
     }

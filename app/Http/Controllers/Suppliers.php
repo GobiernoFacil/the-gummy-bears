@@ -11,6 +11,7 @@ use App\Models\TenderTenderer;
 use App\Models\Tender;
 use App\Models\SingleContract;
 use App\Models\Award;
+use App\Models\Provider;
 
 class Suppliers extends Controller {
 	//
@@ -36,7 +37,7 @@ class Suppliers extends Controller {
 		$tenderer 			 		= Tenderer::where("rfc", $rfc)->get()->first();							 		
 		$tender_tenderer 	 		= TenderTenderer::where("tenderer_id", $tenderer->id)->get();
 		$tenders			 		= Tender::all();
-		$suppliers 			 		= Supplier::where("rfc", $rfc)->get();
+		$supplier 			 		= Provider::where("rfc", $rfc)->get()->first();
 							 		
 		$contracts 			 		= Contract::all();
 		$awards 			 		= Award::all();
@@ -49,7 +50,7 @@ class Suppliers extends Controller {
 		
 		$data['contracts']  		= $contracts;
 		$data['tenderer']   		= $tenderer;
-		$data['suppliers']   		= $suppliers;
+		$data['supplier']   		= $supplier;
 		$data['sicon']  			= $singlecontracts;
 		$data['awards']   			= $awards;
 		$data['tender_tenderer']   	= $tender_tenderer;

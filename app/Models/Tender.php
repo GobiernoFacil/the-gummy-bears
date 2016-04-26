@@ -22,6 +22,10 @@ class Tender extends Model
     return $this->belongsToMany('App\Models\Tenderer');
   }
 
+  public function providers(){
+    return $this->belongsToMany('App\Models\Provider', 'provider_tender');
+  }
+
   public function contracts(){
     return $this->hasMany('App\Models\SingleContract');
   }

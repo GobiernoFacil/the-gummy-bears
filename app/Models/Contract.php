@@ -16,6 +16,14 @@ class Contract extends Model
     return $this->hasMany('App\Models\Release');
   }
 
+  public function history(){
+    return $this->hasMany('App\Models\ContractHistory');
+  }
+
+  public function data(){
+    return $this->hasOne('App\Models\Contractdata');
+  }
+
   public function plannings(){
     return $this->hasManyThrough('App\Models\Planning', 'App\Models\Release');
   }

@@ -9,6 +9,8 @@ use App\Models\Contract;
 use App\Models\Award;
 use App\Models\SingleContract;
 use App\Models\Supplier;
+use App\Models\Provider;
+use App\Models\Buyer;
 
 class Offices extends Controller {
 	//
@@ -16,7 +18,7 @@ class Offices extends Controller {
 	//	
 	//
 	public function index(){
-		$contracts 			     = Contract::all();
+		$contracts 			 = Contract::all();
 		$data                = [];
 		$data['title']       = 'Dependencias de la CDMX con Contrataciones Abiertas';
 		$data['description'] = 'Dependencias de la CDMX con Contrataciones Abiertas';
@@ -29,25 +31,25 @@ class Offices extends Controller {
 	}
 	
 	public function show($id){
-		$contracts 			 = Contract::all();
+		$buyer				 = Buyer::where('id',$id)->get()->first();
+		$contracts 			 = Contract::where('cvedependencia',$buyer->local_id)->get();
 		$awards 			 = Award::all();
-		$singlecontracts 	 = SingleContract::all();
+		$singlecont_count 	 = SingleContract::all()->count();
 		$topcontracts 	 	 = SingleContract::orderby('amount', 'desc')->take(5)->get();;
-		$suppliers 			 = Supplier::all();
-
+		$providers			 = Provider::all();
+		
 		$data                = [];
-		$data['title']       = 'Dependencias de la CDMX con Contrataciones Abiertas';
-		$data['description'] = 'Dependencias de la CDMX con Contrataciones Abiertas';
-		$data['og_image']	   = "img/og/contrato-cdmx.png";
+		$data['title']       = $buyer->name . ' de la CDMX con Contrataciones Abiertas';
+		$data['description'] = $buyer->name . ' de la CDMX con Contrataciones Abiertas';
+		$data['og_image']	 = "img/og/contrato-cdmx.png";
 		$data['body_class']  = 'dependencia';
 		
-		$data['contracts']   = $contracts;
-		$data['awards']   	 = $awards;
-		$data['suppliers']   	 = $suppliers;
-		$data['singlecontracts']   	 = $singlecontracts;
+		$data['buyer']   	 		 = $buyer;
+		$data['contracts']   		 = $contracts;
+		$data['awards']   	 		 = $awards;
+		$data['singlecont_count']    = $singlecont_count;
 		$data['topcontracts']   	 = $topcontracts;
-		
-		
+		$data['providers']   	 	 = $providers;
 		
 		return view("frontend.office")->with($data);
 	}

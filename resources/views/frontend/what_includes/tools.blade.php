@@ -1,6 +1,15 @@
 <div class="col-sm-8 col-sm-offset-2">
-	<h1>¿Qué más podrás hacer con  las <span>contrataciones abiertas</span>* de la CD<strong>MX</strong>?</h1>
+	<h1>¿Para qué sirven las <span>contrataciones abiertas</span>?</h1>
 </div>
+<div class="col-sm-10 col-sm-offset-1">
+	<ul>
+		<li>TRANSPARENCIA</li>
+		<li>RENDICIÓN DE CUENTAS				</li>
+		<li>CULTURA DE LEGALIDAD				</li>
+		<li>PREVENCIÓN Y COMBATE A LA CORRUPCIÓN</li>
+	</ul>
+</div>
+<!--
 <div class="col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 slide">
 	<div class="row" id="tools-visualize">
 		<div class="col-sm-5">
@@ -38,10 +47,7 @@
 		</div>
 	</div>
 </div>	
-
+-->
 <div class="col-sm-12">
-	<a href="{{ url('datos-abiertos') }}" class="btn">Descubre como  usar los datos</a>
-</div>
-<div class="col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-8">
-	<p><small>* En febrero de 2016 el sitio contará con contrataciones de SEFIN realizadas a partir de diciembre de 2015</small></p>
+	<a href="{{ url('datos-abiertos') }}" class="btn">Descubre cómo  usar los datos</a>
 </div>

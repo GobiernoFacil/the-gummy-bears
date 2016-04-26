@@ -5,9 +5,8 @@
 	<div class="row list">
 		<div class="col-sm-12">
 			<div class="box">
-		
 				<p>Dependencia</p>
-				<h1 id="publisher-name"><a href="http://www.finanzas.df.gob.mx/">Secretaría de Finanzas</a></h1>
+				<h1 id="publisher-name"><a href="http://www.finanzas.df.gob.mx/">{{$buyer->name}}</a></h1>
 				<div class="divider"></div>
 				<p id="releases-buyer-name"></p>
 				<p>
@@ -17,6 +16,7 @@
 				  CP.<span id="address-postalCode">06720</span>
 				</p>
 				
+
 				<div class="divider"></div>
 				<?php $amount_contract		= 0;?>
 				@foreach($contracts as $contract)
@@ -30,6 +30,7 @@
 					 	  @endforeach
 					@endif
 				@endforeach
+
 				
 				<div class="row">
 					<div class="col-sm-3">
@@ -46,13 +47,14 @@
 					</div>
 					<div class="col-sm-3">
 						<p>PROMEDIO POR CONTRATACIÓN (MXN)</p>
-						<h2 id="gasto-promedio-money"><span>$</span> {{ number_format($amount_contract / $singlecontracts->count(),2,'.',',') }}</h2>
+						<h2 id="gasto-promedio-money"><span>$</span> {{ number_format($amount_contract / $singlecont_count,2,'.',',') }}</h2>
 					</div>
 					
+
 				</div>
 				<div class="divider"></div>
 				<div id="linemap">
-				  <h3>Total por contrato</h3>
+				 <!-- <h3>Total por contrato</h3>-->
 				  <p>información recopilada desde <span id="tremmap-data-from">diciembre de 2015</span></p>
 				</div>		
 
@@ -64,36 +66,33 @@
 			<div class="box">
 				<div class="row">
 					<div class="col-sm-8">
-						<h3>Proveedores más beneficiados</h3>
+						<h3>Proveedores</h3>
 					</div>
 					<div class="col-sm-4">
 						<p class="right">TOTAL (MXN)</p>
 					</div>
 				</div>
 				<ul id="lucky-providers">
-					@foreach($suppliers as $sp)
-					@foreach($awards as $aw)
-						@if($sp->award_id == $aw->id)
-					<li class="row">
-						<span class="col-sm-8">
-							<a href="{{ url('proveedor/' . $sp->rfc) }}">{{$sp->name}}</a>
-						</span>
-						<span class="col-sm-4 right">
-							${{$aw->value}}
-						</span>
-					</li>
+					@foreach($providers as $sp)
+						@if ($sp->awards->count())
+						<li class="row">
+							<span class="col-sm-8">
+								<a href="{{ url('proveedor/' . $sp->rfc) }}">{{$sp->name}}</a>
+							</span>
+							<span class="col-sm-4 right">
+								${{number_format($sp->awards->sum('value'),2,'.',',')}}
+							</span>
+						</li>
 						@endif
-					@endforeach
 					@endforeach
 				</ul>
 			</div>
 		</div>
-		
 		<div class="col-sm-6">
 			<div class="box">
 				<div class="row">
 					<div class="col-sm-8">
-						<h3>Contrataciones más costosas</h3>
+						<h3>Contrataciones</h3>
 					</div>
 					<div class="col-sm-4">
 						<p class="right">TOTAL (MXN)</p>

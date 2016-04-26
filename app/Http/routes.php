@@ -27,7 +27,7 @@ Route::get('dependencia/{id}', "Offices@show");
 Route::get('proveedores', "Suppliers@index");
 Route::get('proveedor/{id}', "Suppliers@show");
 /// what
-Route::get('que-son', "Frontend@whatis");
+Route::get('por-que', "Frontend@whatis");
 /// open data
 Route::get('datos-abiertos', "Frontend@opendata");
 /// contacto

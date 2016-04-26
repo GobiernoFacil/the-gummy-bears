@@ -27,7 +27,7 @@
           <div class="row divider">
             <div class="col-sm-5">
               <p class="title_section">COMPRADOR</p>
-              <p><a href="{{ url('dependencias') }}"><?php echo $elcontrato->buyer->name;?></a></p>
+              <p><a href="{{ url('dependencia/'. $elcontrato->buyer->id) }}"><?php echo $elcontrato->buyer->name;?></a></p>
             </div>
             <div class="col-sm-3">
               <p class="title_section">FECHA DE FIRMA</p>
