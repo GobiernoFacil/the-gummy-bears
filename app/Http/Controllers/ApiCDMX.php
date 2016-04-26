@@ -29,17 +29,20 @@ class ApiCDMX extends Controller {
       }
 	}
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
+  //
+  //
+  //
+  //
 	public function listAll()
 	{
 		$contracts = Contract::all();
     return response()->json($contracts)->header('Access-Control-Allow-Origin', '*');
 	}
 
+  //
+  //
+  //
+  //
 	public function getByYear($year){
 		$year = (int)$year;
 		if(!$year){
@@ -52,12 +55,20 @@ class ApiCDMX extends Controller {
 		// 400 Bad Request
 	}
 
+  //
+  //
+  //
+  //
 	public function listAllProviders()
 	{
 		$providers = Supplier::all();
     return response()->json($providers)->header('Access-Control-Allow-Origin', '*');
 	}
 
+  //
+  //
+  //
+  //
 	public function getJSON($ocid){
     // [1] Validate ocid & redirect if not valid
     $r = preg_match('/^[\w-]+$/', $ocid);
@@ -80,6 +91,95 @@ class ApiCDMX extends Controller {
     $json   = json_decode($result);
 
     return response()->json($json);
+  }
+
+  //
+  //
+  //
+  //
+  public function search(Request $request, $page = 1){
+    $query = $request->input('query', false);
+
+    if($query){
+      $contracts = $this->_full_search($query)->get();
+      $total     = $this->_full_search($query)->count();
+     
+    }
+    else{
+      $contracts = [];
+      $total     = 0;
+    }
+
+    return response()->json([
+      "contracts" => $contracts,
+      "page"      => $page,
+      "total"     => $total
+    ]);
+    //
+  }
+
+  //
+  //
+  //
+  //
+  private function _full_search($query){
+    $contracts = Contract::where('nomdependencia', 'like', '%' . $query.'%')
+      ->orWhere('ejercicio', 'like', '%' . $query . '%')
+      ->orWhere('ocdsid', 'like', '%' . $query . '%')
+      // SEARCH ON PUBLISHER
+      ->orWhere(function($q) use($query){
+        $q->whereHas('publisher', function($q) use($query){
+          $q->where('name', 'like', '%' . $query . '%');
+        });
+      })
+
+      // SEARCH ON PLANNINGS
+      ->orWhere(function($q) use($query){
+        $q->whereHas('plannings', function($q) use($query){
+          $q->where('project', 'like', '%' . $query . '%');
+        });
+      })
+
+      // SEARCH BUYER
+      ->orWhere(function($q) use($query){
+        $q->whereHas('releases', function($q) use($query){
+          $q->whereHas('buyer', function($q) use($query){
+            $q->where('name', 'like', '%' . $query . '%');
+          });
+        });
+      })
+
+      // SEARCH ON TENDERS
+      ->orWhere(function($q) use($query){
+        $q->whereHas('tenders', function($q) use($query){
+          $q->where('description', 'like', '%' . $query . '%');
+        })
+        ->orWhereHas('tenders', function($q) use($query){
+          $q->where('title', 'like', '%' . $query . '%');
+        })
+        ->orWhereHas('tenders', function($q) use($query){
+          $q->where('status', 'like', '%' . $query . '%');
+        });
+      })
+
+
+      // SEARCH ON AWARDS
+      ->orWhere(function($q) use($query){
+        $q->whereHas('awards', function($q) use($query){
+          $q->where('description', 'like', '%' . $query . '%');
+        })
+        ->orWhereHas('awards', function($q) use($query){
+          $q->where('title', 'like', '%' . $query . '%');
+        })
+        ->orWhereHas('awards', function($q) use($query){
+          //$q->where('title', 'like', '%' . $query . '%');
+          $q->whereHas('suppliers', function($q) use($query){
+            $q->where("name", 'like', '%' . $query . '%');
+          });
+        });
+      });
+
+    return $contracts;
   }
 
 
