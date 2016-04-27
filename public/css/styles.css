@@ -1608,6 +1608,9 @@ div.allthem svg {
     font-size: 14px; }
   .codigo ul {
     margin-left: 15px; }
+    .codigo ul.lalist li {
+      font-size: 14px;
+      list-style: inherit; }
   .codigo li {
     list-style: none;
     margin-bottom: 15px; }
