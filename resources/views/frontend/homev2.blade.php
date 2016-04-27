@@ -45,6 +45,10 @@
 <section class="etapas">
 	<div class="container">
 		<div class="row">
+			<div class="col-sm-10 col-sm-offset-1">
+				<iframe width="854px" height="480px" src="https://www.youtube.com/embed/kz0YQpa8AfY" frameborder="0" allowfullscreen></iframe>
+			</div>
+			<?php /*
 			<div class="col-sm-6">
 				<h1>La <span>CD</span><strong>MX</strong> es la <span>primer ciudad del mundo</span> en implementar el 
 					<a href="http://standard.open-contracting.org/?lang=es">Estándar de Contrataciones Abiertas</a></h1>
@@ -78,6 +82,13 @@
 				<div class="slide implementacion hide">
 					@include ("frontend/home_slider/stages-implementacion")
 				</div>
+			</div>
+			*/?>
+			<div class="col-sm-4 col-sm-offset-2">
+				<a href="{{ url('que-son') }}" class="btn">¿Por qué las Contrataciones Abiertas?</a>
+			</div>
+			<div class="col-sm-4">
+			<a href="{{ url('glosario') }}" class="btn">Consulta los términos claves de las Contrataciones Abiertas</a>
 			</div>
 		</div>
 	</div>
