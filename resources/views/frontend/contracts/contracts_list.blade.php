@@ -26,7 +26,7 @@
 <div class="instructions">
 	<div class="container">
 	<h1>Contrataciones Abiertas de la CD<span class="mx">MX</span></h1>
-	<p>Explora cómo compra tu Gobierno filtrando por etapa de proceso de compra, dependencia o proveedores.</p>
+	<p>Explora cómo compra tu Gobierno filtrando por etapa de proceso de compra, dependencias o proveedores.</p>
 	</div>
 </div>  
 <div class="breadcrumb">
@@ -42,7 +42,7 @@
 			<div class="col-sm-7 right">
 				<p>Ver por: 
 				<!--<a href="#" class="advanced_search">Advanced Search</a>-->
-				<a href="{{ url('contratos') }}" id="dependencia-a" class="ladependencia live">Dependencia</a>
+				<a href="{{ url('contratos') }}" id="dependencia-a" class="ladependencia live">Dependencias</a>
 				<a href="{{ url('proveedores') }}" id="dependencia-a" class="ladependencia empresa"> Proveedores</a>
 				</p>
 			</div>
