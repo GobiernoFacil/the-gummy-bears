@@ -10,10 +10,10 @@
 				<div class="divider"></div>
 				<p id="releases-buyer-name"></p>
 				<p>
-				  <span id="address-streetAddress">Dr. Lavista 144</span>
-				  <span id="address-locality">Cuauhtémoc</span>
-				  <span id="address-region">DF</span>
-				  CP.<span id="address-postalCode">06720</span>
+				  <span id="address-streetAddress">Dr. Lavista 144,</span>
+				  <span id="address-locality">Delegación Cuauhtémoc,</span>
+				  <span id="address-region">Ciudad de México</span>
+				  C.P.<span id="address-postalCode">06720</span>
 				</p>
 				
 

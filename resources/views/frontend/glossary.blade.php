@@ -6,7 +6,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-10 col-sm-offset-1">
-				<h1>Glosario - Portal Contrataciones Abiertas</h1>
+				<h1>Términos Clave - Portal Contrataciones Abiertas</h1>
 			</div>
 		</div>
 		

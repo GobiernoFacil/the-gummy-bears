@@ -79,7 +79,13 @@
 			</p>
 		</form>
 	</div>
-	
+	<div class="container">
+	<div class="row">
+		<div class="col-sm-6 col-sm-offset-6">
+			<p class="wit"><strong>¿Qué estoy viendo?</strong> Esta gráfica te permite comparar los presupuestos de los diferentes contratos. Entre más área tenga el círculo más elevado es el presupuesto del contrato</p>
+		</div>
+	</div>
+	</div>
 </div>
 
 <!-- container-->
