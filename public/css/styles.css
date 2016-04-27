@@ -1729,6 +1729,11 @@ div.allthem svg {
       font-weight: 500; }
   .viz_home p {
     margin: 0; }
+  .viz_home .wit {
+    font-size: 13px;
+    margin-bottom: 50px; }
+    .viz_home .wit strong {
+      color: #eb008b; }
 
 .list {
   margin: 60px 0; }
