@@ -42,6 +42,15 @@
 	@include('frontend.layouts.pages-nav') 
 
 	<!--nav page-->
+	<!--AVISO VEDA ELECTORAL -->
+<div style="width: 100%; background-color: #FFFFCC; box-sizing: border-box;">
+    <div style="padding: 14px 2% 10px; box-sizing: border-box; text-align: center; font-family: 'Arial'; font-size: 14px; border:solid 1px #BDB76B;">  
+       <span style="color: #000000;">  
+            "Este contenido será modificado temporalmente en atención a las disposiciones legales y normativas en materia electoral, con motivo del periodo de campaña del 18 de abril al 5 de junio del presente año"
+        </span>
+    </div>
+</div>
+<!--AVISO VEDA ELECTORAL -->
 	@include('frontend.layouts.nav')         
 	
 	<!--content-->
