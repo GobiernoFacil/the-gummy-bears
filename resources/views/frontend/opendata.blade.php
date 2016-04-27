@@ -6,9 +6,9 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12 col-xs-10 col-sm-offset-0 col-xs-offset-1">
-					<h1><span>Gobierno abierto + Datos abiertos</span> ¿Cómo utilizar los datos?
+					<h1><span>Gobierno abierto + Datos abiertos</span> 
 					</h1>
-					<a href="#" class="btn cta">¿Cómo usarlo?</a>
+					<a href="#" class="btn cta">¿Cómo utilizar los datos?</a>
 				</div>
 			</div>
 		</div>
