@@ -67,7 +67,18 @@
 	<p id="contratos-total-money"></p>
 
 	
-	<div id="force"></div>
+	<div id="force">
+		<form>
+			<p>
+				<select id="bubble-fun">
+					<option value="planning">planning</option>
+					<option value="tender">tender</option>
+					<option value="awards">awards</option>
+					<option value="contracts">contracts</option>
+				</select>
+			</p>
+		</form>
+	</div>
 	
 </div>
 
@@ -80,7 +91,7 @@
 		<div class="col-sm-3">
 			<form class="select_type">
 				<p>Mostrar: 
-				  <select>
+				  <select id="contracts-selector">
 				    <option value="all">Todos</option>
 					  <option value="planning">Planeación</option>
 					  <option value="tender">Licitación</option>

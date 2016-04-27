@@ -37,12 +37,6 @@ define(function(require){
   };
 
   //
-  // C A C H E   T H E   C O M M O N   E L E M E N T S
-  // --------------------------------------------------------------------------------
-  //
- 
-
-  //
   // I N I T I A L I Z E   T H E   B A C K B O N E   " V I E W "
   // --------------------------------------------------------------------------------
   //
@@ -52,18 +46,8 @@ define(function(require){
     // [ DEFINE THE EVENTS ]
     //
     events :{
-      // "change #pack-chart-controls input" : "set_categories"
+      "change #bubble-fun" : "update_bubbles"
     },
-
-    //
-    // [ DEFINE THE ELEMENT ]
-    //
-    //el : "#bubbles",
-
-    //
-    // [ DEFINE THE TEMPLATES ]
-    //
-
 
     //
     // [ THE INITIALIZE FUNCTION ]
@@ -73,9 +57,9 @@ define(function(require){
       this.collection = new Backbone.Collection(settings.data);
       this.data       = settings.data;
       this.controller = settings.controller;
-      // this.render_pack();
+      this._url = settings._url;
+
       this.render();
-      //this.definitions = new Backbone.Collection(Definitions);
     },
 
     //
@@ -83,76 +67,78 @@ define(function(require){
     // ------------------------------------------------------------------------------
     //
     
-    // [ submit / ESC / call from controller ]
-    // Genera el HTML del elemento seleccionado
+    /***/
+
+    charge : function(d) {
+      return -Math.pow(d.radius, 2) / 8;
+    },
+
+    moveToCenter : function(alpha, center, damper) {
+      return function (d) {
+        d.x = d.x + (center.x - d.x) * damper * alpha;
+        d.y = d.y + (center.y - d.y) * damper * alpha;
+      };
+    },
+
+    createNodes : function(rawData, scale, index, skip_xy) {
+      console.log(rawData);
+      var myNodes = rawData.map(function (d) {
+        if(skip_xy){
+          return {
+          id     : d.ocdsid,
+          radius : scale(+d[index]),
+          value  : d[index],
+          name   : d.name
+          };
+        }
+        else{
+          return {
+          id     : d.ocdsid,
+          radius : scale(+d[index]),
+          value  : d[index],
+          name   : d.name,
+          x      : Math.random() * 900,
+          y      : Math.random() * 800
+          };
+        }
+      });
+
+      myNodes.sort(function (a, b) { return b.value - a.value; });
+      return myNodes;
+    },
+    /***/
+    //
+    // 
     //
     render : function(e){
-      console.log(this.data);
+      var radiusScale = d3.scale.pow()
+                          .exponent(0.5)
+                          .range([2, 125]),
+          that        = this,
+          index       = "planning",
+          format      = d3.format('.3s'),
+          maxAmount   = d3.max(this.data, function (d) { return +d[index]; }),
+          center      = { x: SVG.width / 2, y: SVG.height / 2 },
+          damper      = 0.102,
+          sss         = d3.select(this.el),
+          svg         = sss.append("svg:svg")
+                    .attr("width", SVG.width)
+                    .attr("height", SVG.height),
+          bubbles     = null,
+          nodes       = [],
+          force       = d3.layout.force()
+                          .size([SVG.width, SVG.height])
+                          .charge(this.charge)
+                          .gravity(-0.015)
+                          .friction(.9);
 
-      function charge(d) {
-        return -Math.pow(d.radius, 2) / 8;
-      }
-
-      function moveToCenter(alpha) {
-        return function (d) {
-          d.x = d.x + (center.x - d.x) * damper * alpha;
-          d.y = d.y + (center.y - d.y) * damper * alpha;
-        };
-      }
-
-       var radiusScale = d3.scale.pow()
-            .exponent(0.5)
-            .range([2, 125]);
-      var maxAmount = d3.max(this.data, function (d) { return +d.planning; });
+      this.svg = svg;
       radiusScale.domain([0, maxAmount]);
-
-      function createNodes(rawData) {
-        
-        // Use map() to convert raw data into node data.
-        // Checkout http://learnjsdata.com/ for more on
-        // working with data.
-        var myNodes = rawData.map(function (d) {
-        return {
-            //id: d.id,
-            radius: radiusScale(+d.planning),
-            value: d.planning,
-            name: d.name,
-            x: Math.random() * 900,
-            y: Math.random() * 800
-          };
-        });
-
-        // sort them to prevent occlusion of smaller nodes.
-        myNodes.sort(function (a, b) { return b.value - a.value; });
-
-        return myNodes;
-      }
-
-       var sss   = d3.select(this.el),
-          svg = sss.append("svg:svg")
-                  .attr("width", SVG.width)
-                  .attr("height", SVG.height);
-
-
-      var center  = { x: SVG.width / 2, y: SVG.height / 2 },
-          damper  = 0.102,
-          //svg     = this.svg,
-          bubbles = null,
-          nodes   = [],
-          force   = d3.layout.force()
-                      .size([SVG.width, SVG.height])
-                      .charge(charge)
-                      .gravity(-0.015)
-                      .friction(.9);
-
-      nodes = createNodes(this.data);
+      nodes = this.createNodes(this.data, radiusScale, index);
       force.nodes(nodes);
 
-      console.log(svg);
       bubbles = svg.selectAll('.bubble')
       .data(nodes);
-      var that = this,
-        format = d3.format('.3s');
 
       bubbles.enter().append('circle')
       .classed('bubble', true)
@@ -161,18 +147,17 @@ define(function(require){
       .attr('stroke', function (d) { return "#eb008b" })
       .attr('stroke-width', 2)
       .on("mouseover", function(d){
+        that.controller.create_tooltip_b({name:d.name, total:format(d.value)});
+        force.start();
+      })
+      .on("mouseout", function(d){
+        that.controller.remove_tooltip();
+        force.start();
+      })
+      .on("click", function(d){
         console.log(d);
-              that.controller.create_tooltip_b({name:d.name, total:format(d.value)});
-              force.start();
-          })
-          .on("mouseout", function(d){
-              that.controller.remove_tooltip();
-              force.start();
-          })
-          .on("click", function(d){
-            console.log(d);
-            //window.open(that._url + d.id,"_self");
-          });
+        window.open(that._url + d.id,"_self");
+      });
 
 
       bubbles.transition()
@@ -181,14 +166,85 @@ define(function(require){
 
       
       force.on('tick', function (e) {
-        bubbles.each(moveToCenter(e.alpha))
+        bubbles.each(that.moveToCenter(e.alpha, center, damper))
           .attr('cx', function (d) { return d.x; })
           .attr('cy', function (d) { return d.y; });
       });
 
+      this.force = force;
       force.start();
       return this;
+    },
+
+    update_bubbles : function(e){
+      var index  = e.currentTarget.value;
+      this.update_render(index);
+    },
+
+    update_render : function(index){
+      var radiusScale = d3.scale.pow()
+                          .exponent(0.5)
+                          .range([2, 125]),
+          that        = this,
+          format      = d3.format('.3s'),
+          maxAmount   = d3.max(this.data, function (d) { return +d[index]; }),
+          center      = { x: SVG.width / 2, y: SVG.height / 2 },
+          damper      = 0.102,
+         
+          bubbles     = null,
+          nodes       = [];
+        
+      radiusScale.domain([0, maxAmount]);
+      
+      nodes = this.createNodes(this.data, radiusScale, index, 1);
+      this.force.nodes(nodes);
+
+      bubbles = this.svg.selectAll('.bubble')
+      .data(nodes)
+      .transition()
+      .duration(2000)
+      .attr('r', function (d) { return d.radius; });
+
+      /*
+      bubbles.enter().append('circle')
+      .classed('bubble', true)
+      .attr('r', 0)
+      .attr('fill', function (d) { return "#f9bbe4"; })
+      .attr('stroke', function (d) { return "#eb008b" })
+      .attr('stroke-width', 2)
+      .on("mouseover", function(d){
+        that.controller.create_tooltip_b({name:d.name, total:format(d.value)});
+        force.start();
+      })
+      .on("mouseout", function(d){
+        that.controller.remove_tooltip();
+        force.start();
+      })
+      .on("click", function(d){
+        console.log(d);
+        //window.open(that._url + d.id,"_self");
+      });
+
+
+      bubbles.transition()
+      .duration(2000)
+      .attr('r', function (d) { return d.radius; });
+      */
+
+      /*
+      this.force.on('tick', function (e) {
+        console.log(bubbles, e);
+        //bubbles.each(that.moveToCenter(e.alpha, center, damper))
+          bubbles
+            .attr('cx', function (d) { return d.x; })
+            .attr('cy', function (d) { return d.y; });
+      });
+      */
+
+      this.force.start();
+      return this;
     }
+
   });
     
 

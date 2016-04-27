@@ -41,7 +41,7 @@ define(function(require){
     // [ DEFINE THE EVENTS ]
     //
     events :{
-      "change form select" : "update_list"
+      "change #contracts-selector" : "update_list"
     },
 
     //
@@ -105,12 +105,6 @@ define(function(require){
       });
     },
   
-
-
- 
-
-    
-
     //
     // [ TOOLTIP FOR TIME LINES ]
     //
