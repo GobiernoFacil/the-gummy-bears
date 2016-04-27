@@ -45,8 +45,11 @@ Route::get('glosario', "Frontend@glossary");
 Route::get('api/contratos/todos', 'ApiCDMX@listAll');
 Route::get('api/contratos/ejercicio/{year}', 'ApiCDMX@getByYear');
 Route::get('api/proveedores/todos', 'ApiCDMX@listAllProviders');
-Route::get('api/contrato/{key}', 'ApiCDMX@getJSON');
+Route::get('api/proveedor/{rfc}', 'ApiCDMX@showProvider'); // *
 Route::get('api/contratos/buscar/{page?}', 'ApiCDMX@search');
+Route::get('api/contrato/{key}', 'ApiCDMX@getJSON');
+Route::get('api/contrato/historico/{key}', 'ApiCDMX@showContractHistory'); // *
+Route::get('api/contrato/actual/{key}', 'ApiCDMX@showContractData'); // *
 
 /*
 .......................................
