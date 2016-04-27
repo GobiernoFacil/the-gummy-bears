@@ -14,5 +14,4 @@ class ContractData extends Model {
   public function release(){
     return $this->belongsTo('App\Models\Release');
   }
-
 }

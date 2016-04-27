@@ -134,11 +134,13 @@ class ApiCDMX extends Controller {
   }
 
   public function showContractData($ocdsid){
-    $contract = ContractData::where("ocdsid", $ocdsid)->first();
+    $contract = ContractData::with([
+      "release.tender", "release.planning","release.singlecontracts", "release.awards"
+    ])->where("ocdsid", $ocdsid)->first();
     return response()->json($contract);
   }
 
-  public function showContractHistory($id){
+  public function showContractHistory($ocdsid){
     $contracts = ContractHistory::where("ocdsid", $ocdsid)->get();
     return response()->json($contracts);
   }
