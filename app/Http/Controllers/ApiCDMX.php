@@ -5,9 +5,14 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Models\Contract;
+use App\Models\ContractHistory;
+use App\Models\ContractData;
+use App\Models\Provider;
 use App\Models\Supplier;
 
 class ApiCDMX extends Controller {
+
+  const PAGE_SIZE = 50;
 
 	public function __construct()
 	{
@@ -52,16 +57,15 @@ class ApiCDMX extends Controller {
 
 		$contracts = Contract::where("ejercicio", $year)->get();
 		return response()->json($contracts)->header('Access-Control-Allow-Origin', '*');
-		// 400 Bad Request
 	}
 
   //
   //
   //
   //
-	public function listAllProviders()
+	public function listAllProviders($page = 1)
 	{
-		$providers = Supplier::all();
+		$providers = Provider::take(SELF::PAGE_SIZE)->skip(($page-1) * SELF::PAGE_SIZE)->get();
     return response()->json($providers)->header('Access-Control-Allow-Origin', '*');
 	}
 
@@ -116,6 +120,27 @@ class ApiCDMX extends Controller {
       "total"     => $total
     ]);
     //
+  }
+
+  //
+  //
+  //
+  //
+  public function showProvider($rfc){
+    if(!ctype_alnum($rfc)) abort(404);
+
+    $provider = Provider::where("rfc", $rfc)->first();
+    return response()->json($provider);
+  }
+
+  public function showContractData($ocdsid){
+    $contract = ContractData::where("ocdsid", $ocdsid)->first();
+    return response()->json($contract);
+  }
+
+  public function showContractHistory($id){
+    $contracts = ContractHistory::where("ocdsid", $ocdsid)->get();
+    return response()->json($contracts);
   }
 
   //
