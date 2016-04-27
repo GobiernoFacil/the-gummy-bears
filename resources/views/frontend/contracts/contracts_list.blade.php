@@ -1,7 +1,6 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-
 <?php
   $total_contracts = 0;
   $contract_data = [];
@@ -22,18 +21,30 @@
 
   $total_money = array_reduce($contract_data,function($v1, $v2){
   	return $v1 + (float)$v2["budget"];
-  },0);
-	?>
+  },0);?>
+  
+<div class="instructions">
+	<div class="container">
+	<h1>Contrataciones Abiertas de la CD<span class="mx">MX</span></h1>
+	<p>Explora cómo compra tu Gobierno filtrando por etapa de proceso de compra, dependencia o proveedores.</p>
+	</div>
+</div>  
 <div class="breadcrumb">
 	<div class="container">
 		<nav class="row">
 			<div class="col-sm-5">
+				<p>Filtrar por etapa:
+					<select>
+						<option>Licitactiones</option>
+					</select>
 			<!--Contratos-->
 			</div>
 			<div class="col-sm-7 right">
-				<a href="#" class="advanced_search">Advanced Search</a>
-				<a href="{{ url('proveedores') }}" id="dependencia-a" class="ladependencia empresa">Proveedores</a>
+				<p>Ver por: 
+				<!--<a href="#" class="advanced_search">Advanced Search</a>-->
 				<a href="{{ url('contratos') }}" id="dependencia-a" class="ladependencia live">Dependencia</a>
+				<a href="{{ url('proveedores') }}" id="dependencia-a" class="ladependencia empresa"> Proveedores</a>
+				</p>
 			</div>
 		</nav>
 	</div>
@@ -42,10 +53,10 @@
 <div class="viz_home">
 	<header>
 		<div class="col-sm-4">
-			<p><span>DEPENDENCIA</span>SEFIN</p>
+			<p><span>DEPENDENCIAS</span> <strong>01</strong></p>
 		</div>
 		<div class="col-sm-4 center">
-			<p><span>LICITACIONES POR DEPENDENCIA</span> <strong>{{ $total_contracts }}</strong></p>
+			<p><span>LICITACIONES</span> <strong>{{ $total_contracts }}</strong></p>
 		</div>
 		<div class="col-sm-4">
 			<p><span>TOTAL (MXN)</span>$<strong>{{ (int)($total_money/1000000) }}</strong> millones </p>
@@ -55,16 +66,9 @@
 	<p id="contratos-total-num"></p>
 	<p id="contratos-total-money"></p>
 
-	<!--
-	<div id="treemap"></div>-->
+	
 	<div id="force"></div>
-	<div id="bubbles">
-		<form>
-		  <select>
-		  	<option></option>
-		  </select>
-		</form>
-	</div>
+	
 </div>
 
 <!-- container-->
@@ -93,7 +97,7 @@
 				@if($contract->releases->count())
 					<?php $r = $contract->releases->last(); 
 						// aquí se capturan los datos para la lista  
-						$title  			= $r->planning->project;
+						$title_project  	= $r->planning->project;
 						$budget 			= number_format($r->planning->amount);
 						//tender
 						$tender_title  		= $r->tender->title;

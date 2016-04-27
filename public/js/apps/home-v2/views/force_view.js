@@ -101,7 +101,7 @@ define(function(require){
 
        var radiusScale = d3.scale.pow()
             .exponent(0.5)
-            .range([2, 85]);
+            .range([2, 125]);
       var maxAmount = d3.max(this.data, function (d) { return +d.total; });
       radiusScale.domain([0, maxAmount]);
 
@@ -153,8 +153,8 @@ define(function(require){
       bubbles.enter().append('circle')
       .classed('bubble', true)
       .attr('r', 0)
-      .attr('fill', function (d) { return "red";/*fillColor(d.group);*/ })
-      .attr('stroke', function (d) { return "black" })
+      .attr('fill', function (d) { return "#f9bbe4";/*fillColor(d.group);*/ })
+      .attr('stroke', function (d) { return "#eb008b" })
       .attr('stroke-width', 2)
       //.on('mouseover', showDetail)
       //.on('mouseout', hideDetail);
