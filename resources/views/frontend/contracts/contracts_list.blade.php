@@ -206,6 +206,7 @@
 
 <script>
 	var DATA = <?php echo json_encode($contract_data); ?>;
+	var JSON = <?php echo json_encode($json); ?>;
 </script>
 
 @endsection

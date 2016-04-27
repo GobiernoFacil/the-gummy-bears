@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Models\Contract;
+use App\Models\ContractData;
 
 class Contracts extends Controller {
 
@@ -36,7 +37,8 @@ class Contracts extends Controller {
 	// Contracts list
 	//	
 	public function index(){
-		$contracts 			 = Contract::orderBy("published_date",'desc')->get();
+		$contracts 			     = Contract::orderBy("published_date",'desc')->get();
+    $json                = ContractData::with("release.tender")->get();
 		$data                = [];
 		$data['title']       = 'Lista de Contrataciones Abiertas de la CDMX';
 		$data['description'] = 'Lista de contratos abiertos de la Ciudad de México';
@@ -44,6 +46,7 @@ class Contracts extends Controller {
 		$data['body_class']  = 'contract';
 		
 		$data['contracts']  = $contracts;
+    $data['json']       = $json;
 		
 		return view("frontend.contracts.contracts_list")->with($data);
 	}

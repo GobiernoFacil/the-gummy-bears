@@ -89,10 +89,14 @@ define(function(require){
       // FORCE
       this.force = new Force({
         controller : this,
-        data       : DATA.map(function(d){
+        data       : JSON.map(function(d){
                        return {
-                         "name"  : d.title,
-                         "total" : d.budget 
+                         "name"      : d.release.tender.title,
+                         "planning"  : d.planning,
+                         "ocdsid"    : d.ocdsid,
+                         "contracts" : d.contracts,
+                         "awards"    :d.awards,
+                         "tender"    :d.tender
                        };
                      }),
         el         : "#force",

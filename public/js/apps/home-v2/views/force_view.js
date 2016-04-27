@@ -72,6 +72,7 @@ define(function(require){
     initialize : function(settings){
       this.collection = new Backbone.Collection(settings.data);
       this.data       = settings.data;
+      this.controller = settings.controller;
       // this.render_pack();
       this.render();
       //this.definitions = new Backbone.Collection(Definitions);
@@ -102,18 +103,19 @@ define(function(require){
        var radiusScale = d3.scale.pow()
             .exponent(0.5)
             .range([2, 125]);
-      var maxAmount = d3.max(this.data, function (d) { return +d.total; });
+      var maxAmount = d3.max(this.data, function (d) { return +d.planning; });
       radiusScale.domain([0, maxAmount]);
 
       function createNodes(rawData) {
+        
         // Use map() to convert raw data into node data.
         // Checkout http://learnjsdata.com/ for more on
         // working with data.
         var myNodes = rawData.map(function (d) {
         return {
             //id: d.id,
-            radius: radiusScale(+d.total),
-            value: d.total,
+            radius: radiusScale(+d.planning),
+            value: d.planning,
             name: d.name,
             x: Math.random() * 900,
             y: Math.random() * 800
@@ -149,15 +151,29 @@ define(function(require){
       console.log(svg);
       bubbles = svg.selectAll('.bubble')
       .data(nodes);
+      var that = this,
+        format = d3.format('.3s');
 
       bubbles.enter().append('circle')
       .classed('bubble', true)
       .attr('r', 0)
-      .attr('fill', function (d) { return "#f9bbe4";/*fillColor(d.group);*/ })
+      .attr('fill', function (d) { return "#f9bbe4"; })
       .attr('stroke', function (d) { return "#eb008b" })
       .attr('stroke-width', 2)
-      //.on('mouseover', showDetail)
-      //.on('mouseout', hideDetail);
+      .on("mouseover", function(d){
+        console.log(d);
+              that.controller.create_tooltip_b({name:d.name, total:format(d.value)});
+              force.start();
+          })
+          .on("mouseout", function(d){
+              that.controller.remove_tooltip();
+              force.start();
+          })
+          .on("click", function(d){
+            console.log(d);
+            //window.open(that._url + d.id,"_self");
+          });
+
 
       bubbles.transition()
       .duration(2000)
