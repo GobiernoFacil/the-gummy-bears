@@ -21,7 +21,7 @@ cp .env.example .env
 
 4: crear la base de datos que se va a ocupar
 
-5: editar el archivo .env, en el que se debe poner la información de conexión a la DB, y una variable llamada "ENDPOINTS". Esta variable debe cualquier nombre, menos 'production'. (Es para decidir cuál será la conexión al endpoint)
+5: editar el archivo .env, en el que se debe poner la información de conexión a la DB, y una variable llamada "ENDPOINTS". Esta variable debe tener cualquier valor, menos 'production'. (Es para decidir cuál será la conexión al endpoint)
 
 6: Despues de guardar y cerrar el archivo .env, hay que generar la llave de encriptación con:
 ```bash
