@@ -1,23 +1,51 @@
-## Laravel PHP Framework
+# Guía de instalación Contratos abiertos
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/downloads.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+# Requerimientos técnicos:
+PHP 5.4
+Mysql
+Composer
+Bower
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+1: copiar los archivos del siguiente repositorio:
+[github] (https://github.com/GobiernoFacil/the-gummy-bears.git)
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+2: en la carpeta raíz, hay que correr el siguiente comando:
+```bash
+composer install
+```
 
-## Official Documentation
+3: en la carpeta raíz, hay que copiar el archivo .env.example a .env
+```bash
+cp .env.example .env
+```
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+4: crear la base de datos que se va a ocupar
 
-## Contributing
+5: editar el archivo .env, en el que se debe poner la información de conexión a la DB, y una variable llamada "ENDPOINTS". Esta variable debe tener cualquier valor, menos 'production'. (Es para decidir cuál será la conexión al endpoint)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+6: Despues de guardar y cerrar el archivo .env, hay que generar la llave de encriptación con:
+```bash
+php artisan key:generate
+```
 
-### License
+7: Acto siguiente, hay que crear las tablas en la base de datos, con el siguiente comando:
+```bash
+php artisan migrate
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+8: Ya con las tablas disponibles, es posible obtener la información más reciente del api de la CDMX así:
+```bash
+php artisan contracts:update
+```
+
+9: Ahora, ya con la información disponible, se debe optimizar para las gráficas y las apis:
+```bash
+php artisan contracts:optimize
+```
+
+10: por último, hay que descargar las librerías de Javascript necesarias. Dentro de la carpeta de public/js, hay que ejecutar el siguiente comando:
+```bash
+bower install
+```
+
+y eso es todo amigos!
