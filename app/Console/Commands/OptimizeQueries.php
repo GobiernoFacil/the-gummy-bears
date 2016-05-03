@@ -111,6 +111,29 @@ class OptimizeQueries extends Command {
       	$this->error("este relase no tiene datos");
       } 
     } // foreach contracts  
+
+    $providers = Provider::all();
+    foreach($providers as $provider){
+    	$provider->tender_num = $provider->tenders()->where(function($q){
+    		$q->WhereHas("release", function($query){
+    			$query->where("is_latest", 1);
+    		});
+    	})->count();
+
+    	$provider->award_num = $provider->awards()->where(function($q){
+    		$q->WhereHas("release", function($query){
+    			$query->where("is_latest", 1);
+    		});
+    	})->count();
+
+    	$provider->budget = $provider->awards()->where(function($q){
+    		$q->WhereHas("release", function($query){
+    			$query->where("is_latest", 1);
+    		});
+    	})->sum("value");
+
+    	$provider->update();
+    }
 	}
 
 	/**
