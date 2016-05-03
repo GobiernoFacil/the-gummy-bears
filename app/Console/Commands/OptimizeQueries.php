@@ -54,8 +54,10 @@ class OptimizeQueries extends Command {
 	public function fire()
 	{
 		$contracts = Contract::all();
-    
+    Release::has("contract")->update(["is_latest" => 0]);
+
     foreach($contracts as $contract){
+      // [1] Genera un historial de presupuesto
       if(!$contract->releases->count()){
         $this->error('el contrato' . $contract->ocdsid . ' no tiene ningún release');
       }
@@ -66,36 +68,49 @@ class OptimizeQueries extends Command {
             "release_id"  => $release->id
           ]);
 
-          $history->ocdsid    = $contract->ocdsid;
-          $history->planning  = $release->planning->amount;
-          $history->tender    = $release->tender->amount;
-          $history->awards    = $release->awards->sum('value');
-          $history->contracts = $release->singlecontracts->sum('amount');
-          $history->date      = $release->date;
-          $history->update();
-          $this->info('se ha optimizado el historial del contrato: ' . $contract->ocdsid);
+          if($release->planning){
+            $history->ocdsid    = $contract->ocdsid;
+            $history->local_id  = $release->local_id;
+            $history->planning  = $release->planning->amount;
+            $history->tender    = $release->tender->amount;
+            $history->awards    = $release->awards->sum('value');
+            $history->contracts = $release->singlecontracts->sum('amount');
+            $history->date      = $release->date;
+            $history->update();
+            $this->info('se ha optimizado el historial del contrato: ' . $contract->ocdsid);
+          }
+          else{
+          	$history->ocdsid    = $contract->ocdsid;
+            $history->local_id  = $release->local_id;
+            $history->date      = $release->date;
+            $history->update();
+          	$this->error("este relase no tiene datos");
+          }
         }
       }
-    }
 
-    foreach($contracts as $contract){
-    	$release = ContractHistory::where("contract_id", $contract->id)
-    	  ->orderBy("date", "desc")->get()->first();
-
-
-
+      // [2] genera un agregado de presupuestos para el último release del contrato
+      $release = ContractHistory::where("contract_id", $contract->id)->orderBy("local_id", "desc")->get()->first();
+      $release->release()->update(['is_latest' => 1]);
+      $this->info("release {$release->id}: " . $release->is_latest);
     	$data = ContractData::firstOrCreate(["contract_id" => $contract->id]);
-    	$data->ocdsid     = $contract->ocdsid;
-      $data->planning   = $release->planning;
-      $data->tender     = $release->tender;
-      $data->awards     = $release->awards;
-      $data->contracts  = $release->contracts;
-      $data->date       = $release->date;
-      $data->release_id = $release->id;
+    	if($release->planning){
+    	  $data->ocdsid     = $contract->ocdsid;
+    	  $data->local_id   = $release->local_id;
+        $data->planning   = $release->planning;
+        $data->tender     = $release->tender;
+        $data->awards     = $release->awards;
+        $data->contracts  = $release->contracts;
+        $data->date       = $release->date;
+        $data->release_id = $release->id;
 
-      $data->update();
-      $this->info('se ha optimizado la información más reciente del contrato: ' . $contract->ocdsid);
-    }
+        $data->update();
+        $this->info('se ha optimizado la información más reciente del contrato: ' . $contract->ocdsid);
+      }
+      else{
+      	$this->error("este relase no tiene datos");
+      } 
+    } // foreach contracts  
 	}
 
 	/**

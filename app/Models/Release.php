@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Release extends Model
 {
   protected $fillable = ["local_id", "contract_id", "ocid", "date", 
-  "initiation_type", "planning_id", "buyer_id", "tender_id", "language"];
+  "initiation_type", "planning_id", "buyer_id", "tender_id", "language", "is_latest"];
 
   public function contract(){
     return $this->belongsTo('App\Models\Contract');

@@ -53,4 +53,10 @@ class TestStuff extends Controller {
     ]);
   }
 
+  public function get_latest_release($rfc){
+    $contracts = Contract::with(["releases" => function($query){
+      $query->orderBy("local_id", "desc")->take(1);
+    }])->get();
+  }
+
 }
