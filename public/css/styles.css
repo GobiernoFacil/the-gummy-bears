@@ -1635,6 +1635,10 @@ div.allthem svg {
       margin-bottom: 40px; }
       .glosario .codigo li ul li {
         margin-bottom: 10px; }
+  .glosario .codigo ol {
+    margin: 20px 25px; }
+    .glosario .codigo ol li {
+      list-style: decimal; }
   .glosario .codigo .ref {
     margin-left: 20px;
     color: #777;
