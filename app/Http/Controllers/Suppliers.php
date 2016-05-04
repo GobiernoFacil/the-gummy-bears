@@ -18,16 +18,16 @@ class Suppliers extends Controller {
 	// Suppliers list
 	//	
 	public function index(){
-		$contracts 			     = Contract::all();
+		$providers 			     = Provider::orderby('name','ASC')->get();
 		$data                = [];
-		$data['title']       = 'Lista de Contrataciones Abiertas de la CDMX';
-		$data['description'] = 'Lista de contratos abiertos de la Ciudad de México';
-		$data['og_image']	   = "img/og/contrato-cdmx.png";
-		$data['body_class']  = 'contract';
+		$data['title']       = 'Lista de Proveedores con Contratos con la CDMX';
+		$data['description'] = 'Lista de Proveedores con Contratos con la CDMX';
+		$data['og_image']	 = "img/og/contrato-cdmx.png";
+		$data['body_class']  = 'proveedor';
 		
-		$data['contracts']  = $contracts;
+		$data['providers']  = $providers;
 		
-		return view("frontend.contracts.contracts_list")->with($data);
+		return view("frontend.suppliers.suppliers_list")->with($data);
 	}
 
 	//
@@ -58,6 +58,6 @@ class Suppliers extends Controller {
 							
 
 		
-		return view("frontend.supplier")->with($data);
+		return view("frontend.suppliers.supplier")->with($data);
 	}
 }
