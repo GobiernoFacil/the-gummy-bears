@@ -113,9 +113,9 @@ define(function(require){
     render : function(e){
       var radiusScale = d3.scale.pow()
                           .exponent(0.5)
-                          .range([2, 125]),
+                          .range([0, 125]),
           that        = this,
-          index       = "planning",
+          index       = "contracts",
           format      = d3.format('.3s'),
           maxAmount   = d3.max(this.data, function (d) { return +d[index]; }),
           center      = { x: SVG.width / 2, y: SVG.height / 2 },
@@ -184,7 +184,7 @@ define(function(require){
     update_render : function(index){
       var radiusScale = d3.scale.pow()
                           .exponent(0.5)
-                          .range([2, 125]),
+                          .range([0, 125]),
           that        = this,
           format      = d3.format('.3s'),
           maxAmount   = d3.max(this.data, function (d) { return +d[index]; }),
