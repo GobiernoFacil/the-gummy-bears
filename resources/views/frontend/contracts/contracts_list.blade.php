@@ -39,6 +39,7 @@
 					<p>Filtrar por etapa:
 						<select id="bubble-fun">
 							<option value="tender">Licitaciones</option>
+							<option value="awards">Adjudicaciones</option>
 							<option value="contracts" selected>Contratos</option>
 						</select>
 					</p>
@@ -59,10 +60,10 @@
 			<p><span>DEPENDENCIAS</span> <strong>01</strong></p>
 		</div>
 		<div class="col-sm-4 center">
-			<p><span>CONTRATOS</span> <strong>{{ $contracts_number }}</strong></p>
+			<p><span id="type">CONTRATOS</span> <strong id="type_total">{{ $contracts_number }}</strong></p>
 		</div>
 		<div class="col-sm-4">
-			<p><span>TOTAL (MXN)</span>$<strong>{{ (int)($contracts_amount/1000000) }}</strong> millones </p>
+			<p><span>TOTAL (MXN)</span>$<strong id="total_amount">{{ (int)($contracts_amount/1000000) }}</strong> millones </p>
 		</div>
 	</header>
 	<p id="publisher-name"></p>
@@ -80,7 +81,7 @@
 </div>
 
 <!-- container-->
-<div class="container">
+<div id="all-list-contracts" class="container">
 	<div class="row">
 		<div class="col-sm-9">
 			<h2 id="title_select_type" class="title_section select">Lista de <strong>Contrataciones Abiertas</strong></h2>

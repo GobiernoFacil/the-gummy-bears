@@ -85,11 +85,13 @@ define(function(require){
         _selector  : "budget"
       });
     },
-
+	
+	
     set_contracts : function(e){
       e.preventDefault();
       if(!$("#dependencia-a").hasClass("live")) $("#dependencia-a").addClass("live");
       $("#dependencia-b").removeClass("live");
+      $('#all-list-contracts').removeClass('hide');
       //$("#bubble-fun").value("contracts");
       document.getElementById("bubble-fun").value = "contracts";
       document.getElementById("bubble-fun").disabled = false;
@@ -100,6 +102,7 @@ define(function(require){
       e.preventDefault();
       if(!$("#dependencia-b").hasClass("live")) $("#dependencia-b").addClass("live");
       $("#dependencia-a").removeClass("live");
+      $('#all-list-contracts').addClass('hide');
       document.getElementById("bubble-fun").disabled = true;
       this.force.render_providers();
     },

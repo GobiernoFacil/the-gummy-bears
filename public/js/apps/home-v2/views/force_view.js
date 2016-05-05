@@ -181,15 +181,32 @@ define(function(require){
     },
 
     update_bubbles : function(e){
-      var index  = e.currentTarget.value;
+      var index  = e.currentTarget.value,
+       	  typeN;
+      
+      switch(index) {
+	   	case 'tender':
+	   		var typeN = 'LICITACIONES';
+	   		break;
+	   	case 'awards':
+	   		var typeN = 'ADJUDICACIONES';
+	   		break;
+	   	case 'contracts':
+	   		var typeN = 'CONTRATACIONES';
+	   		break;
+      };
+      
+      $('#type').html(typeN);
       this.update_render(index);
     },
 
     render_contracts : function(){
+      $('#type').html('CONTRATOS');
       this.update_render(this.default_pointer);
     },
 
     render_providers : function(){
+      $('#type').html('PROVEEDORES');
       this.update_render(this.default_pointer, "providers");
     },
 
@@ -201,11 +218,23 @@ define(function(require){
           that        = this,
           format      = d3.format('.3s'),
           maxAmount   = d3.max(data, function (d) { return +d[index]; }),
+
+          //// cuenta los que tienen $
+          data_count  = _.countBy(data, function(num) { return num[index] > 0}),
+          //// imprime total de contratos, proveedores, licitaciones, etc.
+          totprov	  = data_count.true,
+          //// imprime cantidad total
+          totAmount   = d3.sum(data, function (d) { return +d[index]; }),
+
           center      = { x: SVG.width / 2, y: SVG.height / 2 },
           damper      = 0.102,
          
           bubbles     = null,
           nodes       = [];
+         
+	  /// actualiza cantidades en los títulos 
+	  $('#type_total').html(totprov);
+	  $('#total_amount').html((totAmount/1000000).toFixed(2));
         
       radiusScale.domain([0, maxAmount]);
       
