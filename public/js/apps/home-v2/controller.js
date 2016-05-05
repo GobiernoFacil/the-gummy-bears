@@ -13,14 +13,10 @@ define(function(require){
   //
   var Backbone  = require('backbone'),
       d3        = require("d3"),
-     
-      Treemap   = require("views/treemap_view"), 
-      Bubbles   = require("views/pack_view"), 
       Force     = require("views/force_view"), 
     
       TooltipA  = require("text!templates/tooltip_a.html"),
       TooltipB  = require("text!templates/tooltip_b.html"),
-      Employees = DATA.employees,
      
 
   //
@@ -62,29 +58,7 @@ define(function(require){
     //
     initialize : function(){
 
-      console.log(DATA);
-      // TREEMAP
-      this.treemap = new Treemap({
-        controller : this,
-        data       : DATA,
-        el         : "#treemap",
-        _url       : BASE_PATH + "/contrato/",
-        _selector  : "budget"
-      });
-
-      // BUBBLES
-      this.bubbles = new Bubbles({
-        controller : this,
-        data       : DATA.map(function(d){
-                       return {
-                         "name"  : d.title,
-                         "total" : d.budget 
-                       };
-                     }),
-        el         : "#bubbles",
-        _url       : BASE_PATH + "/contrato/",
-        _selector  : "budget"
-      });
+      console.log(DATA, "xxx");
 
       // FORCE
       this.force = new Force({
@@ -99,8 +73,16 @@ define(function(require){
                          "tender"    :d.tender
                        };
                      }),
+        datab       : PROVIDERS.map(function(d){
+                       return {
+                         "name"      : d.name,
+                         "id"        : d.rfc,
+                         "contracts" : d.budget
+                       };
+                     }),
         el         : "#force",
         _url       : BASE_PATH + "/contrato/",
+        _url_b     : BASE_PATH + "/proveedor/",
         _selector  : "budget"
       });
     },

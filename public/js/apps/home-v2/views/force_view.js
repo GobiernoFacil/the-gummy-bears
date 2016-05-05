@@ -54,10 +54,13 @@ define(function(require){
     //
     //
     initialize : function(settings){
-      this.collection = new Backbone.Collection(settings.data);
-      this.data       = settings.data;
-      this.controller = settings.controller;
-      this._url = settings._url;
+      this.collection  = new Backbone.Collection(settings.data);
+      this.collectionb = new Backbone.Collection(settings.datab);
+      this.data        = settings.data;
+      this.datab       = settings.datab;
+      this.controller  = settings.controller;
+      this._url        = settings._url;
+      this._url_b      = settings._url_b;
 
       this.render();
     },
@@ -85,7 +88,7 @@ define(function(require){
       var myNodes = rawData.map(function (d) {
         if(skip_xy){
           return {
-          id     : d.ocdsid,
+          id     : d.ocdsid || d.rfc,
           radius : scale(+d[index]),
           value  : d[index],
           name   : d.name

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Contract;
 use App\Models\ContractData;
 use App\Models\SingleContract;
+use App\Models\Provider;
 
 class Contracts extends Controller {
 
@@ -38,10 +39,11 @@ class Contracts extends Controller {
 	// Contracts list
 	//	
 	public function index(){
-		$contracts_amount	 = SingleContract::sum('amount');
-		$contracts_number	 = SingleContract::all()->count();
+		$contracts_amount	   = SingleContract::sum('amount');
+		$contracts_number	   = SingleContract::all()->count();
 		$contracts 			     = Contract::orderBy("published_date",'desc')->get();
 		$json                = ContractData::with("release.tender")->get();
+    $_providers          = Provider::select("id", "rfc", "name","budget")->where("budget", ">", 0)->get();
 		$data                = [];
 		$data['title']       = 'Lista de Contrataciones Abiertas de la CDMX';
 		$data['description'] = 'Lista de contratos abiertos de la Ciudad de México';
@@ -50,6 +52,7 @@ class Contracts extends Controller {
 		
 		$data['contracts']  = $contracts;
 		$data['json']       = $json;
+    $data['_providers'] = $_providers;
 		
 		$data['contracts_amount']  = $contracts_amount;
 		$data['contracts_number']  = $contracts_number;
