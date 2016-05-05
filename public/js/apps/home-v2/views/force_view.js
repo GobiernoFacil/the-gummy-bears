@@ -62,6 +62,7 @@ define(function(require){
       this._url        = settings._url;
       this._url_b      = settings._url_b;
 
+      this.default_pointer = "contracts";
       this.render();
     },
 
@@ -184,13 +185,22 @@ define(function(require){
       this.update_render(index);
     },
 
-    update_render : function(index){
-      var radiusScale = d3.scale.pow()
+    render_contracts : function(){
+      this.update_render(this.default_pointer);
+    },
+
+    render_providers : function(){
+      this.update_render(this.default_pointer, "providers");
+    },
+
+    update_render : function(index, opt){
+      var data        = opt ? this.datab : this.data,
+          radiusScale = d3.scale.pow()
                           .exponent(0.5)
                           .range([0, 125]),
           that        = this,
           format      = d3.format('.3s'),
-          maxAmount   = d3.max(this.data, function (d) { return +d[index]; }),
+          maxAmount   = d3.max(data, function (d) { return +d[index]; }),
           center      = { x: SVG.width / 2, y: SVG.height / 2 },
           damper      = 0.102,
          
@@ -199,16 +209,12 @@ define(function(require){
         
       radiusScale.domain([0, maxAmount]);
       
-      nodes = this.createNodes(this.data, radiusScale, index, 1);
+      nodes = this.createNodes(data, radiusScale, index, 1);
       this.force.nodes(nodes);
 
       bubbles = this.svg.selectAll('.bubble')
-      .data(nodes)
-      .transition()
-      .duration(2000)
-      .attr('r', function (d) { return d.radius; });
+      .data(nodes);
 
-      /*
       bubbles.enter().append('circle')
       .classed('bubble', true)
       .attr('r', 0)
@@ -225,24 +231,20 @@ define(function(require){
       })
       .on("click", function(d){
         console.log(d);
-        //window.open(that._url + d.id,"_self");
+        window.open(that._url + d.id,"_self");
       });
 
+      bubbles.exit().remove();
 
       bubbles.transition()
       .duration(2000)
       .attr('r', function (d) { return d.radius; });
-      */
 
-      /*
       this.force.on('tick', function (e) {
-        console.log(bubbles, e);
-        //bubbles.each(that.moveToCenter(e.alpha, center, damper))
-          bubbles
-            .attr('cx', function (d) { return d.x; })
-            .attr('cy', function (d) { return d.y; });
+        bubbles.each(that.moveToCenter(e.alpha, center, damper))
+          .attr('cx', function (d) { return d.x; })
+          .attr('cy', function (d) { return d.y; });
       });
-      */
 
       this.force.start();
       return this;

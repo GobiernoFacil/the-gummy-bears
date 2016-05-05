@@ -37,7 +37,9 @@ define(function(require){
     // [ DEFINE THE EVENTS ]
     //
     events :{
-      "change #contracts-selector" : "update_list"
+      "change #contracts-selector" : "update_list",
+      "click #dependencia-a"       : "set_contracts",
+      "click #dependencia-b"       : "set_providers"
     },
 
     //
@@ -57,9 +59,6 @@ define(function(require){
     //
     //
     initialize : function(){
-
-      console.log(DATA, "xxx");
-
       // FORCE
       this.force = new Force({
         controller : this,
@@ -85,6 +84,24 @@ define(function(require){
         _url_b     : BASE_PATH + "/proveedor/",
         _selector  : "budget"
       });
+    },
+
+    set_contracts : function(e){
+      e.preventDefault();
+      if(!$("#dependencia-a").hasClass("live")) $("#dependencia-a").addClass("live");
+      $("#dependencia-b").removeClass("live");
+      //$("#bubble-fun").value("contracts");
+      document.getElementById("bubble-fun").value = "contracts";
+      document.getElementById("bubble-fun").disabled = false;
+      this.force.render_contracts();
+    },
+
+    set_providers : function(e){
+      e.preventDefault();
+      if(!$("#dependencia-b").hasClass("live")) $("#dependencia-b").addClass("live");
+      $("#dependencia-a").removeClass("live");
+      document.getElementById("bubble-fun").disabled = true;
+      this.force.render_providers();
     },
   
     //
