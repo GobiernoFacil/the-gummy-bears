@@ -151,10 +151,14 @@ define(function(require){
       .attr('stroke', function (d) { return "#eb008b" })
       .attr('stroke-width', 2)
       .on("mouseover", function(d){
+	    d3.select(this).style("fill", "#eb008b")
+	    			   .style("stroke", "#B8006D");
         that.controller.create_tooltip_b({name:d.name, total:format(d.value)});
         force.start();
       })
       .on("mouseout", function(d){
+	    d3.select(this).style("fill", "#f9bbe4")
+	    				.style("stroke", "#eb008b");
         that.controller.remove_tooltip();
         force.start();
       })
@@ -251,10 +255,14 @@ define(function(require){
       .attr('stroke', function (d) { return "#eb008b" })
       .attr('stroke-width', 2)
       .on("mouseover", function(d){
+	    d3.select(this).style("fill", "#eb008b")
+	    			   .style("stroke", "#B8006D");
         that.controller.create_tooltip_b({name:d.name, total:format(d.value)});
         force.start();
       })
       .on("mouseout", function(d){
+	    d3.select(this).style("fill", "#f9bbe4")
+	    				.style("stroke", "#eb008b");
         that.controller.remove_tooltip();
         force.start();
       })
