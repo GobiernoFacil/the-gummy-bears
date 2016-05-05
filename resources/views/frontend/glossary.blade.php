@@ -16,119 +16,40 @@
 					<div class="row">
 						<div class="col-sm-10 col-sm-offset-1">
 						<!--proceso-->
-							<h2>¿Qué es un proceso de licitación?</h2>
-							<p>Proceso de licitación pública consiste en un  proceso administrativo mediante el cual dependencias,  órganos desconcentrados, delegaciones y entidades, bajo su responsabilidad, podrán contratar adquisiciones, arrendamientos y prestación de servicios mediante los procesos de:</p>
-							<ul>
-								<li>Licitación pública.</li>
-								<li>Invitación restringida (cuando menos tres proveedores).</li>
-								<li>Adjudicación directa. 								   </li>
-							</ul>
-							
-							<div class="divider w"></div>
-							
-							<h2>¿Qué es OCP? </h2>
-							<p>La Asociación de Contrataciones Abiertas (OCP) es un esfuerzo de colaboración fundada en el año 2012 destinado a incrementar la divulgación y la participación en todas las etapas de la contratación pública.</p>
-
-							<p>La OCP se centra en asegurar que los gobiernos sean tan eficaces y eficientes como pueden ser, que el sector privado pueda crecer y prosperar, y que los ciudadanos reciban los bienes y servicios que necesitan y merecen.</p>
+							<h2>Archivos .json</h2>
+							<p>Formato para el intercambio de datos. Es una alternativa al formato XML, una de sus ventajas es que puede ser leído por cualquier lenguaje de programación. Si descargas estos archivos podrás ver a detalle en qué fase va una contratación, así como sus documentos correspondientes.</p>
+														
+							<div class="divider w"></div>							
+							<h2>Datos abiertos gubernamentales</h2>
+							<p>Son los datos que se incluyen en el contrato, siempre y cuando no estén protegidos por la Ley de Protección de Datos Personales.</p>
 
 							<div class="divider w"></div>
-							<h2>¿Qué es OCDS?</h2>
-							<p>El proyecto (OCDS) es un estándar internacional que  formaliza la publicación de manera accesible y estructura la cantidad de datos y documentos relacionados a un proceso de contratación en cada una de sus fases de planeación, licitación, la adjudicación,  la contratación y la implementación (seguimiento al contrato).</p>
-							<ul>
-							<li><strong>Fase de Planeación</strong>: Describe los antecedentes de un proceso de contratación de un bien o servicio, fase donde se define el presupuesto para el proceso de contratación.
-								<ul>
-									<li>Elementos generales de esta sección:
-										<ul>
-											<li>Monto del presupuesto.											</li>
-											<li>Tipo de moneda.													</li>
-											<li>Autorización presupuestal.										</li>
-											<li>Documentos correspondientes a la fase son: anexo técnico, bases.</li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-							<li><strong>Fase de Licitación</strong>: Fase donde se indican  los bienes o servicios que se desean adquirir por la dependencia así como los  monto de dichos  bienes o servicios, periodos del proceso de contratación y las empresas participantes al proceso de contratación.
-							<ul>
-								<li>Elementos generales de esta sección:
-								<ul>
-									<li>Método del proceso de contratación.</li>
-									<li>Criterios de adjudicación.</li>
-									<li>Mecanismo de presentación de la propuesta.</li>
-									<li>Periodo de entrega  de propuestas.</li>
-									<li> Periodo donde se decide al ganador.</li>
-									<li>Datos de empresas participantes.</li>
-									<li>Documentos correspondientes a la fase son: aclaración de bases, acta de apertura de sobres.</li>
-								</ul>
-								</li>
-							</ul>
-							</li>
-							<li><strong>Adjudicación</strong>: Fase en la que se designa a la empresa participante ganadora  del proceso de contratación y los bienes o servicios adjudicados.
-								<ul>
-									<li>Elementos generales de esta sección:
-									<ul>
-										<li>Monto adjudicado.</li>
-										<li>Datos adicionales del ganador.</li>
-										<li>Documentos correspondientes a la fase son: emisión del fallo.</li>
-									</ul>
-									</li>
-								</ul>
-							</li>	
-							<li><strong>Contrato</strong>: Fase en la que se celebra la firma del contrato entre la empresa participante ganadora y el gobierno de la ciudad de México.
-							<ul>
-								<li>Elementos generales de esta sección:
-									<ul>
-									<li>Fecha de la firma del contrato.							   </li>
-									<li>Monto del contrato.										   </li>
-									<li>Periodo de vigencia del contrato. 						   </li>
-									<li>Documentos correspondientes a la fase son: contrato firmado</li>
-									</ul>
-								</li>
-							</ul>
-							</li>
-							<li>
-								<strong>Implementación</strong>: Fase que da seguimiento a todo el proceso posterior a  la firma de contrato.
-							</li>
-						</ul>
+							<h2>Gobierno Abierto</h2>
+							<p>Es aquel que entabla una constante conversación con los ciudadanos con el fin de escuchar sus peticiones; tomar decisiones basadas en sus necesidades y preferencias; facilitar la colaboración con los ciudadanos en los servicios que presta, y comunicar  sus decisiones de forma abierta y transparente.  Tiene 3 componentes básicos:</p>
+							<ol>
+								<li><strong>Transparencia:</strong> promueve la rendición de cuentas al proporcionar al público información sobre lo que hace el Gobierno</li>
+								<li><strong>Participación:</strong> permite a los ciudadanos contribuir con ideas y conocimientos para la creación de políticas públicas</li>
+								<li><strong>Colaboración:</strong> mejora la eficacia del Gobierno mediante el fomento de asociaciones y la cooperación con instituciones privadas</li>
+							</ol>
 						
 						<div class="divider"></div>
-Archivos .json</h2>
-ormato para el intercambios de datos, que describen los datos con una sintaxis dedicada que se usa para identificar y gestionar los datos. JSON nació como una alternativa a XML, una de las mayores ventajas es que puede ser leído por cualquier lenguaje de programación.
-s abiertos gubernamentales
-ralmente se entienden como tales los datos recopilados durante la ejecución operativa normal, siempre que no identifique a individuos particulares ni entre en conflicto con cuestiones sensibles en materia mercantil. </p>
-						<div class="divider"></div>
-						
-						<a name="gobierno-abierto"></a>
-						<h2>Gobierno Abierto</h2>
-						<p>“Aquel que entabla una constante conversación con los ciudadanos con el fin de oír lo que ellos dicen y solicitan, que toma decisiones basadas en sus necesidades y preferencias, que facilita la colaboración de los ciudadanos y funcionarios en el desarrollo de los servicios que presta y que comunica todo lo que decide y hace de forma abierta y transparente.” <sup><a href="#gobierno-abierto-ref">1</a></sup></p>
-
-						<a name="componentes"></a>
-						<div class="divider"></div>
-						<h2>3 componentes del Gobierno Abierto <sup><a href="#componentes-ref">2</a></sup></h2>
+						<h2>Contratación</h2>
+						<p>Proceso administrativo por el que el Gobierno adquiere o renta bienes y servicios. Una contratación puede suceder por alguno de estas tres maneras:</p>
 						<ul>
-							<li><h3>Transparencia</h3>
-							Promueve la rendición de cuentas al proporcionar al público información acerca de lo que el Gobierno está haciendo (White House Memo)</li>
-							<li>
-							<h3>Participación</h3>
-							Permite a los miembros del público a contribuir con ideas y conocimientos para que su gobierno puede hacer políticas con el beneficio de la información que está ampliamente dispersa en la sociedad (White House Memo)
-							</li>
-							<li><h3>Colaboración</h3>
-							<p>Mejora la eficacia de Gobierno mediante el fomento de asociaciones y la cooperación dentro del Gobierno, a través de los niveles de gobierno, así como entre las instituciones gubernamentales y privadas (White House Memo)</p>
-							</li>
+							<li><strong>Licitación pública</strong>: Se da cuando se publica una convocatoria para una contratación de algún servicio, adquisición o arrendamiento, para que libremente los proveedores presenten propuestas a fin de asegurar al Gobierno las mejores condiciones en cuanto a precio, calidad, financiamiento, oportunidad, crecimiento económico, generación de empleo, eficiencia energética, uso responsable del agua, optimización y uso sustentable de los recursos, así como la protección al medio ambiente y demás circunstancias. </li>
+							<li><strong>Invitación a cuando menos tres proveedores</strong>: Consiste en que las adquisiciones, arrendamientos y servicios, se adjudicarán después de que la difusión de la invitación se haya hecho en la Gaceta Oficial del Distrito Federal y en la página de Internet de la dependencia o entidad. </li>
+							<li><strong>Adjudicación directa</strong>: Contratación que se da en caso de que no se presenten el mínimo de proposiciones señaladas en un procedimiento de invitación a cuando menos tres personas y se haya declarado desierta el procedimiento de licitación, el titular del área responsable de la contratación en la dependencia o entidad podrá adjudicar directamente el contrato siempre que no se modifiquen los requisitos establecidos en dichas invitaciones o en las bases de licitación.</li>
 						</ul>
-						
+
+						<div class="divider"></div>
+						<h2>Open Contracting Partnership (OCP)</h2>
+						<p>En español, la Asociación de Contrataciones Abiertas fundada en 2012 con el objetivo de incrementar la divulgación y la participación en todas las etapas de la contratación pública de los gobiernos. Su labor se centra en asegurar que los gobiernos sean eficaces y eficientes, que el sector privado crezca y prospere, y que los ciudadanos reciban los bienes y servicios que necesitan y merecen.</p>
 						
 						<div class="divider"></div>
-						<h2>Referencias</h2>
-						<div class="ref">
-						<p>	<a name="gobierno-abierto-ref"></a>
-						<sup><a href="#gobierno-abierto">1</a></sup> Calderón, César y Lorenzo, Sebastián (coords.). (2010). Open Government - Gobierno Abierto. Alcalá: Algón Editores.</p>
-						<p>	<a name="componentes-ref"></a>
-						<sup><a href="#componentes">2</a></sup> Osrag, Peter R. (2009). Memorandum for the heads of executive departments and agencies. (Memorándum inédito). Oficina de Gestión y Presupuesto. Washington. D.C., E.E.U.U.
+						<h2>Open Contracting Data Standard (OCDS)</h2>
+						<p>En español, Estándar de Datos de Contrataciones Abiertas. Es un estándar internacional que formaliza la publicación de datos de contrataciones de manera accesible y estructurada en las cinco fases que incluye el proceso: (1) planeación, (2) licitación, (3) adjudicación,  (4) contratación  e (5) implementación o seguimiento al contrato. Actualmente está implementado en la Secretaría de Finanzas y se muestra información  a partir de diciembre de 2015. </p>
 
-						</div>
-					</div>
-						
-						
+					</div>						
 				</div>
 			</div>	
 			</div>

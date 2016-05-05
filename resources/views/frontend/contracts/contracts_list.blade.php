@@ -29,67 +29,59 @@
 	<p>Explora cómo compra tu Gobierno filtrando por etapa de proceso de compra, dependencias o proveedores.</p>
 	</div>
 </div>  
-<div class="breadcrumb">
-	<div class="container">
-		<nav class="row">
-			<div class="col-sm-5">
-				<p>Filtrar por etapa:
-					<select>
-						<option>Licitactiones</option>
-					</select>
-			<!--Contratos-->
-			</div>
-			<div class="col-sm-7 right">
-				<p>Ver por: 
-				<!--<a href="#" class="advanced_search">Advanced Search</a>-->
-				<a href="{{ url('contratos') }}" id="dependencia-a" class="ladependencia live">Dependencias</a>
-				<a href="{{ url('proveedores') }}" id="dependencia-a" class="ladependencia empresa"> Proveedores</a>
-				</p>
-			</div>
-		</nav>
-	</div>
-</div>
 <!-- viz-->
-<div class="viz_home">
+<div id="force" class="viz_home">
+	<!-- filtros-->
+	<div class="breadcrumb">
+		<div class="container">
+			<nav class="row">
+				<div class="col-sm-5">
+					<p>Filtrar por etapa:
+						<select id="bubble-fun">
+							<option value="tender">Licitaciones</option>
+							<option value="awards">Adjudicaciones</option>
+							<option value="contracts" selected>Contratos</option>
+						</select>
+					</p>
+				<!--Contratos-->
+				</div>
+				<div class="col-sm-7 right">
+					<p>Ver por: 
+					<!--<a href="#" class="advanced_search">Advanced Search</a>-->
+					<a href="#" id="dependencia-a" class="ladependencia live">Dependencias</a>
+					<a href="#" id="dependencia-b" class="ladependencia empresa"> Proveedores</a>
+					</p>
+				</div>
+			</nav>
+		</div>
+	</div>
 	<header>
 		<div class="col-sm-4">
 			<p><span>DEPENDENCIAS</span> <strong>01</strong></p>
 		</div>
 		<div class="col-sm-4 center">
-			<p><span>LICITACIONES</span> <strong>{{ $total_contracts }}</strong></p>
+			<p><span id="type">CONTRATOS</span> <strong id="type_total">{{ $contracts_number }}</strong></p>
 		</div>
 		<div class="col-sm-4">
-			<p><span>TOTAL (MXN)</span>$<strong>{{ (int)($total_money/1000000) }}</strong> millones </p>
+			<p><span>TOTAL (MXN)</span>$<strong id="total_amount">{{ (int)($contracts_amount/1000000) }}</strong> millones </p>
 		</div>
 	</header>
 	<p id="publisher-name"></p>
 	<p id="contratos-total-num"></p>
 	<p id="contratos-total-money"></p>
-
-	
-	<div id="force">
-		<form>
-			<p>
-				<select id="bubble-fun">
-					<option value="planning">planning</option>
-					<option value="tender">tender</option>
-					<option value="awards">awards</option>
-					<option value="contracts">contracts</option>
-				</select>
-			</p>
-		</form>
-	</div>
+</div>
+<div class="viz_instructions">
 	<div class="container">
-	<div class="row">
-		<div class="col-sm-6 col-sm-offset-6">
-			<p class="wit"><strong>¿Qué estoy viendo?</strong> Esta gráfica te permite comparar los presupuestos de los diferentes contratos. Entre más área tenga el círculo más elevado es el presupuesto del contrato</p>
+		<div class="row">
+			<div class="col-sm-6 col-sm-offset-6">
+				<p class="wit"><strong>¿Qué estoy viendo?</strong> Esta gráfica te permite comparar los presupuestos de los diferentes contratos. Entre más área tenga el círculo más elevado es el presupuesto del contrato</p>
+			</div>
 		</div>
-	</div>
 	</div>
 </div>
 
 <!-- container-->
-<div class="container">
+<div id="all-list-contracts" class="container">
 	<div class="row">
 		<div class="col-sm-9">
 			<h2 id="title_select_type" class="title_section select">Lista de <strong>Contrataciones Abiertas</strong></h2>
@@ -224,6 +216,7 @@
 <script>
 	var DATA = <?php echo json_encode($contract_data); ?>;
 	var JSON = <?php echo json_encode($json); ?>;
+	var PROVIDERS = <?php echo json_encode($_providers); ?>;
 </script>
 
 @endsection

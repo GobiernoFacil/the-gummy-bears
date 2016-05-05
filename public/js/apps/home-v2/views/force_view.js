@@ -54,11 +54,15 @@ define(function(require){
     //
     //
     initialize : function(settings){
-      this.collection = new Backbone.Collection(settings.data);
-      this.data       = settings.data;
-      this.controller = settings.controller;
-      this._url = settings._url;
+      this.collection  = new Backbone.Collection(settings.data);
+      this.collectionb = new Backbone.Collection(settings.datab);
+      this.data        = settings.data;
+      this.datab       = settings.datab;
+      this.controller  = settings.controller;
+      this._url        = settings._url;
+      this._url_b      = settings._url_b;
 
+      this.default_pointer = "contracts";
       this.render();
     },
 
@@ -85,7 +89,7 @@ define(function(require){
       var myNodes = rawData.map(function (d) {
         if(skip_xy){
           return {
-          id     : d.ocdsid,
+          id     : d.ocdsid || d.rfc,
           radius : scale(+d[index]),
           value  : d[index],
           name   : d.name
@@ -113,9 +117,9 @@ define(function(require){
     render : function(e){
       var radiusScale = d3.scale.pow()
                           .exponent(0.5)
-                          .range([2, 125]),
+                          .range([0, 125]),
           that        = this,
-          index       = "planning",
+          index       = "contracts",
           format      = d3.format('.3s'),
           maxAmount   = d3.max(this.data, function (d) { return +d[index]; }),
           center      = { x: SVG.width / 2, y: SVG.height / 2 },
@@ -177,35 +181,69 @@ define(function(require){
     },
 
     update_bubbles : function(e){
-      var index  = e.currentTarget.value;
+      var index  = e.currentTarget.value,
+       	  typeN;
+      
+      switch(index) {
+	   	case 'tender':
+	   		var typeN = 'LICITACIONES';
+	   		break;
+	   	case 'awards':
+	   		var typeN = 'ADJUDICACIONES';
+	   		break;
+	   	case 'contracts':
+	   		var typeN = 'CONTRATACIONES';
+	   		break;
+      };
+      
+      $('#type').html(typeN);
       this.update_render(index);
     },
 
-    update_render : function(index){
-      var radiusScale = d3.scale.pow()
+    render_contracts : function(){
+      $('#type').html('CONTRATOS');
+      this.update_render(this.default_pointer);
+    },
+
+    render_providers : function(){
+      $('#type').html('PROVEEDORES');
+      this.update_render(this.default_pointer, "providers");
+    },
+
+    update_render : function(index, opt){
+      var data        = opt ? this.datab : this.data,
+          radiusScale = d3.scale.pow()
                           .exponent(0.5)
-                          .range([2, 125]),
+                          .range([0, 125]),
           that        = this,
           format      = d3.format('.3s'),
-          maxAmount   = d3.max(this.data, function (d) { return +d[index]; }),
+          maxAmount   = d3.max(data, function (d) { return +d[index]; }),
+
+          //// cuenta los que tienen $
+          data_count  = _.countBy(data, function(num) { return num[index] > 0}),
+          //// imprime total de contratos, proveedores, licitaciones, etc.
+          totprov	  = data_count.true,
+          //// imprime cantidad total
+          totAmount   = d3.sum(data, function (d) { return +d[index]; }),
+
           center      = { x: SVG.width / 2, y: SVG.height / 2 },
           damper      = 0.102,
          
           bubbles     = null,
           nodes       = [];
+         
+	  /// actualiza cantidades en los títulos 
+	  $('#type_total').html(totprov);
+	  $('#total_amount').html((totAmount/1000000).toFixed(2));
         
       radiusScale.domain([0, maxAmount]);
       
-      nodes = this.createNodes(this.data, radiusScale, index, 1);
+      nodes = this.createNodes(data, radiusScale, index, 1);
       this.force.nodes(nodes);
 
       bubbles = this.svg.selectAll('.bubble')
-      .data(nodes)
-      .transition()
-      .duration(2000)
-      .attr('r', function (d) { return d.radius; });
+      .data(nodes);
 
-      /*
       bubbles.enter().append('circle')
       .classed('bubble', true)
       .attr('r', 0)
@@ -222,24 +260,20 @@ define(function(require){
       })
       .on("click", function(d){
         console.log(d);
-        //window.open(that._url + d.id,"_self");
+        window.open(that._url + d.id,"_self");
       });
 
+      bubbles.exit().remove();
 
       bubbles.transition()
       .duration(2000)
       .attr('r', function (d) { return d.radius; });
-      */
 
-      /*
       this.force.on('tick', function (e) {
-        console.log(bubbles, e);
-        //bubbles.each(that.moveToCenter(e.alpha, center, damper))
-          bubbles
-            .attr('cx', function (d) { return d.x; })
-            .attr('cy', function (d) { return d.y; });
+        bubbles.each(that.moveToCenter(e.alpha, center, damper))
+          .attr('cx', function (d) { return d.x; })
+          .attr('cy', function (d) { return d.y; });
       });
-      */
 
       this.force.start();
       return this;
