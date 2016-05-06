@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\Contract;
+use App\Models\ContractData;
 use App\Models\Planning;
 use App\Models\Award;
 use App\Models\SingleContract;
@@ -36,9 +37,10 @@ class Offices extends Controller {
 		$contracts 			 = Contract::where('cvedependencia',$buyer->local_id)->get();
 		$awards 			 = Award::all();
 		$singlecont_count 	 = SingleContract::all()->count();
-		$topcontracts 	 	 = SingleContract::orderby('amount', 'desc')->take(5)->get();;
 		$providers			 = Provider::orderby('budget', 'desc')->take(5)->get();
 		$providers_count 	 = Provider::all()->count();
+		
+		$contract_data		= ContractData::orderby('contracts', 'desc')->take(5)->get();;
 		
 		//total
 		$total_planning		= Planning::sum('amount');
@@ -61,7 +63,6 @@ class Offices extends Controller {
 		$data['contracts']   		 = $contracts;
 		$data['awards']   	 		 = $awards;
 		$data['singlecont_count']    = $singlecont_count;
-		$data['topcontracts']   	 = $topcontracts;
 		$data['providers']   	 	 = $providers;
 		$data['providers_count']   	 = $providers_count;
 		$data['total_planning']   	 = $total_planning;
@@ -70,6 +71,7 @@ class Offices extends Controller {
 		$data['per_planning']   	 = $per_planning;
 		$data['per_award']   	 	 = $per_award;
 		$data['per_contract']   	 = $per_contract;	
+		$data['contract_data']   	 = $contract_data;	
 		
 		return view("frontend.office")->with($data);
 	}

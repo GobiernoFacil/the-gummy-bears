@@ -16,18 +16,12 @@
 				  C.P.<span id="address-postalCode">06720</span>
 				</p>
 				
+				
 
 				<div class="divider"></div>
-				<?php $amount_contract		= 0;?>
 				@foreach($contracts as $contract)
 					@if($contract->releases->count())
-					<?php $r = $contract->releases->last(); 
-					 	  $single_contracts 	= $r->singlecontracts;
-					 	  $total_contracts		= $single_contracts->count();
-					 	  ?>
-					 	  @foreach($single_contracts as $s)
-					 	  	<?php $amount_contract+= $s->amount;?>
-					 	  @endforeach
+					<?php $r = $contract->releases->last();?>
 					@endif
 				@endforeach
 				
@@ -162,26 +156,17 @@
 					</div>
 				</div>
 				<ul id="licitaciones-costosas">
-					@foreach ($contracts as $contract)
-					<?php $contract_ocdsid = $contract->ocdsid;
-						  $r = $contract->releases->last();
-					?>
-						@if($contract->releases->count())
-						<?php $ss = $r->singlecontracts;?>
-							@foreach($topcontracts as $tp)
-							<?php $reg = $ss->where('amount', $tp->amount)->first();?>
-							@if	( $reg )
-							<li class="row">
+					@foreach ($contract_data as $c)
+						<li class="row">
 								<span class="col-sm-8">
-									<a href="{{ url('contrato/'. $contract_ocdsid) }}">{{$tp->description}}</a>
+									<a href="{{ url('contrato/'. $c->ocdsid) }}">{{$c->release->singlecontracts[0]->description}}</a>
 								</span>
 								<span class="col-sm-4 right">
-								${{ number_format($tp->amount,2,'.',',') }}
+								${{ number_format($c->contracts,2,'.',',') }}
 								</span>
 							</li>
-							@endif
-							@endforeach
-						@endif
+						
+					
 					@endforeach
 				</ul>
 				<div class="divider"></div>
