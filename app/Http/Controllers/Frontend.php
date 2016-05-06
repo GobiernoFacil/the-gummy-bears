@@ -32,7 +32,11 @@ class Frontend extends Controller {
 	//
 	public function indexv2(){
 		$contracts_amount	 = ContractData::sum("contracts");
-		$contracts_number	 = Provider::sum('award_num');
+
+		$contracts_number	 = SingleContract::whereHas("release", function($q){
+			$q->where("is_latest", 1);
+		})->count(); //Provider::sum('award_num');
+
 		$data                = [];
 		$data['title']       = 'Contrataciones Abiertas de la CDMX';
 		$data['description'] = 'Contrataciones Abiertas de la Ciudad de México';
