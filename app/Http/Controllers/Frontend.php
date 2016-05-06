@@ -5,6 +5,8 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Models\SingleContract;
+use App\Models\Provider;
+use App\Models\ContractData;
 
 class Frontend extends Controller {
 
@@ -29,8 +31,8 @@ class Frontend extends Controller {
 	//HOME
 	//
 	public function indexv2(){
-		$contracts_amount	 = SingleContract::sum('amount');
-		$contracts_number	 = SingleContract::all()->count();
+		$contracts_amount	 = ContractData::sum("contracts");
+		$contracts_number	 = Provider::sum('award_num');
 		$data                = [];
 		$data['title']       = 'Contrataciones Abiertas de la CDMX';
 		$data['description'] = 'Contrataciones Abiertas de la Ciudad de México';

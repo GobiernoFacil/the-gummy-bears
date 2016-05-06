@@ -94,7 +94,7 @@ class ApiCDMX extends Controller {
     $result = curl_exec($ch);
     $json   = json_decode($result);
 
-    return response()->json($json);
+    return response()->json($json)->header('Access-Control-Allow-Origin', '*');
   }
 
   //
@@ -118,7 +118,7 @@ class ApiCDMX extends Controller {
       "contracts" => $contracts,
       "page"      => $page,
       "total"     => $total
-    ]);
+    ])->header('Access-Control-Allow-Origin', '*');
     //
   }
 
@@ -130,19 +130,19 @@ class ApiCDMX extends Controller {
     if(!ctype_alnum($rfc)) abort(404);
 
     $provider = Provider::where("rfc", $rfc)->first();
-    return response()->json($provider);
+    return response()->json($provider)->header('Access-Control-Allow-Origin', '*');
   }
 
   public function showContractData($ocdsid){
     $contract = ContractData::with([
       "release.tender", "release.planning","release.singlecontracts", "release.awards"
     ])->where("ocdsid", $ocdsid)->first();
-    return response()->json($contract);
+    return response()->json($contract)->header('Access-Control-Allow-Origin', '*');
   }
 
   public function showContractHistory($ocdsid){
     $contracts = ContractHistory::where("ocdsid", $ocdsid)->get();
-    return response()->json($contracts);
+    return response()->json($contracts)->header('Access-Control-Allow-Origin', '*');
   }
 
   //

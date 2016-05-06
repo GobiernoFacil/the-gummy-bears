@@ -280,6 +280,7 @@ class UpdateContracts extends Command {
     //
     //
     private function saveContracts($release, $data){
+      $this->info("contratos: " . count($data->contracts));
       if(count($data->contracts)){
         foreach($data->contracts as $s){
           $contract = SingleContract::firstOrCreate([
@@ -460,7 +461,7 @@ class UpdateContracts extends Command {
     //
     private function updateContract($contract, $data){
       // add extra data to contracts
-      $contract->uri = $data->uri;
+      //$contract->uri = $data->uri;
       $contract->published_date = date("Y-m-d", strtotime($data->publishedDate));
       $contract->update();
 
