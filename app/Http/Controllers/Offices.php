@@ -46,8 +46,10 @@ class Offices extends Controller {
 		$total_contract		= SingleContract::sum('amount');
 		
 		///percentage
-		$per_award			= ($total_award *100)/$total_planning;		
-		$per_contract		= ($total_contract *100)/$total_planning;
+		$max				= max(array($total_planning, $total_award, $total_contract));
+		$per_planning		= ($total_planning *100)/$max;	
+		$per_award			= ($total_award *100)/$max;		
+		$per_contract		= ($total_contract *100)/$max;
 		
 		$data                = [];
 		$data['title']       = $buyer->name . ' de la CDMX con Contrataciones Abiertas';
@@ -65,6 +67,7 @@ class Offices extends Controller {
 		$data['total_planning']   	 = $total_planning;
 		$data['total_award']   	 	 = $total_award;
 		$data['total_contract']   	 = $total_contract;
+		$data['per_planning']   	 = $per_planning;
 		$data['per_award']   	 	 = $per_award;
 		$data['per_contract']   	 = $per_contract;	
 		

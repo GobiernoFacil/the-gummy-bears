@@ -72,7 +72,7 @@
 						<h2><span>$</span>{{ number_format($total_planning,2,'.',',') }}</h2>
 					</div>
 					<div class="col-sm-9">
-						<span class="bar_office" style="width: 100%; "></span>
+						<span class="bar_office" style="width: {{$per_planning}}%; "></span>
 					</div>
 					
 				</div>
