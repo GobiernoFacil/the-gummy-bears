@@ -268,6 +268,23 @@ circle.root {
   fill: none;
   stroke: none; }
 
+.bar_office {
+  background: #eb008b;
+  height: 26px;
+  display: block; }
+  .bar_office.contratados {
+    background: #28c3f9; }
+  .bar_office.adjudicados {
+    background: #0a467c; }
+
+.visualiza {
+  text-align: right; }
+  .visualiza h2 {
+    font-size: 24px !important;
+    line-height: 26px !important; }
+  .visualiza p {
+    line-height: 26px; }
+
 .wrapper, .wrap {
   width: 90%;
   margin: 0 auto; }

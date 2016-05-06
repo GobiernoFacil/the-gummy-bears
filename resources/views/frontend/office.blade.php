@@ -30,28 +30,88 @@
 					 	  @endforeach
 					@endif
 				@endforeach
-
+				
+				<?php 
+					$total_procesos 	= $r->tender->count();
+					$etapa_adjudicacion = ($awards->count() - $singlecont_count);
+					$etapa_contratacion = $singlecont_count;
+					$etapa_licitacion 	= $total_procesos - $awards->count() ;
+				?>
 				
 				<div class="row">
 					<div class="col-sm-3">
-						<p>CONTRATACIONES TOTAL(MXN)</p>
-						<h2 id="contrataciones-total-money"><span>$</span>{{ number_format($amount_contract,2,'.',',') }}</h2>
+						<p>PROCESOS DE CONTRATACIÓN</p>
+						<h2 id="licitaciones-total">{{$total_procesos}}</h2>
 					</div>
 					<div class="col-sm-3">
-						<p>LICITACIONES</p>
-						<h2 id="licitaciones-total-num">{{$r->tender->count()}}</h2>
+						<p>EN ETAPA DE LICITACIÓN</p>
+						<h2 id="licitaciones-total-num">{{$etapa_licitacion}}</h2>
 					</div>
 					<div class="col-sm-3">
-						<p>ADJUDICACIONES</p>
-						<h2 id="adjudicaciones-total-num">{{ $awards->count() }}</h2>
+						<p>EN ETAPA DE  ADJUDICACIÓN</p>
+						<h2 id="adjudicaciones-total-num">{{ $etapa_adjudicacion }}</h2>
 					</div>
 					<div class="col-sm-3">
-						<p>PROMEDIO POR CONTRATACIÓN (MXN)</p>
-						<h2 id="gasto-promedio-money"><span>$</span> {{ number_format($amount_contract / $singlecont_count,2,'.',',') }}</h2>
+						<p>EN ETAPA DE CONTRATACIÓN</p>
+						<h2 id="contratos-total-num">{{$etapa_contratacion}}</h2>
+					</div>
+				</div>
+				
+				<!-- visualiza-->
+				<div class="divider"></div>
+				
+				<!--planning-->
+				<div class="row visualiza">
+					<div class="row">
+						<div class="col-sm-3">
+							<p>TOTAL PLANEADO (MXN)</p>
+						</div>
 					</div>
 					
-
+					<div class="col-sm-3">
+						<h2><span>$</span>{{ number_format($total_planning,2,'.',',') }}</h2>
+					</div>
+					<div class="col-sm-9">
+						<span class="bar_office" style="width: 100%; "></span>
+					</div>
+					
 				</div>
+				<!--award-->
+				<div class="row visualiza">
+					<div class="row">
+						<div class="col-sm-3">
+							<p>TOTAL ADJUDICADO (MXN)</p>
+						</div>
+					</div>
+					<div class="col-sm-3">	
+						<h2><span>$</span>{{ number_format($total_award,2,'.',',') }}</h2>
+					</div>
+
+					<div class="col-sm-9">
+						<span class="bar_office adjudicados" style="width: {{$per_award}}%; "></span>
+					</div>
+					
+				</div>
+				<!--contract-->
+				<div class="row visualiza">
+					<div class="row">
+						<div class="col-sm-3">
+						<p>TOTAL CONTRATADO (MXN)</p>
+						</div>
+					</div>
+					
+					<div class="col-sm-3">
+						<h2><span>$</span> {{ number_format($total_contract,2,'.',',') }}</h2>
+					</div>
+					<div class="col-sm-9">
+						<span class="bar_office contratados" style="width: {{$per_contract}}%; "></span>
+					</div>
+					
+				</div>
+				
+
+				
+				
 				<div class="divider"></div>
 				<div id="linemap">
 				 <!-- <h3>Total por contrato</h3>-->
@@ -66,7 +126,7 @@
 			<div class="box">
 				<div class="row">
 					<div class="col-sm-8">
-						<h3>Proveedores</h3>
+						<h3>Proveedores <span>(5 de {{$providers_count}})</span></h3>
 					</div>
 					<div class="col-sm-4">
 						<p class="right">TOTAL (MXN)</p>
@@ -86,13 +146,16 @@
 						@endif
 					@endforeach
 				</ul>
+				<div class="divider"></div>
+				<a href="{{ url('proveedores') }}">Ver lista completa de proveedores</a>
+
 			</div>
 		</div>
 		<div class="col-sm-6">
 			<div class="box">
 				<div class="row">
 					<div class="col-sm-8">
-						<h3>Contrataciones</h3>
+						<h3>Contrataciones <span>(5 de {{$singlecont_count}})</span></h3>
 					</div>
 					<div class="col-sm-4">
 						<p class="right">TOTAL (MXN)</p>
@@ -121,6 +184,8 @@
 						@endif
 					@endforeach
 				</ul>
+				<div class="divider"></div>
+				<a href="{{ url('proveedores') }}">Ver lista completa de contrataciones </a>
 			</div>
 		</div>
 		
