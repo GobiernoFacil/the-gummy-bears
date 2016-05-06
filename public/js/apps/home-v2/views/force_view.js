@@ -85,19 +85,23 @@ define(function(require){
     },
 
     createNodes : function(rawData, scale, index, skip_xy) {
-      console.log(rawData);
       var myNodes = rawData.map(function (d) {
         if(skip_xy){
           return {
           id     : d.ocdsid || d.rfc,
+          ocdsid : d.ocdsid,
+          rfc    : d.rfc,
           radius : scale(+d[index]),
           value  : d[index],
-          name   : d.name
+          name   : d.name,
+          type   : d.type
           };
         }
         else{
           return {
-          id     : d.ocdsid,
+          id     : d.ocdsid || d.rfc,
+          ocdsid : d.ocdsid,
+          rfc    : d.rfc,
           radius : scale(+d[index]),
           value  : d[index],
           name   : d.name,
@@ -159,8 +163,8 @@ define(function(require){
         force.start();
       })
       .on("click", function(d){
-        console.log(d);
-        window.open(that._url + d.id,"_self");
+        var url = d.type == "contract" ? that._url + d.id : that._url_b + d.rfc;
+        window.open(url,"_self");
       });
 
 
@@ -259,8 +263,8 @@ define(function(require){
         force.start();
       })
       .on("click", function(d){
-        console.log(d);
-        window.open(that._url + d.id,"_self");
+        var url = d.type == "contract" ? that._url + d.id : that._url_b + d.rfc;
+        window.open(url,"_self");
       });
 
       bubbles.exit().remove();

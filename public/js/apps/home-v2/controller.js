@@ -69,14 +69,17 @@ define(function(require){
                          "ocdsid"    : d.ocdsid,
                          "contracts" : d.contracts,
                          "awards"    :d.awards,
-                         "tender"    :d.tender
+                         "tender"    :d.tender,
+                         "type"      : "contract"
                        };
                      }),
         datab       : PROVIDERS.map(function(d){
                        return {
                          "name"      : d.name,
                          "id"        : d.rfc,
-                         "contracts" : d.budget
+                         "rfc"       : d.rfc,
+                         "contracts" : d.budget,
+                         "type"      : "provider"
                        };
                      }),
         el         : "#force",
