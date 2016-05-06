@@ -1631,6 +1631,11 @@ div.allthem svg {
   .codigo li {
     list-style: none;
     margin-bottom: 15px; }
+    .codigo li a {
+      color: #eb008b; }
+      .codigo li a:hover {
+        color: #dd5aa0;
+        text-decoration: underline; }
   .codigo code {
     margin-left: 15px;
     word-break: break-all; }

@@ -26,9 +26,9 @@
 					<!-- usar nav-->
 					<ul class="usa_datos">
 						<li><a href="#" id="btn-listar-contratos" class="current">Listar contratos</a></li>
-						<li><a href="#"	id="btn-dependencias">Catálogo de Dependencias</a></li>
-						<li><a href="#"	id="btn-proveedores">Catálogo de Proveedores</a></li>
-						<li><a href="#"	id="btn-web-service">Servicio Web Contrato</a></li>
+						<!--<li><a href="#"	id="btn-dependencias">Catálogo de Dependencias</a></li>-->
+						<li><a href="#"	id="btn-proveedores">Lista de Proveedores</a></li>
+						<li><a href="#"	id="btn-web-service">Busca un contrato</a></li>
 					</ul>
 					<a href="http://standard.open-contracting.org/latest/es/" class="btn default">Más información del Estándar de Contrataciones Abiertas</a>
 				</div>
@@ -37,40 +37,33 @@
 						<!--listar contratos-->
 						<div id="listar-contratos">
 							<h2>Listar contratos</h2>
-							<p>Genera archivo JSON con la lista de contratos para una dependencia.</p>
+							<p>Este método regresa la clave única para todos los contratos disponibles. La clave se puede usar para obtener el contrato completo</p>
 							<ul>
-								<li><strong>Url:</strong> ocpcdmx/listarcontratos</li>
-								<li><strong>Firma de entrada: </strong>
-								<code>{<br>"dependencia" : "901",<br>}<br>
-								</code>
-								</li>
+								<li><strong>Url:</strong> <a href="{{url('')}}/api/contratos/todos">{{url('')}}/api/contratos/todos</a></li>
+								<li><strong>Método:</strong> GET</li>
+								
 								<li><strong>Respuesta:</strong>
 									<code>
 									[
 										<div class="box">
 											{
 												<div class="box">
-													"ocdsID": "OCDS-87SD3T-CONVENIO-0002-2015", <br>
+													"id":1,<br>
+													"ocdsid": "CDS-87SD3T-SEFIN-AD-SF-DRM-001-2015", <br>
 													"ejercicio": "2015",<br>
-													"cveDependencia": "901",<br>
-													"nomDependencia": "SECRETARÍA DE FINANZAS”<br>
+													"cvedependencia": "901",<br>
+													"nomdependencia": "SECRETAR\u00cdA DE FINANZAS",<br>
+													"published_date": "2015-11-04",<br>
+													"uri": "http:\/\/www.contratosabiertos.cdmx.gob.mx\/OCDS-87SD3T-SEFIN-AD-SF-DRM-001-2015.json",<br>
+													"publisher_id":1,<br>
+													"created_at": "2016-05-03 21:46:31",<br>
+													"updated_at": "2016-05-03 21:46:33"
 												</div>
 											},
-										</div>
-										<div class="box">		
-											{
-												<div class="box">
-													 "ocdsID": "OCDS-87SD3T-OM-30001101-0001-2015", <br>
-													 "ejercicio": "2015",<br>
-													"cveDependencia": "901",<br>
-													"nomDependencia": "SECRETARÍA DE FINANZAS"
-												</div>
-											} 
 										</div>
 									]
 									</code>
 								</li>
-								<li><strong>Método:</strong> POST</li>
 							</ul>
 						</div>
 						<!-- catalogo de dependecias-->
@@ -120,434 +113,79 @@
 						
 						<!-- catálogo de proveedores-->
 						<div id="catalogo-proveedores">
-							<h2>Catálogo de Proveedores</h2>
-							<p>Genera archivo JSON con la lista de los proveedores de la CDMX.</p>
+							<h2>Lista de Proveedores</h2>
+							<p>Obtén la información de contacto de todos los proveedores que han participado en una licitación o han obtenido un contrato con la CDMX. Esta lista solo cuenta con los proveedores que aparecen en los contratos publicados en el sitio.</p>
 							<ul>
-								<li><strong>Url:</strong> ocpcdmx/cproveedores</li>
-								<li><strong>Firma de entrada: </strong>
-								N/A
-								</li>
+								<li><strong>Url:</strong> <a href="{{ url('api/proveedores/todos')}}"> {{ url('api/proveedores/todos') }} </a></li>
+								<li><strong>Método:</strong> GET</li>
+								
 								<li><strong>Respuesta:</strong>
 									<code>
 									[
 										<div class="box">
 										{
 											<div class="box">
-												"id": "167",<br>
-												"rfc": "ACC060127JD6 ",<br>
-												"name": "AREA CONSULTORES Y CONSTRUCTORES", <br>
-												"address": {
-												<div class="box">
-													"streetAddress": "RETORNO 552 ", <br>
-													"locality": "AVANTE COYOACAN ", <br>
-													"region": "DF ",<br>
-													"postalCode": "04460", <br>
-													"countryName": "MX"
-												</div>
-												},<br>
-												"contactPoint":{ 
-												<div class="box">
-													"name": "AREA",<br>
-													"email": null,<br>
-													"telephone": "56795508", <br>
-													"faxNumber": "46331316", <br>
-													"url": null
-												</div>
-												} 
+												"id": "1",<br>
+												"rfc": "CUMB306206M8 ",<br>
+												"name": "SERVICIOS INTEGRALES CONTRA INCENDI", <br>
+												"total":null,<br>
+												"street”:”CHIPITLÁN”,<br>
+												”locality":"SAN MATEO; TEXAS”,<br>
+												”region”:”PUE”,<br>
+												”zip”:”74000”,<br>
+												”country":"MX",<br>
+												"contact_name”:”ARTURO C.”,<br>
+												”email":"No Capturado",<br>
+												"phone”:”555-55-55”,<br>
+												”fax”:”555-55-55”,<br>
+												”url":"No Capturado",<br>
+												"created_at":"2016-05-03 21:46:33",<br>
+												"updated_at":"2016-05-03 21:52:16",<br>
+												"tender_num":3,<br>
+												"award_num":3,<br>
+												"budget":2278067.39 
 											</div>
 										}
 										</div>
 									]
 									</code>
 								</li>
-								<li><strong>Método:</strong> GET</li>
 							</ul>
 						</div>
 						
 						<!-- contratos-->
 						<div id="web-contratos">
-							<h2>Servicio Web Contrato</h2>
-							<p>Genera el archivo JSON en base al estándar OCDS para mostrar el proceso de licitación.</p>
+							<h2>Busca un contrato por palabra clave</h2>
+							<p>Es posible buscar por palabra clave dentro del contrato. El campo de búsqueda se llama “query”, y es opcional seleccionar la página de resultados de la búsqueda. La respuesta incluye el número de resultados, página que se está regresando y los resultados por página.</p>
 							<ul>
-								<li><strong>Url:</strong> ocpcdmx/contratos</li>
-								<li><strong>Firma de entrada: </strong>
-									<code>{
-										<div class="box">
-											"dependencia" : "901",<br>
-											"contrato": "OCDS-87SD3T-SEFIN-30001105-005-2013" 
-										</div>
-										}
-									</code>
-								</li>
+								<li><strong>Url:</strong> {{ url()}}/api/contratos/buscar/{page?}?query</a></li>
+								<li><strong>Método:</strong> GET</li>
 								<li><strong>Respuesta:</strong>
 									<code>
-									[
+									{
 										<div class="box">
-										{
+										"contracts":[
 											<div class="box">
-												"uri": "http://inovacion.finanzas.df.gob.mx/ocds", <br>
-												"publishedDate": "2015-01-02",<br>
-												"publisher": {																												<div class="box">
-													"scheme": "http://innovacion.finanzas.df.gob.mx/ocds/ArchivoJSONDep/Dependencias.json",<br>								
-													"name": "CDMX-SEFIN",<br>
-													"uri": "http://www.finanzas.df.gob.mx/", "uid": "901"																	</div>
-												},<br>
-												"releases": [																																	<div class="box">
-													{																																				<div class="box">
-														"ocid": "OCDS-87SD3T-SEFIN-30001105-006-2013", <br>
-														"id": "1",<br>
-														"date": "30/12/2013",<br>
-														"tag": "contract",<br>
-														"initiationType": "tender",<br>
-														"planning": {
-															<div class="box">
-																"budget": {
-																	<div class="box">	
-																		"amount": {	 
-																		<div class="box">
-																			"amount": "17452450.07",<br>
-																			"currency": "mxn" 
-																		</div>
-																		},
-																	</div>																													"project": "CONTRATACIÓN PARA EL MANTENIMIENTO DE SISTEMAS Y OPERACIÓN"											
-																}, <br>
-																"documents": [
-																	<div class="box">
-																	{
-																		<div class="box">																																	"id": "1",<br>
-																			"title": "Suficiencia Presupuestal",<br>
-																			"url": null,<br>
-																			"datePublished": "30/12/2013", <br>
-																			"format": "application/pdf",<br> 
-																			"language": "es"
-																		</div>
-																	},<br> 
-																	{
-																		<div class="box">
-																			"id": "2",<br>
-																			"title": "Anexo Técnico",<br>
-																			"url": null,<br>
-																			"datePublished": "30/12/2013",<br>
-																			"format": "application/pdf",<br>
-																			"language": "es"
-																		</div>
-																	}
-																	</div>
-																]
-															</div>
-														},<br>
-														"buyer": {
-															<div class="box">
-																"identifier": "901", 
-																"name": "SEFIN", 
-																"address": {
-																	<div class="box">
-																		"streetAddress": " Av. Dr. Lavista 144, Doctores",<br>
-																		"locality": "Cuauhtemoc",<br>
-																		"region": "CDMX",<br>
-																		"postalCode": "06720",<br>
-																		"countryName": "México" 
-																	</div>
-																},<br>
-																"contactPoint": { 
-																	<div class="box">
-																		"name": "Pendiente", <br>
-																		"email": null,<br>
-																		"telephone": null,<br> 
-																		"faxNumber": null,<br>
-																		"url": null
-																	</div>
-																}
-															</div>
-														},<br>
-														"tender": {
-															<div class="box">
-																"id": "30001105-006-2013",<br>
-																"title": "CONTRATACIÓN PARA EL MANTENIMIENTO DE SISTEMAS Y OPERACIÓN",<br>
-																"description": "CONTRATACIÓN DEL SERVICIO DE OPERADORES PARA EL MANTENIMIENTO DE SISTEMAS Y OPERACIÓN, ASÍ• COMO PARA EL SEGUIMIENTO Y CONTROL DE LAS ACTIVIDADES ",<br>
-																"status": "active",<br>
-																"items": [
-																	<div class="box">
-																		{
-																			<div class="box">
-																				"id": "1",<br>
-																				"description": "CONTRATACIÓN DEL SERVICIO DE OPERADORES PARA EL MANTENIMIENTO DE SISTEMAS Y OPERACIÓN, ASÍ• COMO PARA EL SEGUIMIENTO Y CONTROL DE LAS ACTIVIDADES ",<br>
-																				"quantity": "1",<br>
-																				"unit": "Contratación"
-																			</div>	
-																		}
-																	</div>
-																],<br>
-																"value": {
-																	<div class="box">
-																		"amount": "17452450.07",<br>
-																		"currency": "mxn" 
-																	</div>
-																},<br>
-																"procurementMethod": "open", <br>
-																"awardCriteria": "lowestCost", <br>
-																"submissionMethod": "inPerson", <br>
-																"tenderPeriod": {
-																	<div class="box">
-																		"startDate": "30/12/2013",<br>
-																		"endDate": "03/01/2014" 
-																	</div>
-																},<br>
-																"enquiryPeriod": { 
-																	<div class="box">
-																		"startDate": "03/01/2014",  <br>
-																		"endDate": "03/01/2014"
-																	</div>
-																},<br>
-																"hasEnquiries": null, <br>
-																"eligibilityCriteria": null, <br>
-																"awardPeriod": {
-																	<div class="box">
-																		"startDate": "03/01/2014", <br>
-																		"endDate": "03/01/2014" 
-																	</div>
-																},<br>
-																"numberOfTenderers": "2", <br>
-																"tenders": [
-																	<div class="box">
-																		{
-																		<div class="box">
-																			"identifier": "1",<br>
-																			"name": "DIGIPRO, S.A. DE C.V.", <br>
-																			"address": {
-																			<div class="box">
-																				"streetAddress": "Blvd. Manuel Ávila Camacho No. 126-1",<br>
-																				"locality": "Miguel Hidalgo",<br>
-																				"region": "CDMX",<br>
-																				"postalCode": "11000",<br>
-																				"countryName": "México" 
-																			</div>
-																			},<br>
-																			"contactPoint": { 
-																			<div class="box">
-																				"name": "pendiente",<br> 
-																				"email": null, <br>
-																				"telephone": null, <br>
-																				"faxNumber": null, <br>
-																				"url": null
-																			</div>
-																			} 
-																		</div>
-																		},<br>
-																		{
-																		<div class="box">
-																			"identifier": "2",<br>
-																			"name": "OPTIMUS CONSULTORÍA S.A. DE C.V.", <br>
-																			"address": {
-																			<div class="box">
-																				"streetAddress": "Río Lerma 196 Bis",<br>
-																				"locality": "Cuauhtémoc", <br>
-																				"region": "CDMX", <br>
-																				"postalCode": "06500",<br> 
-																				"countryName": "México"
-																			</div>
-																			},<br>
-																			"contactPoint": {
-																			<div class="box">	
-																				"name": "pendiente",<br>
-																				"email": null,<br>
-																				"telephone": null,<br>
-																				"faxNumber": null,<br>
-																				"url": null
-																			</div>
-																			}
-																		</div>
-																		}
-																	</div>
-																],<br>
-																"procuringEntity": {
-																	<div class="box">
-																	"identifier": "901", <br>
-																	"name": "SEFIN", <br>
-																	"address": {
-																		<div class="box">
-																		"streetAddress": "Av. Dr. Lavista 144, Doctores",  <br>
-																		"locality": "Cuauhtemoc", <br>
-																		"region": "CDMX", <br>
-																		"postalCode": "06720", <br>
-																		"countryName": "México" 
-																		</div>
-																	},<br>
-																	"contactPoint": { 
-																		<div class="box">
-																			"name": "pendiente", <br>
-																			"email": null, <br>
-																			"telephone": null, <br>
-																			"faxNumber": null, <br>
-																			"url": null
-																		</div>
-																	}
-																	</div>
-																},<br>
-																"documents": [
-																	<div class="box">
-																	{
-																		<div class="box">
-																			"id": "1",<br>
-																			"title": "Oficio Invitación",<br>
-																			"url": null,<br>
-																			"datePublished": "03/01/2014",<br>
-																			"format": "application/pdf",<br>
-																			"language": "es"
-																		</div>
-																	},
-																	</div>
-																	<div class="box">
-																	{
-																		<div class="box">
-																			"id": "2",<br>
-																			"title": "Junta de aclaración",<br>
-																			"url": null,<br>
-																			"datePublished": "03/01/2014",<br>
-																			"format": "application/pdf",<br>
-																			"language": "es"
-																		</div>
-																	}
-																	</div>
-																],<br>
-																"milestones": null,<br>
-																"amendment": null
-															</div>
-														},<br>
-														"awards": [
-															<div class="box">
-															{
-																<div class="box">
-																	"id": "1",<br>
-																	"title": "CONTRATACIÓN PARA EL MANTENIMIENTO DE SISTEMAS Y OPERACIÓN",<br>
-																	"description": "CONTRATACIÓN DEL SERVICIO DE OPERADORES PARA EL MANTENIMIENTO DE SISTEMAS Y OPERACIÓN, ASÍ• COMO PARA EL SEGUIMIENTO Y CONTROL DE LAS ACTIVIDADES ",<br>
-																	"status": "active", <br>
-																	"date": "13/01/2014",<br>
-																	"value": {
-																		<div class="box">
-																			"amount": "17452450.07",<br>
-																			"currency": "mxn"
-																		</div>
-																	 },<br>
-																	 "suppliers": {
-																		 <div class="box">
-																			 "identifier": "RFC",<br>
-																			 "name": "OPTIMUS CONSULTORÍA S.A. DE C.V.", <br>
-																			 "address": {
-																				 <div class="box">
-																					 "streetAddress": "Río Lerma 196 Bis", <br>
-																					 "locality": "Cuauhtémoc",<br>
-																					 "region": "CDMX",<br>
-																					 "postalCode": "6500", <br>
-																					 "countryName": "México"
-																				 </div>
-																			},<br>
-																			"contactPoint": {
-																				<div class="box">
-																					"name": "pendiente",<br>
-																					"email": null,<br>
-																					"telephone": null,<br>
-																					"faxNumber": null,<br>
-																					"url": null
-																				</div>
-																			}
-																		 </div>
-																	},<br>
-																	"items": [ 
-																		<div class="box">
-																			{
-																			<div class="box">
-																				"id": "1",<br>
-																				"description": "CONTRATACIÓN DEL SERVICIO DE OPERADORES PARA EL MANTENIMIENTO DE SISTEMAS Y OPERACIÓN",<br>
-																				"quantity": "1",<br>
-																				"unit": "Contratación" 
-																			</div>
-																			}
-																		</div>
-																	],<br>
-																	"documents": [
-																		<div class="box">
-																		{
-																			<div class="box">
-																				"id": "1",<br>
-																				"title": "Fallo",<br>
-																				"url": null,<br>
-																				"datePublished": "13/01/2014", <br>
-																				"format": "application/pdf", <br>
-																				"language": "es"
-																			</div>
-																		}
-																		</div>
-																	],<br>
-																	"amendment": null
-																</div>
-															}
-															</div>
-														],<br>
-														"contracts": [
-															<div class="box">
-															{
-																<div class="box">
-																	"id": "1",<br>
-																	"awardID": "RFC-AWARD",<br>
-																	"title": "CONTRATACIÓN PARA EL MANTENIMIENTO DE SISTEMAS Y OPERACIÓN",<br>
-																	"description": "CONTRATACIÓN DEL SERVICIO DE OPERADORES PARA EL MANTENIMIENTO DE SISTEMAS Y OPERACIÓN, ASÍ• COMO PARA EL SEGUIMIENTO Y CONTROL DE LAS ACTIVIDADES ",<br>
-																	"status": "active", <br>
-																	"period": {
-																		<div class="box">
-																			"startDate": "16/01/2014",<br>
-																			"endDate": "31/12/2014" 
-																		</div>
-																	},<br>
-																	"value": {
-																		<div class="box">
-																			"amount": "17452450.07", <br>
-																			"currency": "mxn"
-																		</div>
-																	},<br> 
-																	"items": [
-																		<div class="box">
-																		{
-																			<div class="box">
-																			"id": "1",<br>
-																			"description": "CONTRATACIÓN DEL SERVICIO DE OPERADORES PARA EL MANTENIMIENTO DE SISTEMAS Y OPERACIÓN",<br>
-																			"quantity": "1",<br>
-																			"unit": "Contratación"<br> 
-																			</div>
-																		}
-																		</div>
-																	],<br>
-																	"dateSigned": "13/01/2014", <br>
-																	"documents": [
-																		<div class="box">
-																		{
-																			<div class="box">
-																				"id": "1",<br>
-																				"title": "Contrato",<br> 
-																				"url": null,<br> 
-																				"datePublished": "13/01/2014", <br> 
-																				"format": "application/pdf", <br> 
-																				"language": "es"
-																			</div>
-																		} 
-																		</div>
-																	],<br>
-																	"amendment": null 
-																</div>
-															}
-															</div>
-														],<br>
-														"language": "es"
-													</div>																																			}	
+											{
+												<div class="box">
+													id":15,<br>
+													"ocdsid":"OCDS-87SD3T-SEFIN-DRM-AD-CC-010-2015",<br>
+													"ejercicio":2015,<br>
+													"cvedependencia":901,<br>
+													"nomdependencia":"SECRETAR\u00cdA DE FINANZAS",<br>
+													"published_date":"2015-10-12",<br>
+													"uri":"http:\/\/www.contratosabiertos.cdmx.gob.mx\/OCDS-87SD3T-SEFIN-DRM-AD-CC-010-2015.json",<br>
+													"publisher_id":1,<br>
+													"created_at":"2016-05-03 21:46:31",<br>
+													"updated_at":"2016-05-03 21:46:47”
 												</div>
-												]
+											}, 
 											</div>
-										}
-										</div>
-									]
+											…],”page":1,"total":1	 
+										</div> 
+									}
 									</code>
 								</li>
-								<li><strong>Método:</strong> POST</li>
 							</ul>
 						</div>
 						
