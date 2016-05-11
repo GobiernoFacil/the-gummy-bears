@@ -34,7 +34,7 @@ class Suppliers extends Controller {
 	// Supplier 
 	//
 	public function show($rfc){
-		$tenderer 			 		= Tenderer::where("rfc", $rfc)->get()->first();							 		
+		$tenderer 			 		= Provider::where("rfc", $rfc)->get()->first();							 		
 		$tender_tenderer 	 		= TenderTenderer::where("tenderer_id", $tenderer->id)->get();
 		$tenders			 		= Tender::all();
 		$supplier 			 		= Provider::where("rfc", $rfc)->get()->first();
