@@ -88,10 +88,10 @@
 		</div>
 		<div class="col-sm-3">
 			<form class="select_type">
-				<p>Mostrar: 
+				<p>Mostrar por etapa: 
 				  <select id="contracts-selector">
 				    <option value="all">Todos</option>
-					  <option value="planning">Planeación</option>
+					 <!-- <option value="planning">Planeación</option>-->
 					  <option value="tender">Licitación</option>
 					  <option value="award">Adjudicación</option>
 					  <option value="contract">Contratación</option>
@@ -121,7 +121,16 @@
 						//single contracts 
 						$single_contracts 	= $r->singlecontracts;
 					?>
-					<li class="row tender planning {{ $awards->count() ? 'award' : '' }} {{ $single_contracts->count() ? 'contract' : ''}}">
+					@if ($awards->count())
+						@if ($single_contracts->count())
+							<?php $class = "contract";?>
+						@else
+							<?php $class = "award";?>
+						@endif
+					@else 
+						<?php $class = "tender";?>
+					@endif
+					<li class="row {{$class}}">
 						<!--top-->
 						<div class="col-sm-9 top">
 							<h2><a href="{{ url('contrato/' . $contract_ocdsid) }}">{{ $tender_title }} 

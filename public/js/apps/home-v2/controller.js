@@ -151,16 +151,16 @@ define(function(require){
       else{
 	      switch(option) {
 		      case "planning":
-		      var name_option = "Lista de contrataciones en <strong>Planeación</strong>";
+		      var name_option = "Lista de procesos de contratación en etapa de <strong>Planeación</strong>";
 		      break;
 		      case "tender":
-		      var name_option = "Lista de contrataciones en <strong>Licitación</strong>";
+		      var name_option = "Lista de procesos de contratación en etapa de <strong>Licitación</strong>";
 		      break;
 			  case "award":
-		      var name_option = "Lista de contrataciones en <strong>Adjudicación</strong>";
+		      var name_option = "Lista de procesos de contratación en etapa de <strong>Adjudicación</strong>";
 		      break;
 		      case "contract":
-		      var name_option = "Lista de <strong>Contratos</strong>";
+		      var name_option = "Lista de procesos de contratación en etapa de <strong>Contrato</strong>";
 		      break;
 		      default:
 		      var name_option = "";
