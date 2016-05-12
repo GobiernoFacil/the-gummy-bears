@@ -151,7 +151,7 @@
 						<!--top-->
 						<div class="col-sm-7 top">
 							<h2><a href="{{ url('contrato/' . $contract_ocdsid) }}">{{ $tender_title }} 
-								<span>{{$contract_ocdsid}} </span></a></h2>
+								<span class="ocid">{{$contract_ocdsid}} </span></a></h2>
 							<p class="description"><span>Descripción:</span> {{ $tender_description ? $tender_description : ""}}</p>
 						</div>
 						<div class="col-sm-2 top">

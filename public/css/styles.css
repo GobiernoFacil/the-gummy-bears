@@ -1789,9 +1789,10 @@ div.allthem svg {
     font-size: 21px; }
     .list h2 span {
       color: #969295;
-      font-size: 12px;
-      display: block;
-      margin-bottom: 10px; }
+      font-size: 12px; }
+      .list h2 span.ocid {
+        display: block;
+        margin-bottom: 10px; }
     .list h2 a {
       color: #263333; }
       .list h2 a:hover {
