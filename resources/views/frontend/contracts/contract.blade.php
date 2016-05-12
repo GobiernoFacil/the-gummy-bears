@@ -4,7 +4,7 @@
 
 <div class="breadcrumb">
 	<div class="col-sm-12">
-    <a href="{{ url('contratos')}}"><strong>&lt;</strong> Lista de Contratos</a>
+    <a href="{{ url('contratos')}}" class="back"><strong>&lt;</strong> Lista de Contratos</a>
 	</div>
 </div>
 <article>
