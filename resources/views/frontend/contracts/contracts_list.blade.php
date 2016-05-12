@@ -131,26 +131,64 @@
 						<?php $class = "tender";?>
 					@endif
 					<li class="row {{$class}}">
+					<!--amount-->
+						<div class="col-sm-3 amount top">
+							<p><span>$</span> {{$budget}} <span>MXN</span></p>
+							<?php switch($r->tender->procurement_method){
+								case "limited":
+									$procurement_method = "limitado";
+									break;
+								case "selective":
+									$procurement_method = "selectivo";
+									break;
+								case "open":
+									$procurement_method = "abierto";
+									break;
+								
+							}?>
+							<p class="procurement_method">Método de adquisición <strong>{{$procurement_method}}</strong></p>
+						</div>
 						<!--top-->
-						<div class="col-sm-9 top">
+						<div class="col-sm-7 top">
 							<h2><a href="{{ url('contrato/' . $contract_ocdsid) }}">{{ $tender_title }} 
 								<span>{{$contract_ocdsid}} </span></a></h2>
 							<p class="description"><span>Descripción:</span> {{ $tender_description ? $tender_description : ""}}</p>
 						</div>
-						<!--amount-->
-						<div class="col-sm-3 amount top">
-							<p><span>$</span> {{$budget}} <span>MXN</span></p>
+						<div class="col-sm-2 top">
+							<p class="list_t right">Etapa de
+							@if($single_contracts->count())
+									<strong>contratación</strong> <span><?php echo file_get_contents("img/nav_planeacion.svg"); ?>
+									<?php echo file_get_contents("img/nav_licitacion.svg"); ?>
+									<?php echo file_get_contents("img/nav_adjudicacion.svg"); ?>
+									<?php echo file_get_contents("img/nav_contratacion.svg"); ?></span>
+									@else 
+										@if($awards->count())
+										 <strong>adjudicación</strong> 
+										 <span><?php echo file_get_contents("img/nav_planeacion.svg"); ?>
+										 <?php echo file_get_contents("img/nav_licitacion.svg"); ?>
+										 <?php echo file_get_contents("img/nav_adjudicacion.svg"); ?></span>
+										@else
+											@if($tender_id)
+											<strong>licitación </strong>
+											 <span><?php echo file_get_contents("img/nav_planeacion.svg"); ?>
+											 <?php echo file_get_contents("img/nav_licitacion.svg"); ?></span>
+											@else
+											No ha comenzado
+											@endif
+										@endif
+									@endif
+							</p>
 						</div>
 						<div class="clearfix"></div>
 						<!--icons-->
 					<div class="icons">
-						<div class="col-sm-4">
-							<p>Comprador: 
+						<div class="col-sm-3">
+							<p class="list_t">Comprador: <br>
 								<a href="{{ $buyer_name ? url('dependencia/1')  : '#'}}">{{ $buyer_name ? $buyer_name : "No está definido" }}</a></p>
 						</div>
 						<div class="col-sm-4">
 							@if($awards->count())
-							<p>{{$awards->count() == 1 ? 'Proveedor: ' : 'Proveedores'}} 
+							<p class="list_t">{{$awards->count() == 1 ? 'Proveedor: ' : 'Proveedores'}} 
 							<br>
 								@foreach ($awards as $award)
 									@foreach($award->suppliers as $supplier)
@@ -160,25 +198,22 @@
 							</p>
 							@endif
 						</div>
-						
-						<div class="col-sm-4">
-							<ul>
-								<li>
-									@if($single_contracts->count())
-									En contratación
-									@else 
-										@if($awards->count())
-										En adjudicación
-										@else
-											@if($tender_id)
-											En Licitación
-											@else
-											No ha comenzado
-											@endif
-										@endif
-									@endif
+						<div class="col-sm-3">
+							<p class="list_t">Criterio:<br>
+									<?php switch($r->tender->award_criteria){
+										case "bestValueToGovernment":
+											$award_criteria = "Mejor oferta para el Gobierno";
+											break;
+										case "bestProposal":
+											$award_criteria = "Mejor propuesta";
+											break;
+									}?>
+									 {{$award_criteria}}
 									
-								</li>
+								</p>
+						</div>
+						<div class="col-sm-2">
+							<ul class="right">
 								<li class="contrato_num">{{$r->tender->items->count()}}</li>
 								<li class="time_num">
 								  <?php
