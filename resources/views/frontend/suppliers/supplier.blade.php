@@ -47,22 +47,21 @@
 				
 				<div class="row">
 					
-					<div class="col-sm-3">
-						<p>ADJUDICACIONES TOTAL(MXN)</p>
-						<h2 id="contrataciones-total-money"><span>$</span>{{ number_format($supplier->awards->sum('value'),2,'.',',') }}</h2>
+					<div class="col-sm-4">
+						<p>MONTO TOTAL CONTRATADO</p>
+						<h2 id="contrataciones-total-money"><span>$</span>{{ number_format($supplier->contract_budget,2,'.',',') }} <span>MXN</span></h2>
 					</div>
-					<div class="col-sm-3">
+					<div class="col-sm-2">
 						<p>LICITACIONES</p>
 						<h2 id="licitaciones-total-num">{{$tender_tenderer->count()}}</h2>
 					</div>
-					<div class="col-sm-3">
+					<div class="col-sm-2">
 						<p>ADJUDICACIONES</p>
-						<h2 id="adjudicaciones-total-num">{{ $supplier->awards->count() }}</h2>
+						<h2 id="adjudicaciones-total-num">{{ $supplier->award_num }}</h2>
 					</div>
 					<div class="col-sm-3">
-						<p>PROMEDIO POR ADJUDICACIÓN (MXN)</p>
-						
-						<h2 id="gasto-promedio-money"><span>$</span> {{ $supplier->awards->count() ? number_format($supplier->awards->sum('value') / $supplier->awards->count(),2,'.',',') : '0' }} </h2>
+						<p>PROMEDIO POR CONTRATACIÓN</p>
+						<h2 id="gasto-promedio-money"><span>$</span>{{ $supplier->awards->count() ? number_format($supplier->contract_budget / $supplier->awards->count(),2,'.',',') : '0' }} <span>MXN</span> </h2>
 					</div>
 					
 				</div>
