@@ -59,3 +59,4 @@ Route::get('api/contrato/actual/{key}', 'ApiCDMX@showContractData'); // *
 Route::get('contrato/json/{ocid}', "Contracts@showRaw"); // show JSON with format
 Route::get('test/suppliers', "TestStuff@index");
 Route::get('test/supplier/{key}', "TestStuff@supplier");
+Route::get('test/providers', "TestStuff@providers");

@@ -114,6 +114,7 @@ class OptimizeQueries extends Command {
 
     $providers = Provider::all();
     foreach($providers as $provider){
+
     	$provider->tender_num = $provider->tenders()->where(function($q){
     		$q->WhereHas("release", function($query){
     			$query->where("is_latest", 1);
@@ -131,6 +132,21 @@ class OptimizeQueries extends Command {
     			$query->where("is_latest", 1);
     		});
     	})->sum("value");
+
+      // calculate the actual single contracts budget
+      $counter = 0;
+      $aw = $provider->awards()->where(function($q){
+        $q->WhereHas("release", function($query){
+          $query->where("is_latest", 1);
+        });
+      })->get();
+
+      foreach($aw as $award){
+        $aw = $award->release->singlecontracts->where("award_id", $award->local_id)->first();
+        $counter+= $aw ? $aw->amount : 0;
+      }
+
+      $provider->contract_budget = $counter;
 
     	$provider->update();
     }

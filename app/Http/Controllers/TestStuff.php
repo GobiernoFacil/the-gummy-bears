@@ -53,6 +53,21 @@ class TestStuff extends Controller {
     ]);
   }
 
+  public function providers(){
+    $providers = Provider::all();
+    echo "<pre>";
+    foreach($providers as $provider){
+      $counter = 0;
+      foreach($provider->awards as $award){
+        $aw = $award->release->singlecontracts->where("award_id", $award->local_id)->first();
+        $counter+= $aw ? $aw->amount : 0;
+
+      }
+      echo "<p>" . $provider->name . ": " . $counter . "</p>";
+    }
+    echo "</pre>";
+  }
+
   public function get_latest_release($rfc){
     $contracts = Contract::with(["releases" => function($query){
       $query->orderBy("local_id", "desc")->take(1);
