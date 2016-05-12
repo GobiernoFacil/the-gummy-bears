@@ -1,10 +1,10 @@
 # Guía de instalación Contratos abiertos
 
 ## Requerimientos técnicos:
-PHP 5.4
-Mysql
-Composer
-Bower
+* PHP >= 5.4
+* Mysql
+* Composer
+* Bower
 
 ## Pasos para instalar el sistema
 1: copiar los archivos del siguiente repositorio:
