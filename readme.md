@@ -57,14 +57,14 @@ y eso es todo amigos!
 git pull origin master
 ```
 
-2: es posible que haya cambios en la DB y y nuevas librerías de PHP. Esto no es común, pero mejor revisar:
+2: es posible que haya cambios en la DB y nuevas librerías de PHP. Esto no es común, pero mejor revisar:
 ```bash
 composer install
 php artisan migrate
 ```
-(cuando esto se ejecuta en un servidor de producción, Artisan pide confirmación para realizar el migrate. Esto no debería afectar los registros de la DB).
+(cuando esto se ejecuta en un servidor de producción, Artisan pide confirmación para realizar el _migrate_. Esto no debería afectar los registros de la DB).
 
-3: para actualizar los datos, son necesarios dos comandos, uno para conectarse al API de CDMX, y el otro para agregar ciertos datos, y hacer más ligeros los queries.
+3: para actualizar los datos, son necesarios dos comandos, uno para conectarse al API de CDMX, y el otro para agregar ciertos datos, y hacer más ligeras las búsquedas.
 ```bash
 php artisan contracts:update
 php artisan contracts:optimize
