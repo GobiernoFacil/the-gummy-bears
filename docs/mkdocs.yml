@@ -1,0 +1,17 @@
+# Si agregan una página, hay que agregar aca el nombre
+pages:
+  - Introducción: 'index.md'
+  - API: 'api-docs.md'
+
+
+
+# No editar en PRs
+site_name: Portal de Contratos de CDMX
+
+markdown_extensions:
+  - admonition
+  - fenced_code
+  - sane_lists
+  - smarty
+
+theme: readthedocs
