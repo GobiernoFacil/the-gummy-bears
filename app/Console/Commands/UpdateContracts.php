@@ -209,9 +209,11 @@ class UpdateContracts extends Command {
         $tender->number_of_tenderers  = $tn->numberOfTenderers;
 
         $tender->update();
+        
         $this->saveItems($tender, $tn);
         $this->saveTenderers($tender, $tn);
-         $this->saveProviers($tender, $tn, "tender");
+        $this->saveProviers($tender, $tn, "tender");
+        $this->saveDocuments($tender, $tn);
       }
     }
 
@@ -272,6 +274,8 @@ class UpdateContracts extends Command {
         $planning->project  = $data->planning->budget->project;
 
         $planning->update();
+
+        $this->saveDocuments($planning, $data->planning);
       }
     }
 
@@ -302,6 +306,7 @@ class UpdateContracts extends Command {
 
           $contract->update();
           $this->saveItems($contract, $s);
+          $this->saveDocuments($contract, $s);
         }
       }
     }
@@ -327,6 +332,7 @@ class UpdateContracts extends Command {
 
           $award->update();
           $this->saveItems($award, $aw);
+          $this->saveDocuments($award, $aw);
           $this->saveSuppliers($award, $aw);
           $this->saveProviers($award, $aw, "award");
         }
@@ -433,6 +439,30 @@ class UpdateContracts extends Command {
           $item->unit        = $it->unit->name;
 
           $item->update();
+        }
+      }
+    }
+
+    //
+    // [ U P D A T E   D O C U M E N T S ]
+    //
+    //
+    private function saveDocuments($parent, $data){
+      if(count($data->documents)){
+        foreach($data->documents as $doc){
+          $document = $parent->documents()->firstOrCreate([
+            'local_id' => $doc->id
+          ]);
+
+          $document->date_published = $doc->datePublished;
+          $document->date           = date("Y-m-d", strtotime($doc->datePublished));
+          $document->format         = $doc->format;
+          $document->local_id       = $doc->id;
+          $document->language       = $doc->language;
+          $document->title          = $doc->title;
+          $document->url            = $doc->url;
+
+          $document->update();
         }
       }
     }

@@ -13,6 +13,10 @@ class Award extends Model
     return $this->morphMany('App\Models\Item', 'myitem');
   }
 
+  public function documents(){
+    return $this->morphMany('App\Models\Document', 'docs');
+  }
+
   public function suppliers(){
     return $this->hasMany('App\Models\Supplier');
   }
