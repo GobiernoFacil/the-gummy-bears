@@ -33,4 +33,8 @@ class Tender extends Model
   public function release(){
     return $this->belongsTo('App\Models\Release');
   }
+
+  public function documents(){
+    return $this->morphMany('App\Models\Document', 'docs');
+  }
 }
