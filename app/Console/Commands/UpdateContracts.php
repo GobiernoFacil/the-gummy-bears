@@ -95,7 +95,7 @@ class UpdateContracts extends Command {
           $contract = $this->updateContract($contract, $response);
           $this->info('se actualizó la información de: ' . $contract->ocdsid);
           
-          // [2.2] se crea/edita el creador del documento
+          // [2.2] se crea/edita el autor del documento
           $contract = $this->savePublisher($contract, $response);
           $this->info('se agregó el autor de: ' . $contract->ocdsid);
 
@@ -207,6 +207,7 @@ class UpdateContracts extends Command {
         $tender->eligibility_criteria = $tn->eligibilityCriteria;
         $tender->submission_method    = count($tn->submissionMethod) ? implode(',',$tn->submissionMethod) : null; 
         $tender->number_of_tenderers  = $tn->numberOfTenderers;
+        $tender->buyer_id             = $release->buyer_id;
 
         $tender->update();
         
@@ -302,9 +303,10 @@ class UpdateContracts extends Command {
           $contract->currency       = $s->value->currency;
           $contract->date_signed    = $s->dateSigned ? date("Y-m-d", strtotime($s->dateSigned)) : null;
           $contract->documents      = count($s->documents);
-          // ? implode(',',$r->tender->submissionMethod) : null;
+          $contract->buyer_id       = $release->buyer_id;
 
           $contract->update();
+          
           $this->saveItems($contract, $s);
           $this->saveDocuments($contract, $s);
         }
@@ -323,12 +325,13 @@ class UpdateContracts extends Command {
             "local_id"   => $aw->id
           ]);
 
-          $award->title       = $aw->title;
-          $award->description = $aw->description;
-          $award->status      = $aw->status;
-          $award->date        = date("Y-m-d", strtotime($aw->date));
-          $award->value       = $aw->value->amount;
-          $award->currency    = $aw->value->currency;
+          $award->title          = $aw->title;
+          $award->description    = $aw->description;
+          $award->status         = $aw->status;
+          $award->date           = date("Y-m-d", strtotime($aw->date));
+          $award->value          = $aw->value->amount;
+          $award->currency       = $aw->value->currency;
+          $award->buyer_id       = $release->buyer_id;
 
           $award->update();
           $this->saveItems($award, $aw);

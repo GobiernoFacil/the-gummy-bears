@@ -19,6 +19,7 @@ use App\Models\Supplier;
 use App\Models\Tender;
 use App\Models\Tenderer;
 use App\Models\TenderTenderer;
+use App\Models\BuyerProvider;
 
 class OptimizeQueries extends Command {
 
@@ -115,6 +116,51 @@ class OptimizeQueries extends Command {
     $providers = Provider::all();
     foreach($providers as $provider){
 
+      // get data by buyer
+      $buyers = $provider->tenders()->lists("buyer_id");
+      foreach ($buyers as $buyer){
+        $b = BuyerProvider::firstOrCreate([
+          "buyer_id"    => $buyer,
+          "provider_id" => $provider->id
+        ]);
+
+        $b->tender_num = $provider->tenders()->where("buyer_id", $buyer)->where(function($q){
+          $q->WhereHas("release", function($query){
+            $query->where("is_latest", 1);
+          });
+        })->count();
+
+        $b->award_num = $provider->awards()->where("buyer_id", $buyer)->where(function($q){
+          $q->WhereHas("release", function($query){
+            $query->where("is_latest", 1);
+          });
+        })->count();
+
+        $b->budget = $provider->awards()->where("buyer_id", $buyer)->where(function($q){
+          $q->WhereHas("release", function($query){
+            $query->where("is_latest", 1);
+          });
+        })->sum("value");
+        /***********************************/
+        // calculate the actual single contracts budget by buyer
+        $counter = 0;
+        $aw = $provider->awards()->where("buyer_id", $buyer)->where(function($q){
+          $q->WhereHas("release", function($query){
+            $query->where("is_latest", 1);
+          });
+        })->get();
+
+        foreach($aw as $award){
+          $_aw = $award->release->singlecontracts->where("buyer_id", $buyer)->where("award_id", $award->local_id)->first();
+          $counter+= $_aw ? $_aw->amount : 0;
+        }
+
+        $b->contract_budget = $counter;
+        /***********************************/
+
+        $b->update();
+      }
+
     	$provider->tender_num = $provider->tenders()->where(function($q){
     		$q->WhereHas("release", function($query){
     			$query->where("is_latest", 1);
@@ -142,8 +188,8 @@ class OptimizeQueries extends Command {
       })->get();
 
       foreach($aw as $award){
-        $aw = $award->release->singlecontracts->where("award_id", $award->local_id)->first();
-        $counter+= $aw ? $aw->amount : 0;
+        $_aw = $award->release->singlecontracts->where("award_id", $award->local_id)->first();
+        $counter+= $_aw ? $_aw->amount : 0;
       }
 
       $provider->contract_budget = $counter;

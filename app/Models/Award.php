@@ -29,4 +29,8 @@ class Award extends Model
   public function release(){
     return $this->belongsTo('App\Models\Release');
   }
+
+  public function buyer(){
+    return $this->belongsTo('App\Models\Buyer');
+  }
 }
