@@ -1301,10 +1301,14 @@ nav#menu {
       font-weight: 300;
       line-height: 69px;
       margin: 0;
-      min-height: 81px; }
+      min-height: 81px;
+      text-align: center; }
+      .lead.homev2 .bill h3 span.mxn {
+        font-size: 15px; }
     .lead.homev2 .bill p {
       margin: 0;
-      text-transform: uppercase; }
+      text-transform: uppercase;
+      text-align: center; }
 
 code {
   color: #9b9a9a;
@@ -1913,6 +1917,9 @@ p.list_t {
   border-bottom: 1px solid #ccc;
   margin: 0 0 25px;
   padding: 0 0 25px; }
+
+p.address {
+  padding: 20px 0; }
 
 /* =CONTRACT 
 -------------------------------------------------------------- */

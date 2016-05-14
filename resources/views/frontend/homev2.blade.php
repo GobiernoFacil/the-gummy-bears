@@ -16,13 +16,13 @@
 			
 				<div class="bill">
 					<div class="row">
-						<div class="col-sm-4 col-sm-offset-2">
+						<div class="col-sm-5 col-sm-offset-1">
+							<p>Total de Contratos</p>
 							<h3><span id="contracts">0</span></h3>
-							<p>Contrataciones</p>
 						</div>
-						<div class="col-sm-4">
-							<h3>$<strong><span id="amount">0</span></strong></h3>
-							<p>Millones (MXN)</p>
+						<div class="col-sm-5">
+							<p>Monto Total Contratado (MXN)</p>
+							<h3>$<strong><span id="amount">0</span></strong><span class="mxn">Millones</span></h3>
 						</div>
 						
 					</div>
