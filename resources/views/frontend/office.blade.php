@@ -36,14 +36,13 @@
 
 				</div>
 				<div class="divider"></div>
-				
+				<!--- proceso por etapa-->
 				<div class="row">
 					<div class="col-sm-12">
 						<h2>Procesos de contratación por etapa activa:</h2>
 					</div>
 					<div class="col-sm-4 col-sm-offset-2">
 						<div id="donut"></div>
-
 					</div>
 					<div class="col-sm-4 ">
 						<ul class="stage_list">
@@ -54,63 +53,34 @@
 							<li class="implementation zero"><b><?php echo file_get_contents("img/nav_implementacion.svg"); ?></b> <strong>0</strong> en Implementación</li>
 						</ul>
 					</div>
-					
-					
 				</div>
 				
-				<!-- visualiza-->
 				<div class="divider"></div>
+				<!-- montos-->
+				<div class="row amount">
+					<div class="col-sm-4 planning">
+							<p>MONTO TOTAL PLANEADO (MXN)</p>
+							<h2><b><?php echo file_get_contents("img/nav_planeacion.svg"); ?></b><span>$</span>{{ number_format($total_planning,2,'.',',') }}</h2>
+					</div>
+					<div class="col-sm-4 awards">
+							<p>MONTO TOTAL ADJUDICADO (MXN)</p>
+							<h2><b><?php echo file_get_contents("img/nav_adjudicacion.svg"); ?></b><span>$</span>{{ number_format($total_award,2,'.',',') }}</h2>
+					</div>
+					<div class="col-sm-4 contracts">
+							<p>MONTO TOTAL CONTRATADO (MXN)</p>
+							<h2><b><?php echo file_get_contents("img/nav_contratacion.svg"); ?></b><span>$</span>{{ number_format($total_contract,2,'.',',') }}</h2>
+					</div>
+				</div>
 				
 				<!--planning-->
-				<div class="row visualiza">
-					<div class="row">
-						<div class="col-sm-3">
-							<p>TOTAL PLANEADO (MXN)</p>
-						</div>
-					</div>
+				<div class="row">
 					
-					<div class="col-sm-3">
-						<h2><span>$</span>{{ number_format($total_planning,2,'.',',') }}</h2>
+					<div class="col-sm-10 col-sm-offset-1 visualiza">
+						<span class="bar_office" style="width: {{$per_planning}}%; ">${{ number_format(($total_planning/1000000),2,'.',',') }}M &nbsp;</span>
+						<span class="bar_office adjudicados" style="width: {{$per_award}}%; ">${{ number_format(($total_award/1000000),2,'.',',') }}M &nbsp;</span>
+						<span class="bar_office contratados" style="width: {{$per_contract}}%; ">${{ number_format(($total_contract/1000000),2,'.',',') }}M &nbsp;</span>
 					</div>
-					<div class="col-sm-9">
-						<span class="bar_office" style="width: {{$per_planning}}%; "></span>
-					</div>
-					
 				</div>
-				<!--award-->
-				<div class="row visualiza">
-					<div class="row">
-						<div class="col-sm-3">
-							<p>TOTAL ADJUDICADO (MXN)</p>
-						</div>
-					</div>
-					<div class="col-sm-3">	
-						<h2><span>$</span>{{ number_format($total_award,2,'.',',') }}</h2>
-					</div>
-
-					<div class="col-sm-9">
-						<span class="bar_office adjudicados" style="width: {{$per_award}}%; "></span>
-					</div>
-					
-				</div>
-				<!--contract-->
-				<div class="row visualiza">
-					<div class="row">
-						<div class="col-sm-3">
-						<p>TOTAL CONTRATADO (MXN)</p>
-						</div>
-					</div>
-					
-					<div class="col-sm-3">
-						<h2><span>$</span> {{ number_format($total_contract,2,'.',',') }}</h2>
-					</div>
-					<div class="col-sm-9">
-						<span class="bar_office contratados" style="width: {{$per_contract}}%; "></span>
-					</div>
-					
-				</div>
-				
-
 				
 				
 				<div class="divider"></div>

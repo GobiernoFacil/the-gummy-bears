@@ -269,21 +269,15 @@ circle.root {
   stroke: none; }
 
 .bar_office {
-  background: #eb008b;
-  height: 26px;
+  background: #00BFB3;
+  height: 30px;
+  line-height: 30px;
   display: block; }
   .bar_office.contratados {
     background: #28c3f9; }
   .bar_office.adjudicados {
-    background: #0a467c; }
-
-.visualiza {
-  text-align: right; }
-  .visualiza h2 {
-    font-size: 24px !important;
-    line-height: 26px !important; }
-  .visualiza p {
-    line-height: 26px; }
+    background: #702082;
+    color: white; }
 
 .wrapper, .wrap {
   width: 90%;
@@ -1963,6 +1957,42 @@ p.list_t {
   border-bottom: 1px solid #ccc;
   margin: 0 0 25px;
   padding: 0 0 25px; }
+
+.dependencia .amount {
+  text-align: center; }
+  .dependencia .amount b {
+    display: inline-block;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px; }
+  .dependencia .amount svg path, .dependencia .amount svg rect, .dependencia .amount svg polygon, .dependencia .amount svg circle {
+    fill: white; }
+  .dependencia .amount .planning p {
+    color: #00BFB3; }
+  .dependencia .amount .planning b {
+    background: #00BFB3; }
+  .dependencia .amount .awards p {
+    color: #702082; }
+  .dependencia .amount .awards b {
+    background: #702082; }
+  .dependencia .amount .contracts p {
+    color: #28c3f9; }
+  .dependencia .amount .contracts b {
+    background: #28c3f9; }
+.dependencia .visualiza {
+  position: relative;
+  min-height: 60px;
+  margin-top: 50px;
+  margin-bottom: 40px;
+  text-align: right; }
+  .dependencia .visualiza h2 {
+    font-size: 24px !important;
+    line-height: 26px !important; }
+  .dependencia .visualiza p {
+    line-height: 26px; }
 
 #donut svg {
   margin: 10px auto;
