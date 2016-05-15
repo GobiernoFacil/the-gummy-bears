@@ -1897,6 +1897,50 @@ p.list_t {
       color: #eb008b; }
       .dependencia .list li a:hover, .proveedor .list li a:hover {
         border-bottom: 1px dotted #eb008b; }
+.dependencia .stage_list, .proveedor .stage_list {
+  margin: 20px 0; }
+  .dependencia .stage_list li, .proveedor .stage_list li {
+    border: 0;
+    padding: 5px 0; }
+    .dependencia .stage_list li b, .proveedor .stage_list li b {
+      display: inline-block;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -ms-border-radius: 50%;
+      border-radius: 50%;
+      height: 19px;
+      padding: 2px;
+      margin: 0 5px 0 0;
+      width: 19px; }
+    .dependencia .stage_list li svg, .proveedor .stage_list li svg {
+      height: 15px;
+      width: 15px; }
+      .dependencia .stage_list li svg path, .dependencia .stage_list li svg rect, .dependencia .stage_list li svg polygon, .dependencia .stage_list li svg circle, .proveedor .stage_list li svg path, .proveedor .stage_list li svg rect, .proveedor .stage_list li svg polygon, .proveedor .stage_list li svg circle {
+        fill: white; }
+    .dependencia .stage_list li.planning, .proveedor .stage_list li.planning {
+      color: #00BFB3; }
+      .dependencia .stage_list li.planning b, .proveedor .stage_list li.planning b {
+        background: #00BFB3; }
+    .dependencia .stage_list li.tender, .proveedor .stage_list li.tender {
+      color: #eb008b; }
+      .dependencia .stage_list li.tender b, .proveedor .stage_list li.tender b {
+        background: #eb008b; }
+    .dependencia .stage_list li.awards, .proveedor .stage_list li.awards {
+      color: #702082; }
+      .dependencia .stage_list li.awards b, .proveedor .stage_list li.awards b {
+        background: #702082; }
+    .dependencia .stage_list li.contracts, .proveedor .stage_list li.contracts {
+      color: #28c3f9; }
+      .dependencia .stage_list li.contracts b, .proveedor .stage_list li.contracts b {
+        background: #28c3f9; }
+    .dependencia .stage_list li.implementation, .proveedor .stage_list li.implementation {
+      color: #1D1D1B; }
+      .dependencia .stage_list li.implementation b, .proveedor .stage_list li.implementation b {
+        background: #1D1D1B; }
+    .dependencia .stage_list li.zero, .proveedor .stage_list li.zero {
+      -webkit-opacity: 0.3;
+      -moz-opacity: 0.3;
+      opacity: 0.3; }
 .dependencia h1, .proveedor h1 {
   font: 500 36px 'Geomanist', Helvetica, Arial, sans-serif; }
   .dependencia h1 a, .proveedor h1 a {
@@ -1904,6 +1948,8 @@ p.list_t {
     .dependencia h1 a:hover, .proveedor h1 a:hover {
       color: #eb008b;
       border-bottom: 1px dotted #eb008b; }
+.dependencia .subtitle, .proveedor .subtitle {
+  font-size: 36px; }
 .dependencia h2, .proveedor h2 {
   font-size: 29px; }
 .dependencia h3, .proveedor h3 {
@@ -1917,6 +1963,10 @@ p.list_t {
   border-bottom: 1px solid #ccc;
   margin: 0 0 25px;
   padding: 0 0 25px; }
+
+#donut svg {
+  margin: 10px auto;
+  display: block; }
 
 p.address {
   padding: 20px 0; }

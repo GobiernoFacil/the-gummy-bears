@@ -5,50 +5,57 @@
 	<div class="row list">
 		<div class="col-sm-12">
 			<div class="box">
-				<p>Dependencia</p>
-				<h1 id="publisher-name"><a href="http://www.finanzas.df.gob.mx/">{{$buyer->name}}</a></h1>
-				<div class="divider"></div>
-				<p id="releases-buyer-name"></p>
-				<p>
-				  <span id="address-streetAddress">Dr. Lavista 144,</span>
-				  <span id="address-locality">Delegación Cuauhtémoc,</span>
-				  <span id="address-region">Ciudad de México</span>
-				  C.P.<span id="address-postalCode">06720</span>
-				</p>
-				
+				<div class="row">
+					<div class="col-sm-9">
+						<p>DEPENDENCIA</p>
+						<h1 id="publisher-name"><a href="http://www.finanzas.df.gob.mx/">{{$buyer->name}}</a></h1>
+						<p class="address">
+						  <span id="address-streetAddress">Dr. Lavista 144,</span>
+						  <span id="address-locality">Delegación Cuauhtémoc,</span>
+						  <span id="address-region">Ciudad de México</span>
+						  C.P.<span id="address-postalCode">06720</span>
+						</p>
+					</div>
+					<div class="col-sm-3">
+						@foreach($contracts as $contract)
+							@if($contract->releases->count())
+							<?php $r = $contract->releases->last();?>
+							@endif
+						@endforeach
+						
+						<?php 
+							$total_procesos 	= $r->tender->count();
+							$etapa_adjudicacion = ($awards->count() - $singlecont_count);
+							$etapa_contratacion = $singlecont_count;
+							$etapa_licitacion 	= $total_procesos - $awards->count();
+						?>
+						<p>TOTAL DE PROCESOS DE CONTRATACIÓN ABIERTOS</p>
+						<h2 id="licitaciones-total" class="subtitle">{{$total_procesos}}</h2>
+					</div>
 				
 
+				</div>
 				<div class="divider"></div>
-				@foreach($contracts as $contract)
-					@if($contract->releases->count())
-					<?php $r = $contract->releases->last();?>
-					@endif
-				@endforeach
-				
-				<?php 
-					$total_procesos 	= $r->tender->count();
-					$etapa_adjudicacion = ($awards->count() - $singlecont_count);
-					$etapa_contratacion = $singlecont_count;
-					$etapa_licitacion 	= $total_procesos - $awards->count() ;
-				?>
 				
 				<div class="row">
-					<div class="col-sm-3">
-						<p>PROCESOS DE CONTRATACIÓN</p>
-						<h2 id="licitaciones-total">{{$total_procesos}}</h2>
+					<div class="col-sm-12">
+						<h2>Procesos de contratación por etapa activa:</h2>
 					</div>
-					<div class="col-sm-3">
-						<p>EN ETAPA DE LICITACIÓN</p>
-						<h2 id="licitaciones-total-num">{{$etapa_licitacion}}</h2>
+					<div class="col-sm-4 col-sm-offset-2">
+						<div id="donut"></div>
+
 					</div>
-					<div class="col-sm-3">
-						<p>EN ETAPA DE  ADJUDICACIÓN</p>
-						<h2 id="adjudicaciones-total-num">{{ $etapa_adjudicacion }}</h2>
+					<div class="col-sm-4 ">
+						<ul class="stage_list">
+							<li class="planning zero"><b><?php echo file_get_contents("img/nav_planeacion.svg"); ?></b> <strong>0</strong> en Planeación</li>
+							<li class="tender"><b><?php echo file_get_contents("img/nav_licitacion.svg"); ?></b> <strong>{{$etapa_licitacion}}</strong> en Licitación</li>
+							<li class="awards"><b><?php echo file_get_contents("img/nav_adjudicacion.svg"); ?></b> <strong>{{$etapa_adjudicacion}}</strong> en Adjudicación</li>
+							<li class="contracts"><b><?php echo file_get_contents("img/nav_contratacion.svg"); ?></b> <strong>{{$etapa_contratacion}}</strong> en Contratación</li>
+							<li class="implementation zero"><b><?php echo file_get_contents("img/nav_implementacion.svg"); ?></b> <strong>0</strong> en Implementación</li>
+						</ul>
 					</div>
-					<div class="col-sm-3">
-						<p>EN ETAPA DE CONTRATACIÓN</p>
-						<h2 id="contratos-total-num">{{$etapa_contratacion}}</h2>
-					</div>
+					
+					
 				</div>
 				
 				<!-- visualiza-->
@@ -212,5 +219,14 @@
 		
 	</div>
 </div>
+
+<script>
+	var DATA = [{"stage":"planning", "total":0},
+    			{"stage":"tender", "total":{{$etapa_licitacion}} },
+    			{"stage":"awards", "total":{{$etapa_adjudicacion}} },
+    			{"stage":"contracting", "total":{{$etapa_contratacion}} },
+    			{"stage":"implmentation", "total":0},
+    			];
+</script>
 
 @endsection
