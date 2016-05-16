@@ -15,4 +15,8 @@ class Provider extends Model
   public function awards(){
     return $this->belongsToMany('App\Models\Award', 'provider_award');
   }
+
+  public function buyers(){
+    return $this->hasMany("App\Models\BuyerProvider");
+  }
 }

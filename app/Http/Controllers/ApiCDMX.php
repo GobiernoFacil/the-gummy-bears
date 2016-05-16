@@ -4,11 +4,14 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use App\Models\Buyer;
+use App\Models\BuyerProvider;
 use App\Models\Contract;
 use App\Models\ContractHistory;
 use App\Models\ContractData;
 use App\Models\Provider;
 use App\Models\Supplier;
+use App\Models\Tender;
 
 class ApiCDMX extends Controller {
 
@@ -143,6 +146,23 @@ class ApiCDMX extends Controller {
   public function showContractHistory($ocdsid){
     $contracts = ContractHistory::where("ocdsid", $ocdsid)->get();
     return response()->json($contracts)->header('Access-Control-Allow-Origin', '*');
+  }
+
+  public function showBuyers(){
+    $response = Buyer::all();
+    return response()->json($response)->header('Access-Control-Allow-Origin', '*');
+  }
+
+  public function showBuyerProviderRelation($page = 1){
+    $response = BuyerProvider::with(["buyer", "provider"])->orderBy("budget", "desc")->get();
+    return response()->json($response)->header('Access-Control-Allow-Origin', '*');
+  }
+
+  public function tenders($page = 1){
+    $response = Tender::whereHas("release", function($q){
+      $q->where("is_latest", 1);
+    })->with(["items", "providers", "documents", "release.singlecontracts"])->orderBy("amount", "desc")->get();
+    return response()->json($response)->header('Access-Control-Allow-Origin', '*');
   }
 
   //

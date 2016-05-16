@@ -50,6 +50,9 @@ Route::get('api/contratos/buscar/{page?}', 'ApiCDMX@search');
 Route::get('api/contrato/{key}', 'ApiCDMX@getJSON');
 Route::get('api/contrato/historico/{key}', 'ApiCDMX@showContractHistory'); // *
 Route::get('api/contrato/actual/{key}', 'ApiCDMX@showContractData'); // *
+Route::get('api/dependencias/todas', 'ApiCDMX@showBuyers');
+Route::get('api/dependencia-proveedor/{page?}', 'ApiCDMX@showBuyerProviderRelation');
+Route::get('api/licitaciones/{page?}', 'ApiCDMX@tenders');
 
 /*
 .......................................

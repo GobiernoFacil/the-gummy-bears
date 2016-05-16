@@ -8,12 +8,6 @@ class Tender extends Model
 {
   protected $fillable = ["release_id"];
 
-  /*
-  public function items(){
-    return $this->hasMany('App\Models\Item');
-  }
-  */
-
   public function items(){
     return $this->morphMany('App\Models\Item', 'myitem');
   }

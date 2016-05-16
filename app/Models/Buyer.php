@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Buyer extends Model
 {
   protected $fillable = ["local_id", "uri", "name"];
+
+  public function providers(){
+    return $this->hasMany("App\Models\BuyerProvider");
+  }
     //
 }
