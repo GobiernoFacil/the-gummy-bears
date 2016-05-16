@@ -35,7 +35,7 @@
 	<div class="breadcrumb">
 		<div class="container">
 			<nav class="row">
-				<div class="col-sm-5">
+				<div class="col-sm-4">
 					<p>Filtrar por etapa:
 						<select id="bubble-fun">
 							<option value="tender">Licitaciones</option>
@@ -45,13 +45,21 @@
 					</p>
 				<!--Contratos-->
 				</div>
-				<div class="col-sm-7 right">
+				<div class="col-sm-4 right">
 					<p>Ver por: 
 					<!--<a href="#" class="advanced_search">Advanced Search</a>-->
 					<a href="#" id="dependencia-a" class="ladependencia live">Dependencias</a>
 					<a href="#" id="dependencia-b" class="ladependencia empresa"> Proveedores</a>
 					</p>
 				</div>
+				<div class="col-sm-4 right">
+					<form method="get" action="{{url('contratos/busqueda')}}" class="form-search">
+						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+						<input type="text" name="query" value="{{old('query')}}">
+						<input type="submit" value="&nbsp;"></p>
+  					</form>
+				</div>
+				
 			</nav>
 		</div>
 	</div>

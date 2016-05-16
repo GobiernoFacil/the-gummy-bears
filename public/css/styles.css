@@ -246,6 +246,28 @@ input[type="search"]::-webkit-search-decoration {
   font-weight: normal;
   font-style: normal; }
 
+.form-search {
+  margin: 0; }
+  .form-search input[type=text] {
+    border: 0;
+    background: #f2f2f2;
+    display: inline-block;
+    height: 52px;
+    margin: 0;
+    padding: 0 5px; }
+    .form-search input[type=text]:focus {
+      border: 0;
+      background: white; }
+  .form-search input[type=submit] {
+    background: black url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSIyMy4xMjVweCIgaGVpZ2h0PSIyNC4yNXB4IiB2aWV3Qm94PSIwIDAgMjMuMTI1IDI0LjI1IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAyMy4xMjUgMjQuMjUiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxnPjxjaXJjbGUgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRkZGRkZGIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgY3g9IjkuNjI1IiBjeT0iOS45ODYiIHI9IjcuNDA3Ii8+PGxpbmUgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRkZGRkZGIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgeDE9IjE0LjA2OSIgeTE9IjE1LjE3MiIgeDI9IjIxLjQ3OCIgeTI9IjIyLjU3OCIvPjwvZz48L3N2Zz4=') no-repeat 50%;
+    border: 0;
+    display: inline-block;
+    height: 52px;
+    width: 40px;
+    margin: 0; }
+    .form-search input[type=submit]:hover {
+      background-color: #eb008b; }
+
 .percent {
   height: 26px;
   margin-top: 25px;
