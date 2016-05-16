@@ -17,12 +17,12 @@ Similar al endpoint anterior, este sirve para obtener todos los contratos en un 
 ```
 
 ### Obtén la información completa por contrato
-Con este endpoint, se obtiene la información completa del contrato, como lo indica el Open Contracting Partnership (http://standard.open-contracting.org/latest/en/schema/reference/)
+Con este endpoint, se obtiene la información completa del contrato, como lo indica el Open Contracting Partnership (http://standard.open-contracting.org/latest/en/schema/reference/).
 
 * api/contrato/{ocds} [GET]
 
 ### Busca un contrato por palabra clave
-Es posible buscar por palabra clave dentro del contrato. El campo de búsqueda se llama “query”, y es opcional seleccionar la página de resultados de la búsqueda. La respuesta incluye el número de resultados, página que se está regresando y los resultados por página
+Es posible buscar por palabra clave dentro del contrato. El campo de búsqueda se llama “query”, y es opcional seleccionar la página de resultados de la búsqueda. La respuesta incluye el número de resultados, página que se está regresando y los resultados por página.
 
 * api/contratos/buscar/{page?}?query [GET]
 ```json
@@ -62,9 +62,15 @@ Esta es la lista de dependencias (o compradores).
 ```
 
 ### obtén la relación entre dependecias y proveedores
-Este endpoint contiene un resumen de la relación de las dependencias con cada proveedor
+Este endpoint contiene un resumen de la relación de las dependencias con cada proveedor.
 
-* api/dependencia-proveedor/{page?}
+* api/dependencia-proveedor/{page?} [GET]
 ```json
 [{"id":21,"provider_id":21,"buyer_id":1,"tender_num":1,"award_num":1,"budget":9742882,"contract_budget":9742882,"created_at":"2016-05-15 23:44:17","updated_at":"2016-05-15 23:44:17","buyer":{"id":1,"local_id":"0901","uri":"http:\/\/www.contratosabiertos.cdmx.gob.mx","name":"SECRETAR\u00cdA DE FINANZAS","address_id":null,"contact_point_id":null,"created_at":"2016-05-03 21:46:33","updated_at":"2016-05-03 21:46:33"},"provider":{"id":21,"rfc":"SMI680112PG9","name":"SERVICIOS MEXICANOS DE INGENIERIA","total":null,"street":"AVENIDA COYOACAN","locality":"BENITO JUAREZ","region":"DF","zip":"03100","country":"MX","contact_name":"ING. CARLOS DAVID SANCHEZ PE\u00d1ALOZA","email":"atecion.clientes@semicmex.com.mx","phone":"55756287","fax":"55756287","url":"WWW.SEMICMEX.COM.MX","created_at":"2016-05-03 21:46:48","updated_at":"2016-05-12 04:46:30","tender_num":1,"award_num":1,"budget":9742882.48,"contract_budget":9742882.48}}, ...]
 ```
+
+## Licitaciones
+### obtén la lista de licitaciones
+Esta es la lista de licitaciones (_tenders_) para la última versión de cada proceso de contratación.
+
+* api/licitaciones/{page?} [GET]
