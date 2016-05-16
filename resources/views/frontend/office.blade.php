@@ -126,7 +126,7 @@
 			<div class="box">
 				<div class="row">
 					<div class="col-sm-8">
-						<h3>Contrataciones <span>(5 de {{$singlecont_count}})</span></h3>
+						<h3>Contratos <span>(5 de {{$singlecont_count}})</span></h3>
 					</div>
 					<div class="col-sm-4">
 						<p class="right">TOTAL (MXN)</p>

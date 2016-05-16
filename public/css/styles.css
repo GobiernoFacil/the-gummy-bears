@@ -1888,9 +1888,10 @@ p.list_t {
     padding-top: 23px;
     padding-bottom: 23px; }
     .dependencia .list li a, .proveedor .list li a {
-      color: #eb008b; }
+      color: #1D1D1B;
+      border-bottom: 1px dotted #eb008b; }
       .dependencia .list li a:hover, .proveedor .list li a:hover {
-        border-bottom: 1px dotted #eb008b; }
+        color: #eb008b; }
 .dependencia .stage_list, .proveedor .stage_list {
   margin: 20px 0; }
   .dependencia .stage_list li, .proveedor .stage_list li {
