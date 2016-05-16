@@ -267,6 +267,10 @@ input[type="search"]::-webkit-search-decoration {
     margin: 0; }
     .form-search input[type=submit]:hover {
       background-color: #eb008b; }
+  .form-search.search_view {
+    margin-top: 70px; }
+    .form-search.search_view input[type=text] {
+      background: white; }
 
 .percent {
   height: 26px;

@@ -1,110 +1,19 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<?php
-  $total_contracts = 0;
-  $contract_data = [];
-  foreach ($contracts as $elcontract) {
-	if ($elcontract->releases->count()) {
-		$total_contracts++;
-		$r = $elcontract->releases->last();
-		$contract_data[] = [
-		  "id"        =>  $elcontract->ocdsid,
-		  "title"     => $r->planning->project,
-		  "budget"    => $r->planning->amount,
-		  "buyer"     => $r->buyer,
-		  "awards"    => $r->awards,
-		  "contracts" => $r->singlecontracts
-		  ];
-	}
-  }
-
-  $total_money = array_reduce($contract_data,function($v1, $v2){
-  	return $v1 + (float)$v2["budget"];
-  },0);?>
-  
-<div class="instructions">
-	<div class="container">
-	<h1>Contrataciones Abiertas de la CD<span class="mx">MX</span></h1>
-	<p>Explora cómo compra tu Gobierno filtrando por etapa de proceso de compra, dependencias o proveedores.</p>
-	</div>
-</div>  
-<!-- viz-->
-<div id="force" class="viz_home">
-	<!-- filtros-->
-	<div class="breadcrumb">
-		<div class="container">
-			<nav class="row">
-				<div class="col-sm-4">
-					<p>Filtrar por etapa:
-						<select id="bubble-fun">
-							<option value="tender">Licitaciones</option>
-							<option value="awards">Adjudicaciones</option>
-							<option value="contracts" selected>Contratos</option>
-						</select>
-					</p>
-				<!--Contratos-->
-				</div>
-				<div class="col-sm-4 right">
-					<p>Ver por: 
-					<!--<a href="#" class="advanced_search">Advanced Search</a>-->
-					<a href="#" id="dependencia-a" class="ladependencia live">Dependencias</a>
-					<a href="#" id="dependencia-b" class="ladependencia empresa"> Proveedores</a>
-					</p>
-				</div>
-				<div class="col-sm-4 right">
-					<form method="get" action="{{url('contratos/busqueda')}}" class="form-search">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
-						<input type="text" name="query" value="{{old('query')}}" placeholder="Buscar contrato">
-						<input type="submit" value="&nbsp;"></p>
-  					</form>
-				</div>
-				
-			</nav>
-		</div>
-	</div>
-	<header>
-		<div class="col-sm-4">
-			<p><span>DEPENDENCIAS</span> <strong>01</strong></p>
-		</div>
-		<div class="col-sm-4 center">
-			<p><span id="type">CONTRATOS</span> <strong id="type_total">{{ $contracts_number }}</strong></p>
-		</div>
-		<div class="col-sm-4">
-			<p><span>TOTAL (MXN)</span>$<strong id="total_amount">{{ (int)($contracts_amount/1000000) }}</strong> millones </p>
-		</div>
-	</header>
-	<p id="publisher-name"></p>
-	<p id="contratos-total-num"></p>
-	<p id="contratos-total-money"></p>
-</div>
-<div class="viz_instructions">
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-6 col-sm-offset-6">
-				<p class="wit"><strong>¿Qué estoy viendo?</strong> Esta gráfica te permite comparar cantidades por cada elemento. Entre más área tenga el círculo más elevado es el total recibido.</p>
-			</div>
-		</div>
-	</div>
-</div>
 
 <!-- container-->
 <div id="all-list-contracts" class="container">
 	<div class="row">
 		<div class="col-sm-9">
-			<h2 id="title_select_type" class="title_section select">Lista de <strong>Contrataciones Abiertas</strong></h2>
+			<h2 class="title_section select">Resultados de búsqueda para: "<strong>{{$keyword}}</strong>"</h2>
+			<p>{{$contracts->count()}} resultado encontrado.</p>
 		</div>
-		<div class="col-sm-3">
-			<form class="select_type">
-				<p>Mostrar por etapa: 
-				  <select id="contracts-selector">
-				    <option value="all">Todos</option>
-					 <!-- <option value="planning">Planeación</option>-->
-					  <option value="tender">Licitación</option>
-					  <option value="award">Adjudicación</option>
-					  <option value="contract">Contratación</option>
-				  </select>
-				</p>
+		<div class="col-sm-3 right">
+			<form method="get" action="{{url('contratos/busqueda')}}" class="form-search search_view">
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
+				<input type="text" name="query" value="{{old('query')}}" placeholder="Realizar otra búsqueda">
+				<input type="submit" value="&nbsp;">
 			</form>
 		</div>
 		<div class="col-sm-12">			
@@ -264,11 +173,5 @@
 		</div>
 	</div>
 </div>
-
-<script>
-	var DATA = <?php echo json_encode($contract_data); ?>;
-	var JSON = <?php echo json_encode($json); ?>;
-	var PROVIDERS = <?php echo json_encode($_providers); ?>;
-</script>
 
 @endsection

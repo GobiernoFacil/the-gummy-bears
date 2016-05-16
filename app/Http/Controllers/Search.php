@@ -83,8 +83,15 @@ class Search extends Controller {
     else{
       $contracts = null;
     }
+	$data                = [];
+    $data['title']       = 'Resultados de búsqueda de Contrataciones Abiertas de la CDMX';
+    $data['description'] = 'Resultados de búsqueda de Contrataciones Abiertas de la Ciudad de México';
+	$data['og_image']	 = "img/og/contrato-cdmx.png";
+	$data['body_class']  = 'contract single';
+    $data['contracts']   = $contracts;
+    $data['keyword']   	 = $query;
 
-    return view('frontend.search')->with(['contracts' => $contracts]);
+    return view('frontend.contracts.search')->with($data);
     //
   }
 
