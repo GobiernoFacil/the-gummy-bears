@@ -12,12 +12,12 @@
     </div>
           <div class="row divider">
             <div class="col-sm-4">
-              <p class="title_section">PRESUPUESTO (MXN)</p>
+              <p class="title_section">MONTO LICITADO (MXN)</p>
               <?php $budget_amount = $elcontrato->tender->amount;?>
               <h2 class="amount"><b class="budget"></b><span>$</span><?php echo number_format($budget_amount,2, '.', ',');?></h2>
             </div>
             <div class="col-sm-4">
-              <p class="title_section">Gastado (MXN)</p>
+              <p class="title_section">MONTO CONTRATADO (MXN)</p>
               <?php  $amount_gastado =  0;?>
               @foreach ($elcontrato->singlecontracts as $s)
               	@if($s->amount)
@@ -41,7 +41,7 @@
                 
               ?>
               
-              <p class="title_section">% PRESUPUESTO / GASTADO</p>
+              <p class="title_section">% LICITADO / CONTRATADO</p>
               <div class="percent">
                 <div class="budget" style="width: <?php echo $percent_budget;?>"></div>
                 <div class="spent"  style="width: <?php echo $percent_spent;?>"></div>
@@ -111,6 +111,11 @@
             
             <div class="col-sm-4">
               <p class="title_section">DOCUMENTOS</p>
+              <ol>
+              @foreach ($elcontrato->tender->documents as $doc)
+              	<li><a href="{{$doc->url}}">{{$doc->title}}</a> {{$doc->date}}</li>
+              @endforeach
+              </ol>
             </div> 
           </div>
           

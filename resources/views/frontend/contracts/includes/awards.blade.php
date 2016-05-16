@@ -48,6 +48,11 @@
               
               <div class="col-sm-4">
                 <p class="title_section">DOCUMENTOS</p>
+                <ol>
+				@foreach ($award->documents as $doc)
+					<li><a href="{{$doc->url}}">{{$doc->title}}</a> {{$doc->date}}</li>
+				@endforeach
+				</ol>
               </div>
             </div>
           </div>

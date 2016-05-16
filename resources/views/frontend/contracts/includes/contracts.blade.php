@@ -34,7 +34,7 @@
               <p>
               @if ($contract->date_signed)
               <?php $time_contract = strtotime($contract->date_signed);?>
-              <?php echo date('d/m/Y',$time_contract);?>
+              {{ date('d/m/Y',$time_contract)}}
               @else
               Sin Fecha de Firma
               @endif
@@ -66,6 +66,7 @@
               
               <div class="col-sm-4">
                 <p class="title_section">DOCUMENTOS</p>
+                {{$contract->documents}}
               </div> 
             </div>
     </div>
