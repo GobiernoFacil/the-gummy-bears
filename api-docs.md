@@ -5,7 +5,7 @@ Este método regresa la clave única para todos los contratos disponibles. La cl
 
 * api/contratos/todos [GET]
 ```json
-[{“id":1,"ocdsid":"OCDS-87SD3T-SEFIN-AD-SF-DRM-001-2015","ejercicio":2015,"cvedependencia":901,"nomdependencia":"SECRETAR\u00cdA DE FINANZAS","published_date":"2015-11-04","uri":"http:\/\/www.contratosabiertos.cdmx.gob.mx\/OCDS-87SD3T-SEFIN-AD-SF-DRM-001-2015.json","publisher_id":1,"created_at":"2016-05-03 21:46:31","updated_at":"2016-05-03 21:46:33”}, …]
+[{"id":1,"ocdsid":"OCDS-87SD3T-SEFIN-AD-SF-DRM-001-2015","ejercicio":2015,"cvedependencia":901,"nomdependencia":"SECRETAR\u00cdA DE FINANZAS","published_date":"2015-11-04","uri":"http:\/\/www.contratosabiertos.cdmx.gob.mx\/OCDS-87SD3T-SEFIN-AD-SF-DRM-001-2015.json","publisher_id":1,"created_at":"2016-05-03 21:46:31","updated_at":"2016-05-03 21:46:33”}, …]
 ```
 
 ### Obtén todos los contratos por año
@@ -13,7 +13,7 @@ Similar al endpoint anterior, este sirve para obtener todos los contratos en un 
 
 * api/contratos/ejercicio/{year} [GET]
 ```json
-[{“id":1,"ocdsid":"OCDS-87SD3T-SEFIN-AD-SF-DRM-001-2015","ejercicio":2015,"cvedependencia":901,"nomdependencia":"SECRETAR\u00cdA DE FINANZAS","published_date":"2015-11-04","uri":"http:\/\/www.contratosabiertos.cdmx.gob.mx\/OCDS-87SD3T-SEFIN-AD-SF-DRM-001-2015.json","publisher_id":1,"created_at":"2016-05-03 21:46:31","updated_at":"2016-05-03 21:46:33”}, …]
+[{"id":1,"ocdsid":"OCDS-87SD3T-SEFIN-AD-SF-DRM-001-2015","ejercicio":2015,"cvedependencia":901,"nomdependencia":"SECRETAR\u00cdA DE FINANZAS","published_date":"2015-11-04","uri":"http:\/\/www.contratosabiertos.cdmx.gob.mx\/OCDS-87SD3T-SEFIN-AD-SF-DRM-001-2015.json","publisher_id":1,"created_at":"2016-05-03 21:46:31","updated_at":"2016-05-03 21:46:33”}, …]
 ```
 
 ### Obtén la información completa por contrato
@@ -50,3 +50,13 @@ obtén la información de contacto de todos los proveedores que han participado 
 Obtén la información de contacto de un proveedor mediante el RFC. El objeto por proveedor es idéntico al que regresa el array de  todos los proveedores (el endpoint anterior).
 
 * api/proveedor/{rfc} [GET]
+
+
+## Dependencias
+### Obtén la lista de dependencias
+Esta es la lista de dependencias (o compradores). 
+
+* api/dependencias/todas [GET]
+* ```json
+[{"id":1,"local_id":"0901","uri":"http:\/\/www.contratosabiertos.cdmx.gob.mx","name":"SECRETAR\u00cdA DE FINANZAS","address_id":null,"contact_point_id":null,"created_at":"2016-05-03 21:46:33","updated_at":"2016-05-03 21:46:33"}]
+```
