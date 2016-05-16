@@ -52,7 +52,7 @@ class Contracts extends Controller {
 		
 		$data['contracts']  = $contracts;
 		$data['json']       = $json;
-    $data['_providers'] = $_providers;
+		$data['_providers'] = $_providers;
 		
 		$data['contracts_amount']  = $contracts_amount;
 		$data['contracts_number']  = $contracts_number;
