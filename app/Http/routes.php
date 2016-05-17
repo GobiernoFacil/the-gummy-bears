@@ -31,6 +31,10 @@ Route::get('proveedor/{id}', "Suppliers@show");
 Route::get('por-que', "Frontend@whatis");
 /// open data
 Route::get('datos-abiertos', "Frontend@opendata");
+Route::get('datos-abiertos/documentacion-api-contratos', "Frontend@apicontratos");
+Route::get('datos-abiertos/documentacion-api-proveedores', "Frontend@apisuppliers");
+Route::get('datos-abiertos/documentacion-api-dependencias', "Frontend@apioffices");
+Route::get('datos-abiertos/documentacion-api-licitaciones', "Frontend@apitenders");
 /// contacto
 Route::get('contacto', "Frontend@contact");
 /// terms

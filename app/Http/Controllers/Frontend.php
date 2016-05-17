@@ -76,6 +76,58 @@ class Frontend extends Controller {
 	
 	//
 	//
+	//api contratos
+	//
+	public function apicontratos(){
+		$data                = [];
+		$data['title']       = 'Documentación de API de Contratos de las Contrataciones Abiertas de la CDMX';
+		$data['description'] = 'Información sobre el API de Contratos de la CDMX';
+		$og_image			 = "img/og/contrataciones-abiertas-cdmx.png";
+		$data['body_class']  = 'datos api';
+		return view("frontend.documentation.api_contracts")->with($data);
+	}
+	
+	//
+	//
+	//api proveedores
+	//
+	public function apisuppliers(){
+		$data                = [];
+		$data['title']       = 'Documentación de API de Proveedores de las Contrataciones Abiertas de la CDMX';
+		$data['description'] = 'Información sobre el API de Proveedores de la CDMX';
+		$og_image			 = "img/og/contrataciones-abiertas-cdmx.png";
+		$data['body_class']  = 'datos api';
+		return view("frontend.documentation.api_suppliers")->with($data);
+	}
+	
+	//
+	//
+	//api dependencias
+	//
+	public function apioffices(){
+		$data                = [];
+		$data['title']       = 'Documentación de API de Dependencias de las Contrataciones Abiertas de la CDMX';
+		$data['description'] = 'Información sobre el API de Dependencias de la CDMX';
+		$og_image			 = "img/og/contrataciones-abiertas-cdmx.png";
+		$data['body_class']  = 'datos api';
+		return view("frontend.documentation.api_offices")->with($data);
+	}
+	
+	//
+	//
+	//api licitaciones
+	//
+	public function apitenders(){
+		$data                = [];
+		$data['title']       = 'Documentación de API de Licitaciones de las Contrataciones Abiertas de la CDMX';
+		$data['description'] = 'Información sobre el API de Licitaciones de la CDMX';
+		$og_image			 = "img/og/contrataciones-abiertas-cdmx.png";
+		$data['body_class']  = 'datos api';
+		return view("frontend.documentation.api_tenders")->with($data);
+	}
+	
+	//
+	//
 	//Contacto
 	//
 	public function contact(){

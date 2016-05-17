@@ -886,6 +886,9 @@ div {
 .hide {
   display: none; }
 
+em {
+  font-style: italic; }
+
 iframe {
   margin: 0 auto;
   display: block; }
@@ -928,10 +931,10 @@ sup {
   margin: 25px 0;
   display: block; }
 
-h2.title_section {
+h1.title_section, h2.title_section {
   font-weight: 700;
   padding: 70px 0 0; }
-  h2.title_section.select {
+  h1.title_section.select, h2.title_section.select {
     font-weight: 500; }
 
 /* =Magic menu 
@@ -1717,6 +1720,8 @@ div.allthem svg {
   .usa_datos li {
     list-style: none; }
     .usa_datos li a {
+      color: #1D1D1B;
+      text-decoration: underline;
       display: block;
       margin-bottom: 18px;
       padding-left: 28px;
@@ -1750,10 +1755,16 @@ div.allthem svg {
         width: 11px;
         left: 5px;
         top: 5px; }
+    .usa_datos li ol {
+      margin: 5px 50px 30px; }
+      .usa_datos li ol li {
+        font-size: 14px;
+        list-style: decimal;
+        margin: 0 0 5px; }
 
 /* =Home2 
 -------------------------------------------------------------- */
-.home2 nav#menu, .dependencia nav#menu, .proveedor nav#menu, .error nav#menu {
+.home2 nav#menu, .dependencia nav#menu, .proveedor nav#menu, .datos.api nav#menu, .error nav#menu {
   position: relative; }
 
 .viz_home {
@@ -2267,6 +2278,41 @@ ul.timeline {
       width: 25px; }
       ul.timeline .nav_stage.current svg path {
         fill: white; }
+
+/* datos API 
+-------------------------------------------------------------- */
+.datos.api h1.title_section {
+  border-bottom: 2px solid #f2f2f2;
+  font-size: 2.5em;
+  margin: 0 0 30px;
+  padding: 30px 0 0;
+  text-align: center; }
+.datos.api .codigo {
+  margin: 70px 0; }
+  .datos.api .codigo h2 {
+    border-bottom: 1px dotted #ccc;
+    margin-bottom: 10px;
+    padding: 10px 0 5px; }
+  .datos.api .codigo p {
+    font-size: 16px;
+    line-height: 1.5; }
+    .datos.api .codigo p a {
+      text-decoration: underline; }
+      .datos.api .codigo p a:hover {
+        color: #eb008b; }
+.datos.api code {
+  background: #f2f2f2;
+  color: #555;
+  margin-top: 10px;
+  padding: 10px; }
+  .datos.api code .box {
+    background: #f2f2f2; }
+  .datos.api code .string {
+    color: #0077C8; }
+  .datos.api code .int {
+    color: #702082; }
+.datos.api .divider {
+  border-bottom: 1px solid #ccc; }
 
 /* Dataviz 
 -------------------------------------------------------------- */
