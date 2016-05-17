@@ -937,6 +937,20 @@ h1.title_section, h2.title_section {
   h1.title_section.select, h2.title_section.select {
     font-weight: 500; }
 
+.veda_electoral {
+  background-color: #FFFFCC;
+  box-sizing: border-box;
+  width: 100%; }
+  .veda_electoral div {
+    padding: 14px 2% 10px;
+    box-sizing: border-box;
+    text-align: center;
+    font-family: 'Arial';
+    font-size: 14px;
+    border: solid 1px #BDB76B; }
+    .veda_electoral div span {
+      color: #000; }
+
 /* =Magic menu 
 -------------------------------------------------------------- */
 /* Pages nav */
@@ -2517,15 +2531,17 @@ footer {
 /* =Media queries
 -------------------------------------------------------------- */
 @media screen and (max-width: 480px) {
-  .mobile {
-    display: block; }
   .cdmx {
     background-size: auto 15px;
     width: 73px; }
-  nav#menu h1 {
-    line-height: 1;
-    font-size: 14px;
-    padding: 0; }
+  nav#menu {
+    position: relative; }
+    nav#menu h1 {
+      line-height: 1;
+      font-size: 14px;
+      padding: 0; }
+  .veda_electoral div {
+    font-size: 10px; }
   .js .pages-nav {
     display: block;
     padding: 10px 20px 0 20px;
@@ -2538,9 +2554,13 @@ footer {
     width: auto;
     margin-right: 5px; }
   .menu-button {
-    top: 15px;
+    top: 97px;
     right: 10px;
     left: auto; }
+    .menu-button b {
+      font-size: 11px;
+      right: 34px;
+      top: 7px; }
   .info {
     font-size: 0.85em; }
   .poster {
@@ -2561,10 +2581,11 @@ footer {
     #countdown p, #countdown .number {
       font-size: 12px; }
   section {
-    padding-top: 120px;
-    padding-bottom: 130px; }
+    padding-top: 60px;
+    padding-bottom: 60px; }
   .lead.datos h1, .participacion h1, .etapas h1, .win h1, .tools h1, .datos_pa_labanda h1 {
-    font-size: 1.7em; }
+    font-size: 1.7em;
+    font-weight: 500; }
   .win .quote p, .win .quote p strong {
     font-size: 15px; }
   a.btn.cta {
@@ -2592,15 +2613,20 @@ footer {
   footer {
     text-align: center; }
     footer .cdmx_w {
+      background-size: auto 35px;
+      background-position: 50%;
       margin: 0 auto; }
     footer h3 {
-      font-size: 18px; }
+      font-size: 15px; }
     footer .partners {
+      margin-bottom: 60px;
       padding: 40px 0 60px; }
       footer .partners h4 {
         margin-bottom: 15px; }
-      footer .partners .ocds {
-        background-size: 100% auto; }
+      footer .partners .bloomberg, footer .partners .ocds {
+        background-size: auto 20px; }
+      footer .partners .imco {
+        background-size: auto 40px; }
     footer .copy, footer .author, footer .copy .right {
       text-align: center; }
     footer .copy p {
@@ -2608,6 +2634,8 @@ footer {
     footer .author {
       padding: 40px 0 30px; }
       footer .author a {
+        background-size: auto 25px;
+        background-position: 50%;
         float: none;
         margin: 5px auto; } }
 
