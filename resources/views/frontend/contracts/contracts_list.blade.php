@@ -107,7 +107,7 @@
 				</p>
 			</form>
 		</div>
-		<div class="col-sm-12">			
+		<div class="col-sm-12 col-xs-10 col-xs-offset-1 col-sm-offset-0">			
 			<ul class="list">
 			@foreach($contracts as $contract)
 				<?php $contract_ocdsid = $contract->ocdsid;?>
