@@ -96,10 +96,10 @@
 		<div class="col-sm-6">
 			<div class="box">
 				<div class="row">
-					<div class="col-sm-8">
+					<div class="col-sm-8 col-xs-7">
 						<h3>Proveedores <span>(5 de {{$providers_count}})</span></h3>
 					</div>
-					<div class="col-sm-4">
+					<div class="col-sm-4 col-xs-5">
 						<p class="right">TOTAL (MXN)</p>
 					</div>
 				</div>
@@ -107,10 +107,10 @@
 					@foreach($providers as $sp)
 						@if ($sp->awards->count())
 						<li class="row">
-							<span class="col-sm-8">
+							<span class="col-sm-8 col-xs-7">
 								<a href="{{ url('proveedor/' . $sp->rfc) }}">{{$sp->name}}</a>
 							</span>
-							<span class="col-sm-4 right">
+							<span class="col-sm-4 col-xs-5 right">
 								${{number_format($sp->awards->sum('value'),2,'.',',')}}
 							</span>
 						</li>
@@ -125,20 +125,20 @@
 		<div class="col-sm-6">
 			<div class="box">
 				<div class="row">
-					<div class="col-sm-8">
+					<div class="col-sm-8 col-xs-7">
 						<h3>Contratos <span>(5 de {{$singlecont_count}})</span></h3>
 					</div>
-					<div class="col-sm-4">
+					<div class="col-sm-4 col-xs-5">
 						<p class="right">TOTAL (MXN)</p>
 					</div>
 				</div>
 				<ul id="licitaciones-costosas">
 					@foreach ($contract_data as $c)
 						<li class="row">
-								<span class="col-sm-8">
+								<span class="col-sm-8 col-xs-7">
 									<a href="{{ url('contrato/'. $c->ocdsid) }}">{{$c->release->singlecontracts[0]->description}}</a>
 								</span>
-								<span class="col-sm-4 right">
+								<span class="col-sm-4 col-xs-5 right">
 								${{ number_format($c->contracts,2,'.',',') }}
 								</span>
 							</li>

@@ -2679,14 +2679,19 @@ footer {
     .contract .info .title_section {
       font-size: 11px;
       margin-bottom: 0px; }
+    .contract .info li {
+      font-size: 12px; }
   .contract .label {
     font-size: 9px;
     padding: 1px 4px; }
   ul.timeline {
     margin: 0;
     min-height: 20px;
-    padding: 10px 0;
+    padding: 10px 0 20px;
     text-align: center; }
+    ul.timeline:before {
+      border: 0;
+      background: transparent; }
     ul.timeline li {
       display: inline-block;
       margin-bottom: 0;
@@ -2697,6 +2702,23 @@ footer {
         border: 0; }
       ul.timeline li ul {
         display: none; }
+    ul.timeline .nav_stage {
+      height: 30px;
+      width: 30px; }
+      ul.timeline .nav_stage.current {
+        height: 30px;
+        width: 30px; }
+        ul.timeline .nav_stage.current svg {
+          height: 20px;
+          width: 20px; }
+        ul.timeline .nav_stage.current:after {
+          font-size: 10px;
+          bottom: -17px;
+          left: 0;
+          top: inherit; }
+      ul.timeline .nav_stage svg {
+        height: 20px;
+        width: 20px; }
   h2.title_section {
     font-size: 1.5em;
     padding: 30px 0 0; }
@@ -2723,6 +2745,38 @@ footer {
     text-align: left; }
   p.list_t {
     font-size: 11px; }
+  .dependencia .box, .proveedor .box {
+    margin-top: 24px;
+    padding: 10px; }
+  .dependencia .subtitle, .proveedor .subtitle {
+    font-size: 19px; }
+  .dependencia h2, .proveedor h2 {
+    font-size: 16px; }
+  .dependencia .list li, .dependencia .list p, .proveedor .list li, .proveedor .list p {
+    font-size: 12px; }
+  .dependencia p.address, .proveedor p.address {
+    padding-top: 0; }
+  .dependencia h1, .proveedor h1 {
+    font-size: 21px; }
+  .dependencia h3 {
+    font-size: 14px; }
+  .dependencia .amount {
+    text-align: left; }
+    .dependencia .amount h2 {
+      font-size: 15px;
+      margin-bottom: 10px; }
+    .dependencia .amount b {
+      height: 15px;
+      margin-right: 10px;
+      width: 15px; }
+      .dependencia .amount b svg {
+        height: 15px;
+        width: 15px; }
+  .dependencia .visualiza {
+    margin-top: 15px;
+    margin-bottom: 10px; }
+  .dependencia li.row {
+    margin: 0; }
   .usa_datos li a {
     font-size: 14px; }
   footer {
