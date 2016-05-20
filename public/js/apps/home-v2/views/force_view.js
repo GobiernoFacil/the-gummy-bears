@@ -105,6 +105,7 @@ define(function(require){
           radius : scale(+d[index]),
           value  : d[index],
           name   : d.name,
+          type   : d.type,
           x      : Math.random() * 900,
           y      : Math.random() * 800
           };
@@ -168,6 +169,7 @@ define(function(require){
       })
       .on("click", function(d){
         var url = d.type == "contract" ? that._url + d.id : that._url_b + d.rfc;
+        //console.log(d, url, that._url, that._url_b, d.id, d.rfc);
         window.open(url,"_self");
       });
 
