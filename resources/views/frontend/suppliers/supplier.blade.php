@@ -6,7 +6,7 @@
 	<div class="row list">
 		<div class="col-sm-12">
 			<div class="box">
-				<p>Proveedor</p>
+				<p>PROVEEDOR</p>
 				<h1 id="publisher-name">
 					@if($tenderer->url && $tenderer->url != "No Capturado")
 					<a href="{{$tenderer->url}}">{{$tenderer->name}}</a>
@@ -51,15 +51,15 @@
 						<p>MONTO TOTAL CONTRATADO</p>
 						<h2 id="contrataciones-total-money"><span>$</span>{{ number_format($supplier->contract_budget,2,'.',',') }} <span>MXN</span></h2>
 					</div>
-					<div class="col-sm-2">
+					<div class="col-sm-2 mobile-no">
 						<p>LICITACIONES</p>
 						<h2 id="licitaciones-total-num">{{$tender_tenderer->count()}}</h2>
 					</div>
-					<div class="col-sm-2">
+					<div class="col-sm-2 mobile-no">
 						<p>ADJUDICACIONES</p>
 						<h2 id="adjudicaciones-total-num">{{ $supplier->award_num }}</h2>
 					</div>
-					<div class="col-sm-3">
+					<div class="col-sm-3 mobile-no">
 						<p>PROMEDIO POR CONTRATACIÓN</p>
 						<h2 id="gasto-promedio-money"><span>$</span>{{ $supplier->awards->count() ? number_format($supplier->contract_budget / $supplier->awards->count(),2,'.',',') : '0' }} <span>MXN</span> </h2>
 					</div>
@@ -74,34 +74,35 @@
 		<div class="col-sm-6">
 			<div class="box">
 				<div class="row">
-					<div class="col-sm-8">
+					<div class="col-sm-8 col-xs-6">
 						<h3>Adjudicaciones con dependencias</h3>
 					</div>
-					<div class="col-sm-4">
+					<div class="col-sm-4  col-xs-6">
 						<p class="right">TOTAL (MXN)</p>
 					</div>
 				</div>
 				<ul id="lucky-providers">
 					<li class="row">
-						<span class="col-sm-8">
+						<span class="col-sm-8 col-xs-6">
 							<a href="{{ url('dependencia/1') }}">Secretaría de Finanzas</a>
 						</span>
-						<span class="col-sm-4 right">
+						<span class="col-sm-4  col-xs-6 right">
 							${{ number_format($supplier->awards->sum('value'),2,'.',',') }}
 						</span>
 					</li>
 					
 				</ul>
+				<div class="divider"></div>
 			</div>
 		</div>
 		
 		<div class="col-sm-6">
 			<div class="box">
 				<div class="row">
-					<div class="col-sm-8">
+					<div class="col-sm-8 col-xs-6">
 						<h3>Adjudicaciones</h3>
 					</div>
-					<div class="col-sm-4">
+					<div class="col-sm-4 col-xs-6">
 						<p class="right">TOTAL (MXN)</p>
 					</div>
 				</div>
@@ -115,10 +116,10 @@
 								@foreach ($supplier->awards as $ar)
 									@if($ar->id == $award->id)
 									<li class="row">
-									  <span class="col-sm-8">
+									  <span class="col-sm-8 col-xs-6">
 									  	<a href="{{ url('contrato/'. $contract_ocdsid)}}">{{ $award->title }}</a>
 									  </span>
-									  <span class="col-sm-4 right">
+									  <span class="col-sm-4 col-xs-6 right">
 									  	${{ number_format($award->value,2,'.',',') }}
 									  </span>
 									</li>
@@ -162,14 +163,14 @@
 							@foreach($tender_tenderer as $tt)
 							    @if ($t->id == $tt->tender_id)
 							<li class="row">
-								<span class="col-sm-6">
+								<span class="col-sm-6  col-xs-6">
 									<a href="{{ url('contrato/' . $contract_ocdsid ) }}">{{$t->title}}</a><br>
 									{{$t->description}}
 								</span>
-								<span class="col-sm-3">
+								<span class="col-sm-3  mobile-no">
 									{{$t->tender_start}}
 								</span>
-								<span class="col-sm-3 right">
+								<span class="col-sm-6  col-xs-3 right">
 									${{ number_format($t->amount,2,'.',',') }}
 								</span>
 							</li>

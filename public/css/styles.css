@@ -2545,8 +2545,12 @@ footer {
       line-height: 1;
       font-size: 14px;
       padding: 0; }
+  .mobile-no {
+    display: none; }
   .veda_electoral div {
     font-size: 10px; }
+  .breadcrumb a {
+    font-size: 11px; }
   .js .pages-nav {
     display: block;
     padding: 10px 20px 0 20px;
@@ -2716,6 +2720,8 @@ footer {
           bottom: -17px;
           left: 0;
           top: inherit; }
+      ul.timeline .nav_stage:hover:after {
+        content: ""; }
       ul.timeline .nav_stage svg {
         height: 20px;
         width: 20px; }
@@ -2756,6 +2762,8 @@ footer {
     font-size: 12px; }
   .dependencia p.address, .proveedor p.address {
     padding-top: 0; }
+  .dependencia li.row, .proveedor li.row {
+    margin: 0; }
   .dependencia h1, .proveedor h1 {
     font-size: 21px; }
   .dependencia h3 {
@@ -2775,8 +2783,11 @@ footer {
   .dependencia .visualiza {
     margin-top: 15px;
     margin-bottom: 10px; }
-  .dependencia li.row {
-    margin: 0; }
+  .proveedor h3 {
+    font-size: 14px; }
+  .proveedor .list p span:last-child {
+    margin-bottom: 10px;
+    display: inline-block; }
   .glosario .codigo {
     padding: 40px 15px 90px; }
     .glosario .codigo li {
@@ -2785,8 +2796,34 @@ footer {
     font-size: 17px; }
   .datos_pa_labanda p {
     font-size: 12px; }
+  .queson .win h1 {
+    font-size: 16px; }
+  .queson .win .quote p {
+    font-size: 13px; }
+  .queson .allthem svg {
+    height: auto;
+    width: 100%; }
+  .queson .tools {
+    padding-top: 0; }
+    .queson .tools h1 {
+      font-size: 15px; }
+    .queson .tools .info {
+      font-size: 14px; }
   .usa_datos li a {
     font-size: 14px; }
+  .usa_datos li ol li {
+    font-size: 12px; }
+  .datos.api h1.title_section {
+    font-size: 18px;
+    padding: 10px 0; }
+  .datos.api .codigo h2 {
+    font-size: 16px; }
+  .datos.api .codigo p {
+    font-size: 12px; }
+  .datos.api .codigo li a {
+    word-break: break-all; }
+  .datos.api .codigo li span {
+    font-size: 11px; }
   footer {
     text-align: center; }
     footer .cdmx_w {
