@@ -3187,9 +3187,20 @@ footer {
     display: none; }
   section {
     padding-top: 120px;
-    padding-bottom: 130px; }
+    padding-bottom: 90px; }
   .stages li {
-    width: 19%; } }
+    width: 19%; }
+  iframe {
+    height: 334px;
+    width: 100%; }
+  .lead.homev2 a.btn.cta, .etapas a.btn, .datos_pa_labanda a.btn {
+    width: 100%; }
+  .contract .info h2.amount {
+    font-size: 21px; }
+  .participacion h1, .lead.datos h1, .lead.homev2 h1 {
+    font-size: 36px; }
+  .win h1 {
+    font-size: 28px; } }
 
 @media screen and (max-width: 992px) { }
 

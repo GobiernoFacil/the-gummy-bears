@@ -29,10 +29,10 @@
 				</div>
 				<p class="footnote center">*Información disponible a partir de diciembre de 2015 en la Secretaría de Finanzas</p>
 				<div class="row">
-					<div class="col-sm-6">
+					<div class="col-md-6 col-sm-12">
 						<a href="{{ url('contratos') }}" class="btn cta">Explora las compras de la <strong>CDMX &#x2794;</strong> </a>
 					</div>
-					<div class="col-sm-6">
+					<div class="col-md-6 col-sm-12">
 						<a href="#" class="btn cta scroll">Conoce el proceso de una compra <strong><b>&#x2794;</b></strong></a>
 					</div>
 				</div>
