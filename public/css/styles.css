@@ -2854,41 +2854,68 @@ footer {
         margin: 5px auto; } }
 
 @media screen and (min-width: 481px) and (max-width: 767px) {
-  .mobile {
-    display: block; }
-  .info {
-    max-width: 100%; }
-  .poster {
-    position: relative;
-    top: auto;
-    left: auto;
+  p, ul, ol, dl, table, form {
+    font-size: 12px; }
+  .cdmx {
+    background-size: auto 15px;
+    width: 73px; }
+  nav#menu {
+    position: relative; }
+    nav#menu h1 {
+      line-height: 1;
+      font-size: 14px;
+      padding: 0; }
+  .mobile-no {
+    display: none; }
+  .veda_electoral div {
+    font-size: 10px; }
+  .breadcrumb a {
+    font-size: 11px; }
+  .js .pages-nav {
     display: block;
-    max-width: 100%;
-    max-height: 50vh;
-    margin: 0 0 0 50%; }
-  .pages-nav__item {
-    width: 50%;
-    min-height: 20px; }
-  .link--page {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis; }
+    padding: 10px 20px 0 20px;
+    text-align: left;
+    top: 93px; }
+  .js .pages-nav__item {
+    width: 100%;
+    padding: 8px 0; }
+  .js .pages-nav__item--small {
+    display: inline-block;
+    width: auto;
+    margin-right: 5px; }
+  .menu-button {
+    top: 97px;
+    right: 10px;
+    left: auto; }
+    .menu-button b {
+      font-size: 11px;
+      right: 34px;
+      top: 7px; }
+  .info {
+    font-size: 0.85em; }
+  .poster {
+    margin: 1em; }
   .nav_links, #menu_scroll {
     display: none; }
-  .cdmx {
-    background-size: auto 20px; }
+  .datos_pa_labanda a.btn.default {
+    display: inline-block;
+    height: auto;
+    font-size: 14px;
+    line-height: 1.2;
+    margin-bottom: 25px; }
   #countdown {
-    padding: 3px 0;
+    padding: 2px 0;
     width: 100%;
     text-align: center;
     top: 60px; }
     #countdown p, #countdown .number {
       font-size: 12px; }
   section {
-    padding-top: 140px;
-    padding-bottom: 130px; }
-  .lead.datos h1, .participacion h1, .etapas h1, .win h1, .tools h1, .datos_pa_labanda h1 {
-    font-size: 1.7em; }
+    padding-top: 60px;
+    padding-bottom: 60px; }
+  .lead.datos h1, .participacion h1, .etapas h1, .win h1, .tools h1, .datos_pa_labanda h1, .instructions h1 {
+    font-size: 1.7em;
+    font-weight: 500; }
   .win .quote p, .win .quote p strong {
     font-size: 15px; }
   a.btn.cta {
@@ -2911,20 +2938,229 @@ footer {
       height: 35px;
       line-height: 35px;
       width: 230px; }
+  .lead.homev2 {
+    padding-top: 10px; }
+    .lead.homev2 h1 {
+      font-size: 28px; }
+    .lead.homev2 p.info {
+      font-size: 12px;
+      margin: 12px 0; }
+    .lead.homev2 p.footnote {
+      font-size: 9px; }
+    .lead.homev2 .bill {
+      padding: 20px 0 15px; }
+      .lead.homev2 .bill h3 {
+        font-size: 24px;
+        line-height: 1.5;
+        min-height: 24px; }
+        .lead.homev2 .bill h3 span.mxn {
+          font-size: 11px; }
+      .lead.homev2 .bill p {
+        font-size: 13px; }
+    .lead.homev2 a.btn.cta {
+      width: 100%; }
+  iframe {
+    height: 230px;
+    width: 100%; }
+  .etapas a.btn, .datos_pa_labanda a.btn {
+    font-size: 13px;
+    margin: 40px 0 0;
+    width: 100%; }
+  .contract .instructions p, .contract #force svg, .contract .breadcrumb p, .contract .viz_home header, .contract .viz_instructions {
+    display: none; }
+  .contract .viz_home {
+    min-height: 30px; }
+  .contract .breadcrumb {
+    min-height: 40px; }
+  .contract .form-search input[type=text] {
+    height: 40px;
+    width: 80%; }
+  .contract .form-search input[type=submit] {
+    height: 41px; }
+  .contract .breadcrumb a {
+    font-size: 10px;
+    line-height: 38px; }
+  .contract .sidebar .header {
+    padding: 20px 20px; }
+    .contract .sidebar .header h2 {
+      font-size: 14px; }
+    .contract .sidebar .header h3 {
+      font-size: 12px; }
+  .contract .info {
+    border-left: 0;
+    min-height: 408px;
+    padding: 35px 20px 54px; }
+    .contract .info h1 {
+      font-size: 18px; }
+    .contract .info h2 {
+      font-size: 16px; }
+      .contract .info h2.amount {
+        font-size: 17px;
+        margin-bottom: 10px;
+        margin-top: 0; }
+        .contract .info h2.amount span {
+          font-size: 15px; }
+    .contract .info .title_section {
+      font-size: 11px;
+      margin-bottom: 0px; }
+    .contract .info li {
+      font-size: 12px; }
+  .contract .label {
+    font-size: 9px;
+    padding: 1px 4px; }
+  ul.timeline {
+    margin: 0;
+    min-height: 20px;
+    padding: 10px 0 20px;
+    text-align: center; }
+    ul.timeline:before {
+      border: 0;
+      background: transparent; }
+    ul.timeline li {
+      display: inline-block;
+      margin-bottom: 0;
+      width: 19.8%; }
+      ul.timeline li.active:before {
+        border: 0; }
+      ul.timeline li.active:after {
+        border: 0; }
+      ul.timeline li ul {
+        display: none; }
+    ul.timeline .nav_stage {
+      height: 30px;
+      width: 30px; }
+      ul.timeline .nav_stage.current {
+        height: 30px;
+        width: 30px; }
+        ul.timeline .nav_stage.current svg {
+          height: 20px;
+          width: 20px; }
+        ul.timeline .nav_stage.current:after {
+          font-size: 10px;
+          bottom: -17px;
+          left: 0;
+          top: inherit; }
+      ul.timeline .nav_stage:hover:after {
+        content: ""; }
+      ul.timeline .nav_stage svg {
+        height: 20px;
+        width: 20px; }
+  h2.title_section {
+    font-size: 1.5em;
+    padding: 30px 0 0; }
+  .select_type {
+    margin-top: 10px; }
+  .list {
+    margin: 30px 0; }
+    .list li h2 {
+      font-size: 17px; }
+    .list li .top {
+      padding-top: 10px;
+      padding-bottom: 10px; }
+    .list li .amount {
+      min-height: 30px; }
+      .list li .amount p {
+        font-size: 18px;
+        text-align: center; }
+        .list li .amount p.procurement_method {
+          margin: 0;
+          font-size: 12px; }
+    .list li p.description {
+      font-size: 12px; }
+  .list_t.right {
+    text-align: left; }
+  p.list_t {
+    font-size: 11px; }
+  .dependencia .box, .proveedor .box {
+    margin-top: 24px;
+    padding: 10px; }
+  .dependencia .subtitle, .proveedor .subtitle {
+    font-size: 19px; }
+  .dependencia h2, .proveedor h2 {
+    font-size: 16px; }
+  .dependencia .list li, .dependencia .list p, .proveedor .list li, .proveedor .list p {
+    font-size: 12px; }
+  .dependencia p.address, .proveedor p.address {
+    padding-top: 0; }
+  .dependencia li.row, .proveedor li.row {
+    margin: 0; }
+  .dependencia h1, .proveedor h1 {
+    font-size: 21px; }
+  .dependencia h3 {
+    font-size: 14px; }
+  .dependencia .amount {
+    text-align: left; }
+    .dependencia .amount h2 {
+      font-size: 15px;
+      margin-bottom: 10px; }
+    .dependencia .amount b {
+      height: 15px;
+      margin-right: 10px;
+      width: 15px; }
+      .dependencia .amount b svg {
+        height: 15px;
+        width: 15px; }
+  .dependencia .visualiza {
+    margin-top: 15px;
+    margin-bottom: 10px; }
+  .proveedor h3 {
+    font-size: 14px; }
+  .proveedor .list p span:last-child {
+    margin-bottom: 10px;
+    display: inline-block; }
+  .glosario .codigo {
+    padding: 40px 15px 90px; }
+    .glosario .codigo li {
+      font-size: 12px; }
+  .datos_pa_labanda h2 {
+    font-size: 17px; }
+  .datos_pa_labanda p {
+    font-size: 12px; }
+  .queson .win h1 {
+    font-size: 16px; }
+  .queson .win .quote p {
+    font-size: 13px; }
+  .queson .allthem svg {
+    height: auto;
+    width: 100%; }
+  .queson .tools {
+    padding-top: 0; }
+    .queson .tools h1 {
+      font-size: 15px; }
+    .queson .tools .info {
+      font-size: 14px; }
   .usa_datos li a {
     font-size: 14px; }
+  .usa_datos li ol li {
+    font-size: 12px; }
+  .datos.api h1.title_section {
+    font-size: 18px;
+    padding: 10px 0; }
+  .datos.api .codigo h2 {
+    font-size: 16px; }
+  .datos.api .codigo p {
+    font-size: 12px; }
+  .datos.api .codigo li a {
+    word-break: break-all; }
+  .datos.api .codigo li span {
+    font-size: 11px; }
   footer {
     text-align: center; }
     footer .cdmx_w {
+      background-size: auto 35px;
+      background-position: 50%;
       margin: 0 auto; }
     footer h3 {
-      font-size: 18px; }
+      font-size: 15px; }
     footer .partners {
+      margin-bottom: 60px;
       padding: 40px 0 60px; }
       footer .partners h4 {
         margin-bottom: 15px; }
-      footer .partners .ocds {
-        background-size: 100% auto; }
+      footer .partners .bloomberg, footer .partners .ocds {
+        background-size: auto 20px; }
+      footer .partners .imco {
+        background-size: auto 40px; }
     footer .copy, footer .author, footer .copy .right {
       text-align: center; }
     footer .copy p {
@@ -2932,8 +3168,17 @@ footer {
     footer .author {
       padding: 40px 0 30px; }
       footer .author a {
+        background-size: auto 25px;
+        background-position: 50%;
         float: none;
-        margin: 5px auto; } }
+        margin: 5px auto; }
+  .menu-button {
+    top: 67px; }
+  .js .pages-nav {
+    top: 59px; }
+  .js .pages-nav__item {
+    float: left;
+    width: 49%; } }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
   .mobile {
