@@ -64,7 +64,9 @@ Route::get('api/licitaciones/{page?}', 'ApiCDMX@tenders');
 . T H E   T E S T   R O U T E S 
 .......................................
 */
+Route::get('lista/contratos/json', "Contracts@showListRaw");
 Route::get('contrato/json/{ocid}', "Contracts@showRaw"); // show JSON with format
 Route::get('test/suppliers', "TestStuff@index");
 Route::get('test/supplier/{key}', "TestStuff@supplier");
 Route::get('test/providers', "TestStuff@providers");
+Route::get('test/buyers/{id}', "TestStuff@buyers");

@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Models\Contract;
+
 class Release extends Model
 {
   protected $fillable = ["local_id", "contract_id", "ocid", "date", 
@@ -11,6 +13,10 @@ class Release extends Model
 
   public function contract(){
     return $this->belongsTo('App\Models\Contract');
+  }
+
+  public function _contract(){
+    return $this->hasOne('App\Models\Contract', "ocdsid", "ocid");
   }
 
   public function planning(){

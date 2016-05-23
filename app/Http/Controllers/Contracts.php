@@ -122,4 +122,26 @@ class Contracts extends Controller {
     echo "</pre>";
     die();
   }
+
+  public function showListRaw(){
+    $data      = ['dependencia' => '901', "ejercicio" => 2015]; // harcoded stuff
+    $excercise = $this->apiCall($data, $this->apiContratos);
+    echo "<pre>";
+    var_dump($excercise);
+    echo "</pre>";
+  }
+
+  private function apiCall($data, $endpoint){
+      $ch = curl_init();
+      
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+      curl_setopt($ch, CURLOPT_URL, $endpoint );
+      curl_setopt($ch, CURLOPT_POST, true);
+      curl_setopt($ch,CURLOPT_POSTFIELDS, http_build_query($data));
+      
+      $result   = curl_exec($ch);
+      $response = json_decode($result);
+
+      return $response;
+  }
 }

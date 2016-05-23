@@ -74,4 +74,9 @@ class TestStuff extends Controller {
     }])->get();
   }
 
+  public function buyers($id){
+    $b =  Buyer::find($id);
+    echo $b->plannings()->count();
+  }
+
 }
