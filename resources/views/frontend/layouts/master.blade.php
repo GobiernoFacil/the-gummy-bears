@@ -23,6 +23,9 @@
 		<meta property="fb:app_id" content=""/>		<link rel="shortcut icon" href="{{ url('img/icon/CDMX_16.png') }}" sizes="16x16">
 		<link rel="shortcut icon" href="{{ url('img/icon/CDMX_32.png') }}" sizes="32x32">
 		<link rel="shortcut icon" href="{{ url('img/icon/CDMX_64.png') }}" sizes="64x64">
+		@if($body_class == "datos")
+		<link rel="canonical" href="{{url('datos-abiertos')}}" />
+		@endif
 <!--
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::	
