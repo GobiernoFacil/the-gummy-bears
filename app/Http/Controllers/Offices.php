@@ -34,18 +34,24 @@ class Offices extends Controller {
 	
 	public function show($id){
 		$buyer				    = Buyer::find($id);
-		$contracts 			  = Contract::where('cvedependencia',$buyer->local_id)->get();
-		$awards 			    = Award::all();
-		$singlecont_count = SingleContract::all()->count();
-		$providers			  = Provider::orderby('budget', 'desc')->take(5)->get();
-		$providers_count 	= Provider::all()->count();
+		$contracts 			  = $buyer->contracts()->with("data")->get();//Contract::where('cvedependencia',$buyer->local_id)->get();
+		$awards 			    = $buyer->awards;//Award::all();
+		$singlecont_count = $buyer->singlecontracts->count();//SingleContract::all()->count();
+		$providers			  = Provider::whereHas("buyers", function($q) use($buyer){
+			                    $q->where("buyer_id", $buyer->id);
+		                    })->orderBy("budget", "desc")->take(5)->get();
+		//Provider::orderby('budget', 'desc')->take(5)->get();
+		$providers_count 	= $buyer->providers->count();//Provider::all()->count();
 		
-		$contract_data		= ContractData::orderby('contracts', 'desc')->take(5)->get();;
+		$contract_data		= ContractData::whereHas("release", function($q) use($buyer){
+			                    $q->where("buyer_id", $buyer->id);
+		                    })->orderby('contracts', 'desc')->take(5)->get();
+		//ContractData::orderby('contracts', 'desc')->take(5)->get();
 		
 		//total
-		$total_planning		= Planning::sum('amount');
-		$total_award		  = Award::sum('value');
-		$total_contract		= SingleContract::sum('amount');
+		$total_planning		= $buyer->plannings->sum("amount");//Planning::sum('amount');
+		$total_award		  = $buyer->awards->sum("value");//Award::sum('value');
+		$total_contract		= $buyer->singlecontracts->sum("amount");//SingleContract::sum('amount');
 		
 		///percentage
 		$max			      	= max(array($total_planning, $total_award, $total_contract));

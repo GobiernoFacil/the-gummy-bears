@@ -36,18 +36,4 @@ class Buyer extends Model
       $q->where(["buyer_id" => $this->id, "is_latest" => 1]);
     });
   }
-
-  /*
-  public function singlecontracts(){
-    return $this->hasMany('App\Models\SingleContract');
-  }
-  
-  public function awards(){
-    return $this->hasMany('App\Models\Award');
-  }
-
-  public function suppliers(){
-    return $this->hasManyThrough('App\Models\Supplier', 'App\Models\Award');
-  }
-  */
 }
