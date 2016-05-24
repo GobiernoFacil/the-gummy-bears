@@ -48,7 +48,7 @@
 				<div class="col-sm-4 right">
 					<p>Ver por: 
 					<!--<a href="#" class="advanced_search">Advanced Search</a>-->
-					<a href="#" id="dependencia-a" class="ladependencia live">Dependencias</a>
+					<a href="#" id="dependencia-a" class="ladependencia live">Contratos</a>
 					<a href="#" id="dependencia-b" class="ladependencia empresa"> Proveedores</a>
 					</p>
 				</div>
