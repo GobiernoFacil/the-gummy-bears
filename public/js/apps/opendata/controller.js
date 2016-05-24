@@ -33,7 +33,6 @@ define(function(require){
   //
 
   // MOBILE
-  MenuMobile = document.querySelector("#menu-mobile"),
   
   ///DATA
   ListContract    	 = document.querySelector("#listar-contratos"),
@@ -54,15 +53,7 @@ define(function(require){
   var controller =  Backbone.View.extend({
     events : {
       
-      // MOBILE
-      "click .bento_menu" : "show_mobile_menu",
-      "click .close" 	  : "hide_mobile_menu",
-
-      // DATA
-      "click #btn-listar-contratos" : "show_list",
-      "click #btn-dependencias"     : "show_agencies",
-      "click #btn-proveedores"      : "show_suppliers",
-      "click #btn-web-service"      : "show_webservice",
+    
       
       // NAVIGATION
       "click .cta" : "move_to_second",
@@ -76,7 +67,6 @@ define(function(require){
     //
 
     initialize : function(){
-      this.hide_stuff();
       this.set_animation_controller();
     },
 
@@ -87,11 +77,7 @@ define(function(require){
     },
     
     
-    hide_stuff : function(){
-      AgenciesCatalog.style.display = "none";
-      SuppliersCatalog.style.display = "none";
-      WebService.style.display = "none";
-    },
+    
 	
 	set_first_scene : function(){
       var that = this;
@@ -121,56 +107,8 @@ define(function(require){
     // --------------------------------------------------------------------------------
     //
 	
-	show_mobile_menu : function(e) {
-		e.preventDefault();
-		MenuMobile.style.display = "block";
-	},
-	
-	hide_mobile_menu : function(e) {
-		e.preventDefault();
-		MenuMobile.style.display = "none";
-	},
-	
-    show_list : function(e){
-      e.preventDefault();
-      ListContract.style.display       = "block";
-      AgenciesCatalog.style.display      = "none";
-      SuppliersCatalog.style.display     = "none";
-      WebService.style.display      	 = "none";
-      $(".usa_datos a").removeClass("current");
-      $('#btn-listar-contratos').addClass("current");
-    },
 
-    show_agencies : function(e){
-      e.preventDefault();
-      ListContract.style.display      	 = "none";
-      AgenciesCatalog.style.display      = "block";
-      SuppliersCatalog.style.display     = "none";
-      WebService.style.display      	 = "none";
-      $(".usa_datos a").removeClass("current");
-      $('#btn-dependencias').addClass("current");
-    },
 
-    show_suppliers : function(e){
-      e.preventDefault();
-      ListContract.style.display      	 = "none";
-      AgenciesCatalog.style.display      = "none";
-      SuppliersCatalog.style.display     = "block";
-      WebService.style.display      	 = "none";
-      $(".usa_datos a").removeClass("current");
-      $('#btn-proveedores').addClass("current");
-    },	
-
-	show_webservice : function(e){
-      e.preventDefault();
-      ListContract.style.display      	 = "none";
-      AgenciesCatalog.style.display      = "none";
-      SuppliersCatalog.style.display     = "none";
-      WebService.style.display      	 = "block";
-      $(".usa_datos a").removeClass("current");
-      $('#btn-web-service').addClass("current");
-    },
-	
 	 move_to_first : function(e){
       if(e) e.preventDefault(); 
       var y = this.scene1.triggerPosition();
