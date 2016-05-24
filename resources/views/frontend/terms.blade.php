@@ -26,7 +26,7 @@
 
 <h2>Sobre el Gobierno de la Ciudad de México</h2>
 
-<p>El Gobierno de la Ciudad de México se encuentra conformado por todas las entidades de la Administración Pública Federal de la Ciudad de México, el cual se encuentra comprometido con la transparencia y la apertura de datos. </p>
+<p>El Gobierno de la Ciudad de México conformado por las entidades de la Administración Pública de la Ciudad de México -siendo estas las dependencias, órganos desconcentrados incluídas las delegaciones y entidades-, el cual se encuentra comprometido con la transparencia y la apertura de datos.  En términos presupuestales todos son UNidades Responsables del Gasto, según el término contenido en la Ley de Presupuesto y Gasto Eficiente del Distrito Federal </p>
 
 <p>Lo anterior se realiza en cumplimiento a lo dispuesto en la  Ley para hacer de la Ciudad de México una ciudad más abierta (Gaceta Oficial del Distrito Federal el 7 de octubre de 2015),  la Ley de gobierno electrónico del Distrito Federal (Gaceta Oficial del Distrito Federal el 7 de octubre de 2015) y atendiendo a los principios de legalidad, certeza jurídica, imparcialidad, información, celeridad, veracidad, transparencia y máxima publicidad.</p>
 
@@ -57,11 +57,11 @@
 
 <h2>Datos personales</h2>
 
-<p>En los términos de la Ley de Transparencia y Acceso a la Información Pública del Distrito Federal, toda información generada, administrada o en posesión de los Entes Obligados se considera un bien de dominio público, accesible a cualquier persona. No obstante, en caso de que alguno de los documentos o datos presentados en este portal contengan datos considerados reservados o sensibles conforme a la Ley de Protección de Datos Personales, los mismos gozarán de la protección que otorga dicha ley y sus titulares podrán hacer uso de los derechos conferidos en dicha ley.</p>
+<p>En los términos de la Ley de Transparencia, Acceso a la Información Pública y Rendición de Cuentas de la Ciudad de México, toda la información generada, administrada o en posesión de los sujetos obligados es pública, considerada un bien común del dominio público salvo la información concerniente a los datos que identifiquen o hagan identificable a una persona, en términos de la Ley de Protección de Datos Personales del Distrito Federal, mismos que no podrán ser divulgados sin el consentimiento éstos.</p>
 
 <h2>Política de privacidad</h2>
 
-<p>En este sitio no se recolecta información personal de ninguna clase para acceder a la misma. En el caso de los formularios de quejas y solicitudes que se encuentren en la presente página los mismos se colectan solamente para fines de seguimiento a la solicitud y se resguardan en archivo digital el término de un año tras la solicitud sólo para fines informativos, tales datos no se comparten con terceros ni se difunden de ninguna manera.</p>
+<p>En este sitio no se recolecta información personal de ninguna clase para acceder a la misma. En el caso de recibir opiniones y comentarios a través de la presente página los mismos se colectan solamente para fines de seguimiento de éstos y se resguardan en archivo digital el término de un año sólo para fines informativos, tales datos no se comparten con terceros ni se difunden de ninguna manera.</p>
 
 <p>Ni se utilizan cookies u otros medios para determinar la localización de los usuarios ni se instala software que extraiga información de los usuarios y las usuarias. Los metadatos de los usuarios se utilizarán sólo para fines estadísticos.</p>
 
