@@ -17,14 +17,14 @@
 						</p>
 					</div>
 					<div class="col-sm-3">
+					<?php /*
 						@foreach($contracts as $contract)
 							@if($contract->releases->count())
 							<?php $r = $contract->releases->last();?>
 							@endif
 						@endforeach
-						
-						<?php 
-							$total_procesos 	= $r->tender->count();
+						*/
+							$total_procesos 	  = $contracts->count();//$r->tender->count();
 							$etapa_adjudicacion = ($awards->count() - $singlecont_count);
 							$etapa_contratacion = $singlecont_count;
 							$etapa_licitacion 	= $total_procesos - $awards->count();
