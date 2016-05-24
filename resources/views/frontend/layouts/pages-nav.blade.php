@@ -2,7 +2,7 @@
 <nav class="pages-nav">
 	<div class="pages-nav__item"><a class="link link--page" href="{{ url('home2') }}">Inicio</a></div>
 	<div class="pages-nav__item"><a class="link link--page" href="{{ url('contratos') }}">Contratos</a></div>
-	<div class="pages-nav__item"><a class="link link--page" href="{{ url('dependencia/1') }}">Dependencias</a></div>
+	<div class="pages-nav__item"><a class="link link--page" href="{{ url('dependencias') }}">Dependencias</a></div>
 	<div class="pages-nav__item"><a class="link link--page" href="{{ url('proveedores') }}">Proveedores</a></div>
 	<div class="pages-nav__item"><a class="link link--page" href="{{ url('por-que') }}">¿Por qué las contrataciones abiertas?</a></div>
 	<div class="pages-nav__item"><a class="link link--page" href="{{ url('datos-abiertos') }}">Usar los datos</a></div>

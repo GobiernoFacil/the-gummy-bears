@@ -82,15 +82,16 @@
 					</div>
 				</div>
 				<ul id="lucky-providers">
+					@foreach ($buyers as $buyer)
 					<li class="row">
 						<span class="col-sm-8 col-xs-6">
-							<a href="{{ url('dependencia/1') }}">Secretaría de Finanzas</a>
+						<a href="{{ url('dependencia/'. $buyer->buyer->id) }}">{{($buyer->buyer->name)}}</a>
 						</span>
 						<span class="col-sm-4  col-xs-6 right">
-							${{ number_format($supplier->awards->sum('value'),2,'.',',') }}
+							${{ number_format($buyer->budget,2,'.',',') }}
 						</span>
 					</li>
-					
+					@endforeach
 				</ul>
 				<div class="divider"></div>
 			</div>

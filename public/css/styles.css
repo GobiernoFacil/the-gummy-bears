@@ -1701,6 +1701,10 @@ div.allthem svg {
       margin-bottom: 40px; }
       .glosario .codigo li ul li {
         margin-bottom: 10px; }
+  .glosario .codigo a {
+    color: #eb008b; }
+    .glosario .codigo a:hover {
+      text-decoration: underline; }
   .glosario .codigo ol {
     margin: 20px 25px; }
     .glosario .codigo ol li {

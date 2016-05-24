@@ -20,16 +20,16 @@ class Offices extends Controller {
 	//	
 	//
 	public function index(){
-		$contracts 			 = Contract::all();
+		$buyers				 = Buyer::all();
 		$data                = [];
 		$data['title']       = 'Dependencias de la CDMX con Contrataciones Abiertas';
 		$data['description'] = 'Dependencias de la CDMX con Contrataciones Abiertas';
-		$data['og_image']	   = "img/og/contrato-cdmx.png";
+		$data['og_image']	 = "img/og/contrato-cdmx.png";
 		$data['body_class']  = 'dependencia';
 		
-		$data['contracts']   = $contracts;
+		$data['buyers']   	 = $buyers;
 		
-		return view("frontend.offices")->with($data);
+		return view("frontend.offices.offices_list")->with($data);
 	}
 	
 	public function show($id){
@@ -55,9 +55,16 @@ class Offices extends Controller {
 		
 		///percentage
 		$max			      	= max(array($total_planning, $total_award, $total_contract));
-		$per_planning     = ($total_planning *100)/$max;	
-		$per_award		  	= ($total_award *100)/$max;		
-		$per_contract     = ($total_contract *100)/$max;
+		if($max > 0) {
+			$per_planning     = ($total_planning *100)/$max;	
+			$per_award		  	= ($total_award *100)/$max;		
+			$per_contract     = ($total_contract *100)/$max;
+		}
+		else {
+			$per_planning     = 0; 
+			$per_award		  = 0; 
+			$per_contract     = 0;
+		}
 		
 		$data                = [];
 		$data['title']       = $buyer->name . ' de la CDMX con Contrataciones Abiertas';
@@ -79,6 +86,6 @@ class Offices extends Controller {
 		$data['per_contract']   	= $per_contract;	
 		$data['contract_data']   	= $contract_data;	
 		
-		return view("frontend.office")->with($data);
+		return view("frontend.offices.office")->with($data);
 	}
 }

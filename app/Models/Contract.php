@@ -21,7 +21,7 @@ class Contract extends Model
   }
 
   public function data(){
-    return $this->hasOne('App\Models\Contractdata');
+    return $this->hasOne('App\Models\ContractData');
   }
 
   public function plannings(){

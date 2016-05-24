@@ -46,7 +46,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-10 col-sm-offset-1">
-				<iframe src="https://www.youtube.com/embed/pvI4QfhpEAo" frameborder="0" allowfullscreen></iframe>
+				<iframe src="https://www.youtube.com/embed/tw1oneo9_bc" frameborder="0" allowfullscreen></iframe>
 			</div>
 			<div class="col-sm-4 col-sm-offset-2">
 				<a href="{{ url('por-que') }}" class="btn">¿Por qué las Contrataciones Abiertas?</a>
