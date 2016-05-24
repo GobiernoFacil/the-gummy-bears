@@ -302,7 +302,7 @@ class UpdateContracts extends Command {
           $contract->amount         = $s->value->amount;
           $contract->currency       = $s->value->currency;
           $contract->date_signed    = $s->dateSigned ? date("Y-m-d", strtotime($s->dateSigned)) : null;
-          $contract->documents      = count($s->documents);
+          //$contract->documents      = count($s->documents);
           $contract->buyer_id       = $release->buyer_id;
 
           $contract->update();
