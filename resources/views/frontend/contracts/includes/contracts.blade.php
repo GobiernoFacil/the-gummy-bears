@@ -66,7 +66,11 @@
               
               <div class="col-sm-4">
                 <p class="title_section">DOCUMENTOS</p>
-                {{$contract->documents}}
+                <ol>
+				@foreach ($contract->documents as $doc)
+					<li><a href="{{$doc->url}}">{{$doc->title}}</a> {{$doc->date}}</li>
+				@endforeach
+				</ol>
               </div> 
             </div>
     </div>
