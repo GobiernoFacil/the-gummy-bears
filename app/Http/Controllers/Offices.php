@@ -55,9 +55,16 @@ class Offices extends Controller {
 		
 		///percentage
 		$max			      	= max(array($total_planning, $total_award, $total_contract));
-		$per_planning     = ($total_planning *100)/$max;	
-		$per_award		  	= ($total_award *100)/$max;		
-		$per_contract     = ($total_contract *100)/$max;
+		if($max > 0) {
+			$per_planning     = ($total_planning *100)/$max;	
+			$per_award		  	= ($total_award *100)/$max;		
+			$per_contract     = ($total_contract *100)/$max;
+		}
+		else {
+			$per_planning     = 0; 
+			$per_award		  = 0; 
+			$per_contract     = 0;
+		}
 		
 		$data                = [];
 		$data['title']       = $buyer->name . ' de la CDMX con Contrataciones Abiertas';
