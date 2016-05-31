@@ -49,15 +49,16 @@
               <p class="title_section"><span>0</span> <span class="right"><?php echo $percent_tender > 100 ? number_format($percent_tender) : '100';?>%</span></p>
             </div>
           </div>
+          <!--
           <div class="row divider">
             <div class="col-sm-12">
               <p class="title_section">Línea de tiempo</p>
             </div>
-          </div>
+          </div>-->
           <div class="row divider">
             <div class="col-sm-4">
               <p class="title_section">COMPRADOR</p>
-              <p><a href="/dependencia.php"><?php // echo $elcontrato->buyer->name;?></a></p>
+              <p><a href="{{ url('dependencia/'. $elcontrato->buyer->id) }}">{{ $elcontrato->buyer->name }}</a></p>
             </div>
                                   
 
@@ -100,12 +101,12 @@
             <div class="col-sm-8">
               <p class="title_section">ARTÍCULOS</p>
               <ul>
-                <?php foreach ($elcontrato->tender->items as $item):?>
+                @foreach ($elcontrato->tender->items as $item)
                 <li class="row">
-                  <span class="col-sm-9"><?php echo $item->description;?> </span>
-                  <span class="col-sm-3"><?php echo $item->quantity;?> <?php echo $item->unit;?> </span>
+                  <span class="col-sm-9">{{ $item->description }} </span>
+                  <span class="col-sm-3">{{ $item->quantity }} {{ $item->unit}} </span>
                 </li>
-                <?php endforeach;?>   
+                @endforeach  
               </ul>
             </div>
             
