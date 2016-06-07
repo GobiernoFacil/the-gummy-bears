@@ -17,7 +17,7 @@
 				<div class="bill">
 					<div class="row">
 						<div class="col-sm-5 col-xs-6 col-sm-offset-1">
-							<p>Total de Contratos</p>
+							<p>Total de Contratos Firmados</p>
 							<h3><span id="contracts">0</span></h3>
 						</div>
 						<div class="col-sm-5 col-xs-6 ">

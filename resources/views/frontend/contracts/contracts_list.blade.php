@@ -68,10 +68,10 @@
 			<p><span>DEPENDENCIAS</span> <strong>01</strong></p>
 		</div>
 		<div class="col-sm-4 center">
-			<p><span id="type">CONTRATOS</span> <strong id="type_total">{{ $contracts_number }}</strong></p>
+			<p><span id="type">TOTAL DE CONTRATOS FIRMADOS</span> <strong id="type_total">{{ $contracts_number }}</strong></p>
 		</div>
 		<div class="col-sm-4">
-			<p><span>TOTAL (MXN)</span>$<strong id="total_amount">{{ (int)($contracts_amount/1000000) }}</strong> millones </p>
+			<p><span>MONTO TOTAL (MXN)</span>$<strong id="total_amount">{{ (int)($contracts_amount/1000000) }}</strong> millones </p>
 		</div>
 	</header>
 	<p id="publisher-name"></p>
