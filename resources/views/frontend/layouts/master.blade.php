@@ -45,14 +45,6 @@
 	@include('frontend.layouts.pages-nav') 
 
 	<!--nav page-->
-	<!--AVISO VEDA ELECTORAL -->
-<div class="veda_electoral">
-    <div>  
-       <span>"Este contenido será modificado temporalmente en atención a las disposiciones legales y normativas en materia electoral, con motivo del periodo de campaña del 18 de abril al 5 de junio del presente año"
-        </span>
-    </div>
-</div>
-<!--AVISO VEDA ELECTORAL -->
 	@include('frontend.layouts.nav')         
 	
 	<!--content-->

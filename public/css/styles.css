@@ -1071,7 +1071,7 @@ h1.title_section, h2.title_section {
 .menu-button {
   position: absolute;
   z-index: 9999999;
-  top: 55px;
+  top: 20px;
   right: 30px;
   width: 30px;
   height: 24px;
@@ -2558,8 +2558,7 @@ footer {
   .js .pages-nav {
     display: block;
     padding: 10px 20px 0 20px;
-    text-align: left;
-    top: 93px; }
+    text-align: left; }
   .js .pages-nav__item {
     width: 100%;
     padding: 8px 0; }
@@ -2568,7 +2567,7 @@ footer {
     width: auto;
     margin-right: 5px; }
   .menu-button {
-    top: 97px;
+    top: 15px;
     right: 10px;
     left: auto; }
     .menu-button b {
@@ -2878,8 +2877,7 @@ footer {
   .js .pages-nav {
     display: block;
     padding: 10px 20px 0 20px;
-    text-align: left;
-    top: 93px; }
+    text-align: left; }
   .js .pages-nav__item {
     width: 100%;
     padding: 8px 0; }
@@ -2888,7 +2886,7 @@ footer {
     width: auto;
     margin-right: 5px; }
   .menu-button {
-    top: 97px;
+    top: 15px;
     right: 10px;
     left: auto; }
     .menu-button b {
@@ -3177,9 +3175,9 @@ footer {
         float: none;
         margin: 5px auto; }
   .menu-button {
-    top: 67px; }
+    top: 15px; }
   .js .pages-nav {
-    top: 59px; }
+    top: 8px; }
   .js .pages-nav__item {
     float: left;
     width: 49%; } }
