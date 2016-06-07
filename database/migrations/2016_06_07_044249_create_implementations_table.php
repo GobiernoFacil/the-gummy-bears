@@ -15,6 +15,9 @@ class CreateImplementationsTable extends Migration {
 		Schema::create('implementations', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->integer("contract_id");
+			$table->integer("release_id");
+			
 			$table->timestamp('created_at')->useCurrent()->nullable();
       $table->timestamp('updated_at')->useCurrent()->nullable();
 		});
