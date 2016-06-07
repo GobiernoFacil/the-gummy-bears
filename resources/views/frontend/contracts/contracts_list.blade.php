@@ -92,7 +92,7 @@
 <div id="all-list-contracts" class="container">
 	<div class="row">
 		<div class="col-sm-9">
-			<h2 id="title_select_type" class="title_section select">Lista de <strong>Contrataciones Abiertas</strong></h2>
+			<h2 id="title_select_type" class="title_section select">Lista de <strong>Contrataciones Abiertas</strong> ({{$contracts->count()}})</h2>
 		</div>
 		<div class="col-sm-3">
 			<form class="select_type">
