@@ -27,7 +27,7 @@
 						
 					</div>
 				</div>
-				<p class="footnote center">*Información disponible a partir de diciembre de 2015 en la Secretaría de Finanzas</p>
+				<p class="footnote center">*Información disponible a partir de la implementación del estándar en 2015.</p>
 				<div class="row">
 					<div class="col-md-6 col-sm-12">
 						<a href="{{ url('contratos') }}" class="btn cta">Explora las compras de la <strong>CDMX &#x2794;</strong> </a>

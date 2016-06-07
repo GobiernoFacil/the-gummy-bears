@@ -86,7 +86,7 @@
 				<div class="divider"></div>
 				<div id="linemap">
 				 <!-- <h3>Total por contrato</h3>-->
-				  <p>información recopilada desde <span id="tremmap-data-from">diciembre de 2015</span></p>
+				  <p>Información disponible a partir de la implementación del estándar en 2015.</p>
 				</div>		
 
 			</div>
