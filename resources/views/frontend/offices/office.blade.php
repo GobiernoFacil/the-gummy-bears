@@ -55,6 +55,7 @@
 					</div>
 				</div>
 				
+				<?php /*
 				<div class="divider"></div>
 				<!-- montos-->
 				<div class="row amount">
@@ -80,13 +81,17 @@
 						<span class="bar_office adjudicados" style="width: {{$per_award}}%; ">${{ number_format(($total_award/1000000),2,'.',',') }}M &nbsp;</span>
 						<span class="bar_office contratados" style="width: {{$per_contract}}%; ">${{ number_format(($total_contract/1000000),2,'.',',') }}M &nbsp;</span>
 					</div>
+					<div class="col-sm-10 col-sm-offset-1">
+						<h3>¿Qué estoy viendo?</h3>
+						<p>El monto total planeado es aquél que se autorizó como suficiencia presupuestal para comenzar el proceso. El monto total adjudicado nos muestra el total que se pagará por el bien o servicio. El monto total contratado nos indica que la cantidad que ya fue formalizada y firmada en un documento llamado contrato. La gráfica de barras muestra una comparación entre los presupuestos dentro de cada fase del proceso</p>
+					</div>
 				</div>
-				
+				*/?>
 				
 				<div class="divider"></div>
 				<div id="linemap">
 				 <!-- <h3>Total por contrato</h3>-->
-				  <p>información recopilada desde <span id="tremmap-data-from">diciembre de 2015</span></p>
+				  <p>Información disponible a partir de la implementación del estándar en 2015.</p>
 				</div>		
 
 			</div>

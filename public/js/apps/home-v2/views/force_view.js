@@ -196,13 +196,13 @@ define(function(require){
       
       switch(index) {
 	   	case 'tender':
-	   		var typeN = 'LICITACIONES';
+	   		var typeN = 'TOTAL DE LICITACIONES';
 	   		break;
 	   	case 'awards':
-	   		var typeN = 'ADJUDICACIONES';
+	   		var typeN = 'TOTAL DE ADJUDICACIONES';
 	   		break;
 	   	case 'contracts':
-	   		var typeN = 'CONTRATACIONES';
+	   		var typeN = 'TOTAL DE CONTRATOS FIRMADOS';
 	   		break;
       };
       

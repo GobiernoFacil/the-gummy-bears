@@ -17,7 +17,7 @@
 				<div class="bill">
 					<div class="row">
 						<div class="col-sm-5 col-xs-6 col-sm-offset-1">
-							<p>Total de Contratos</p>
+							<p>Total de Contratos Firmados</p>
 							<h3><span id="contracts">0</span></h3>
 						</div>
 						<div class="col-sm-5 col-xs-6 ">
@@ -27,7 +27,7 @@
 						
 					</div>
 				</div>
-				<p class="footnote center">*Información disponible a partir de diciembre de 2015 en la Secretaría de Finanzas</p>
+				<p class="footnote center">*Información disponible a partir de la implementación del estándar en 2015.</p>
 				<div class="row">
 					<div class="col-md-6 col-sm-12">
 						<a href="{{ url('contratos') }}" class="btn cta">Explora las compras de la <strong>CDMX &#x2794;</strong> </a>
@@ -46,7 +46,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-10 col-sm-offset-1">
-				<iframe src="https://www.youtube.com/embed/tw1oneo9_bc" frameborder="0" allowfullscreen></iframe>
+				<iframe src="https://www.youtube.com/embed/xQvKHiERIJI" frameborder="0" allowfullscreen></iframe>
 			</div>
 			<div class="col-sm-4 col-sm-offset-2">
 				<a href="{{ url('por-que') }}" class="btn">¿Por qué las Contrataciones Abiertas?</a>
