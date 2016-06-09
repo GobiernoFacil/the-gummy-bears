@@ -9,7 +9,9 @@ use App\Models\AwardProvider;
 use App\Models\Buyer;
 use App\Models\Contract;
 use App\Models\ContractHistory;
+use App\Models\Implementation;
 use App\Models\Item;
+use App\Models\Milestone;
 use App\Models\Planning;
 use App\Models\Provider;
 use App\Models\Publisher;
@@ -20,6 +22,7 @@ use App\Models\Tender;
 use App\Models\Tenderer;
 use App\Models\TenderProvider;
 use App\Models\TenderTenderer;
+use App\Models\Transaction;
 
 
 class UpdateContracts extends Command {
@@ -107,6 +110,7 @@ class UpdateContracts extends Command {
           //     - saveSuppliers
           // 2. saveContracts
           //     - saveItems
+          //     - saveImplementation
           // 3. savePlanning
           // 4. saveTender
           //     - saveTenderers
@@ -274,6 +278,10 @@ class UpdateContracts extends Command {
         $planning->currency = $data->planning->budget->amount->currency;
         $planning->project  = $data->planning->budget->project;
 
+        $planning->multi_year    = $data->planning->budget->multiYear;
+        $planning->amount_year   = $data->planning->budget->amountYear->amount;
+        $planning->currency_year = $data->planning->budget->multiYear->currency;
+
         $planning->update();
 
         $this->saveDocuments($planning, $data->planning);
@@ -305,10 +313,81 @@ class UpdateContracts extends Command {
           //$contract->documents      = count($s->documents);
           $contract->buyer_id       = $release->buyer_id;
 
+          $contract->multi_year    = $s->multiYear;
+          $contract->amount_year   = $s->valueYear->amount;
+          $contract->currency_year = $s->valueYear->currency;
+
           $contract->update();
           
           $this->saveItems($contract, $s);
           $this->saveDocuments($contract, $s);
+          $this->saveImplementation($release, $contract, $s->implementation);
+        }
+      }
+    }
+
+    //
+    // [ S A V E   I M P L E M E N T A T I O N ]
+    //
+    //
+    private function saveImplementation($release, $contract, $data){
+      $implementation = Implementation::firstOrCreate([
+        "contract_id" => $contract->id
+      ]);
+
+      $implementation->release_id = $release->id;
+      $implementation->update();
+
+      $this->saveMilestones($implementation, $data);
+      $this->saveTransactions($implementation, $data);
+      $this->saveDocuments($implementation, $data);
+    }
+
+    //
+    // [ S A V E   M I L E S T O N E S ]
+    //
+    //
+    private function saveMilestones($implementation, $data){
+      if(count($data->milestones)){
+        foreach($data->milestones as $ml){
+          $milestone = Milestone::firstOrCreate([
+            "implementation_id" => $implementation->id,
+            "local_id"          => $ml->id
+          ]);
+
+          $milestone->title       = $ml->title;
+          $milestone->description = $ml->description;
+          $milestone->status      = $ml->status;
+          $milestone->date        = date("Y-m-d", strtotime($ml->dueDate));
+          
+          $milestone->update();
+        }
+      }
+    }
+
+    //
+    // [ S A V E   T R A N S A C T I O N S ]
+    //
+    //
+    private function saveTransactions($implementation, $data){
+      if(count($data->transactions)){
+        foreach($data->transactions as $tr){
+          $transaction = Transaction::firstOrCreate([
+            "implementation_id" => $implementation->id,
+            "local_id"          => $tr->id
+          ]);
+
+          $transaction->date          = date("Y-m-d", strtotime($tr->date));
+          $transaction->amount        = $tr->value->amount;
+          $transaction->currency      = $tr->value->currency;
+          $transaction->provider_id   = $tr->providerOrganization->id;
+          $transaction->provider_name = $tr->providerOrganization->legalName;
+          $transaction->provider_uri  = $tr->providerOrganization->uri;
+          $transaction->receiver_id   = $tr->receiverOrganization->id;
+          $transaction->receiver_name = $tr->receiverOrganization->legalName;
+          $transaction->receiver_uri  = $tr->receiverOrganization->uri;
+
+          $transaction->update();
         }
       }
     }
@@ -332,6 +411,12 @@ class UpdateContracts extends Command {
           $award->value          = $aw->value->amount;
           $award->currency       = $aw->value->currency;
           $award->buyer_id       = $release->buyer_id;
+
+          
+          $award->multi_year     = $aw->multiYear;
+          $award->amount_year    = $aw->valueYear->amount;
+          $award->currency_year  = $aw->valueYear->currency;
+          
 
           $award->update();
           $this->saveItems($award, $aw);
@@ -515,7 +600,8 @@ class UpdateContracts extends Command {
         if(!is_array($excercise)){
           $x = var_export($excercise, true);
           $this->info($x);
-          $this->error($x); 
+          $this->error($x);
+          $this->error("no está conectando con el api de contratos"); 
           die(":D");
         }
         $contracts = array_merge($contracts, $excercise);

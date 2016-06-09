@@ -16,6 +16,10 @@ class SingleContract extends Model
     return $this->belongsTo('App\Models\Release');
   }
 
+  public function implementation(){
+    return $this->hasOne('App\Models\Implementation', "contract_id");
+  }
+
   public function documents(){
     return $this->morphMany('App\Models\Document', 'docs');
   }
