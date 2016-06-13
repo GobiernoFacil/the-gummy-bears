@@ -278,9 +278,9 @@ class UpdateContracts extends Command {
         $planning->currency = $data->planning->budget->amount->currency;
         $planning->project  = $data->planning->budget->project;
 
-        $planning->multi_year    = $data->planning->budget->multiYear;
-        $planning->amount_year   = $data->planning->budget->amountYear->amount;
-        $planning->currency_year = $data->planning->budget->multiYear->currency;
+        $planning->multi_year    = empty($data->planning->budget->multiYear) ? 0 : 1;
+        $planning->amount_year   = empty($data->planning->budget->amountYear) ? null : $data->planning->budget->amountYear->amount;
+        $planning->currency_year = empty($data->planning->budget->amountYear) ? null : $data->planning->budget->amountYear->currency;
 
         $planning->update();
 
@@ -313,15 +313,17 @@ class UpdateContracts extends Command {
           //$contract->documents      = count($s->documents);
           $contract->buyer_id       = $release->buyer_id;
 
-          $contract->multi_year    = $s->multiYear;
-          $contract->amount_year   = $s->valueYear->amount;
-          $contract->currency_year = $s->valueYear->currency;
+          $contract->multi_year    = empty($s->multiYear) ? 0 : 1;
+          $contract->amount_year   = empty($s->valueYear) ? null : $s->valueYear->amount;
+          $contract->currency_year = empty($s->valueYear) ? null : $s->valueYear->currency;
 
           $contract->update();
           
           $this->saveItems($contract, $s);
           $this->saveDocuments($contract, $s);
-          $this->saveImplementation($release, $contract, $s->implementation);
+          if(isset($s->implementation)){
+            $this->saveImplementation($release, $contract, $s->implementation);
+          }
         }
       }
     }
@@ -413,9 +415,9 @@ class UpdateContracts extends Command {
           $award->buyer_id       = $release->buyer_id;
 
           
-          $award->multi_year     = $aw->multiYear;
-          $award->amount_year    = $aw->valueYear->amount;
-          $award->currency_year  = $aw->valueYear->currency;
+          $award->multi_year     = empty($aw->multiYear) ? 0 : $aw->multiYear;
+          $award->amount_year    = empty($aw->valueYear) ? null : $aw->valueYear->amount;
+          $award->currency_year  = empty($aw->valueYear) ? null : $aw->valueYear->currency;
           
 
           $award->update();
