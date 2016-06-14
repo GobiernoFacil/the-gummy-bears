@@ -14,6 +14,10 @@ class Implementation extends Model {
     return $this->hasMany('App\Models\Milestone');
   }
 
+  public function transactions(){
+    return $this->hasMany('App\Models\Transaction');
+  }
+
   public function contract(){
     return $this->belongsTo('App\Models\SingleContract');
   }
