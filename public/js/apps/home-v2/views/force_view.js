@@ -27,7 +27,7 @@ define(function(require){
   //
   SVG = {
     width  : 800,
-    height : 500,
+    height : 600,
     margin : {
       top    : 10,
       right  : 10,
@@ -122,7 +122,7 @@ define(function(require){
     render : function(e){
       var radiusScale = d3.scale.pow()
                           .exponent(0.5)
-                          .range([0, 125]),
+                          .range([0, 115]),
           that        = this,
           index       = "contracts",
           format      = d3.format('.3s'),
