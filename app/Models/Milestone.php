@@ -3,7 +3,7 @@
 use Illuminate\Database\Eloquent\Model;
 
 class Milestone extends Model {
-  $fillable = ["implementation_id", "local_id"];
+  protected $fillable = ["implementation_id", "local_id"];
 	//
 
   public function implementation(){

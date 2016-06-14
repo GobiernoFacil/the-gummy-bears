@@ -63,15 +63,21 @@ class UpdateContracts extends Command {
 
     if($endpoints == 'production'){
       // SERVER ENDPOINTS
-      $this->apiContratos   = 'http://10.1.129.11:9009/ocpcdmx/listarcontratos';
-      $this->apiContrato    = 'http://10.1.129.11:9009/ocpcdmx/contratos';
-      $this->apiProveedores = 'http://10.1.129.11:9009/ocpcdmx/cproveedores';
+      $this->apiContratos   = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/listarcontratos';
+      //'http://10.1.129.11:9009/ocpcdmx/listarcontratos';
+      $this->apiContrato    = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/contratos';
+      //'http://10.1.129.11:9009/ocpcdmx/contratos';
+      $this->apiProveedores = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/cproveedores';
+      //'http://10.1.129.11:9009/ocpcdmx/cproveedores';
     }
     // PUBLIC ENDPOINTS
     else{
-      $this->apiContratos   = 'http://187.141.34.209:9009/ocpcdmx/listarcontratos';
-      $this->apiContrato    = 'http://187.141.34.209:9009/ocpcdmx/contratos';
-      $this->apiProveedores = 'http://187.141.34.209:9009/ocpcdmx/cproveedores';
+      $this->apiContratos   = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/listarcontratos';
+      //'http://187.141.34.209:9009/ocpcdmx/listarcontratos';
+      $this->apiContrato    = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/contratos';
+      //'http://187.141.34.209:9009/ocpcdmx/contratos';
+      $this->apiProveedores = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/cproveedores';
+      //'http://187.141.34.209:9009/ocpcdmx/cproveedores';
     }
 	}
 
@@ -334,10 +340,11 @@ class UpdateContracts extends Command {
     //
     private function saveImplementation($release, $contract, $data){
       $implementation = Implementation::firstOrCreate([
-        "contract_id" => $contract->id
+        "contract_id" => $contract->id,
+        "release_id"  => $release->id
       ]);
 
-      $implementation->release_id = $release->id;
+      //$implementation->release_id = $release->id;
       $implementation->update();
 
       $this->saveMilestones($implementation, $data);
@@ -380,8 +387,8 @@ class UpdateContracts extends Command {
           ]);
 
           $transaction->date          = date("Y-m-d", strtotime($tr->date));
-          $transaction->amount        = $tr->value->amount;
-          $transaction->currency      = $tr->value->currency;
+          $transaction->amount        = $tr->amount->amount;
+          $transaction->currency      = $tr->amount->currency;
           $transaction->provider_id   = $tr->providerOrganization->id;
           $transaction->provider_name = $tr->providerOrganization->legalName;
           $transaction->provider_uri  = $tr->providerOrganization->uri;
@@ -587,6 +594,7 @@ class UpdateContracts extends Command {
 
       return $contract;
     }
+
     //
     // [ G E T   L A S T   T H R E E   Y E A R S   O F   D A T A ]
     //
@@ -597,7 +605,7 @@ class UpdateContracts extends Command {
       // GET THE LIST FROM THE API
       for($i = 0; $i < 3; $i ++){
         $year      = date("Y") - $i;
-        $data      = ['dependencia' => '901', "ejercicio" => $year]; // harcoded stuff
+        $data      = ['dependencia' => '0901', "ejercicio" => $year]; // harcoded stuff
         $excercise = $this->apiCall($data, $this->apiContratos);
         if(!is_array($excercise)){
           $x = var_export($excercise, true);
@@ -637,7 +645,9 @@ class UpdateContracts extends Command {
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
       curl_setopt($ch, CURLOPT_URL, $endpoint );
       curl_setopt($ch, CURLOPT_POST, true);
-      curl_setopt($ch,CURLOPT_POSTFIELDS, http_build_query($data));
+      //curl_setopt($ch,CURLOPT_POSTFIELDS, http_build_query($data));
+      curl_setopt($ch,CURLOPT_POSTFIELDS, json_encode($data));
+      curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
       
       $result   = curl_exec($ch);
       $response = json_decode($result);

@@ -23,16 +23,22 @@ class Contracts extends Controller {
 
       if($endpoints == 'production'){
       // SERVER ENDPOINTS
-        $this->apiContratos   = 'http://10.1.129.11:9009/ocpcdmx/listarcontratos';
-        $this->apiContrato    = 'http://10.1.129.11:9009/ocpcdmx/contratos';
-        $this->apiProveedores = 'http://10.1.129.11:9009/ocpcdmx/cproveedores';
-      }
+      $this->apiContratos   = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/listarcontratos';
+      //'http://10.1.129.11:9009/ocpcdmx/listarcontratos';
+      $this->apiContrato    = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/contratos';
+      //'http://10.1.129.11:9009/ocpcdmx/contratos';
+      $this->apiProveedores = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/cproveedores';
+      //'http://10.1.129.11:9009/ocpcdmx/cproveedores';
+    }
     // PUBLIC ENDPOINTS
-      else{
-        $this->apiContratos   = 'http://187.141.34.209:9009/ocpcdmx/listarcontratos';
-        $this->apiContrato    = 'http://187.141.34.209:9009/ocpcdmx/contratos';
-        $this->apiProveedores = 'http://187.141.34.209:9009/ocpcdmx/cproveedores';
-      }
+    else{
+      $this->apiContratos   = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/listarcontratos';
+      //'http://187.141.34.209:9009/ocpcdmx/listarcontratos';
+      $this->apiContrato    = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/contratos';
+      //'http://187.141.34.209:9009/ocpcdmx/contratos';
+      $this->apiProveedores = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/cproveedores';
+      //'http://187.141.34.209:9009/ocpcdmx/cproveedores';
+    }
   }
 
 	//
@@ -103,28 +109,21 @@ class Contracts extends Controller {
     $data = ['dependencia' => $base_contract->cvedependencia, 'contrato' => $base_contract->ocdsid];
 
     // [2.1] the CURL stuff
-    $ch   = curl_init();
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch,CURLOPT_POSTFIELDS, http_build_query($data));
-    curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,5);
-    $result = curl_exec($ch);
-    $con    = json_decode($result);
-
+    $conn = $this->apiCall($data, $url);
+// OCDS-87SD3T-SEFIN-DRM-AD-002-2016
     // [3] if the ocid is invalid, redirect
     echo "<pre>";
     var_dump($base_contract->toArray());
     echo "</pre>";
 
     echo "<pre>";
-    var_dump($con);
+    var_dump($conn);
     echo "</pre>";
     die();
   }
 
   public function showListRaw(){
-    $data      = ['dependencia' => '901', "ejercicio" => 2015]; // harcoded stuff
+    $data      = ['dependencia' => '0901', "ejercicio" => 2016]; // harcoded stuff
     $excercise = $this->apiCall($data, $this->apiContratos);
     echo "<pre>";
     var_dump($excercise);
@@ -137,7 +136,8 @@ class Contracts extends Controller {
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
       curl_setopt($ch, CURLOPT_URL, $endpoint );
       curl_setopt($ch, CURLOPT_POST, true);
-      curl_setopt($ch,CURLOPT_POSTFIELDS, http_build_query($data));
+      curl_setopt($ch,CURLOPT_POSTFIELDS, json_encode($data));
+      curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
       
       $result   = curl_exec($ch);
       $response = json_decode($result);
