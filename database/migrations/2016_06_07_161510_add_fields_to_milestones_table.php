@@ -15,7 +15,7 @@ class AddFieldsToMilestonesTable extends Migration {
 		Schema::table('milestones', function(Blueprint $table)
 		{
 			$table->integer("implementation_id")->nullable();
-			$table->integer("local_id")->nullable();
+			$table->string("local_id")->nullable();
 			$table->string("title")->nullable();
 			$table->string("description")->nullable();
 			$table->date("date")->nullable();

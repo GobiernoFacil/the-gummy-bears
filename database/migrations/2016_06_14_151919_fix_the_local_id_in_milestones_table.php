@@ -14,7 +14,7 @@ class FixTheLocalIdInMilestonesTable extends Migration {
 	{
 		Schema::table('milestones', function(Blueprint $table)
 		{
-			$table->string('local_id')->change();
+			//$table->string('local_id')->change();
 			//
 		});
 	}
