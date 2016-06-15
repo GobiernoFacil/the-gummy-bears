@@ -1,4 +1,4 @@
-<div id="contracts" class="container_info">
+<div id="contracts" class="container_info {{ !empty($implementation) ? 'hide' : ''}}">
 	<?php $count = 0;?>
 	@foreach($elcontrato->singlecontracts as $contract)
 	<div id="contract-{{ $contract->id }}" class="sub_container {{$count > 0 ? 'hide' : ''}}">
@@ -47,10 +47,10 @@
                 $period_endDate = strtotime($contract->contract_end);
               ?>
               <p><strong><?php echo date('d/m/Y',$period_startDate);?></strong> a <strong><?php echo date('d/m/Y',$period_endDate);?></strong></p>
-              
+             
             </div> 
           </div>
-          
+
             <div class="row">
               <div class="col-sm-8">
                 <p class="title_section">ARTÍCULOS</p>
