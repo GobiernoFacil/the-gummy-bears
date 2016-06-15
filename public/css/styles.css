@@ -2222,7 +2222,7 @@ ul.timeline {
       border-width: 10px 17.3px 10px 1px;
       border-color: transparent #ffffff transparent transparent;
       position: absolute;
-      right: -1px;
+      right: -3px;
       z-index: 10;
       top: 0; }
     ul.timeline li.active:before {
@@ -2231,7 +2231,7 @@ ul.timeline {
       border-width: 12px 20.8px 12px 0;
       border-color: transparent rgba(0, 0, 0, 0.1) transparent transparent;
       position: absolute;
-      right: -1px;
+      right: -3px;
       z-index: 10;
       top: -2px; }
     ul.timeline li.active a.t_right, ul.timeline li.active a.t_left {
@@ -2291,7 +2291,7 @@ ul.timeline {
       font-size: 13px;
       display: inline-block;
       position: absolute;
-      top: 13px;
+      top: 11px;
       left: 55%;
       text-transform: uppercase; }
     ul.timeline .nav_stage.current svg {
@@ -2299,6 +2299,91 @@ ul.timeline {
       width: 25px; }
       ul.timeline .nav_stage.current svg path {
         fill: white; }
+  ul.timeline #btn-contract-nav {
+    background: #28c3f9;
+    border-color: #eaeaea; }
+    ul.timeline #btn-contract-nav svg path, ul.timeline #btn-contract-nav svg rect, ul.timeline #btn-contract-nav svg polygon, ul.timeline #btn-contract-nav svg circle {
+      fill: white; }
+    ul.timeline #btn-contract-nav:hover:after {
+      color: #28c3f9; }
+    ul.timeline #btn-contract-nav.nav_stage.current {
+      background: #eaeaea;
+      border-color: #28c3f9;
+      color: #28c3f9; }
+      ul.timeline #btn-contract-nav.nav_stage.current svg path, ul.timeline #btn-contract-nav.nav_stage.current svg rect, ul.timeline #btn-contract-nav.nav_stage.current svg polygon, ul.timeline #btn-contract-nav.nav_stage.current svg circle {
+        fill: #28c3f9; }
+      ul.timeline #btn-contract-nav.nav_stage.current:after {
+        background: #28c3f9;
+        color: #eaeaea;
+        padding: 1px 5px; }
+  ul.timeline #btn-award-nav {
+    background: #702082;
+    border-color: #eaeaea; }
+    ul.timeline #btn-award-nav svg path, ul.timeline #btn-award-nav svg rect, ul.timeline #btn-award-nav svg polygon, ul.timeline #btn-award-nav svg circle {
+      fill: white; }
+    ul.timeline #btn-award-nav:hover:after {
+      color: #702082; }
+    ul.timeline #btn-award-nav.nav_stage.current {
+      background: #eaeaea;
+      border-color: #702082;
+      color: #702082; }
+      ul.timeline #btn-award-nav.nav_stage.current svg path, ul.timeline #btn-award-nav.nav_stage.current svg rect, ul.timeline #btn-award-nav.nav_stage.current svg polygon, ul.timeline #btn-award-nav.nav_stage.current svg circle {
+        fill: #702082; }
+      ul.timeline #btn-award-nav.nav_stage.current:after {
+        background: #702082;
+        color: #eaeaea;
+        padding: 1px 5px; }
+  ul.timeline #btn-tender-nav {
+    background: #eb008b;
+    border-color: #eaeaea; }
+    ul.timeline #btn-tender-nav svg path, ul.timeline #btn-tender-nav svg rect, ul.timeline #btn-tender-nav svg polygon, ul.timeline #btn-tender-nav svg circle {
+      fill: white; }
+    ul.timeline #btn-tender-nav:hover:after {
+      color: #eb008b; }
+    ul.timeline #btn-tender-nav.nav_stage.current {
+      background: #eaeaea;
+      border-color: #eb008b;
+      color: #eb008b; }
+      ul.timeline #btn-tender-nav.nav_stage.current svg path, ul.timeline #btn-tender-nav.nav_stage.current svg rect, ul.timeline #btn-tender-nav.nav_stage.current svg polygon, ul.timeline #btn-tender-nav.nav_stage.current svg circle {
+        fill: #eb008b; }
+      ul.timeline #btn-tender-nav.nav_stage.current:after {
+        background: #eb008b;
+        color: #eaeaea;
+        padding: 1px 5px; }
+  ul.timeline #btn-planning-nav {
+    background: #00BFB3;
+    border-color: #eaeaea; }
+    ul.timeline #btn-planning-nav svg path, ul.timeline #btn-planning-nav svg rect, ul.timeline #btn-planning-nav svg polygon, ul.timeline #btn-planning-nav svg circle {
+      fill: white; }
+    ul.timeline #btn-planning-nav:hover:after {
+      color: #00BFB3; }
+    ul.timeline #btn-planning-nav.nav_stage.current {
+      background: #eaeaea;
+      border-color: #00BFB3;
+      color: #00BFB3; }
+      ul.timeline #btn-planning-nav.nav_stage.current svg path, ul.timeline #btn-planning-nav.nav_stage.current svg rect, ul.timeline #btn-planning-nav.nav_stage.current svg polygon, ul.timeline #btn-planning-nav.nav_stage.current svg circle {
+        fill: #00BFB3; }
+      ul.timeline #btn-planning-nav.nav_stage.current:after {
+        background: #00BFB3;
+        color: #eaeaea;
+        padding: 1px 5px; }
+  ul.timeline #btn-implementation-nav {
+    background: #1D1D1B;
+    border-color: #eaeaea; }
+    ul.timeline #btn-implementation-nav svg path, ul.timeline #btn-implementation-nav svg rect, ul.timeline #btn-implementation-nav svg polygon, ul.timeline #btn-implementation-nav svg circle {
+      fill: white; }
+    ul.timeline #btn-implementation-nav:hover:after {
+      color: #1D1D1B; }
+    ul.timeline #btn-implementation-nav.nav_stage.current {
+      background: #eaeaea;
+      border-color: #1D1D1B;
+      color: #1D1D1B; }
+      ul.timeline #btn-implementation-nav.nav_stage.current svg path, ul.timeline #btn-implementation-nav.nav_stage.current svg rect, ul.timeline #btn-implementation-nav.nav_stage.current svg polygon, ul.timeline #btn-implementation-nav.nav_stage.current svg circle {
+        fill: #1D1D1B; }
+      ul.timeline #btn-implementation-nav.nav_stage.current:after {
+        background: #1D1D1B;
+        color: #eaeaea;
+        padding: 1px 5px; }
 
 /* datos API 
 -------------------------------------------------------------- */
