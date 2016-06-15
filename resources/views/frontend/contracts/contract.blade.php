@@ -23,18 +23,22 @@
   </div>  
 
   <div class="col-sm-9 info">     
-        <!-- tender-->
-		@include('frontend.contracts.includes.tender')        
-		
+	  	@if($elcontrato->singlecontracts)
+	  		@foreach($elcontrato->singlecontracts as $c)
+				@if($c->implementation->transactions->count())
+				<?php $implementation = 1;?>
+				@include('frontend.contracts.includes.implementation')        
+	  			@endif
+	  		@endforeach
+        <!-- contratos-->
+		@include('frontend.contracts.includes.contracts')        
+        @endif
 		@if($elcontrato->awards)
         <!--awards-->
 		@include('frontend.contracts.includes.awards')        
 	    @endif
-        
-        @if($elcontrato->singlecontracts)
-        <!-- contratos-->
-		@include('frontend.contracts.includes.contracts')        
-        @endif
+        <!-- tender-->
+		@include('frontend.contracts.includes.tender') 
         <!-- planning-->
 		@include('frontend.contracts.includes.planning')        
       </div>
