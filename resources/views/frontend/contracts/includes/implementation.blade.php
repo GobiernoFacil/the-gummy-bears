@@ -21,8 +21,8 @@
     <div class="row divider">
 	    <!-- $ contratado-->
         <div class="col-sm-4">
-            <p class="title_section">MONTO TOTAL CONTRATADO</p>
-            <h2 class="amount"><b class="budget"></b><span>$</span>{{ number_format($c->amount,2,'.',',')}}<span>{{ $c->currency }}</span></h2>
+            <p class="title_section">MONTO TOTAL CONTRATADO ({{ $c->currency }})</p>
+            <h2 class="amount"><b class="budget"></b><span>$</span>{{ number_format($c->amount,2,'.',',')}}</h2>
         </div>
 	    <!-- $ pagado-->
         <div class="col-sm-4">
@@ -32,8 +32,8 @@
               		<?php  $amount_pagado =  $amount_pagado + $s->amount;?>
               	@endif
               @endforeach
-        	<p class="title_section">MONTO TOTAL PAGADO</p>
-			<h2 class="amount"><b class="spent"></b><span>$</span>{{ number_format($amount_pagado,2,'.',',')}}<span>{{ $c->currency }}</span></h2>
+        	<p class="title_section">MONTO TOTAL PAGADO ({{ $c->currency }})</p>
+			<h2 class="amount"><b class="spent"></b><span>$</span>{{ number_format($amount_pagado,2,'.',',')}}</h2>
         </div>
 	    <!-- $ porcentaje-->
         <div class="col-sm-4">
