@@ -43,8 +43,8 @@ define(function(require){
   var controller =  Backbone.View.extend({
     events : {
 	    "click a.nav_stage" 	: "show_step",
-	    "click #nav_contract a" : "show_substep",
-	    "click #nav_award a" : "show_substep",
+	   // "click #nav_contract a" : "show_substep",
+	    //"click #nav_award a" : "show_substep",
     },
 
     el : "body",
@@ -73,18 +73,7 @@ define(function(require){
     	/// show
     	$("#" + dataID).removeClass("hide"); 
 		$("#" + dataID + ' div').first().removeClass("hide");	
-    	if(dataID == "contracts")
-    	{
-	    	nav_contract.removeClass("hide");
-	    	timeline.removeClass("active");
-	    	nav_contract.children("li:first-child").addClass("active");
-    	}
-    	if(dataID == "awards")
-    	{
-	    	nav_award.removeClass("hide");
-	    	timeline.removeClass("active");
-	    	nav_award.children("li:first-child").addClass("active");
-    	}
+    	
     },
     
     show_substep : function(e) {
