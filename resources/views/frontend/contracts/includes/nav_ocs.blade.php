@@ -3,14 +3,14 @@
 		
 		@if($elcontrato->singlecontracts->count())
 		 	@foreach($elcontrato->singlecontracts as $c)
-				@if($c->implementation)
+				@if($c->implementation->transactions->count())
 				<?php $implementation = 1;?>
 					<li><a href="#" id="btn-implementation-nav" class="nav_stage current" data-id="implementation" data-title="Implementación">
 					<?php echo file_get_contents("img/nav_implementacion.svg"); ?></a>
 					</li>
 				@endif 
 			@endforeach
-		<li><a href="#"  id="btn-contract-nav" class="nav_stage {{ !$implementation ? 'current' : ''}}" data-id="contracts" data-title="Contratación">
+		<li><a href="#"  id="btn-contract-nav" class="nav_stage {{ !empty($implementation) ?  '' : 'current'}}" data-id="contracts" data-title="Contratación">
 			<?php echo file_get_contents("img/nav_contratacion.svg"); ?></a>
 			<?php /**
 			<ul id="nav_contract">
