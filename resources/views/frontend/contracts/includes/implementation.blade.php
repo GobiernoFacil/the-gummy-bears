@@ -63,7 +63,7 @@
     <!--transacciones-->
     <div class="row divider">
 	    <div class="col-sm-12">
-		    <h3>Transacciones</h3>
+		    <h3>Transacciones ({{$c->implementation->transactions->count()}})</h3>
 			<ol>    
 			@foreach($c->implementation->transactions as $t)
 				<li class="row" data-id="{{$t->local_id}}">
@@ -90,21 +90,62 @@
 			</ol>
 	    </div>
     </div>
-    
+
+    @if($c->implementation->milestones->count())
+    <!--milestone-->
+    <div class="row divider">
+	    <div class="col-sm-12">
+		    <h3>Entregas ({{ $c->implementation->milestones->count() }})</h3>
+		    <ol>
+			@foreach($c->implementation->milestones as $m)
+				<li class="row" data-id="{{$m->local_id}}">
+					<span class="col-sm-2">	    	
+						<span class="title_section">FECHA</span><br>
+						<span>{{$m->date}}</span><br>
+						
+					</span>
+					<span class="col-sm-3">	    	
+						<span class="title_section">TÍTULO</span><br>
+						<strong>{{$m->title}}</strong>
+					</span>
+					
+					<span class="col-sm-5">	    	
+						<span class="title_section">DESCRIPCIÓN</span><br>
+						{{$m->description}}
+					</span>
+					<span class="col-sm-2">	    	
+						<span class="title_section">ESTATUS</span><br>
+						<?php switch($m->status) {
+							case 'met':
+								$status = "Satisfecho";
+								break;
+							case 'notMet':
+								$status = "No se cumplió";
+								break;
+							case 'partiallyMet':
+								$status = "Se cumplió parcialmente";
+								break;	
+						};?>
+						<span>{{$status}}</span>
+					</span>
+				</li>
+			@endforeach     
+		    </ol>
+	    </div>
+    </div>
+   	@endif
+
+    @if($c->implementation->documents->count())
     <!--DOCUMENTOS-->
     <div class="row">
         <div class="col-sm-4">
    			<p class="title_section">DOCUMENTOS</p>
-   			@if($c->implementation->documents->count())
    			<ol>
    			@foreach ($c->implementation->documents as $doc)
    			  <li><a href="{{$doc->url}}">{{$doc->title}}</a> {{$doc->date}}</li>
    			@endforeach
    			</ol>
-   			@else
-   			<p>No hay documentos</p>
-   			@endif
    		</div> 
    	</div>
-   	
+   	@endif
 </div>
