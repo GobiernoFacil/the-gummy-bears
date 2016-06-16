@@ -264,10 +264,7 @@
 			</ul>
 		</div>
 	</div>
-</div>
-
-<!-- paginación chaira -->
-<div class="container">
+	<!-- paginación chaira -->
 	<div class="col-sm-12 pagination">
 				<p>Página {{ $page }} de {{ $pages }}.</p>
 
@@ -277,8 +274,10 @@
 		@endfor
 	</ul>
 	</div>
+	<!-- ! -->
 </div>
-<!-- ! -->
+
+
 
 
 <script>
