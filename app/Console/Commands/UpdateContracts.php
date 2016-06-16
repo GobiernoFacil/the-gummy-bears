@@ -280,9 +280,10 @@ class UpdateContracts extends Command {
           "release_id" => $release->id
         ]);
 
-        $planning->amount   = $data->planning->budget->amount->amount;
-        $planning->currency = $data->planning->budget->amount->currency;
-        $planning->project  = $data->planning->budget->project;
+        $planning->amount      = $data->planning->budget->amount->amount;
+        $planning->currency    = $data->planning->budget->amount->currency;
+        $planning->project     = $data->planning->budget->project;
+        $planning->description = $data->planning->budget->description;
 
         $planning->multi_year    = empty($data->planning->budget->multiYear) ? 0 : 1;
         $planning->amount_year   = empty($data->planning->budget->amountYear) ? null : $data->planning->budget->amountYear->amount;

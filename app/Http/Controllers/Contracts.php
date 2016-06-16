@@ -11,6 +11,7 @@ use App\Models\Provider;
 
 class Contracts extends Controller {
 
+  const PAGE_SIZE = 10;
   //
   // CONSTRUCTOR
   //
@@ -44,10 +45,11 @@ class Contracts extends Controller {
 	//
 	// Contracts list
 	//	
-	public function index(){
-		$contracts_amount	   = SingleContract::sum('amount');
+	public function index($page = 1, $type = "todos"){ // licitación, adjudicación, contratación
+    $page = (int)$page - 1 >= 0 ?  (int)$page - 1 : 0;
+		$contracts_amount	   = SingleContract::where("currency", "MXN")->sum('amount');
 		$contracts_number	   = SingleContract::all()->count();
-		$contracts 			     = Contract::orderBy("published_date",'desc')->get();
+		$contracts 			     = Contract::orderBy("published_date",'desc')->skip($page * self::PAGE_SIZE)->take(self::PAGE_SIZE)->get();
 		$json                = ContractData::with("release.tender")->get();
 		$_providers          = Provider::select("id", "rfc", "name","contract_budget")->where("contract_budget", ">", 0)->get();
 		$data                = [];
@@ -56,6 +58,10 @@ class Contracts extends Controller {
 		$data['og_image']	   = "img/og/contrato-cdmx.png";
 		$data['body_class']  = 'contract';
 		
+    $data['page']      = $page + 1;
+    $data['pages']     = ceil($contracts_number / self::PAGE_SIZE);
+    $data['page_size'] = self::PAGE_SIZE;
+
 		$data['contracts']  = $contracts;
 		$data['json']       = $json;
 		$data['_providers'] = $_providers;

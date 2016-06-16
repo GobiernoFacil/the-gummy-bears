@@ -17,9 +17,9 @@ Route::get('home2', "Frontend@indexv2");
 
 /// contracts
 Route::get('v2', "Contracts@index");
-Route::get('contratos', "Contracts@index");
 Route::get('contrato/{ocid}', "Contracts@show");
 Route::get('contratos/busqueda', "Search@index");
+Route::get('contratos/{page?}/{type?}', "Contracts@index");
 Route::get('descargar/contrato/{ocid}', "ContractGetter@getJSON"); // donwload JSON
 /// offices
 Route::get('dependencias', "Offices@index");
