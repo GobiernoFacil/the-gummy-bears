@@ -12,13 +12,25 @@
     		<p class="title_section">PRESUPUESTO ({{ $elcontrato->planning->currency }})</p>
 			<h2 class="amount"><span>$</span>{{ number_format($elcontrato->planning->amount,2,'.',',')}}</h2>
     	</div>
+		<?php $time_planning = strtotime($elcontrato->date);?>
+    	@if ($elcontrato->planning->multi_year == 1)
+		<div class="col-sm-3">
+			<p class="title_section">Fecha</p>
+		  	<p>{{ date('d/m/Y',$time_planning)}} </p>
+		</div>
+		<div class="col-sm-3">
+			<p class="title_section">Contrato</p>
+		  	<p>Multianual</p>
+		</div>	
+    	@else
 		<div class="col-sm-6">
 			<p class="title_section">Fecha</p>
-			<?php $time_planning = strtotime($elcontrato->date);?>
 		  	<p>{{ date('d/m/Y',$time_planning)}} </p>
-		</div>		
+		</div>	
+		@endif
   	</div>
-  	@if($elcontrato->planning->description)       
+  	@if($elcontrato->planning->description) 
+  	<!--description-->      
   	<div class="row divider">
 		<div class="col-sm-12">
 			<p class="title_section">Notas</p>
@@ -26,20 +38,21 @@
 		</div>
   	</div>
 	@endif
-  <div class="row">
-    <div class="col-sm-6">
-      <p class="title_section">COMPRADOR</p>
-      <p><a href="{{ url('dependencia/'. $elcontrato->buyer->id ) }}">{{ !empty($elcontrato->buyer->name) ? $elcontrato->buyer->name : ''}}</a></p>
-    </div>
-    <div class="col-sm-6">
-      <p class="title_section">DOCUMENTOS</p>
-      @if ($elcontrato->planning->documents)
-        <ol>
+	
+	<div class="row">
+    	<div class="col-sm-6">
+			<p class="title_section">COMPRADOR</p>
+			<p><a href="{{ url('dependencia/'. $elcontrato->buyer->id ) }}">{{ !empty($elcontrato->buyer->name) ? $elcontrato->buyer->name : ''}}</a></p>
+    	</div>
+		<div class="col-sm-6">
+			<p class="title_section">DOCUMENTOS</p>
+			@if ($elcontrato->planning->documents)
+			<ol>
           	@foreach($elcontrato->planning->documents as $doc)
- 		<li><a href="{{$doc->url}}">{{$doc->title}}</a> {{$doc->date}}</li>
+		  		<li><a href="{{$doc->url}}">{{$doc->title}}</a> {{$doc->date}}</li>
           	@endforeach
-      	</ol>
-      @endif
-    </div>
-  </div>
+      		</ol>
+	  		@endif
+    	</div>
+  	</div>
 </div>
