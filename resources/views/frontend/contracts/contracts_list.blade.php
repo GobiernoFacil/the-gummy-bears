@@ -267,11 +267,17 @@
 </div>
 
 <!-- paginación chaira -->
-<ul>
-	@for($i = 1; $i <= $pages; $i++)
-	<li><a class="{{$page == $i ? 'selected' : ''}}" href="{{url('contratos/' . $i)}}">{{$i}}</a></li>
-	@endfor
-</ul>
+<div class="container">
+	<div class="col-sm-12 pagination">
+				<p>Página {{ $page }} de {{ $pages }}.</p>
+
+		<ul>				
+		@for($i = 1; $i <= $pages; $i++)
+		<li><a class="{{$page == $i ? 'selected' : ''}}" href="{{url('contratos/' . $i)}}">{{$i}}</a></li>
+		@endfor
+	</ul>
+	</div>
+</div>
 <!-- ! -->
 
 
