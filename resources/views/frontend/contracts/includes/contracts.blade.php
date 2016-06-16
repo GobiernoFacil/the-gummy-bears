@@ -2,19 +2,23 @@
 	<?php $count = 0;?>
 	@foreach($elcontrato->singlecontracts as $contract)
 	<div id="contract-{{ $contract->id }}" class="sub_container {{$count > 0 ? 'hide' : ''}}">
-          <div class="row divider">
-            <div class="col-sm-12">
-              <p class="title_section">Etapa: Contratación</p>
+    	<!--encabezado-->
+		<div class="row divider">
+			<div class="col-sm-12">
+		    	<p class="title_section">Etapa <span class="i_contrato"><b></b> Contratación</span></p>
+			</div>
+		</div>
+    	<div class="row divider">
+	    	 <div class="col-sm-3">
+              <p class="title_section">CONTRATO</p>
+              <h2>{{ $contract->title }} <span class="label <?php echo $contract->status;?>">
+              <?php echo $contract->status == "active" ? "ACTIVO" : "";?></span></h2>
             </div>
             <div class="col-sm-9">
               <p class="title_section">Descripción</p>
               <h1><?php echo $contract->description;?></h1>
             </div>
-            <div class="col-sm-3">
-              <p class="title_section">CONTRATO</p>
-              <h2>{{ $contract->title }} <span class="label <?php echo $contract->status;?>">
-              <?php echo $contract->status == "active" ? "ACTIVO" : "";?></span></h2>
-            </div>
+           
           </div>
           <div class="row divider">
             <div class="col-sm-6">

@@ -40,14 +40,15 @@
         <?php 
             $percent_tender = ($amount_pagado * 100)/$c->amount;       
             if ($percent_tender > 100) {
-              $percent_budget = ($budget_amount * 100)/$c->amount . '%' ;
-              $percent_spent  = '100%';
+              	$percent_budget = ($c->amount * 100)/$amount_pagado  . '%' ;
+			  	$percent_spent  = '100%';
             }
             else {
               $percent_budget = '100%';
               $percent_spent = $percent_tender .'%';
             }                
         ?>
+        
         	<p class="title_section">% CONTRATADO / PAGADO</p>
         	<div class="percent">
         		<div class="budget" style="width:{{ $percent_budget }}"></div>
