@@ -37,6 +37,7 @@
         </div>
 	    <!-- $ porcentaje-->
         <div class="col-sm-4">
+	        @if ($c->amount != 0)
         <?php 
             $percent_tender = ($amount_pagado * 100)/$c->amount;       
             if ($percent_tender > 100) {
@@ -48,6 +49,11 @@
               $percent_spent = $percent_tender .'%';
             }                
         ?>
+        	@else 
+        	<?php $percent_budget =0;
+	        	$percent_tender = 0;
+	        	$percent_spent = 0;?>
+        	@endif
         
         	<p class="title_section">% CONTRATADO / PAGADO</p>
         	<div class="percent">
