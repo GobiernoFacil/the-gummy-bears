@@ -166,26 +166,42 @@
 						<div class="col-sm-2 top">
 							<p class="list_t right">Etapa de
 							@if($single_contracts->count())
-									<strong>contratación</strong> <span><?php echo file_get_contents("img/nav_planeacion.svg"); ?>
-									<?php echo file_get_contents("img/nav_licitacion.svg"); ?>
-									<?php echo file_get_contents("img/nav_adjudicacion.svg"); ?>
-									<?php echo file_get_contents("img/nav_contratacion.svg"); ?></span>
-									@else 
-										@if($awards->count())
-										 <strong>adjudicación</strong> 
-										 <span><?php echo file_get_contents("img/nav_planeacion.svg"); ?>
-										 <?php echo file_get_contents("img/nav_licitacion.svg"); ?>
-										 <?php echo file_get_contents("img/nav_adjudicacion.svg"); ?></span>
-										@else
-											@if($tender_id)
-											<strong>licitación </strong>
-											 <span><?php echo file_get_contents("img/nav_planeacion.svg"); ?>
-											 <?php echo file_get_contents("img/nav_licitacion.svg"); ?></span>
-											@else
-											No ha comenzado
-											@endif
-										@endif
+								<?php $implementation = FALSE;?>
+								@foreach($single_contracts as $c)
+	  								@if($c->implementation->transactions->count())
+	  								<?php $implementation = TRUE;?>
+	  								@endif
+	  							@endforeach
+	  							@if (!empty($implementation) )
+	  								<strong>implementación</strong> 
+	  								<span class="i_planning"><b></b></span>
+	  								<span class="i_tender"><b></b></span>
+	  								<span class="i_award"><b></b></span>
+	  								<span class="i_contrato"><b></b></span>
+	  								<span class="i_implementation"><b></b></span>
+	  							@else	
+									<strong>contratación</strong> 
+									<span class="i_planning"><b></b></span>
+									<span class="i_tender"><b></b></span>
+									<span class="i_award"><b></b></span>
+									<span class="i_contrato"><b></b></span>
+								@endif	
+							@else 
+								@if($awards->count())
+									<strong>adjudicación</strong> 
+									<span class="i_planning"><b></b></span>
+									<span class="i_tender"><b></b></span>
+									<span class="i_award"><b></b></span>
+								@else
+									@if($tender_id)
+										<strong>licitación </strong>
+										<span class="i_planning"><b></b></span>
+										<span class="i_tender"><b></b></span>
+									@else
+										No ha comenzado
 									@endif
+								@endif
+							@endif
 							</p>
 						</div>
 						<div class="clearfix"></div>
