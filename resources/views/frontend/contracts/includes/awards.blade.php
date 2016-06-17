@@ -1,7 +1,14 @@
 <div id="awards" class="container_info {{$elcontrato->singlecontracts->count() ? 'hide' : ''}}">
+	
 	<?php $count = 0;?>
 	@foreach ($elcontrato->awards as $award)
     <div id="award-<?php echo $award->id;?>" class="sub_container {{$count > 0 ? 'hide' : ''}}">
+    	<!--encabezado-->
+	<div class="row divider">
+		<div class="col-sm-12">
+			<p class="title_section">Etapa <span class="i_award"><b></b> Adjudicación</span></p>
+		</div>
+	</div>
             <div class="row divider">
               <div class="col-sm-12">
                 <p class="title_section">Etapa: Adjudicación</p>

@@ -1,4 +1,10 @@
 <div id="planning" class="container_info hide">
+	<!--encabezado-->
+    <div class="row divider">
+    	<div class="col-sm-12">
+        	<p class="title_section">Etapa <span class="i_planning"><b></b> Planeación</span></p>
+    	</div>
+    </div>
 	<!--header-->
 	<div class="row divider">
     	<div class="col-sm-12">
