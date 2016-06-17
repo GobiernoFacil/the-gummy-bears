@@ -128,6 +128,36 @@ class Contracts extends Controller {
     die();
   }
 
+  //
+  // [ SHOW RAW CONTRACT ]
+  //
+  //
+  public function showFullRaw($ocid){
+    // [1] Validate ocid & redirect if not valid
+    $r = preg_match('/^[\w-]+$/', $ocid);
+    if(!$r) return redirect("contratos");
+
+    // [2] make the call to the API
+    $url  = $this->apiContrato;
+    $base_contract = Contract::where("ocdsid", $ocid)->get()->first(); // id, cvedependencia, ocdsid 
+    if(!$base_contract) die("O_______O");
+
+    $data = ['dependencia' => $base_contract->cvedependencia, 'contrato' => $base_contract->ocdsid];
+
+    // [2.1] the CURL stuff
+    $conn = $this->apiCall($data, $url, 0);
+// OCDS-87SD3T-SEFIN-DRM-AD-002-2016
+    // [3] if the ocid is invalid, redirect
+    echo "<pre>";
+    var_dump($base_contract->toArray());
+    echo "</pre>";
+
+    echo "<pre>";
+    var_dump($conn);
+    echo "</pre>";
+    die();
+  }
+
   public function showListRaw(){
     $data      = ['dependencia' => '0901', "ejercicio" => 2016]; // harcoded stuff
     $excercise = $this->apiCall($data, $this->apiContratos);
@@ -136,7 +166,7 @@ class Contracts extends Controller {
     echo "</pre>";
   }
 
-  private function apiCall($data, $endpoint){
+  private function apiCall($data, $endpoint, $decode = 1){
       $ch = curl_init();
       
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -146,7 +176,7 @@ class Contracts extends Controller {
       curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
       
       $result   = curl_exec($ch);
-      $response = json_decode($result);
+      $response = $decode ? json_decode($result) : $result;
 
       return $response;
   }
