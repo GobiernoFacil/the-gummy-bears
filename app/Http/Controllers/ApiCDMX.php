@@ -16,6 +16,7 @@ use App\Models\Tender;
 class ApiCDMX extends Controller {
 
   const PAGE_SIZE = 50;
+  public $page_size = 50;
 
 	public function __construct()
 	{
@@ -23,18 +24,24 @@ class ApiCDMX extends Controller {
 
       $endpoints = env('ENDPOINTS', 'production');
 
-      if($endpoints == 'production'){
+    if($endpoints == 'production'){
       // SERVER ENDPOINTS
-        $this->apiContratos   = 'http://10.1.129.11:9009/ocpcdmx/listarcontratos';
-        $this->apiContrato    = 'http://10.1.129.11:9009/ocpcdmx/contratos';
-        $this->apiProveedores = 'http://10.1.129.11:9009/ocpcdmx/cproveedores';
-      }
+      $this->apiContratos   = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/listarcontratos';
+      //'http://10.1.129.11:9009/ocpcdmx/listarcontratos';
+      $this->apiContrato    = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/contratos';
+      //'http://10.1.129.11:9009/ocpcdmx/contratos';
+      $this->apiProveedores = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/cproveedores';
+      //'http://10.1.129.11:9009/ocpcdmx/cproveedores';
+    }
     // PUBLIC ENDPOINTS
-      else{
-        $this->apiContratos   = 'http://187.141.34.209:9009/ocpcdmx/listarcontratos';
-        $this->apiContrato    = 'http://187.141.34.209:9009/ocpcdmx/contratos';
-        $this->apiProveedores = 'http://187.141.34.209:9009/ocpcdmx/cproveedores';
-      }
+    else{
+      $this->apiContratos   = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/listarcontratos';
+      //'http://187.141.34.209:9009/ocpcdmx/listarcontratos';
+      $this->apiContrato    = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/contratos';
+      //'http://187.141.34.209:9009/ocpcdmx/contratos';
+      $this->apiProveedores = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/cproveedores';
+      //'http://187.141.34.209:9009/ocpcdmx/cproveedores';
+    }
 	}
 
   //
@@ -68,7 +75,7 @@ class ApiCDMX extends Controller {
   //
 	public function listAllProviders($page = 1)
 	{
-		$providers = Provider::take(SELF::PAGE_SIZE)->skip(($page-1) * SELF::PAGE_SIZE)->get();
+		$providers = Provider::take($this->page_size)->skip(($page-1) * $this->page_size)->get();
     return response()->json($providers)->header('Access-Control-Allow-Origin', '*');
 	}
 
