@@ -6,7 +6,7 @@
               <div class="col-sm-12">
                 <p class="title_section">Etapa: Adjudicación</p>
                 <h1><?php echo $award->title;?></h1>
-                <h2>ID: <?php echo $award->id;?> <span class="label <?php echo $award->status;?>"><?php echo $award->status == "active" ? "ACTIVO":"";?></span></h2>
+               <!-- <h2>ID: <?php echo $award->id;?> <span class="label <?php echo $award->status;?>"><?php echo $award->status == "active" ? "ACTIVO":"";?></span></h2>-->
               </div>
             </div>
             <div class="row divider">
