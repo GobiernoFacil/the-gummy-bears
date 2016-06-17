@@ -292,8 +292,8 @@ class UpdateContracts extends Command {
         $planning->description = $data->planning->budget->description;
 
         $planning->multi_year    = empty($data->planning->budget->multiYear) ? 0 : 1;
-        $planning->amount_year   = empty($data->planning->budget->amountYear) ? null : $data->planning->budget->amountYear->amount;
-        $planning->currency_year = empty($data->planning->budget->amountYear) ? null : $data->planning->budget->amountYear->currency;
+        $planning->amount_year   = empty($data->planning->budget->amountyear) ? null : $data->planning->budget->amountyear->amount;
+        $planning->currency_year = empty($data->planning->budget->amountyear) ? null : $data->planning->budget->amountyear->currency;
 
         $planning->update();
 
@@ -327,8 +327,8 @@ class UpdateContracts extends Command {
           $contract->buyer_id       = $release->buyer_id;
 
           $contract->multi_year    = empty($s->multiYear) ? 0 : 1;
-          $contract->amount_year   = empty($s->valueYear) ? null : $s->valueYear->amount;
-          $contract->currency_year = empty($s->valueYear) ? null : $s->valueYear->currency;
+          $contract->amount_year   = empty($s->valueyear) ? null : $s->valueyear->amount;
+          $contract->currency_year = empty($s->valueyear) ? null : $s->valueyear->currency;
 
           $contract->update();
           
@@ -430,8 +430,8 @@ class UpdateContracts extends Command {
 
           
           $award->multi_year     = empty($aw->multiYear) ? 0 : $aw->multiYear;
-          $award->amount_year    = empty($aw->valueYear) ? null : $aw->valueYear->amount;
-          $award->currency_year  = empty($aw->valueYear) ? null : $aw->valueYear->currency;
+          $award->amount_year    = empty($aw->valueyear) ? null : $aw->valueyear->amount;
+          $award->currency_year  = empty($aw->valueyear) ? null : $aw->valueyear->currency;
           
 
           $award->update();
