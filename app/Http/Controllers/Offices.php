@@ -41,7 +41,7 @@ class Offices extends Controller {
 			                    $q->where("buyer_id", $buyer->id);
 		                    })->orderBy("budget", "desc")->take(5)->get();
 		//Provider::orderby('budget', 'desc')->take(5)->get();
-		$providers_count 	= $buyer->providers->count();//Provider::all()->count();
+		$providers_count 	= $buyer->providers->where("award_num", ">", 0)->count();//Provider::all()->count();
 		
 		$contract_data		= ContractData::whereHas("release", function($q) use($buyer){
 			                    $q->where("buyer_id", $buyer->id);
