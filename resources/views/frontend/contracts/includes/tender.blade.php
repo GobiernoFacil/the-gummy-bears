@@ -9,28 +9,33 @@
       <div class="col-sm-12">
         <h1>{{ $elcontrato->tender->title }}</h1>
         <h2>{{$ocid}} 
-        <span class="label <?php echo $elcontrato->tender->status;?>">
-        <?php echo $elcontrato->tender->status == "complete" ? 'COMPLETO' : '';?></span>
+        <span class="label {{ $elcontrato->tender->status}}">
+        {{ $elcontrato->tender->status == "complete" ? 'COMPLETO' : '' }}</span>
         </h2>
-        <p class="lead"><?php echo $elcontrato->tender->description;?></p>
+        <p class="lead">{{ $elcontrato->tender->description }}</p>
       </div>
     </div>
-          <div class="row divider">
+    <div class="row divider">
+            <!--monto licitado-->
             <div class="col-sm-4">
-              <p class="title_section">MONTO LICITADO (MXN)</p>
+              <p class="title_section">MONTO LICITADO ({{$elcontrato->tender->currency}})</p>
               <?php $budget_amount = $elcontrato->tender->amount;?>
-              <h2 class="amount"><b class="budget"></b><span>$</span><?php echo number_format($budget_amount,2, '.', ',');?></h2>
+              <h2 class="amount"><b class="budget"></b><span>$</span>{{ number_format($budget_amount,2, '.', ',') }}</h2>
             </div>
-            <div class="col-sm-4">
-              <p class="title_section">MONTO CONTRATADO (MXN)</p>
-              <?php  $amount_gastado =  0;?>
+            <?php  $amount_gastado =  0;?>
               @foreach ($elcontrato->singlecontracts as $s)
               	@if($s->amount)
-              		<?php  $amount_gastado =  $amount_gastado + $s->amount;?>
+              		<?php  $amount_gastado 			  =  $amount_gastado + $s->amount;
+	              		   $single_contract_currency = $s->currency;?>
               	@endif
               @endforeach
-              <h2 class="amount"><b class="spent"></b><span>$</span><?php echo number_format($amount_gastado,2, '.', ',');?></h2>
+              
+            <!--monto contratado-->
+            <div class="col-sm-4">
+              <p class="title_section">MONTO CONTRATADO ({{ $single_contract_currency}})</p>
+              <h2 class="amount"><b class="spent"></b><span>$</span>{{ number_format($amount_gastado,2, '.', ',') }}</h2>
             </div>
+            @if($single_contract_currency == "MXN")
             <div class="col-sm-4">
               <?php 
                 $percent_tender = ($amount_gastado * 100)/$budget_amount;
@@ -43,7 +48,6 @@
                   $percent_budget = '100%';
                   $percent_spent = $percent_tender .'%';
                 }
-                
               ?>
               
               <p class="title_section">% LICITADO / CONTRATADO</p>
@@ -53,6 +57,7 @@
               </div>
               <p class="title_section"><span>0</span> <span class="right"><?php echo $percent_tender > 100 ? number_format($percent_tender) : '100';?>%</span></p>
             </div>
+            @endif
           </div>
           <!--
           <div class="row divider">
