@@ -32,9 +32,10 @@
               
             <!--monto contratado-->
             <div class="col-sm-4">
-              <p class="title_section">MONTO CONTRATADO ({{ $single_contract_currency}})</p>
+              <p class="title_section">MONTO CONTRATADO ({{ !empty($single_contract_currency) ? $single_contract_currency  : '' }})</p>
               <h2 class="amount"><b class="spent"></b><span>$</span>{{ number_format($amount_gastado,2, '.', ',') }}</h2>
             </div>
+            @if (!empty($single_contract_currency))
             @if($single_contract_currency == "MXN")
             <div class="col-sm-4">
               <?php 
@@ -57,6 +58,7 @@
               </div>
               <p class="title_section"><span>0</span> <span class="right"><?php echo $percent_tender > 100 ? number_format($percent_tender) : '100';?>%</span></p>
             </div>
+            @endif
             @endif
           </div>
           <!--
