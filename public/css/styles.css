@@ -1892,6 +1892,25 @@ div.allthem svg {
         width: 48%;
         text-align: center; }
 
+.proveedor .guia {
+  background: #999;
+  padding-top: 5px;
+  padding-bottom: 5px; }
+  .proveedor .guia p {
+    color: white; }
+.proveedor .mega_title {
+  text-align: center;
+  padding-bottom: 40px; }
+.proveedor ol.list li {
+  color: #ccc;
+  font-size: 21px;
+  list-style: decimal;
+  padding-top: 0; }
+  .proveedor ol.list li h3 {
+    font: 500 16px 'Geomanist', Helvetica, Arial, sans-serif; }
+    .proveedor ol.list li h3 a {
+      color: #1D1D1B; }
+
 p.list_t {
   font-size: 12px;
   line-height: 1.5; }
