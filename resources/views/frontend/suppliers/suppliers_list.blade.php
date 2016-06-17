@@ -12,8 +12,7 @@
 					<?php $supplier_num =  $supplier_num + 1;?>
 					@endif
 				@endforeach
-					<h1 class="mega_title">{{ $supplier_num}} proveedores con Contrataciones Abiertas</h1>
-		
+				<h1 class="mega_title">{{ $supplier_num}} proveedores con Contrataciones Abiertas</h1>
 
 				<div class="col-sm-10 col-sm-offset-1">
 					<div class="row guia">
