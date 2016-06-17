@@ -2162,13 +2162,6 @@ p.address {
   border-left: 1px solid rgba(0, 0, 0, 0.3);
   min-height: 746px;
   padding: 35px 35px 120px; }
-  .contract .info .title_section {
-    color: #b7b7b6;
-    font-size: 12px;
-    margin-bottom: 12px;
-    text-transform: uppercase; }
-    .contract .info .title_section span.right {
-      float: right; }
   .contract .info h1 {
     color: #263333;
     font-size: 36px;
@@ -2525,6 +2518,14 @@ span.i_implementation {
     color: white; }
     .pagination li a.selected {
       background: grey; }
+
+p.title_section {
+  color: #b7b7b6;
+  font-size: 12px;
+  margin-bottom: 12px;
+  text-transform: uppercase; }
+  p.title_section span.right {
+    float: right; }
 
 /* datos API 
 -------------------------------------------------------------- */

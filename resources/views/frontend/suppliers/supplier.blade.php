@@ -17,16 +17,19 @@
 				<div class="divider"></div>
 					<div class="row">
 						<div class="col-sm-6">
-							<h3>RFC: <strong>{{$tenderer->rfc}}</strong></h3>
+							<p class="title_section">RFC</p>
+							<h3> <strong>{{$tenderer->rfc}}</strong></h3>
 						</div>
 						<div class="col-sm-6">
-							<p>Contacto: <strong>{{$tenderer->contact_name}}</strong></p>
+							<p class="title_section">Persona de Contacto</p>
+							<p>{{$tenderer->contact_name}}</p>
 						</div>
 					</div>
 				<div class="divider"></div>
 				<div class="row">
 					<div class="col-sm-6">
-						<p>Dirección: <br>
+						<p class="title_section">Dirección</p>
+						<p>
 						  <span id="address-streetAddress">{!! $tenderer->street ? $tenderer->street . '. <br>' : '' !!}</span>
 						  <span id="address-locality">{!! $tenderer->locality ? $tenderer->locality . '. <br>' : '' !!}</span>
 						  <span id="address-region">{{ $tenderer->region ? $tenderer->region . '. ' : '' }}</span>
@@ -35,9 +38,11 @@
 						</p>
 					</div>
 					<div class="col-sm-3">
-						<p>Correo:<br> {{ $tenderer->email ? $tenderer->email . '. ' : '' }}</p>
+						<p class="title_section">Correo</p>
+						<p>{{ $tenderer->email ? $tenderer->email . '. ' : '' }}</p>
 					</div>
 					<div class="col-sm-3">
+						<p class="title_section">Contacto</p>
 						<p>Tel.: {!! $tenderer->phone ? '<strong>' . $tenderer->phone . '</strong><br>': '' !!}
 							Fax: {!! $tenderer->fax ? $tenderer->fax : '' !!}
 						</p>
@@ -49,7 +54,9 @@
 					
 					<div class="col-sm-4">
 						<p>MONTO TOTAL CONTRATADO</p>
-						<h2 id="contrataciones-total-money"><span>$</span>{{ number_format($supplier->contract_budget,2,'.',',') }} <span>MXN</span></h2>
+						<h2 id="contrataciones-total-money">
+							<span>$</span>{{ number_format($supplier->contract_budget,2,'.',',') }} <!--<span>MXN</span>-->
+						</h2>
 					</div>
 					<div class="col-sm-2 mobile-no">
 						<p>LICITACIONES</p>
@@ -61,7 +68,7 @@
 					</div>
 					<div class="col-sm-3 mobile-no">
 						<p>PROMEDIO POR CONTRATACIÓN</p>
-						<h2 id="gasto-promedio-money"><span>$</span>{{ $supplier->awards->count() ? number_format($supplier->contract_budget / $supplier->awards->count(),2,'.',',') : '0' }} <span>MXN</span> </h2>
+						<h2 id="gasto-promedio-money"><span>$</span>{{ $supplier->awards->count() ? number_format($supplier->contract_budget / $supplier->awards->count(),2,'.',',') : '0' }}<!--<span>MXN</span>--> </h2>
 					</div>
 					
 				</div>
@@ -78,7 +85,7 @@
 						<h3>Adjudicaciones con dependencias</h3>
 					</div>
 					<div class="col-sm-4  col-xs-6">
-						<p class="right">TOTAL (MXN)</p>
+						<p class="right">TOTAL</p>
 					</div>
 				</div>
 				<ul id="lucky-providers">
@@ -88,9 +95,10 @@
 						<a href="{{ url('dependencia/'. $buyer->buyer->id) }}">{{($buyer->buyer->name)}}</a>
 						</span>
 						<span class="col-sm-4  col-xs-6 right">
-							${{ number_format($buyer->budget,2,'.',',') }}
+							${{ number_format($buyer->budget,2,'.',',') }} 
 						</span>
 					</li>
+					
 					@endforeach
 				</ul>
 				<div class="divider"></div>
@@ -104,7 +112,7 @@
 						<h3>Adjudicaciones</h3>
 					</div>
 					<div class="col-sm-4 col-xs-6">
-						<p class="right">TOTAL (MXN)</p>
+						<p class="right">TOTAL</p>
 					</div>
 				</div>
 				<ul id="licitaciones-costosas">
