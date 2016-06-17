@@ -24,6 +24,8 @@ use App\Models\TenderProvider;
 use App\Models\TenderTenderer;
 use App\Models\Transaction;
 
+use DB;
+
 
 class UpdateContracts extends Command {
   /*
@@ -34,6 +36,7 @@ class UpdateContracts extends Command {
   public $apiContratos;
   public $apiContrato;
   public $apiProveedores;
+  const MAX_YEARS = 5;
 
 
 	/**
@@ -88,6 +91,9 @@ class UpdateContracts extends Command {
 	 */
 	public function fire()
 	{
+    // [0] DELETE ALL THE DATA!!!!!!
+    $this->deleteAll();
+
     // [1] obtiene la lista de contractos
       $this->info('obteniendo la lista de contratos:');
       $contracts = $this->getList();
@@ -604,7 +610,7 @@ class UpdateContracts extends Command {
       $contracts = [];
       
       // GET THE LIST FROM THE API
-      for($i = 0; $i < 3; $i ++){
+      for($i = 0; $i < self::MAX_YEARS; $i ++){
         $year      = date("Y") - $i;
         $data      = ['dependencia' => '0901', "ejercicio" => $year]; // harcoded stuff
         $excercise = $this->apiCall($data, $this->apiContratos);
@@ -680,5 +686,44 @@ class UpdateContracts extends Command {
 			['example', null, InputOption::VALUE_OPTIONAL, 'An example option.', null],
 		];
 	}
+
+  protected function deleteAll(){
+    $this->info("se van a eliminar los datos de la DB");
+    DB::table('addresses')->truncate();       
+    DB::table('amounts')->truncate();           
+    DB::table('awards')->truncate();            
+    DB::table('buyer_providers')->truncate();   
+    DB::table('buyers')->truncate();            
+    DB::table('classifications')->truncate();   
+    DB::table('contact_points')->truncate();    
+    DB::table('contracts')->truncate();         
+    DB::table('contracts_data')->truncate();    
+    DB::table('contracts_history')->truncate(); 
+    DB::table('documents')->truncate();         
+    DB::table('identifiers')->truncate();       
+    DB::table('implementations')->truncate();   
+    DB::table('items')->truncate();                    
+    DB::table('milestones')->truncate();        
+    DB::table('organizations')->truncate();     
+    DB::table('password_resets')->truncate();   
+    DB::table('periods')->truncate();           
+    DB::table('plannings')->truncate();         
+    DB::table('provider_award')->truncate();    
+    DB::table('provider_tender')->truncate();   
+    DB::table('providers')->truncate();         
+    DB::table('publishers')->truncate();        
+    DB::table('releases')->truncate();          
+    DB::table('single_contracts')->truncate();  
+    DB::table('suppliers')->truncate();         
+    DB::table('tags')->truncate();              
+    DB::table('tender_tenderer')->truncate();   
+    DB::table('tender_tenderers')->truncate();  
+    DB::table('tenderers')->truncate();         
+    DB::table('tenders')->truncate();           
+    DB::table('transactions')->truncate();      
+    DB::table('users')->truncate(); 
+
+    $this->info("se han borrado todos los datos de la DB");
+  }
 
 }
