@@ -1,17 +1,47 @@
 <div id="implementation" class="container_info">
     <!--encabezado-->
     <div class="row divider">
-    	<div class="col-sm-12">
+    	<div class="col-sm-6">
         	<p class="title_section">Etapa <span class="i_implementation"><b></b> Implementación</span></p>
     	</div>
+    	@if (!empty($c->implementation->updated_at))
+    	<?php 	$from = new DateTime();
+				$from->setTimestamp(strtotime($c->implementation->updated_at));
+				$to = new DateTime();
+				$to->setTimestamp(time());
+				$diff=date_diff($from,$to);
+				$diff->format('%R');
+				switch ($diff->days) {
+					case 0:	
+						$val_to = "Hoy";
+						break;
+					case ($diff->days > 0 && $diff->days < 32):	
+						$val_to = 'Hace ' . $diff->days . " días";
+						break;
+					case($diff->days > 32 && $diff->days < 365):	
+						$val_to = 'Hace ' . $diff->m . " meses";
+						break;
+					case($diff->days > 365):	
+						$val_to =  "Hace +1 año";
+						break;
+					default: 
+						$val_to = "";
+						break;
+				}?>
+    	<div class="col-sm-6 right">
+        	<p class="title_section">Actualizado</p>
+        	<p class="ago">{{$val_to}}</p>
+        	
+    	</div>
+    	@endif
     </div>
     <!--contrato-->
     <div class="row divider">
-    	<div class="col-sm-9">
+    	<div class="col-sm-8">
         	<p class="title_section">Descripción</p>
         	<h1>{{ $c->description }}</h1>
     	</div>
-    	<div class="col-sm-3">
+    	<div class="col-sm-4">
         	<p class="title_section">Contrato</p>
 			<h2>{{ $c->title }}<span class="label {{ $c->status }}">
 			{{ $c->status == "active" ? "ACTIVO" : "" }}</span></h2>
