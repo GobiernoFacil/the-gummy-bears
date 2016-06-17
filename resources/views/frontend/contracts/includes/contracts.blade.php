@@ -9,14 +9,14 @@
 			</div>
 		</div>
     	<div class="row divider">
-	    	 <div class="col-sm-3">
-              <p class="title_section">CONTRATO</p>
-              <h2>{{ $contract->title }} <span class="label <?php echo $contract->status;?>">
-              <?php echo $contract->status == "active" ? "ACTIVO" : "";?></span></h2>
-            </div>
             <div class="col-sm-9">
               <p class="title_section">Descripción</p>
               <h1><?php echo $contract->description;?></h1>
+            </div>
+            <div class="col-sm-3">
+              <p class="title_section">CONTRATO</p>
+              <h2>{{ $contract->title }} <span class="label <?php echo $contract->status;?>">
+              <?php echo $contract->status == "active" ? "ACTIVO" : "";?></span></h2>
             </div>
            
           </div>
