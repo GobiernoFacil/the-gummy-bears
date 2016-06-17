@@ -1942,6 +1942,17 @@ p.list_t {
       border-bottom: 1px dotted #eb008b; }
       .dependencia .list li a:hover, .proveedor .list li a:hover {
         color: #eb008b; }
+      .dependencia .list li a.btn, .proveedor .list li a.btn {
+        display: inline-block;
+        background: #eb008b;
+        color: white;
+        font-size: 13px;
+        padding: 10px;
+        height: 35px;
+        line-height: 1;
+        width: auto; }
+        .dependencia .list li a.btn:hover, .proveedor .list li a.btn:hover {
+          background: #333; }
 .dependencia .stage_list, .proveedor .stage_list {
   margin: 20px 0; }
   .dependencia .stage_list li, .proveedor .stage_list li {
