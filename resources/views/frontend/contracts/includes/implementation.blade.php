@@ -1,9 +1,13 @@
 <div id="implementation" class="container_info">
     <!--encabezado-->
     <div class="row divider">
-    	<div class="col-sm-6">
+    	<div class="col-sm-4">
         	<p class="title_section">Etapa <span class="i_implementation"><b></b> Implementación</span></p>
     	</div>
+    	<div class="col-sm-4">
+        		<p class="title_section center">Identificador de Contratación Abierta</p>
+        		<p class="ago center">{{$ocid}}</p>
+    		</div>
     	@if (!empty($c->implementation->updated_at))
     	<?php 	$from = new DateTime();
 				$from->setTimestamp(strtotime($c->implementation->updated_at));
@@ -28,30 +32,54 @@
 						$val_to = "";
 						break;
 				}?>
-    	<div class="col-sm-6 right">
+    	<div class="col-sm-4 right">
         	<p class="title_section">Actualizado</p>
         	<p class="ago">{{$val_to}}</p>
     	</div>
     	@endif
     </div>
+    
     <!--contrato-->
     <div class="row divider">
-    	<div class="col-sm-8">
-        	<p class="title_section">Descripción</p>
-        	<h1>{{ $c->description }}</h1>
+        <!--title-->
+        <div class="col-sm-9">
+          <p class="title_section">CONTRATO</p>
+          <h1>{{ $c->title }}</h1>
+        </div>
+	 
+        <!--status-->
+        <div class="col-sm-3">
+	    <?php switch ($c->status){
+    	  case "pending":
+    	    $c_status = "PENDIENTE";
+    	    break;
+    	  case "active":
+    	    $c_status = "ACTIVO";
+    	    break;
+    	  case "cancelled":
+    	    $c_status = "CANCELADO";
+    	    break;
+    	  case "terminated":
+    	    $c_status = "TERMINADO";
+    	    break;
+    	}?>
+	 	<p class="title_section">Estatus del contrato</p>
+	 	<p><span class="label {{ $c->status }}">
+	 	{{ $c_status }}</span></p>
     	</div>
-    	<div class="col-sm-4">
-        	<p class="title_section">Contrato</p>
-			<h2>{{ $c->title }}<span class="label {{ $c->status }}">
-			{{ $c->status == "active" ? "ACTIVO" : "" }}</span></h2>
-      	</div>
     </div>
+    
     <!--montos-->
     <div class="row divider">
 	    <!-- $ contratado-->
         <div class="col-sm-4">
-            <p class="title_section">MONTO TOTAL CONTRATADO ({{ $c->currency }})</p>
-            <h2 class="amount"><b class="budget"></b><span>$</span>{{ number_format($c->amount,2,'.',',')}}</h2>
+            <p class="title_section">MONTO {{ $c->multi_year == 1 ? 'Multianual' : '' }} CONTRATADO ({{ $c->currency }})</p>
+            @if ($c->multi_year == 1)
+				<?php $isc_amount = ($c->amount_year + $c->amount);?>
+			@else
+				<?php $isc_amount = $c->amount;?>
+			@endif
+            <h2 class="amount"><b class="budget"></b><span>$</span>{{ number_format($isc_amount,2,'.',',')}}</h2>
         </div>
 	    <!-- $ pagado-->
         <div class="col-sm-4">
@@ -68,9 +96,9 @@
         <div class="col-sm-4">
 	        @if ($c->amount != 0)
         <?php 
-            $percent_tender = ($amount_pagado * 100)/$c->amount;       
+            $percent_tender = ($amount_pagado * 100)/$isc_amount;       
             if ($percent_tender > 100) {
-              	$percent_budget = ($c->amount * 100)/$amount_pagado  . '%' ;
+              	$percent_budget = ($isc_amount * 100)/$amount_pagado  . '%' ;
 			  	$percent_spent  = '100%';
             }
             else {

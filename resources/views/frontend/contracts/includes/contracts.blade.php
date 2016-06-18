@@ -67,7 +67,6 @@
 				<p><span class="label {{ $contract->status }}">
 				{{ $c_status }}</span></p>
     		</div>
-           
         </div>
         
         <div class="row divider">
