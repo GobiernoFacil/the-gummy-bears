@@ -45,7 +45,6 @@
             <div class="col-sm-9">
                 <p class="title_section">título</p>
                 <h1>{{ $award->title }}</h1>
-               <!-- <h2>ID: <?php echo $award->id;?> <span class="label <?php echo $award->status;?>"><?php echo $award->status == "active" ? "ACTIVO":"";?></span></h2>-->
             </div>
             
             <!--status-->
