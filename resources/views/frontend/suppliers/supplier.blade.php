@@ -55,7 +55,7 @@
 					<div class="col-sm-4">
 						<p>MONTO TOTAL CONTRATADO</p>
 						<h2 id="contrataciones-total-money">
-							<span>$</span>{{ number_format($supplier->contract_budget,2,'.',',') }} <!--<span>MXN</span>-->
+							<span>$</span>{{ number_format($supplier->budget,2,'.',',') }} <!--<span>MXN</span>-->
 						</h2>
 					</div>
 					<div class="col-sm-2 mobile-no">
@@ -68,7 +68,7 @@
 					</div>
 					<div class="col-sm-3 mobile-no">
 						<p>PROMEDIO POR CONTRATACIÓN</p>
-						<h2 id="gasto-promedio-money"><span>$</span>{{ $supplier->awards->count() ? number_format($supplier->contract_budget / $supplier->awards->count(),2,'.',',') : '0' }}<!--<span>MXN</span>--> </h2>
+						<h2 id="gasto-promedio-money"><span>$</span>{{ $supplier->awards->count() ? number_format($supplier->budget / $supplier->awards->count(),2,'.',',') : '0' }}<!--<span>MXN</span>--> </h2>
 					</div>
 					
 				</div>
@@ -98,7 +98,6 @@
 							${{ number_format($buyer->budget,2,'.',',') }} 
 						</span>
 					</li>
-					
 					@endforeach
 				</ul>
 				<div class="divider"></div>
@@ -128,8 +127,9 @@
 									  <span class="col-sm-8 col-xs-6">
 									  	<a href="{{ url('contrato/'. $contract_ocdsid)}}">{{ $award->title }}</a>
 									  </span>
+									  <?php $amount_adj =  (int)$award->amount_year + $award->value;?>
 									  <span class="col-sm-4 col-xs-6 right">
-									  	${{ number_format($award->value,2,'.',',') }}
+									  	${{ number_format($amount_adj,2,'.',',') }}
 									  </span>
 									</li>
 									@endif
@@ -139,6 +139,7 @@
 						@endif
 					@endforeach
 				</ul>
+				<div class="divider"></div>
 			</div>
 		</div>
 		@endif
@@ -190,6 +191,7 @@
 						@endif
 					@endforeach
 				</ul>
+				<div class="divider"></div>
 			</div>
 		</div>
 		
