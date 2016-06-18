@@ -2169,14 +2169,14 @@ p.address {
   padding: 35px 35px 120px; }
   .contract .info h1 {
     color: #263333;
-    font-size: 36px;
+    font-size: 30px;
     line-height: 1; }
   .contract .info h2 {
     color: #969295;
     font-size: 23px; }
     .contract .info h2.amount {
       color: #263333;
-      font-size: 33px;
+      font-size: 28px;
       margin-top: 15px; }
       .contract .info h2.amount span {
         color: #5e5e5b;
