@@ -28,7 +28,7 @@ class Search extends Controller {
 	public function index(Request $request){
     $query = $request->input('query', false);
 
-    if($query){
+    if(!empty($query)){
       $contracts = Contract::where('nomdependencia', 'like', '%' . $query.'%')
       ->orWhere('ejercicio', 'like', '%' . $query . '%')
       ->orWhere('ocdsid', 'like', '%' . $query . '%')
@@ -81,7 +81,7 @@ class Search extends Controller {
       ->get();
     }
     else{
-      $contracts = null;
+      $contracts = [];
     }
 	$data                = [];
     $data['title']       = 'Resultados de búsqueda de Contrataciones Abiertas de la CDMX';
