@@ -54,11 +54,14 @@
 			<div class="col-sm-10 col-sm-offset-1">
 				<iframe src="https://www.youtube.com/embed/xQvKHiERIJI" frameborder="0" allowfullscreen></iframe>
 			</div>
-			<div class="col-sm-4 col-sm-offset-2">
+			<div class="col-sm-4">
 				<a href="{{ url('por-que') }}" class="btn">¿Por qué las Contrataciones Abiertas?</a>
 			</div>
 			<div class="col-sm-4">
 			<a href="{{ url('glosario') }}" class="btn">Consulta los términos claves de las Contrataciones Abiertas</a>
+			</div>
+			<div class="col-sm-4">
+			<a href="{{ url('datos-abiertos') }}" class="btn">Usa los datos abiertos de las Contrataciones</a>
 			</div>
 		</div>
 	</div>
