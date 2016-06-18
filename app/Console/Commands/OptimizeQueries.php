@@ -73,10 +73,10 @@ class OptimizeQueries extends Command {
           if($release->planning){
             $history->ocdsid    = $contract->ocdsid;
             $history->local_id  = $release->local_id;
-            $history->planning  = $release->planning->amount;
+            $history->planning  = $release->planning->amount + $release->planning->amount_year;
             $history->tender    = $release->tender->amount;
-            $history->awards    = $release->awards->sum('value');
-            $history->contracts = $release->singlecontracts->sum('amount');
+            $history->awards    = $release->awards->sum('value') + $release->awards->sum('amount_year');
+            $history->contracts = $release->singlecontracts->sum('amount') + $release->awards->sum('amount_year');
             $history->date      = $release->date;
             $history->update();
             $this->info('se ha optimizado el historial del contrato: ' . $contract->ocdsid);
@@ -141,7 +141,7 @@ class OptimizeQueries extends Command {
           $q->WhereHas("release", function($query){
             $query->where("is_latest", 1);
           });
-        })->sum("value");
+        })->sum("value") ;
         /***********************************/
         // calculate the actual single contracts budget by buyer
         $counter = 0;
