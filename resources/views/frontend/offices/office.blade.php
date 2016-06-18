@@ -38,28 +38,44 @@
 				<div class="divider"></div>
 				<!--- proceso por etapa-->
 				<div class="row">
-					<div class="col-sm-12">
-						<h2>Procesos de contratación por etapa activa:</h2>
+					<div class="col-sm-8">
+						<h2>Procesos de contratación por etapa activa</h2>
+						<div class="row">
+							<div class="col-sm-6">
+								<div id="donut"></div>
+							</div>
+							<div class="col-sm-6">
+								<ul class="stage_list">
+									<li class="planning zero"><b><?php echo file_get_contents("img/nav_planeacion.svg"); ?></b> <strong>0</strong> en Planeación</li>
+									<li class="tender {{ $etapa_licitacion == 0 ? 'zero' : ''}}">
+									<b><?php echo file_get_contents("img/nav_licitacion.svg"); ?></b> 
+									<strong>{{$etapa_licitacion}}</strong> en Licitación</li>
+									<li class="awards {{ $etapa_adjudicacion == 0 ? 'zero' : ''}}">
+									<b><?php echo file_get_contents("img/nav_adjudicacion.svg"); ?></b>
+									<strong>{{$etapa_adjudicacion}}</strong> en Adjudicación</li>
+									<li class="contracts {{ $etapa_contratacion == 0 ? 'zero' : ''}}">
+									<b><?php echo file_get_contents("img/nav_contratacion.svg"); ?></b> 
+									<strong>{{$etapa_contratacion}}</strong> en Contratación</li>
+									<li class="implementation {{ $etapa_implementacion == 0 ? 'zero' : ''}}">
+									<b><?php echo file_get_contents("img/nav_implementacion.svg"); ?></b> 
+									<strong>{{$etapa_implementacion}}</strong> en Implementación</li>
+								</ul>
+							</div>
+						</div>
 					</div>
-					<div class="col-sm-4 col-sm-offset-2">
-						<div id="donut"></div>
-					</div>
-					<div class="col-sm-4 ">
-						<ul class="stage_list">
-							<li class="planning zero"><b><?php echo file_get_contents("img/nav_planeacion.svg"); ?></b> <strong>0</strong> en Planeación</li>
-							<li class="tender {{ $etapa_licitacion == 0 ? 'zero' : ''}}">
-							<b><?php echo file_get_contents("img/nav_licitacion.svg"); ?></b> 
-							<strong>{{$etapa_licitacion}}</strong> en Licitación</li>
-							<li class="awards {{ $etapa_adjudicacion == 0 ? 'zero' : ''}}">
-							<b><?php echo file_get_contents("img/nav_adjudicacion.svg"); ?></b>
-							<strong>{{$etapa_adjudicacion}}</strong> en Adjudicación</li>
-							<li class="contracts {{ $etapa_contratacion == 0 ? 'zero' : ''}}">
-							<b><?php echo file_get_contents("img/nav_contratacion.svg"); ?></b> 
-							<strong>{{$etapa_contratacion}}</strong> en Contratación</li>
-							<li class="implementation {{ $etapa_implementacion == 0 ? 'zero' : ''}}">
-							<b><?php echo file_get_contents("img/nav_implementacion.svg"); ?></b> 
-							<strong>{{$etapa_implementacion}}</strong> en Implementación</li>
-						</ul>
+					<div class="col-sm-4 right">
+						<div class="row divider">
+							<div class="col-sm-11">
+								<p class="title_section">Monto total contratado en MXN</p>
+								<h2>${{ number_format($total_contract,2,'.',',') }} <span>MXN</span></h2>
+							</div>
+						</div>
+						<div class="row divider">
+							<div class="col-sm-11">
+								<p class="title_section">Monto total contratado en USD</p>
+								<h2>${{ number_format($total_contract_usd,2,'.',',') }} <span>USD</span></h2>
+							</div>
+						</div>
 					</div>
 				</div>
 				

@@ -43,15 +43,29 @@ class Offices extends Controller {
 		//Provider::orderby('budget', 'desc')->take(5)->get();
 		$providers_count 	= $buyer->providers->where("award_num", ">", 0)->count();//Provider::all()->count();
 		
+		
+		$contract_data_c	= ContractData::whereHas("release", function($q) use($buyer){
+			                    $q->where("buyer_id", $buyer->id);
+		                    })->orderby('contracts', 'desc')->get();
+		                    
 		$contract_data		= ContractData::whereHas("release", function($q) use($buyer){
 			                    $q->where("buyer_id", $buyer->id);
 		                    })->orderby('contracts', 'desc')->take(5)->get();
-		//ContractData::orderby('contracts', 'desc')->take(5)->get();
+		
+		
 		
 		//total
 		$total_planning		= $buyer->plannings->sum("amount");//Planning::sum('amount');
-		$total_award		  = $buyer->awards->sum("value");//Award::sum('value');
-		$total_contract		= $buyer->singlecontracts->sum("amount");//SingleContract::sum('amount');
+		$total_award		= $buyer->awards->sum("value");//Award::sum('value');
+		
+		//contratado mx
+		$total_contract	 		= $contract_data_c->sum("contracts");
+		
+		//contratado usd
+		$buyer_usd				= $buyer->singlecontracts->where('currency','USD');
+		$total_contract_usd		= $buyer_usd->sum("amount");
+		$total_contract_usd		= $total_contract_usd + $buyer_usd->sum("amount_year");
+		
 		
 		///percentage
 		$max			      	= max(array($total_planning, $total_award, $total_contract));
@@ -80,7 +94,8 @@ class Offices extends Controller {
 		$data['providers_count']  = $providers_count;
 		$data['total_planning']   = $total_planning;
 		$data['total_award']   	 	= $total_award;
-		$data['total_contract']   = $total_contract;
+		$data['total_contract']   	  = $total_contract;
+		$data['total_contract_usd']   = $total_contract_usd;
 		$data['per_planning']   	= $per_planning;
 		$data['per_award']   	 	  = $per_award;
 		$data['per_contract']   	= $per_contract;	
