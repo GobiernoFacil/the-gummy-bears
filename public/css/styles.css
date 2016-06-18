@@ -2646,9 +2646,13 @@ a.btn {
   padding: 2px 7px;
   vertical-align: top; }
   .label.active {
-    background: #31bc31; }
-  .label.complete {
     background: #28c3f9; }
+  .label.complete, .label.terminated {
+    background: #31bc31; }
+  .label.cancelled {
+    background: red; }
+  .label.pending {
+    background: orange; }
 
 b.spent {
   background: #0a467c;
