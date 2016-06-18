@@ -89,19 +89,105 @@
         </div>
 
         <div class="row divider">
-			<!--Monto Adjudicado-->
-            <div class="col-sm-6">
-	            @if ($award->multi_year == 1)
-    				<?php $a_amout = ($award->amount_year + $award->value);?>
+			<!--Monto Planeado-->
+            <div class="col-sm-4">
+	            @if ($elcontrato->planning->multi_year == 1)
+    				<?php $planning_amout = ($elcontrato->planning->amount_year + $elcontrato->planning->amount);?>
 				@else
-    				<?php $a_amout = $award->value;?>
+    				<?php $planning_amout = $elcontrato->planning->amount;?>
 				@endif
-                <p class="title_section">Monto {{ $award->multi_year == 1 ? 'Multianual' : ''}} Adjudicado</p>
-                <h2 class="amount"><span>$</span> {{ number_format($a_amout,2,'.',',') }} 
-	                <span>{{ $award->currency }}</span></h2>
+                <p class="title_section">
+	    		Monto {{ $elcontrato->planning->multi_year == 1 ? 'Multianual' : ''}} Planeado ({{ $elcontrato->planning->currency }})
+	            </p>
+                <h2 class="amount"><b class="budget"></b><span>$</span>{{ number_format($planning_amout,2,'.',',') }}</h2>
             </div>
+            
+			<!--Monto Adjudicado-->
+            <div class="col-sm-4">
+	            @if ($award->multi_year == 1)
+    				<?php $a_amount = ($award->amount_year + $award->value);?>
+				@else
+    				<?php $a_amount = $award->value;?>
+				@endif
+                <p class="title_section">
+	                Monto {{ $award->multi_year == 1 ? 'Multianual' : ''}} Adjudicado ({{ $award->currency }})
+	            </p>
+                <h2 class="amount"><b class="spent"></b><span>$</span>{{ number_format($a_amount,2,'.',',') }}</h2>
+            </div>
+            
+             
+            <div class="col-sm-4">
+              <?php 
+                $percent_tender = ($a_amount * 100)/$planning_amout;
+                
+                if ($percent_tender > 100) {
+                  $percent_budget = ($planning_amout * 100)/$a_amount . '%' ;
+                  $percent_spent  = '100%';
+                }
+                else {
+                  $percent_budget = '100%';
+                  $percent_spent = $percent_tender .'%';
+                }
+              ?>
+              
+              <p class="title_section">% PLANEADO / ADJUDICADO</p>
+              <div class="percent">
+                <div class="budget" style="width: <?php echo $percent_budget;?>"></div>
+                <div class="spent"  style="width: <?php echo $percent_spent;?>"></div>
+              </div>
+              <p class="title_section"><span>0</span> <span class="right"><?php echo $percent_tender > 100 ? number_format($percent_tender) : '100';?>%</span></p>
+            </div>
+          
 			
-			
+			    <?php /*
+    <div class="row divider">
+        <!--monto licitado-->
+        <div class="col-sm-4">
+              <p class="title_section">MONTO LICITADO ({{$elcontrato->tender->currency}})</p>
+              <?php $budget_amount = $elcontrato->tender->amount;?>
+              <h2 class="amount"><b class="budget"></b><span>$</span>{{ number_format($budget_amount,2, '.', ',') }}</h2>
+            </div>
+            <?php  $amount_gastado =  0;?>
+              @foreach ($elcontrato->singlecontracts as $s)
+              	@if($s->amount)
+              		<?php  $amount_gastado 			  =  $amount_gastado + $s->amount;
+	              		   $single_contract_currency = $s->currency;?>
+              	@endif
+              @endforeach
+              
+            <!--monto contratado-->
+            <div class="col-sm-4">
+              <p class="title_section">MONTO CONTRATADO ({{ !empty($single_contract_currency) ? $single_contract_currency  : '' }})</p>
+              <h2 class="amount"><b class="spent"></b><span>$</span>{{ number_format($amount_gastado,2, '.', ',') }}</h2>
+            </div>
+            @if (!empty($single_contract_currency))
+            @if($single_contract_currency == "MXN")
+            <div class="col-sm-4">
+              <?php 
+                $percent_tender = ($amount_gastado * 100)/$budget_amount;
+                
+                if ($percent_tender > 100) {
+                  $percent_budget = ($budget_amount * 100)/$amount_gastado . '%' ;
+                  $percent_spent  = '100%';
+                }
+                else {
+                  $percent_budget = '100%';
+                  $percent_spent = $percent_tender .'%';
+                }
+              ?>
+              
+              <p class="title_section">% LICITADO / CONTRATADO</p>
+              <div class="percent">
+                <div class="budget" style="width: <?php echo $percent_budget;?>"></div>
+                <div class="spent"  style="width: <?php echo $percent_spent;?>"></div>
+              </div>
+              <p class="title_section"><span>0</span> <span class="right"><?php echo $percent_tender > 100 ? number_format($percent_tender) : '100';?>%</span></p>
+            </div>
+            @endif
+            @endif
+          </div>
+          
+          */?>
         </div>
         
         
