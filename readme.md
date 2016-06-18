@@ -51,7 +51,7 @@ bower install
 
 y eso es todo amigos!
 
-## Guía para ctualizar el sistema
+## Guía para actualizar el sistema
 1: obtener los cambios del código con git
 ```bash
 git pull origin master
