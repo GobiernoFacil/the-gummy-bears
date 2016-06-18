@@ -8,13 +8,15 @@
         	<p class="title_section center">Identificador de Contratación Abierta</p>
         	<p class="ago center">{{$ocid}}</p>
     	</div>
-    	@if ($elcontrato->planning->documents)
+    	@if ($elcontrato->planning->documents->count())
           	@foreach($elcontrato->planning->documents as $doc)
-		  		<?php $document_date=  date('d/m/Y', strtotime($doc->date));?>
+		  		<?php $document_date =  date('d/m/Y', strtotime($doc->date));?>
           	@endforeach
     	<div class="col-sm-4 right">
+	    	@if (!empty($document_date))
         	<p class="title_section">Fecha</p>
         	<p class="ago">{{$document_date}}</p>
+        	@endif
     	</div>
 	  	@endif
     </div>
