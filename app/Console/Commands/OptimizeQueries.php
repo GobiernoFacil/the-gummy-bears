@@ -141,7 +141,11 @@ class OptimizeQueries extends Command {
           $q->WhereHas("release", function($query){
             $query->where("is_latest", 1);
           });
-        })->sum("value") ;
+        })->sum("value") + $provider->awards()->where("buyer_id", $buyer)->where(function($q){
+          $q->WhereHas("release", function($query){
+            $query->where("is_latest", 1);
+          });
+        })->sum("amount_year");
         /***********************************/
         // calculate the actual single contracts budget by buyer
         $counter = 0;
