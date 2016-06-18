@@ -54,7 +54,7 @@
 				</div>
 				<div class="col-sm-4 right">
 					<form method="get" action="{{url('contratos/busqueda')}}" class="form-search">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+						<!--<input type="hidden" name="_token" value="{{ csrf_token() }}">-->
 						<input type="text" name="query" value="{{old('query')}}" placeholder="Buscar contrato">
 						<input type="submit" value="&nbsp;"></p>
   					</form>
