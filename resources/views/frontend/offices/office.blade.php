@@ -140,7 +140,7 @@
 								<a href="{{ url('proveedor/' . $sp->rfc) }}">{{$sp->name}}</a>
 							</span>
 							<span class="col-sm-4 col-xs-5 right">
-								${{number_format($sp->awards->sum('value'),2,'.',',')}}
+								${{number_format($sp->budget,2,'.',',')}}
 							</span>
 						</li>
 						@endif
@@ -170,9 +170,7 @@
 								<span class="col-sm-4 col-xs-5 right">
 								${{ number_format($c->contracts,2,'.',',') }}
 								</span>
-							</li>
-						
-					
+							</li>					
 					@endforeach
 				</ul>
 				<div class="divider"></div>
