@@ -2173,15 +2173,26 @@ p.address {
 .contract .sidebar {
   padding: 0; }
   .contract .sidebar .header {
-    padding: 35px 25px;
-    background: #ebebeb;
-    border-bottom: 1px solid #cacccc; }
-    .contract .sidebar .header h3 {
-      color: #cacaca;
-      font-size: 14px; }
+    padding: 35px 25px 0;
+    background: #999;
+    border-bottom: 1px solid #888;
+    text-align: center; }
     .contract .sidebar .header h2 {
-      color: #8e8e8e;
-      font-size: 21px; }
+      color: white;
+      font-size: 20px;
+      text-align: left; }
+    .contract .sidebar .header h3 {
+      color: #f2f2f2;
+      font-size: 13px;
+      font-weight: 300;
+      text-align: left; }
+    .contract .sidebar .header h4 {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 12px;
+      margin-top: 18px;
+      padding: 3px 15px;
+      display: inline-block;
+      text-transform: uppercase; }
 .contract .info {
   background: white;
   border-left: 1px solid rgba(0, 0, 0, 0.3);
@@ -2241,7 +2252,7 @@ ul.timeline {
   padding-top: 25px;
   position: relative; }
   ul.timeline:before {
-    background: #cacccc;
+    background: #999;
     content: "";
     position: absolute;
     top: 0;

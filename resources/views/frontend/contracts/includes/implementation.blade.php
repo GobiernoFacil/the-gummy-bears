@@ -34,7 +34,7 @@
 				}?>
     	<div class="col-sm-4 right">
         	<p class="title_section">Actualizado</p>
-        	<p class="ago">{{$val_to}}</p>
+        	<p class="ago" data-date="{{$c->implementation->updated_at}}">{{$val_to}}</p>
     	</div>
     	@endif
     </div>
