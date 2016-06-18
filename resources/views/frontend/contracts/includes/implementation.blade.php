@@ -94,7 +94,7 @@
         </div>
 	    <!-- $ porcentaje-->
         <div class="col-sm-4">
-	        @if ($c->amount != 0)
+	        @if ($isc_amount != 0)
         <?php 
             $percent_tender = ($amount_pagado * 100)/$isc_amount;       
             if ($percent_tender > 100) {
