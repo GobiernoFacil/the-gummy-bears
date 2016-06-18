@@ -78,7 +78,7 @@ define(function(require){
                          "name"      : d.name,
                          "id"        : d.rfc,
                          "rfc"       : d.rfc,
-                         "contracts" : d.contract_budget,
+                         "contracts" : d.budget,
                          "type"      : "provider"
                        };
                      }),
