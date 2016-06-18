@@ -12,8 +12,8 @@
 */
 
 
-Route::get('/', "Frontend@index");
-Route::get('home2', "Frontend@indexv2");
+//Route::get('/', "Frontend@index");
+Route::get('/', "Frontend@indexv2");
 
 /// contracts
 Route::get('v2', "Contracts@index");
