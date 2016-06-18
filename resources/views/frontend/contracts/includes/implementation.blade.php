@@ -31,7 +31,6 @@
     	<div class="col-sm-6 right">
         	<p class="title_section">Actualizado</p>
         	<p class="ago">{{$val_to}}</p>
-        	
     	</div>
     	@endif
     </div>

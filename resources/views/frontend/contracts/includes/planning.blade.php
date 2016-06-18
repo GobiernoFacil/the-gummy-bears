@@ -1,64 +1,70 @@
 <div id="planning" class="container_info hide">
 	<!--encabezado-->
     <div class="row divider">
-    	<div class="col-sm-12">
+    	<div class="col-sm-6">
         	<p class="title_section">Etapa <span class="i_planning"><b></b> Planeación</span></p>
     	</div>
+    	@if ($elcontrato->planning->documents)
+          	@foreach($elcontrato->planning->documents as $doc)
+		  		<?php $document_date=  date('d/m/Y', strtotime($doc->date));?>
+          	@endforeach
+    	<div class="col-sm-6 right">
+        	<p class="title_section">Fecha</p>
+        	<p class="ago">{{$document_date}}</p>
+    	</div>
+	  	@endif
     </div>
-	<!--header-->
+
 	<div class="row divider">
+		<!--proyecto-->
     	<div class="col-sm-12">
-			<p class="title_section">Etapa: Planeación</p>
+	    	<p class="title_section">Proyecto </p>
 			<h1>{{ $elcontrato->planning->project }}</h1>
 			<h2>{{ $ocid }}</h2>
     	</div>
   	</div>
-  	<div class="row divider">
-	    <div class="col-sm-6">
-    		<p class="title_section">PRESUPUESTO ({{ $elcontrato->planning->currency }})</p>
-			<h2 class="amount"><span>$</span>{{ number_format($elcontrato->planning->amount,2,'.',',')}}</h2>
-    	</div>
-		<?php $time_planning = strtotime($elcontrato->date);?>
-    	@if ($elcontrato->planning->multi_year == 1)
-		<div class="col-sm-3">
-			<p class="title_section">Fecha</p>
-		  	<p>{{ date('d/m/Y',$time_planning)}} </p>
-		</div>
-		<div class="col-sm-3">
-			<p class="title_section">Contrato</p>
-		  	<p>Multianual</p>
-		</div>	
-    	@else
-		<div class="col-sm-6">
-			<p class="title_section">Fecha</p>
-		  	<p>{{ date('d/m/Y',$time_planning)}} </p>
-		</div>	
-		@endif
-  	</div>
-  	@if($elcontrato->planning->description) 
-  	<!--description-->      
-  	<div class="row divider">
-		<div class="col-sm-12">
-			<p class="title_section">Notas</p>
-			<p>{{ $elcontrato->planning->description }}</p>
-		</div>
-  	</div>
-	@endif
 	
-	<div class="row">
+  	<div class="row divider">
+	  	<!--Presupuesto-->
+	    <div class="col-sm-6">
+    		<p class="title_section">
+	    		Presupuesto {{ $elcontrato->planning->multi_year == 1 ? 'Multianual' : ''}} ({{ $elcontrato->planning->currency }})
+	    	</p>
+    		@if ($elcontrato->planning->multi_year == 1)
+    			<?php $planning_amout = ($elcontrato->planning->amount_year + $elcontrato->planning->amount);?>
+	    	@else
+    			<?php $planning_amout = $elcontrato->planning->amount;?>
+	    	@endif
+    		
+			<h2 class="amount">
+				<span>$</span>{{ number_format($planning_amout,2,'.',',')}}
+			</h2>
+    	</div>
+    	<!--COMPRADOR-->
     	<div class="col-sm-6">
 			<p class="title_section">COMPRADOR</p>
 			<p><a href="{{ url('dependencia/'. $elcontrato->buyer->id ) }}">{{ !empty($elcontrato->buyer->name) ? $elcontrato->buyer->name : ''}}</a></p>
     	</div>
-		<div class="col-sm-6">
+  	</div>
+	
+	<div class="row divider">
+		<!-- documentos-->
+		<div class="col-sm-4">
 			<p class="title_section">DOCUMENTOS</p>
 			@if ($elcontrato->planning->documents)
 			<ol>
           	@foreach($elcontrato->planning->documents as $doc)
-		  		<li><a href="{{$doc->url}}">{{$doc->title}}</a> {{$doc->date}}</li>
+		  		<li><a href="{{$doc->url}}">{{$doc->title}}</a> {{date('d/m/Y', strtotime($doc->date))}}</li>
           	@endforeach
       		</ol>
 	  		@endif
     	</div>
+    	@if($elcontrato->planning->description) 
+		<!--description--> 
+    	<div class="col-sm-8">
+			<p class="title_section">Notas</p>
+			<p>{{ $elcontrato->planning->description }}</p>
+		</div>
+		@endif
   	</div>
 </div>
