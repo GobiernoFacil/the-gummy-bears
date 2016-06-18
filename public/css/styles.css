@@ -1313,6 +1313,17 @@ nav#menu {
     font-size: 11px;
     margin: 0;
     padding: 15px 0 0; }
+    .lead.homev2 p.footnote strong {
+      color: #eb008b;
+      font-weight: 500;
+      display: inline-block;
+      margin-right: 8px;
+      width: 10px; }
+  .lead.homev2 sup, .lead.homev2 sub {
+    font-weight: 500;
+    color: #eb008b;
+    font-size: 11px;
+    margin-left: 2px; }
   .lead.homev2 a.btn.cta {
     background: #eb008b;
     color: white;
@@ -1333,10 +1344,10 @@ nav#menu {
   .lead.homev2 .bill {
     border-bottom: 1px solid #ccc;
     border-top: 1px solid #ccc;
-    padding: 30px 15px 40px;
+    padding: 35px 15px 15px;
     text-align: center; }
     .lead.homev2 .bill h3 {
-      color: #ee407c;
+      color: #eb008b;
       font-size: 69px;
       font-weight: 300;
       line-height: 69px;
@@ -1344,7 +1355,9 @@ nav#menu {
       min-height: 81px;
       text-align: center; }
       .lead.homev2 .bill h3 span.mxn {
-        font-size: 15px; }
+        font-size: 19px; }
+      .lead.homev2 .bill h3 strong {
+        font-weight: 500; }
     .lead.homev2 .bill p {
       margin: 0;
       text-transform: uppercase;
@@ -1389,6 +1402,13 @@ code {
   font-family: 'Stilu', Helvetica, Arial, sans-serif;
   font-size: 18px;
   line-height: 1.5; }
+  .etapas p.info, .datos_pa_labanda p.info {
+    border-top: 1px solid #ccc;
+    font-size: 21px;
+    padding: 20px 10px;
+    text-align: center; }
+    .etapas p.info strong, .datos_pa_labanda p.info strong {
+      color: #eb008b; }
 .etapas a.btn, .datos_pa_labanda a.btn {
   background: #0cabb8;
   color: white;
