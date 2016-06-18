@@ -35,7 +35,8 @@
 	<div class="breadcrumb">
 		<div class="container">
 			<nav class="row">
-				<div class="col-sm-4">
+				<div class="col-sm-4" style="opacity: 0;">
+					
 					<p>Filtrar por etapa:
 						<select id="bubble-fun">
 							<option value="tender">Licitaciones</option>
@@ -43,8 +44,9 @@
 							<option value="contracts" selected>Contratos</option>
 						</select>
 					</p>
-				<!--Contratos-->
+				
 				</div>
+				<!--Contratos-->
 				<div class="col-sm-4 right">
 					<p>Ver por: 
 					<!--<a href="#" class="advanced_search">Advanced Search</a>-->
