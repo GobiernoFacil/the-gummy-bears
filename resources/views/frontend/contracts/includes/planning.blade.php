@@ -1,14 +1,18 @@
 <div id="planning" class="container_info hide">
 	<!--encabezado-->
     <div class="row divider">
-    	<div class="col-sm-6">
+    	<div class="col-sm-4">
         	<p class="title_section">Etapa <span class="i_planning"><b></b> Planeación</span></p>
+    	</div>
+    	<div class="col-sm-4">
+        	<p class="title_section center">Identificador de Contratación Abierta</p>
+        	<p class="ago center">{{$ocid}}</p>
     	</div>
     	@if ($elcontrato->planning->documents)
           	@foreach($elcontrato->planning->documents as $doc)
 		  		<?php $document_date=  date('d/m/Y', strtotime($doc->date));?>
           	@endforeach
-    	<div class="col-sm-6 right">
+    	<div class="col-sm-4 right">
         	<p class="title_section">Fecha</p>
         	<p class="ago">{{$document_date}}</p>
     	</div>
@@ -20,7 +24,6 @@
     	<div class="col-sm-12">
 	    	<p class="title_section">Proyecto </p>
 			<h1>{{ $elcontrato->planning->project }}</h1>
-			<h2>{{ $ocid }}</h2>
     	</div>
   	</div>
 	
