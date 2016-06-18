@@ -189,10 +189,9 @@
           
           */?>
         </div>
-        
-        
-        
+                
         <div class="row divider">
+	        <!--items-->
         	<div class="col-sm-6">
                 <p class="title_section">ARTÍCULOS</p>
                 <ul>
@@ -212,6 +211,7 @@
                 <p>{{ date('d/m/Y',$time_award) }}</p>
             </div>
             
+	        <!--Multianual-->
             @if ($award->multi_year == 1)
             <div class="col-sm-3">
                 <p class="title_section">Tipo de Contrato</p>
@@ -221,15 +221,25 @@
         </div>
         
         <div class="row">
-              <div class="col-sm-6">
+            <div class="col-sm-8">
                 <p class="title_section">DOCUMENTOS</p>
                 <ol>
 				@foreach ($award->documents as $doc)
-					<li><a href="{{$doc->url}}">{{$doc->title}}</a> {{$doc->date}}</li>
+					<li class="row">
+		  				<div class="col-sm-6">
+		  					<a href="{{$doc->url}}">{{$doc->title}}</a> 
+		  				</div>
+		  				<div class="col-sm-3">
+		  				{{date('d/m/Y', strtotime($doc->date))}}
+		  				</div>
+		  				<div class="col-sm-3">
+		  				  	{{$doc->format}}
+		  				</div>
+		  			</li>
 				@endforeach
 				</ol>
-              </div>
             </div>
-          </div>
+        </div>
+    </div>
     @endforeach
 </div>
