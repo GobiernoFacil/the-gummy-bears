@@ -52,19 +52,29 @@
 	
 	<div class="row divider">
 		<!-- documentos-->
-		<div class="col-sm-4">
+		<div class="col-sm-6">
 			<p class="title_section">DOCUMENTOS</p>
 			@if ($elcontrato->planning->documents)
 			<ol>
           	@foreach($elcontrato->planning->documents as $doc)
-		  		<li><a href="{{$doc->url}}">{{$doc->title}}</a> {{date('d/m/Y', strtotime($doc->date))}}</li>
+		  		<li class="row">
+		  				<span class="col-sm-6">
+		  					<a href="{{$doc->url}}">{{$doc->title}}</a> 
+		  				</span>
+		  				<span class="col-sm-3">
+		  				{{date('d/m/Y', strtotime($doc->date))}}
+		  				</span>
+		  				<span class="col-sm-3">
+		  				  	{{$doc->format}}
+		  				</span>
+		  			</li>
           	@endforeach
       		</ol>
 	  		@endif
     	</div>
     	@if($elcontrato->planning->description) 
 		<!--description--> 
-    	<div class="col-sm-8">
+    	<div class="col-sm-6">
 			<p class="title_section">Notas</p>
 			<p>{{ $elcontrato->planning->description }}</p>
 		</div>
