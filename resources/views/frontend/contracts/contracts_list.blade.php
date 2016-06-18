@@ -35,7 +35,8 @@
 	<div class="breadcrumb">
 		<div class="container">
 			<nav class="row">
-				<div class="col-sm-4">
+				<div class="col-sm-4" style="opacity: 0;">
+					
 					<p>Filtrar por etapa:
 						<select id="bubble-fun">
 							<option value="tender">Licitaciones</option>
@@ -43,8 +44,9 @@
 							<option value="contracts" selected>Contratos</option>
 						</select>
 					</p>
-				<!--Contratos-->
+				
 				</div>
+				<!--Contratos-->
 				<div class="col-sm-4 right">
 					<p>Ver por: 
 					<!--<a href="#" class="advanced_search">Advanced Search</a>-->
@@ -71,7 +73,7 @@
 			<p><span id="type">TOTAL DE CONTRATOS FIRMADOS</span> <strong id="type_total">{{ $contracts_number }}</strong></p>
 		</div>
 		<div class="col-sm-4">
-			<p><span>MONTO TOTAL (MXN)</span>$<strong id="total_amount">{{ (int)($contracts_amount/1000000) }}</strong> millones </p>
+			<p><span>MONTO TOTAL (MXN)</span>$<strong id="total_amount">{{ number_format(($contracts_amount/1000000),2,'.',',') }}</strong> millones </p>
 		</div>
 	</header>
 	<p id="publisher-name"></p>
@@ -95,6 +97,7 @@
 			<h2 id="title_select_type" class="title_section select">Lista de <strong>Contrataciones Abiertas</strong> ({{$contracts_number}})</h2>
 		</div>
 		<div class="col-sm-3">
+			<?php /**
 			<form class="select_type">
 				<p>Mostrar por etapa: 
 				  <select id="contracts-selector">
@@ -105,7 +108,7 @@
 					  <option value="contract">Contratación</option>
 				  </select>
 				</p>
-			</form>
+			</form> */?>
 		</div>
 		<div class="col-sm-12 col-xs-10 col-xs-offset-1 col-sm-offset-0">			
 			<ul class="list">

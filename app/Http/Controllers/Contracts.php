@@ -48,10 +48,12 @@ class Contracts extends Controller {
 	public function index($page = 1, $type = "todos"){ // licitación, adjudicación, contratación
     $page = (int)$page - 1 >= 0 ?  (int)$page - 1 : 0;
 		$contracts_amount	   = SingleContract::where("currency", "MXN")->sum('amount');
+		$contracts_amount	   = $contracts_amount + SingleContract::where("currency_year", "MXN")->sum('amount_year');
+		
 		$contracts_number	   = SingleContract::all()->count();
 		$contracts 			     = Contract::orderBy("published_date",'desc')->skip($page * self::PAGE_SIZE)->take(self::PAGE_SIZE)->get();
 		$json                = ContractData::with("release.tender")->get();
-		$_providers          = Provider::select("id", "rfc", "name","contract_budget")->where("contract_budget", ">", 0)->get();
+		$_providers          = Provider::select("id", "rfc", "name","budget")->where("budget", ">", 0)->get();
 		$data                = [];
 		$data['title']       = 'Lista de Contrataciones Abiertas de la CDMX';
 		$data['description'] = 'Lista de contratos abiertos de la Ciudad de México';

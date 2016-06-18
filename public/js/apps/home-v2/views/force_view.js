@@ -27,7 +27,7 @@ define(function(require){
   //
   SVG = {
     width  : 800,
-    height : 600,
+    height : 620,
     margin : {
       top    : 10,
       right  : 10,
