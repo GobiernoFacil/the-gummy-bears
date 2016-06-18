@@ -2645,11 +2645,11 @@ a.btn {
   display: inline-block;
   padding: 2px 7px;
   vertical-align: top; }
-  .label.active {
+  .label.active, .label.planned {
     background: #28c3f9; }
   .label.complete, .label.terminated {
     background: #31bc31; }
-  .label.cancelled {
+  .label.cancelled, .label.unsuccessful {
     background: red; }
   .label.pending {
     background: orange; }

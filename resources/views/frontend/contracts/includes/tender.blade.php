@@ -15,10 +15,29 @@
 			<p class="title_section">título</p>
 			<h1>{{ $elcontrato->tender->title }}</h1>
     	</div>
-		<div class="col-sm-3">
-			<p class="title_section">Estatus de la licitación</p>
-			<p><span class="label {{ $elcontrato->tender->status}}">
-				{{ $elcontrato->tender->status == "complete" ? 'COMPLETA' : '' }}</span></p>
+    	
+    	<!--status-->
+        <div class="col-sm-3">
+	        <?php switch ($elcontrato->tender->status){
+        	  case "planned":
+        	    $t_status = "PLANEADA";
+        	    break;
+        	  case "active":
+        	    $t_status = "ACTIVO";
+        	    break;
+        	  case "cancelled":
+        	    $t_status = "CANCELADO";
+        	    break;
+        	  case "unsuccessful":
+        	    $t_status = "SIN ÉXITO";
+        	    break;
+        	  case "complete":
+        	    $t_status = "COMPLETO";
+        	    break;
+        	}?>
+				<p class="title_section">Estatus de la licitación</p>
+				<p><span class="label {{ $elcontrato->tender->status }}">
+				{{ $t_status }}</span></p>
     	</div>
     </div>
     
