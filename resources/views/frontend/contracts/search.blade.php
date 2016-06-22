@@ -7,7 +7,7 @@
 	<div class="row">
 		<div class="col-sm-9">
 			<h2 class="title_section select">Resultados de búsqueda para: "<strong>{{$keyword}}</strong>"</h2>
-			<p>{{$contracts->count()}} resultado encontrado.</p>
+			<p>{{empty($contracts) ? 0 : $contracts->count()}} resultado encontrado.</p>
 		</div>
 		<div class="col-sm-3 right">
 			<form method="get" action="{{url('contratos/busqueda')}}" class="form-search search_view">

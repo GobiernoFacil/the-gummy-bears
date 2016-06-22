@@ -100,7 +100,7 @@ class ApiCDMX extends Controller {
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch,CURLOPT_POSTFIELDS, http_build_query($data));
+    curl_setopt($ch,CURLOPT_POSTFIELDS, json_encode($data));
     $result = curl_exec($ch);
     $json   = json_decode($result);
 
