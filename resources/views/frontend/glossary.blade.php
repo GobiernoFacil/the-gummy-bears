@@ -42,7 +42,7 @@
 							
 							<!--Alianza para las Contrataciones Abierta-->
 							<h2>Alianza para las Contrataciones Abierta</h2> 
-							<p>La <a href="http://www.open-contracting.org/">Asociación de Contrataciones Abiertas</a> (Open Contracting Partnership, OCP por sus siglas en inglés) se fundó en 2012. Nace con el objetivo de incrementar la divulgación y la participación en todas las etapas de la contratación pública de los gobiernos. Su labor se centra en asegurar que los gobiernos sean eficaces y eficientes, que el sector privado crezca y prospere, y que los ciudadanos reciban los bienes y servicios que necesitan y merecen.</p>
+							<p>La <a href="http://www.open-contracting.org/">Alianza de Contrataciones Abiertas</a> (Open Contracting Partnership, OCP por sus siglas en inglés) se fundó en 2012. Nace con el objetivo de incrementar la divulgación y la participación en todas las etapas de la contratación pública de los gobiernos. Su labor se centra en asegurar que los gobiernos sean eficaces y eficientes, que el sector privado crezca y prospere, y que los ciudadanos reciban los bienes y servicios que necesitan y merecen.</p>
 							<div class="divider"></div>
 						
 							<!--Estándar de Datos de Contrataciones Abiertas-->
