@@ -47,7 +47,7 @@
 						
 							<!--Estándar de Datos de Contrataciones Abiertas-->
 							<h2>Estándar de Datos de Contrataciones Abiertas</h2>
-							<p>El <a href="http://standard.open-contracting.org/latest/es/#">Estándar de Datos de Contrataciones Abiertas</a> (Open Contracting Data Standard, OCDS por sus siglas en inglés), es un estándar internacional que formaliza la publicación de datos de contrataciones de manera accesible y estructurada en las cuatro fases que incluye el proceso de contratación: </p>
+							<p>El <a href="http://standard.open-contracting.org/latest/es/#">Estándar de Datos de Contrataciones Abiertas</a> (Open Contracting Data Standard, OCDS por sus siglas en inglés), es un estándar internacional que formaliza la publicación de datos de contrataciones de manera accesible y estructurada en las cinco fases que incluye el proceso de contratación: </p>
 							<ol>
 								<li><strong>Planeación:</strong> En esta fase, el gobierno define un presupuesto de acuerdo a las necesidades que debe cubrir ya sean bienes o servicios.</li>
 								<li><strong>Licitación:</strong> se establecen las necesidades del gobierno por medio de una convocatoria. En función de ésta, las empresas se acercarán con sus propuestas para ofertar al gobierno.</li>
