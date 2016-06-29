@@ -104,17 +104,17 @@
 							</ol>
 							<div class="divider"></div>
 							
-							<!--proceso-->
+							<!--Archivos json-->
 							<h2>Archivos .json</h2>
 							<p>Formato para el intercambio de datos, alternativa al formato XML. Una de sus ventajas es que puede ser leído por cualquier lenguaje de programación. Si descargas estos archivos podrás ver a detalle en qué fase va una contratación, así como sus documentos correspondientes.</p>
-							<p>Para más información sobre los términos que usa el Estándar dentro de los archivos .json puedes descargar este documento: <a href="{{ url('archivos/CatalogosElementosEstandarContratacionesAbiertas-CDMX.pdf')}}">Catálogo de elementos.pdf</a></p>
-													
+							<p>Para más información sobre los términos que usa el Estándar dentro de los archivos .json puedes descargar este documento: <a href="{{ url('archivos/CatalogosElementosEstandarContratacionesAbiertas-CDMX.pdf')}}">Catálogo de elementos.pdf</a></p>													
+							<div class="divider w"></div>	
+							
+							
+							<!--Descargar-->
+							<h2>¿Quieres saber más?</h2>
+							<p>Para más información sobre las Contrataciones Abiertas de la CDMX descarga  el <a href="{{ url('archivos/Cuadernillo-Contrataciones-Abiertas-CDMX.pdf')}}">cuadernillo de presentación de Contrataciones Abiertas</a>.</p>							
 							<div class="divider w"></div>							
-							
-							
-						
-						
-
 					</div>						
 				</div>
 			</div>	
