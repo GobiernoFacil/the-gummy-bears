@@ -19,22 +19,41 @@ use App\Models\Tender;
 use App\Models\Tenderer;
 use App\Models\TenderTenderer;
 
-class TestStuff extends Controller {
+/*
+ * Esta es una clase de prueba, sirve como prueba unitaria para distitas conexiones, 
+ * sin comprometer ninguna sección
+ *
+ * funciones disponibles en el primer release: 
+ * - index
+ * - supplier
+ * - providers
+ * - buyers
+ */
 
+class TestStuff extends Controller {
+  /*
+  * Regresa una lista de proveedores, contratos y licitantes.
+  * se accede mediante: 
+  * test/suppliers
+  */
 	public function index()
 	{
     $suppliers = Supplier::all();
     $contracts = Contract::with("releases")->get();
-    $tenders = Tender::all();
-
+    $tenders   = Tender::all();
 
 		return view('test')->with([
       "suppliers" => $suppliers,
       "contracts" => $contracts,
-      "tenders" => $tenders
-      ]);
+      "tenders"   => $tenders
+    ]);
 	}
 
+  /*
+  * Regresa el proveedor selecccionado mediante el RFC. Regresa también
+  * las licitaciones y las adjudicaciones en las que ha participado el proveedor
+  * test/supplier/
+  */
   public function supplier($rfc){
     $supplier = Supplier::where("rfc", $rfc)->get()->first();
     
@@ -53,6 +72,12 @@ class TestStuff extends Controller {
     ]);
   }
 
+  /*
+  * Regresa la lista de proveedores, mostrando las adjudicaciones para cada proveedor, en 
+  * su formato de PHP.
+  * Se accede mediante: 
+  * test/providers
+  */
   public function providers(){
     $providers = Provider::all();
     echo "<pre>";
@@ -68,12 +93,11 @@ class TestStuff extends Controller {
     echo "</pre>";
   }
 
-  public function get_latest_release($rfc){
-    $contracts = Contract::with(["releases" => function($query){
-      $query->orderBy("local_id", "desc")->take(1);
-    }])->get();
-  }
-
+  /*
+  * Imprime el número de de planeaciones por comprador.
+  * se accede a la función mediante:
+  * test/buyers/{id}
+  */
   public function buyers($id){
     $b =  Buyer::find($id);
     echo $b->plannings()->count();
