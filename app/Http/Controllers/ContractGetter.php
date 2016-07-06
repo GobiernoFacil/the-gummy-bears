@@ -26,19 +26,25 @@ class ContractGetter extends Controller {
 		//parent::__construct();
 
       $endpoints = env('ENDPOINTS', 'production');
-
-      if($endpoints == 'production'){
-      // SERVER ENDPOINTS
-        $this->apiContratos   = 'http://10.1.129.11:9009/ocpcdmx/listarcontratos';
-        $this->apiContrato    = 'http://10.1.129.11:9009/ocpcdmx/contratos';
-        $this->apiProveedores = 'http://10.1.129.11:9009/ocpcdmx/cproveedores';
-      }
+    
+    // SERVER ENDPOINTS
+    if($endpoints == 'production'){
+      $this->apiContratos   = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/listarcontratos';
+      //'http://10.1.129.11:9009/ocpcdmx/listarcontratos';
+      $this->apiContrato    = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/contratos';
+      //'http://10.1.129.11:9009/ocpcdmx/contratos';
+      $this->apiProveedores = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/cproveedores';
+      //'http://10.1.129.11:9009/ocpcdmx/cproveedores';
+    }
     // PUBLIC ENDPOINTS
-      else{
-        $this->apiContratos   = 'http://187.141.34.209:9009/ocpcdmx/listarcontratos';
-        $this->apiContrato    = 'http://187.141.34.209:9009/ocpcdmx/contratos';
-        $this->apiProveedores = 'http://187.141.34.209:9009/ocpcdmx/cproveedores';
-      }
+    else{
+      $this->apiContratos   = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/listarcontratos';
+      //'http://187.141.34.209:9009/ocpcdmx/listarcontratos';
+      $this->apiContrato    = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/contratos';
+      //'http://187.141.34.209:9009/ocpcdmx/contratos';
+      $this->apiProveedores = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/cproveedores';
+      //'http://187.141.34.209:9009/ocpcdmx/cproveedores';
+    }
 	}
 
 	/**
@@ -68,7 +74,7 @@ class ContractGetter extends Controller {
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch,CURLOPT_POSTFIELDS, http_build_query($data));
+    curl_setopt($ch,CURLOPT_POSTFIELDS, json_encode($data));
     $result = curl_exec($ch);
     //$con    = json_decode($result);
 
