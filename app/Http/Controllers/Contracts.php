@@ -9,21 +9,37 @@ use App\Models\ContractData;
 use App\Models\SingleContract;
 use App\Models\Provider;
 
+/*
+ * El controller de los contratos
+ * Muestra la lista de contratos y la información de un contrato en particular.
+ * Incluye también funciones de prueba que revisan la respuesta del API
+ *
+ * funciones disponibles en el primer release:
+ * - __construct
+ * - index
+ * - show
+ * - showRaw
+ * - showFullRaw
+ * - showListRaw
+ * - apiCall
+ */
 class Contracts extends Controller {
 
+  // El tamaño de la paginación
   const PAGE_SIZE = 10;
+  
   //
-  // CONSTRUCTOR
-  //
+  // Constructor
+  // Dependiendo el tipo de entorno, se definen los endpoints para los distintos servicios del api
+  // tal vez sea posible eliminar este proceso, pues es un vestigio de la versión inicial del api,
+  // en el que eran distintos los endpoints para producción y desarrollo
   //
   public function __construct()
   {
-    //parent::__construct();
-
-      $endpoints = env('ENDPOINTS', 'production');
-
-      if($endpoints == 'production'){
-      // SERVER ENDPOINTS
+    $endpoints = env('ENDPOINTS', 'production');
+    
+    // SERVER ENDPOINTS
+    if($endpoints == 'production'){
       $this->apiContratos   = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/listarcontratos';
       //'http://10.1.129.11:9009/ocpcdmx/listarcontratos';
       $this->apiContrato    = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/contratos';
@@ -43,11 +59,15 @@ class Contracts extends Controller {
   }
 
 	//
-	// Contracts list
-	//	
+	// Lista de contratos
+	// Muestra la lista de contratos paginada, ordenados por fecha de publicación
+  // Se accede mediante:
+  // contratos/{página}
+  //
 	public function index($page = 1, $type = "todos"){ // licitación, adjudicación, contratación
     $page = (int)$page - 1 >= 0 ?  (int)$page - 1 : 0;
-		$contracts_amount	   = SingleContract::where("currency", "MXN")->sum('amount');
+		
+    $contracts_amount	   = SingleContract::where("currency", "MXN")->sum('amount');
 		$contracts_amount	   = $contracts_amount + SingleContract::where("currency_year", "MXN")->sum('amount_year');
 		
 		$contracts_number	   = SingleContract::all()->count();
@@ -76,7 +96,10 @@ class Contracts extends Controller {
 	
 	
 	//
-	// Show Contract
+	// Contrato
+  // Muestra el contrato seleccionado mendiante su clave ocid
+  // se accede a esta función mediante:
+  // contrato/{ocid}
 	//
 	public function show($ocid){
     // [1] Validate ocid & redirect if not valid
@@ -88,21 +111,24 @@ class Contracts extends Controller {
 	$ocid	= $ocid;
 	$con 	= $contract->releases->last(); 
     // [2] show the view
-    	$data                = [];
+    	$data              = [];
 		$data['title']       = $con->tender->title . " | Contrataciones Abiertas de la CDMX";
 		$data['description'] = "Contrato: " . $con->tender->description;
-		$data['og_image']	 = "img/og/contrato-cdmx.png";
+		$data['og_image']	   = "img/og/contrato-cdmx.png";
 		$data['body_class']  = 'contract single';
 		$data['elcontrato']	 = $con;
-		$data['ocid']	 	 = $ocid;
+		$data['ocid']	 	     = $ocid;
     
     return view("frontend.contracts.contract")->with($data);
 
   }
 
   //
-  // [ SHOW RAW CONTRACT ]
-  //
+  // Contrato en PHP y JSON
+  // Muestra la información básica del contrasto en modo Array y después el JSON 
+  // del estándar para el contrato seleccionado
+  // Se accede a esta función mediante:
+  // contrato/json/{ocid}
   //
   public function showRaw($ocid){
     // [1] Validate ocid & redirect if not valid
@@ -118,7 +144,7 @@ class Contracts extends Controller {
 
     // [2.1] the CURL stuff
     $conn = $this->apiCall($data, $url);
-// OCDS-87SD3T-SEFIN-DRM-AD-002-2016
+
     // [3] if the ocid is invalid, redirect
     echo "<pre>";
     var_dump($base_contract->toArray());
@@ -131,8 +157,14 @@ class Contracts extends Controller {
   }
 
   //
-  // [ SHOW RAW CONTRACT ]
+  // Contrato en JSON
+  // Muestra solo el JSON del proceso de contratación seleccionado,
+  // siempre y cuando esté en el sistema
+  // Se puede acceder mediante:
+  // contrato/text/{ocid}
   //
+  // Nota: durante el debug, posiblemente se haya afectado el método para mostrar
+  // estos datos; hay que darle una revisada en el siguiente release.
   //
   public function showFullRaw($ocid){
     // [1] Validate ocid & redirect if not valid
@@ -141,18 +173,13 @@ class Contracts extends Controller {
 
     // [2] make the call to the API
     $url  = $this->apiContrato;
-    $base_contract = Contract::where("ocdsid", $ocid)->get()->first(); // id, cvedependencia, ocdsid 
+    $base_contract = Contract::where("ocdsid", $ocid)->get()->first();
     if(!$base_contract) die("O_______O");
 
     $data = ['dependencia' => $base_contract->cvedependencia, 'contrato' => $base_contract->ocdsid];
 
     // [2.1] the CURL stuff
     $conn = $this->apiCall($data, $url, 0);
-// OCDS-87SD3T-SEFIN-DRM-AD-002-2016
-    // [3] if the ocid is invalid, redirect
-    echo "<pre>";
-    var_dump($base_contract->toArray());
-    echo "</pre>";
 
     echo "<pre>";
     var_dump($conn);
@@ -160,6 +187,14 @@ class Contracts extends Controller {
     die();
   }
 
+  // 
+  // La lista de contratos PHP
+  // muestra la lista de contratos en formato PHP para el 2016.
+  // No es posible cambiar el año, es solo una fución de prueba
+  //
+  // Se puede acceder mediante: 
+  // lista/contratos/json
+  //
   public function showListRaw(){
     $data      = ['dependencia' => '0901', "ejercicio" => 2016]; // harcoded stuff
     $excercise = $this->apiCall($data, $this->apiContratos);
@@ -168,6 +203,10 @@ class Contracts extends Controller {
     echo "</pre>";
   }
 
+  //
+  // llamada CURL
+  // Esta función generica se usa para conectarse al api. Es una función privada
+  //
   private function apiCall($data, $endpoint, $decode = 1){
       $ch = curl_init();
       
