@@ -33,6 +33,8 @@ class Search extends Controller {
   //
   // Si se recibe la varible "query", la busca dentro de distintos campos. Si no, pasa
   // un array vacío, y en el view se toma como si no se hubiera buscado nada.
+  // Se accede a la función mediante:
+  // contratos/busqueda
   //
 	public function index(Request $request){
     $query = $request->input('query', false);

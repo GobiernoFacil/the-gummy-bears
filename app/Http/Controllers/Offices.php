@@ -14,34 +14,51 @@ use App\Models\Supplier;
 use App\Models\Provider;
 use App\Models\Buyer;
 
+/*
+ * El controller de dependencias
+ * Muestra la lista de dependencias y cada dependencia por separado
+ *
+ * funciones disponibles en el primer release:
+ * - index
+ * - show
+ */
 class Offices extends Controller {
 	//
-	//[ Offices list ]
-	//	
+	// Offices list
+	//
+	// Regresa la lista de dependencias. 
+	// Se accede a esta función mediante:
+	// dependencias
 	//
 	public function index(){
-		$buyers				 = Buyer::all();
+		$buyers              = Buyer::all();
 		$data                = [];
 		$data['title']       = 'Dependencias de la CDMX con Contrataciones Abiertas';
 		$data['description'] = 'Dependencias de la CDMX con Contrataciones Abiertas';
-		$data['og_image']	 = "img/og/contrato-cdmx.png";
+		$data['og_image']    = "img/og/contrato-cdmx.png";
 		$data['body_class']  = 'dependencia';
-		
 		$data['buyers']   	 = $buyers;
 		
 		return view("frontend.offices.offices_list")->with($data);
 	}
-	
+
+	//
+	// Office 
+	//
+	// Muestra la información de una dependencia mediate su id del sistema, no del id de la CDMX
+	// Se accede mendiante:
+	// dependencias/{id}
+	//
 	public function show($id){
 		$buyer				    = Buyer::find($id);
-		$contracts 			  = $buyer->contracts()->with("data")->get();//Contract::where('cvedependencia',$buyer->local_id)->get();
-		$awards 			    = $buyer->awards;//Award::all();
-		$singlecont_count = $buyer->singlecontracts->count();//SingleContract::all()->count();
+		$contracts 			  = $buyer->contracts()->with("data")->get();
+		$awards 			    = $buyer->awards;
+		$singlecont_count = $buyer->singlecontracts->count();
 		$providers			  = Provider::whereHas("buyers", function($q) use($buyer){
 			                    $q->where("buyer_id", $buyer->id);
 		                    })->orderBy("budget", "desc")->take(5)->get();
-		//Provider::orderby('budget', 'desc')->take(5)->get();
-		$providers_count 	= $buyer->providers->where("award_num", ">", 0)->count();//Provider::all()->count();
+
+		$providers_count 	= $buyer->providers->where("award_num", ">", 0)->count();
 		
 		
 		$contract_data_c	= ContractData::whereHas("release", function($q) use($buyer){
@@ -51,33 +68,29 @@ class Offices extends Controller {
 		$contract_data		= ContractData::whereHas("release", function($q) use($buyer){
 			                    $q->where("buyer_id", $buyer->id);
 		                    })->orderby('contracts', 'desc')->take(5)->get();
-		
-		
-		
 		//total
-		$total_planning		= $buyer->plannings->sum("amount");//Planning::sum('amount');
-		$total_award		= $buyer->awards->sum("value");//Award::sum('value');
+		$total_planning		= $buyer->plannings->sum("amount");
+		$total_award		  = $buyer->awards->sum("value");
 		
 		//contratado mx
-		$total_contract	 		= $contract_data_c->sum("contracts");
+		$total_contract	 	= $contract_data_c->sum("contracts");
 		
 		//contratado usd
-		$buyer_usd				= $buyer->singlecontracts->where('currency','USD');
+		$buyer_usd				    = $buyer->singlecontracts->where('currency','USD');
 		$total_contract_usd		= $buyer_usd->sum("amount");
 		$total_contract_usd		= $total_contract_usd + $buyer_usd->sum("amount_year");
 		
-		
 		///percentage
-		$max			      	= max(array($total_planning, $total_award, $total_contract));
+		$max = max(array($total_planning, $total_award, $total_contract));
 		if($max > 0) {
-			$per_planning     = ($total_planning *100)/$max;	
-			$per_award		  	= ($total_award *100)/$max;		
-			$per_contract     = ($total_contract *100)/$max;
+			$per_planning = ($total_planning *100)/$max;	
+			$per_award		= ($total_award *100)/$max;		
+			$per_contract = ($total_contract *100)/$max;
 		}
 		else {
-			$per_planning     = 0; 
-			$per_award		  = 0; 
-			$per_contract     = 0;
+			$per_planning = 0; 
+			$per_award		= 0; 
+			$per_contract = 0;
 		}
 		
 		$data                = [];
@@ -94,8 +107,8 @@ class Offices extends Controller {
 		$data['providers_count']  = $providers_count;
 		$data['total_planning']   = $total_planning;
 		$data['total_award']   	 	= $total_award;
-		$data['total_contract']   	  = $total_contract;
-		$data['total_contract_usd']   = $total_contract_usd;
+		$data['total_contract']   	= $total_contract;
+		$data['total_contract_usd'] = $total_contract_usd;
 		$data['per_planning']   	= $per_planning;
 		$data['per_award']   	 	  = $per_award;
 		$data['per_contract']   	= $per_contract;	
