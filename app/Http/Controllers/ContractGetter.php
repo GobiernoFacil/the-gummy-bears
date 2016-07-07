@@ -19,13 +19,26 @@ use App\Models\Tender;
 use App\Models\Tenderer;
 use App\Models\TenderTenderer;
 
+/*
+ * El controller para descargar los archivos JSON del estándar
+ * Estos archivos son los originales generados por el api de la CDMX
+ * Solo se preparan para ser descargados en formato json y no en formato de texto
+ *  
+ * funciones disponibles en el primer release:
+ * - index (definida, pero no hace nada, y no tiene acceso desde el front)
+ * - getJSON
+ *
+ */
 class ContractGetter extends Controller {
-
-	public function __construct()
-	{
-		//parent::__construct();
-
-      $endpoints = env('ENDPOINTS', 'production');
+  //
+  // Constructor
+  // Dependiendo el tipo de entorno, se definen los endpoints para los distintos servicios del api
+  // tal vez sea posible eliminar este proceso, pues es un vestigio de la versión inicial del api,
+  // en el que eran distintos los endpoints para producción y desarrollo
+  //
+  public function __construct()
+  {
+    $endpoints = env('ENDPOINTS', 'production');
     
     // SERVER ENDPOINTS
     if($endpoints == 'production'){
@@ -45,7 +58,7 @@ class ContractGetter extends Controller {
       $this->apiProveedores = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/cproveedores';
       //'http://187.141.34.209:9009/ocpcdmx/cproveedores';
     }
-	}
+  }
 
 	/**
 	 * Display a listing of the resource.
@@ -57,6 +70,12 @@ class ContractGetter extends Controller {
 		//
 	}
 
+  //
+  // Descarga el JSON del estándar
+  // obtiene los datos del api, y los regresa como archivo de json
+  // se puede acceder a esta función mediante:
+  // descargar/contrato/{ocid}
+  //
 	public function getJSON($ocid){
     // [1] Validate ocid & redirect if not valid
     $r = preg_match('/^[\w-]+$/', $ocid);
@@ -76,14 +95,9 @@ class ContractGetter extends Controller {
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch,CURLOPT_POSTFIELDS, json_encode($data));
     $result = curl_exec($ch);
-    //$con    = json_decode($result);
-
-    //echo "<pre>";
-    //var_dump($con);
-    //echo "</pre>";
+    
     $file = $ocid . ".json";
-    //file_put_contents($file, $result);
-    //return response()->download($file);
+
     header('Content-Disposition: attachment; filename="' . $file . '"');
     header('Content-Type: application/json');
     header('Content-Length: ' . strlen($result));

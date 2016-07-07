@@ -13,16 +13,41 @@ use App\Models\Provider;
 use App\Models\Supplier;
 use App\Models\Tender;
 
+/*
+ * El controller del API de datos
+ * La función de esta api es proveer métodos para agregar distintos datos del estándar
+ * y facilitar la creación de aplicaciones complementarias o mejoras al sistema mismo
+ *
+ * funciones disponibles en el primer release:
+ * - listAll
+ * - getByYear
+ * - listAllProviders
+ * - getJSON
+ * - search
+ * - showProvider
+ * - showContractData
+ * - showContractHistory
+ * - showBuyers
+ * - showBuyerProviderRelation
+ * - tenders
+ * - _full_search
+ */
 class ApiCDMX extends Controller {
-
-  const PAGE_SIZE = 50;
+  // el tamaño de la paginaciónd el API
+  // se define como constante y como variable debido a un bug que se arregló cambiando la
+  // constante por una variable
+  const PAGE_SIZE   = 50;
   public $page_size = 50;
 
+  //
+  // Constructor
+  // Dependiendo el tipo de entorno, se definen los endpoints para los distintos servicios del api
+  // tal vez sea posible eliminar este proceso, pues es un vestigio de la versión inicial del api,
+  // en el que eran distintos los endpoints para producción y desarrollo
+  //
 	public function __construct()
 	{
-		//parent::__construct();
-
-      $endpoints = env('ENDPOINTS', 'production');
+    $endpoints = env('ENDPOINTS', 'production');
 
     if($endpoints == 'production'){
       // SERVER ENDPOINTS
@@ -45,8 +70,12 @@ class ApiCDMX extends Controller {
 	}
 
   //
+  // Obtén todos los contratos
+  // Este método regresa la clave única para todos los contratos disponibles. 
+  // La clave se puede usar para obtener el contrato completo. Más información abajo
   //
-  //
+  // se puede acceder a esta función mediante:
+  // api/contratos/todos
   //
 	public function listAll()
 	{
@@ -55,8 +84,13 @@ class ApiCDMX extends Controller {
 	}
 
   //
+  // Obtén todos los contratos por año
+  // Similar al endpoint anterior, este sirve para obtener todos los contratos 
+  // en un año determinado. El array contiene la clave única del contrato y el 
+  // nombre de quien publica la información
   //
-  //
+  // se puede acceder a esta función mediante:
+  // api/contratos/ejercicio/{year}
   //
 	public function getByYear($year){
 		$year = (int)$year;
@@ -70,8 +104,13 @@ class ApiCDMX extends Controller {
 	}
 
   //
+  // Obtén todos los proveedores
+  // obtén la información de contacto de todos los proveedores que han participado 
+  // en una licitación o han obtenido un contrato con la CDMX. Esta lista solo cuenta 
+  // con los proveedores que aparecen en los contratos publicados en el sitio.
   //
-  //
+  // se puede acceder a esta función mediante:
+  // api/proveedores/todos
   //
 	public function listAllProviders($page = 1)
 	{
@@ -80,8 +119,13 @@ class ApiCDMX extends Controller {
 	}
 
   //
+  // Obtén la información completa por contrato
+  // Con este endpoint, se obtiene la información completa del contrato, como lo 
+  // indica el Open Contracting Partnership
+  // (http://standard.open-contracting.org/latest/en/schema/reference/).
   //
-  //
+  // se puede acceder a esta función mediante:
+  // api/contrato/{ocds}
   //
 	public function getJSON($ocid){
     // [1] Validate ocid & redirect if not valid
@@ -108,8 +152,14 @@ class ApiCDMX extends Controller {
   }
 
   //
+  // Busca un contrato por palabra clave
+  // Es posible buscar por palabra clave dentro del contrato. El campo de 
+  // búsqueda se llama “query”, y es opcional seleccionar la página de resultados 
+  // de la búsqueda. La respuesta incluye el número de resultados, página que se 
+  // está regresando y los resultados por página.
   //
-  //
+  // se puede acceder a esta función mediante:
+  // api/contratos/buscar/{page?}?query
   //
   public function search(Request $request, $page = 1){
     $query = $request->input('query', false);
@@ -133,8 +183,13 @@ class ApiCDMX extends Controller {
   }
 
   //
+  // Obtén la información de un solo proveedor
+  // Obtén la información de contacto de un proveedor mediante el RFC. 
+  // El objeto por proveedor es idéntico al que regresa el array de todos 
+  // los proveedores (el endpoint anterior).
   //
-  //
+  // se puede acceder a esta función mediante:
+  // api/proveedor/{rfc}
   //
   public function showProvider($rfc){
     if(!ctype_alnum($rfc)) abort(404);
@@ -143,6 +198,17 @@ class ApiCDMX extends Controller {
     return response()->json($provider)->header('Access-Control-Allow-Origin', '*');
   }
 
+  //
+  // Obtén los valores oportunos del contrato
+  // Si solo se quiere la información (agregada) más reciente del contrato, 
+  // se puede usar esta api, que regresa la información del dinero presupuestado, 
+  // autorizado y gastado por contrato, para el último release (versión del contrato). 
+  // El formato en el que se obtiene la información del contrato, difiere del estándar, 
+  // en cuanto a que solo es un resumen del mismo, y no el contrato completo
+  //
+  // se puede acceder a esta función mediante:
+  // api/contrato/actual/{ocds}
+  //
   public function showContractData($ocdsid){
     $contract = ContractData::with([
       "release.tender", "release.planning","release.singlecontracts", "release.awards"
@@ -150,21 +216,47 @@ class ApiCDMX extends Controller {
     return response()->json($contract)->header('Access-Control-Allow-Origin', '*');
   }
 
+  //
+  //
+  //
+  // se puede acceder a esta función mediante:
+  //
   public function showContractHistory($ocdsid){
     $contracts = ContractHistory::where("ocdsid", $ocdsid)->get();
     return response()->json($contracts)->header('Access-Control-Allow-Origin', '*');
   }
 
+  //
+  // Obtén la lista de dependencias
+  // Esta es la lista de dependencias (o compradores)
+  // 
+  // se puede acceder a esta función mediante:
+  // api/dependencias/todas
+  //
   public function showBuyers(){
     $response = Buyer::all();
     return response()->json($response)->header('Access-Control-Allow-Origin', '*');
   }
 
+  //
+  // obtén la relación entre dependecias y proveedores
+  // Este endpoint contiene un resumen de la relación de las dependencias con cada proveedor.
+  //
+  // se puede acceder a esta función mediante:
+  // api/dependencia-proveedor/{page?}
+  //
   public function showBuyerProviderRelation($page = 1){
     $response = BuyerProvider::with(["buyer", "provider"])->orderBy("budget", "desc")->get();
     return response()->json($response)->header('Access-Control-Allow-Origin', '*');
   }
 
+  //
+  // obtén la lista de licitaciones
+  // Esta es la lista de licitaciones (tenders) para la última versión de cada proceso de contratación.
+  // 
+  // se puede acceder a esta función mediante:
+  // api/licitaciones/{page?}
+  //
   public function tenders($page = 1){
     $response = Tender::whereHas("release", function($q){
       $q->where("is_latest", 1);
@@ -173,8 +265,8 @@ class ApiCDMX extends Controller {
   }
 
   //
-  //
-  //
+  // La función de búsqueda
+  // Esta función es privada
   //
   private function _full_search($query){
     $contracts = Contract::where('nomdependencia', 'like', '%' . $query.'%')
