@@ -118,12 +118,18 @@
 						<div class="col-sm-3">
 							<p class="list_t">Criterio:<br>
 									<?php switch($r->tender->award_criteria){
-										case "bestValueToGovernment":
-											$award_criteria = "Mejor oferta para el Gobierno";
-											break;
-										case "bestProposal":
-											$award_criteria = "Mejor propuesta";
-											break;
+										case "lowestCost":
+                $award_criteria = "Costo más bajo";
+                break;
+              case "bestProposal":
+                $award_criteria = "Mejor Propuesta";
+                break;
+              case "bestValueToGovernment":
+                $award_criteria = "Mejor Retorno para Gobierno";
+                break;
+              case "singleBidOnly":
+                $award_criteria = "Sólo una oferta";
+                break;
 									}?>
 									 {{$award_criteria}}
 									
