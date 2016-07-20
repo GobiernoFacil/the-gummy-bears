@@ -99,7 +99,7 @@
                 $awardCriteria = "Mejor Retorno para Gobierno";
                 break;
               case "singleBidOnly":
-                $singleBidOnly = "Sólo una oferta";
+                $awardCriteria = "Sólo una oferta";
                 break;
             }?>
             <p class="title_section">CRITERIOS DE ADJUDICACIÓN</p>
