@@ -596,7 +596,7 @@ class UpdateContracts extends Command {
     private function updateContract($contract, $data){
       // add extra data to contracts
       //$contract->uri = $data->uri;
-      $contract->published_date = date("Y-m-d", strtotime($data->publishedDate));
+      $contract->published_date = empty($data->publishedDate) ? date("Y-m-d") : date("Y-m-d", strtotime($data->publishedDate));
       $contract->update();
 
       return $contract;
