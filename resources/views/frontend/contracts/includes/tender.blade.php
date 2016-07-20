@@ -101,6 +101,9 @@
               case "singleBidOnly":
                 $awardCriteria = "Sólo una oferta";
                 break;
+              default:
+                $awardCriteria = $elcontrato->tender->award_criteria;
+                break;
             }?>
             <p class="title_section">CRITERIOS DE ADJUDICACIÓN</p>
             <p>{{ $awardCriteria }}</p>

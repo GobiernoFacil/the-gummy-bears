@@ -130,6 +130,9 @@
               case "singleBidOnly":
                 $award_criteria = "Sólo una oferta";
                 break;
+               default:
+                 $award_criteria = $r->tender->award_criteria;
+                 break;
 									}?>
 									 {{$award_criteria}}
 									
