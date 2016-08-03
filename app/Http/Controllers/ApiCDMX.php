@@ -217,9 +217,10 @@ class ApiCDMX extends Controller {
   }
 
   //
-  //
+  // Obtén la información agregada histórica de un contrato
   //
   // se puede acceder a esta función mediante:
+  // api/contrato/historico/{key}
   //
   public function showContractHistory($ocdsid){
     $contracts = ContractHistory::where("ocdsid", $ocdsid)->get();
