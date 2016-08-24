@@ -25,9 +25,9 @@
 						@endforeach
 						<?php
 							$total_procesos 	= $contracts->count();
-							$etapa_adjudicacion = ($awards->count() - $singlecont_count);
-							$etapa_contratacion = $singlecont_count - $etapa_implementacion;
-							$etapa_licitacion 	= $total_procesos - $awards->count();
+							$etapa_adjudicacion = ($total_procesos - $singlecont_count);
+							$etapa_contratacion = $total_procesos - $etapa_implementacion;
+							$etapa_licitacion 	= $total_procesos - $total_procesos;
 						?>
 						<p>TOTAL DE PROCESOS DE CONTRATACIÓN ABIERTOS</p>
 						<h2 id="licitaciones-total" class="subtitle">{{$total_procesos}}</h2>
@@ -49,10 +49,10 @@
 									<li class="planning zero"><b><?php echo file_get_contents("img/nav_planeacion.svg"); ?></b> <strong>0</strong> en Planeación</li>
 									<li class="tender {{ $etapa_licitacion == 0 ? 'zero' : ''}}">
 									<b><?php echo file_get_contents("img/nav_licitacion.svg"); ?></b> 
-									<strong>{{$etapa_licitacion}}</strong> en Licitación</li>
+									<strong>{{$etapa_licitacion < 0 ? '0' : $etapa_licitacion}}</strong> en Licitación</li>
 									<li class="awards {{ $etapa_adjudicacion == 0 ? 'zero' : ''}}">
 									<b><?php echo file_get_contents("img/nav_adjudicacion.svg"); ?></b>
-									<strong>{{$etapa_adjudicacion}}</strong> en Adjudicación</li>
+									<strong>{{$etapa_adjudicacion < 0 ? '0' : $etapa_adjudicacion}}</strong> en Adjudicación</li>
 									<li class="contracts {{ $etapa_contratacion == 0 ? 'zero' : ''}}">
 									<b><?php echo file_get_contents("img/nav_contratacion.svg"); ?></b> 
 									<strong>{{$etapa_contratacion}}</strong> en Contratación</li>
