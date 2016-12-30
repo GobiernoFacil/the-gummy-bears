@@ -28,7 +28,7 @@
 				</div>
 				<div class="row">
 					<div class="col-sm-9 col-sm-offset-2">
-					<p class="footnote"><strong>1</strong> Información disponible a partir de la implementación del estándar en 2015.<br><strong>2</strong> El monto contratado es aproximado y corresponde a las contrataciones abiertas realizadas en pesos mexicanos, en los contratos individuales se pueden consultar los montos de otras divisas.</p>
+					<p class="footnote"><strong>1</strong> Información disponible a partir de la implementación del estándar en 2015 en la Secretaría de Finanzas y 2017 en la Oficialía Mayor y Secretaría de Obras.<br><strong>2</strong> El monto contratado es aproximado y corresponde a las contrataciones abiertas realizadas en pesos mexicanos, en los contratos individuales se pueden consultar los montos de otras divisas.</p>
 				</div>
 				<div class="row">
 					<div class="col-md-6 col-sm-12">
