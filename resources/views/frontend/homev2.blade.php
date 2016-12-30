@@ -48,8 +48,8 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-8 col-sm-offset-2">
-				<h2 class="center">Proceso de Compra de la <strong>CD<span class="mx">MX</span></strong>.</h2>
-				<p class="info">Cada vez que <strong>tu gobierno realiza una compra</strong>, completa un proceso para elegir lo que más le convenga.</p>
+				<h2 class="center">Proceso de Compra de la <strong>CD<span class="mx">MX</span></strong></h2>
+				<p class="info">Al igual que tú, <strong>el Gobierno compara opciones y presupuestos</strong> antes de realizar una compra.</p>
 			</div>
 			<div class="col-sm-10 col-sm-offset-1">
 				<iframe src="https://www.youtube.com/embed/xQvKHiERIJI" frameborder="0" allowfullscreen></iframe>
