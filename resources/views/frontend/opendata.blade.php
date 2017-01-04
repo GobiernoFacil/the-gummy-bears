@@ -20,6 +20,7 @@
 			<div class="row">
 				<div class="col-sm-8 col-sm-offset-2">
 					<!-- usar nav-->
+					<p>Aquí se tiene acceso a los datos de Contrataciones Abiertas de este portal a través de una <a href="https://es.wikipedia.org/wiki/Interfaz_de_programaci%C3%B3n_de_aplicaciones" target="_blank">API (Application programming interface)</a> y así crear cruces de información propios.</p>
 					<h2>Lista de APIs disponibles</h2>
 					<ul class="usa_datos">
 						<li><a href="{{ url('datos-abiertos/documentacion-api-contratos') }}">API de Contratos</a>

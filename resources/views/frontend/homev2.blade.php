@@ -28,7 +28,7 @@
 				</div>
 				<div class="row">
 					<div class="col-sm-9 col-sm-offset-2">
-					<p class="footnote"><strong>1</strong> Información disponible a partir de la implementación del estándar en 2015.<br><strong>2</strong> El monto contratado es aproximado y corresponde a las contrataciones abiertas realizadas en pesos mexicanos, en los contratos individuales se pueden consultar los montos de otras divisas.</p>
+					<p class="footnote"><strong>1</strong> Información disponible a partir de la implementación del estándar en 2015 en la Secretaría de Finanzas y 2017 en la Oficialía Mayor y Secretaría de Obras.<br><strong>2</strong> El monto contratado es aproximado y corresponde a las contrataciones abiertas realizadas en pesos mexicanos, en los contratos individuales se pueden consultar los montos de otras divisas.</p>
 				</div>
 				<div class="row">
 					<div class="col-md-6 col-sm-12">
@@ -48,8 +48,8 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-8 col-sm-offset-2">
-				<h2 class="center">Proceso de Compra de la <strong>CD<span class="mx">MX</span></strong>.</h2>
-				<p class="info">Cada vez que <strong>tu gobierno realiza una compra</strong>, completa un proceso para elegir lo que más le convenga.</p>
+				<h2 class="center">Proceso de Compra de la <strong>CD<span class="mx">MX</span></strong></h2>
+				<p class="info">Al igual que tú, <strong>el Gobierno compara opciones y presupuestos</strong> antes de realizar una compra.</p>
 			</div>
 			<div class="col-sm-10 col-sm-offset-1">
 				<iframe src="https://www.youtube.com/embed/xQvKHiERIJI" frameborder="0" allowfullscreen></iframe>
@@ -58,10 +58,10 @@
 				<a href="{{ url('por-que') }}" class="btn">¿Por qué las Contrataciones Abiertas?</a>
 			</div>
 			<div class="col-sm-4">
-			<a href="{{ url('glosario') }}" class="btn">Consulta los términos claves de las Contrataciones Abiertas</a>
+			<a href="{{ url('glosario') }}" class="btn">Preguntas frecuentes sobre Contrataciones Abiertas</a>
 			</div>
 			<div class="col-sm-4">
-			<a href="{{ url('datos-abiertos') }}" class="btn">Usa los datos abiertos de las Contrataciones</a>
+			<a href="{{ url('datos-abiertos') }}" class="btn">Usar los datos</a>
 			</div>
 		</div>
 	</div>
