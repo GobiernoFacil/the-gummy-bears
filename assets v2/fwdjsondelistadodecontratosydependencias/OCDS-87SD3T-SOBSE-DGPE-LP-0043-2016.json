@@ -1,0 +1,257 @@
+{
+  "uri": "http://www.contratosabiertos.cdmx.gob.mx/api/contrato/OCDS-87SD3T-SOBSE-DGPE-LP-0154-2016",
+  "publishedDate": "2017-01-02T00:00:00-06:00",
+  "publisher": {
+    "scheme": "http://www.contratosabiertos.cdmx.gob.mx",
+    "name": "CDMX-SOBSE",
+    "uri": "http://www.obras.cdmx.gob.mx/",
+    "uid": "0701"
+  },
+  "releases": [
+    {
+      "ocid": "OCDS-87SD3T-SOBSE-DGPE-LP-0154-2016",
+      "id": "1",
+      "date": "2016-11-11T00:00:00-06:00",
+      "tag": [
+        "tender"
+      ],
+      "initiationType": "tender",
+      "planning": {
+        "budget": {
+          "description": "IMPORTE MULTIANUAL 10,880,640.00IMPORTE 2016 42,608,356.00",
+          "multiYear": true,
+          "amount": {
+            "amount": 400000,
+            "currency": "MXN"
+          },
+          "amountyear": {
+            "amount": 10880640,
+            "currency": "MXN"
+          },
+          "project": "APCI-020-2016"
+        },
+        "documents": [
+          {
+            "id": "1",
+            "title": "AUTORIZACIÓN",
+            "url": "http://innovacion.finanzas.df.gob.mx/ocpdesarro/practicas_20161118_115616.xlsx",
+            "datePublished": "2016-11-11T00:00:00-06:00",
+            "format": "application/pdf",
+            "language": "es"
+          }
+        ]
+      },
+      "buyer": {
+        "identifier": {
+          "id": "GDF9712054NA",
+          "uri": "http://www.contratosabiertos.cdmx.gob.mx"
+        },
+        "name": "SECRETARÍA DE OBRAS Y SERVICIOS",
+        "address": {
+          "streetAddress": "plaza de la constitución",
+          "locality": "cdmx",
+          "region": "DF",
+          "postalCode": "06010",
+          "countryName": "MX"
+        },
+        "contactPoint": {
+          "name": "ing. edgar t.",
+          "email": "",
+          "telephone": "",
+          "faxNumber": "",
+          "url": null
+        }
+      },
+      "tender": {
+        "id": "OCDS-87SD3T-SOBSE-DGPE-LP-0154-2016",
+        "title": "REHABILITACIÓN ESCULTURAS",
+        "description": "DESMONTAJE, RETIRO, REHABILITACIÓN Y MONTAJE DE 18",
+        "status": "active",
+        "items": [
+          {
+            "id": "1",
+            "description": "EDIFICACIÓN NO HABITA. (EN BIEN DE DP)",
+            "quantity": 1,
+            "unit": {
+              "name": "U"
+            }
+          }
+        ],
+        "value": {
+          "amount": 400000,
+          "currency": "MXN"
+        },
+        "procurementMethod": "open",
+        "procurementMethodRationale": "DE ACUERDO A LA NORMA VIGENTE ACTUAL",
+        "awardCriteria": "bestValueToGovernment",
+        "awardCriteriaDetails": "DE ACUERDO A LA NORMA ACTUAL",
+        "submissionMethod": [
+          "written"
+        ],
+        "submissionmethoddetails": "DE ACUERDO A LA NORMA ACTUAL",
+        "tenderPeriod": {
+          "startDate": "2016-11-14T00:00:00-06:00",
+          "endDate": "2016-11-22T00:00:00-06:00"
+        },
+        "enquiryPeriod": {
+          "startDate": "2016-11-15T00:00:00-06:00",
+          "endDate": "2016-11-15T00:00:00-06:00"
+        },
+        "hasEnquiries": true,
+        "eligibilityCriteria": "Servicio,Condiciones,Precio,Otro&EXPERIENCIA DE ACUERDO AL ANEXO TECNICO",
+        "awardPeriod": {
+          "startDate": "2016-11-28T00:00:00-06:00",
+          "endDate": "2016-11-28T00:00:00-06:00"
+        },
+        "numberOfTenderers": 1,
+        "tenderers": [
+          {
+            "identifier": {
+              "id": "MERA890930",
+              "uri": "http://www.contratosabiertos.cdmx.gob.mx"
+            },
+            "name": "WPI de México, S.A. de C.V.",
+            "address": {
+              "streetAddress": "\"Carr.Miguel Aleman Km 15",
+              "locality": "\"Apodaca, N.L.\"",
+              "region": "NL",
+              "postalCode": "66600",
+              "countryName": "MX"
+            },
+            "contactPoint": {
+              "name": "MARIA",
+              "email": "",
+              "telephone": "54876855654",
+              "faxNumber": "",
+              "url": null
+            }
+          }
+        ],
+        "procuringEntity": {
+          "identifier": {
+            "id": "GDF9712054NA",
+            "uri": "http://www.contratosabiertos.cdmx.gob.mx"
+          },
+          "name": "SECRETARÍA DE OBRAS Y SERVICIOS",
+          "address": {
+            "streetAddress": "av. universidad",
+            "locality": "cdmx",
+            "region": "DF",
+            "postalCode": "03010",
+            "countryName": "MX"
+          },
+          "contactPoint": {
+            "name": "miguel",
+            "email": "",
+            "telephone": "",
+            "faxNumber": "",
+            "url": null
+          }
+        },
+        "documents": []
+      },
+      "awards": [
+        {
+          "id": "1",
+          "title": "REHABILITACIÓN ESCULTURAS",
+          "description": "DESMONTAJE, RETIRO, REHABILITACIÓN Y MONTAJE DE 18",
+          "status": "pending",
+          "multiYear": true,
+          "date": "2016-11-28T00:00:00-06:00",
+          "value": {
+            "amount": 116,
+            "exchangeRate": 20,
+            "dateexchangeRate": "2016-11-23T00:00:00-06:00",
+            "currency": "USD"
+          },
+          "valueyear": {
+            "amount": 0,
+            "currency": "USD"
+          },
+          "suppliers": [
+            {
+              "identifier": {
+                "id": "MERA890930",
+                "uri": "http://www.contratosabiertos.cdmx.gob.mx"
+              },
+              "name": "WPI de México, S.A. de C.V.",
+              "address": {
+                "streetAddress": "\"Carr.Miguel Aleman Km 15",
+                "locality": "\"Apodaca, N.L.\"",
+                "region": "NL",
+                "postalCode": "66600",
+                "countryName": "MX"
+              },
+              "contactPoint": {
+                "name": "MARIA",
+                "email": "",
+                "telephone": "54876855654",
+                "faxNumber": "",
+                "url": null
+              }
+            }
+          ],
+          "items": [
+            {
+              "id": "1",
+              "description": "EDIFICACIÓN NO HABITA. (EN BIEN DE DP)",
+              "quantity": 1,
+              "unit": {
+                "name": "U"
+              }
+            }
+          ],
+          "documents": []
+        }
+      ],
+      "contracts": [
+        {
+          "id": "1",
+          "awardID": "1",
+          "title": "",
+          "description": "DESMONTAJE, RETIRO, REHABILITACIÓN Y MONTAJE DE 18",
+          "status": "active",
+          "multiYear": true,
+          "period": {
+            "startDate": null,
+            "endDate": null
+          },
+          "value": {
+            "amount": 116,
+            "exchangeRate": 20,
+            "dateexchangeRate": "2016-11-23T00:00:00-06:00",
+            "currency": "USD"
+          },
+          "valueyear": {
+            "amount": 0,
+            "currency": "USD"
+          },
+          "items": [
+            {
+              "id": "1",
+              "description": "EDIFICACIÓN NO HABITA. (EN BIEN DE DP)",
+              "quantity": 1,
+			  "deliveryLocation": {
+				"geometry": {
+					"type": "Point",
+					"coordinates": [ [ 19.4196215, -99.1503081 ] ]
+				}
+			},
+			"unit": {
+                "name": "U"
+              }
+            }
+          ],
+          "dateSigned": "2016-11-30T00:00:00-06:00",
+          "documents": [],
+          "implementation": {
+            "transactions": [],
+            "milestones": [],
+            "documents": []
+          }
+        }
+      ],
+      "language": "es"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+[{
+	"id": "0901",
+	"name": "SECRETARÍA DE FINANZAS",
+	"address": {
+		"streetAddress": "PLAZA DE LA CONSTITUCION AREA1",
+		"locality": "CUAUHTÉMOC,CENTRO",
+		"region": "DF",
+		"postalCode": "6000",
+		"countryName": "MX"
+	},
+	"contactPoint": {
+		"name": "Alberto Chavez Trejo",
+		"email": "achavez@finanzas.df.gob.mx",
+		"telephone": "55883388",
+		"faxNumber": "",
+		"url": "www.finanzas.df.gob.mx"
+	}
+},
+{
+	"id": "0701",
+	"name": "SECRETARÍA DE OBRAS Y SERVCIOS",
+	"address": {
+		"streetAddress": "PLAZA DE LA CONSTITUCION AREA1",
+		"locality": "CUAUHTÉMOC,CENTRO",
+		"region": "DF",
+		"postalCode": "6000",
+		"countryName": "MX"
+	},
+	"contactPoint": {
+		"name": "por definir",
+		"email": "pendiente@obras.cdmx.gob.mx",
+		"telephone": "55883388",
+		"faxNumber": "",
+		"url": "www.obras.cdmx.gob.mx"
+	}
+},
+{
+	"id": "1201",
+	"name": "OFICIALÍA MAYOR",
+	"address": {
+		"streetAddress": "PLAZA DE LA CONSTITUCION AREA1",
+		"locality": "CUAUHTÉMOC,CENTRO",
+		"region": "DF",
+		"postalCode": "6000",
+		"countryName": "MX"
+	},
+	"contactPoint": {
+		"name": "por definir",
+		"email": "pendiente@om.cdmx.gob.mx",
+		"telephone": "55883388",
+		"faxNumber": "",
+		"url": "www.obras.cdmx.gob.mx"
+	}
+}]
