@@ -4,14 +4,17 @@ use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
+use App\Models\Address;
 use App\Models\Award;
 use App\Models\AwardProvider;
 use App\Models\Buyer;
+use App\Models\ContactPoint;
 use App\Models\Contract;
 use App\Models\ContractHistory;
 use App\Models\Implementation;
 use App\Models\Item;
 use App\Models\Milestone;
+use App\Models\Office;
 use App\Models\Planning;
 use App\Models\Provider;
 use App\Models\Publisher;
@@ -72,6 +75,7 @@ class UpdateContracts extends Command {
       //'http://10.1.129.11:9009/ocpcdmx/contratos';
       $this->apiProveedores = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/cproveedores';
       //'http://10.1.129.11:9009/ocpcdmx/cproveedores';
+      $this->dependencias = "http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/cdependencias";
     }
     // PUBLIC ENDPOINTS
     else{
@@ -81,6 +85,7 @@ class UpdateContracts extends Command {
       //'http://187.141.34.209:9009/ocpcdmx/contratos';
       $this->apiProveedores = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/cproveedores';
       //'http://187.141.34.209:9009/ocpcdmx/cproveedores';
+      $this->dependencias = "http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/cdependencias";
     }
 	}
 
@@ -93,6 +98,11 @@ class UpdateContracts extends Command {
 	{
     // [0] DELETE ALL THE DATA!!!!!!
     $this->deleteAll();
+
+    // [0.5] obtiene la info de todas las dependencias
+    $this->info('obteniendo lista de dependencias');
+    $dependencies = $this->getOffices();
+    $this->info('listo');
 
     // [1] obtiene la lista de contractos
       $this->info('obteniendo la lista de contratos:');
@@ -604,6 +614,47 @@ class UpdateContracts extends Command {
     }
 
     //
+    // [ G E T   A L L   O F F I C E S ]
+    //
+    //
+    private function getOffices(){
+      $offices = [];
+      $data    = $this->apiCall([], $this->dependencias);
+
+      if(!is_array($data)){
+        $x = var_export($data, true);
+        $this->error($x);
+        $this->error("no está conectando con el api de contratos"); 
+        die(":D");
+      }
+
+      forEach($data as $_office){
+
+        $office = Office::firstOrCreate([
+          "_id"  => $_office->id,
+          "name" => $_office->name
+        ]);
+
+        $office->contact()->create([
+          "name"       => $_office->contactPoint->name,
+          "email"      => $_office->contactPoint->email,
+          "telephone"  => $_office->contactPoint->telephone,
+          "fax_number" => $_office->contactPoint->faxNumber,
+          "url"        => $_office->contactPoint->url
+        ]);
+
+        $office->address()->create([
+          "street_address" => $_office->address->streetAddress,
+          "locality"       => $_office->address->locality,
+          "region"         => $_office->address->region,
+          "postal_code"    => $_office->address->postalCode,
+          "country_name"   => $_office->address->countryName,
+        ]);
+
+      }
+    }
+
+    //
     // [ G E T   L A S T   T H R E E   Y E A R S   O F   D A T A ]
     //
     //
@@ -704,7 +755,8 @@ class UpdateContracts extends Command {
     DB::table('identifiers')->truncate();       
     DB::table('implementations')->truncate();   
     DB::table('items')->truncate();                    
-    DB::table('milestones')->truncate();        
+    DB::table('milestones')->truncate();
+    DB::table('offices')->truncate();           
     DB::table('organizations')->truncate();     
     DB::table('password_resets')->truncate();   
     DB::table('periods')->truncate();           
