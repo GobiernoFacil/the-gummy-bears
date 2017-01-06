@@ -1,22 +1,17 @@
-<?php
-
-namespace App\Models;
+<?php namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Tenderer extends Model
-{
-  protected $fillable = ["rfc"];
+class ProcuringEntity extends Model {
 
-  public function tenders(){
-    return $this->belongsToMany('App\Models\Tender');
-  }
+	protected $fillable = ['_id', 'name', 'uri'];
 
-  public function address(){
+	public function address(){
     return $this->morphOne('App\Models\Address', 'address');
   }
 
   public function contact(){
     return $this->morphOne('App\Models\ContactPoint', 'contact');
   }
+
 }

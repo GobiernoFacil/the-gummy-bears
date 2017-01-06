@@ -16,6 +16,7 @@ use App\Models\Item;
 use App\Models\Milestone;
 use App\Models\Office;
 use App\Models\Planning;
+use App\Models\ProcuringEntity;
 use App\Models\Provider;
 use App\Models\Publisher;
 use App\Models\Release;
@@ -105,18 +106,19 @@ class UpdateContracts extends Command {
     $this->info('listo');
 
     // [1] obtiene la lista de contractos
-      $this->info('obteniendo la lista de contratos:');
-      $contracts = $this->getList();
-      $this->info('Listo!');
+    $this->info('obteniendo la lista de contratos:');
+    $contracts = $this->getList($dependencies);
+    $this->info('Listo!');
 
-      // [2] obtiene la información completea de cada contracto
-      foreach($contracts as $contract){
-        $this->info('obteniendo la información de: ' . $contract->ocdsid);
-        $data     = ['dependencia' => $contract->cvedependencia, 'contrato' => $contract->ocdsid];
+    // [2] obtiene la información completea de cada contracto
+    foreach($contracts as $contract){
+      $this->info('obteniendo la información de: ' . $contract->ocdsid);
+      $data     = ['dependencia' => $contract->cvedependencia, 'contrato' => $contract->ocdsid];
         $response = $this->apiCall($data, $this->apiContrato);
 
         if(!empty($response) && ! property_exists($response, 'error')){
-          // [2.1] se actualizan los metadatos del contracto
+          // [2.1] se actualizan los metadatos del contrato
+          //       de hecho, solo se actualiza la fecha de publicación en formato Y-m-d
           $contract = $this->updateContract($contract, $response);
           $this->info('se actualizó la información de: ' . $contract->ocdsid);
           
@@ -161,10 +163,10 @@ class UpdateContracts extends Command {
           "initiation_type" => $rel->initiationType,
           "language"        => $rel->language
         ]);
-        $this->info("se creó el release v{$release->local_id} de: {$contract->ocdsid}");
+        $this->info("se creó el release #{$release->local_id} de: {$contract->ocdsid}");
 
         $buyer = $this->saveBuyer($rel);
-        $this->info("se creó el comprador para el release v{$release->local_id} de: {$contract->ocdsid}");
+        $this->info("se registró el comprador para el release #{$release->local_id} de: {$contract->ocdsid}");
         $release->buyer_id = $buyer ? $buyer->id : null;
         $release->update();
         
@@ -187,19 +189,41 @@ class UpdateContracts extends Command {
     //
     //
     private function saveBuyer($data){
-      if($data->buyer){
-        $buyer = Buyer::firstOrCreate([
-          "local_id" => $data->buyer->identifier->id,
-          "name"     => $data->buyer->name
-        ]);
 
-        $buyer->uri = $data->buyer->identifier->uri;
-        $buyer->update();
-        $this->info("buyer: {$buyer->id}");
+      if($data->buyer){
+        $buyer = Buyer::where('local_id', $data->buyer->identifier->id)->first();
+
+        if(!$buyer){
+          $buyer = Buyer::firstOrCreate([
+            "local_id" => $data->buyer->identifier->id,
+            "name"     => $data->buyer->name
+          ]);
+
+          $buyer->uri = $data->buyer->identifier->uri;
+          $buyer->update();
+
+          $buyer->contact()->create([
+            "name"       => $data->buyer->contactPoint->name,
+            "email"      => $data->buyer->contactPoint->email,
+            "telephone"  => $data->buyer->contactPoint->telephone,
+            "fax_number" => $data->buyer->contactPoint->faxNumber,
+            "url"        => $data->buyer->contactPoint->url
+          ]);
+
+          $buyer->address()->create([
+            "street_address" => $data->buyer->address->streetAddress,
+            "locality"       => $data->buyer->address->locality,
+            "region"         => $data->buyer->address->region,
+            "postal_code"    => $data->buyer->address->postalCode,
+            "country_name"   => $data->buyer->address->countryName,
+          ]);
+
+          $this->info("se registró a {$buyer->name} como comprador");
+        }
         return $buyer;
       }
       else{
-        $this->error('no hay buyer!');
+        $this->error('no hay información del comprador!');
         return null;
       }
     }
@@ -222,7 +246,9 @@ class UpdateContracts extends Command {
         $tender->amount               = $tn->value ? $tn->value->amount : null;
         $tender->currency             = $tn->value ? $tn->value->currency : null;
         $tender->procurement_method   = $tn->procurementMethod;
+        $tender->procurement_method_rationale = $tn->procurementMethodRationale;
         $tender->award_criteria       = $tn->awardCriteria;
+        $tender->award_criteria_details = $tn->awardCriteriaDetails;
         $tender->tender_start         = $tn->tenderPeriod ? date("Y-m-d", strtotime($tn->tenderPeriod->startDate)) : null;
         $tender->tender_end           = $tn->tenderPeriod ? date("Y-m-d", strtotime($tn->tenderPeriod->endDate)) : null;
         $tender->enquiry_start        = $tn->enquiryPeriod ? date("Y-m-d", strtotime($tn->enquiryPeriod->startDate)) : null;
@@ -232,6 +258,7 @@ class UpdateContracts extends Command {
         $tender->has_enquiries        = $tn->hasEnquiries;
         $tender->eligibility_criteria = $tn->eligibilityCriteria;
         $tender->submission_method    = count($tn->submissionMethod) ? implode(',',$tn->submissionMethod) : null; 
+        $tender->submission_method_details = $tn->submissionmethoddetails;
         $tender->number_of_tenderers  = $tn->numberOfTenderers;
         $tender->buyer_id             = $release->buyer_id;
 
@@ -241,6 +268,7 @@ class UpdateContracts extends Command {
         $this->saveTenderers($tender, $tn);
         $this->saveProviers($tender, $tn, "tender");
         $this->saveDocuments($tender, $tn);
+        $this->saveProcuringEntity($tender, $tn);
       }
     }
 
@@ -251,12 +279,6 @@ class UpdateContracts extends Command {
     private function saveTenderers($tender, $data){
       if(count($data->tenderers)){
         foreach($data->tenderers as $tn){
-
-          /*
-          $tenderer = $tender->tenderers()->firstOrCreate([
-            "rfc" => $tn->identifier->id
-          ]);
-          */
 
           $tenderer = Tenderer::firstOrCreate([
             "rfc" => $tn->identifier->id
@@ -281,8 +303,71 @@ class UpdateContracts extends Command {
           $tenderer->fax          = $tn->contactPoint->faxNumber;
           $tenderer->url          = $tn->contactPoint->url;
 
+
+          $tenderer->contact()->firstOrCreate([
+            "name"       => $tn->contactPoint->name,
+            "email"      => $tn->contactPoint->email,
+            "telephone"  => $tn->contactPoint->telephone,
+            "fax_number" => $tn->contactPoint->faxNumber,
+            "url"        => $tn->contactPoint->url
+          ]);
+
+          $tenderer->address()->firstOrCreate([
+            "street_address" => $tn->address->streetAddress,
+            "locality"       => $tn->address->locality,
+            "region"         => $tn->address->region,
+            "postal_code"    => $tn->address->postalCode,
+            "country_name"   => $tn->address->countryName
+          ]);
+
+
+
+
           $tenderer->update();
         }
+      }
+    }
+
+    //
+    // [ U P D A T E   P R O C U R I N G   E N T I T Y ]
+    //
+    //
+    private function saveProcuringEntity($tender, $data){
+      if($data->procuringEntity){
+        $procuringEntity = ProcuringEntity::where("_id", $data->procuringEntity->identifier->id)->first();
+        if(!$procuringEntity){
+          $procuringEntity = ProcuringEntity::firstOrCreate([
+            "_id"  => $data->procuringEntity->identifier->id,
+            "name" => $data->procuringEntity->name
+          ]);
+
+          // TenderTenderer
+
+          //$procuringEntity->name = $data->procuringEntity->name;
+          $procuringEntity->uri  = $data->procuringEntity->identifier->uri;
+
+
+          $procuringEntity->contact()->create([
+            "name"       => $data->procuringEntity->contactPoint->name,
+            "email"      => $data->procuringEntity->contactPoint->email,
+            "telephone"  => $data->procuringEntity->contactPoint->telephone,
+            "fax_number" => $data->procuringEntity->contactPoint->faxNumber,
+            "url"        => $data->procuringEntity->contactPoint->url
+          ]);
+
+          $procuringEntity->address()->create([
+            "street_address" => $data->procuringEntity->address->streetAddress,
+            "locality"       => $data->procuringEntity->address->locality,
+            "region"         => $data->procuringEntity->address->region,
+            "postal_code"    => $data->procuringEntity->address->postalCode,
+            "country_name"   => $data->procuringEntity->address->countryName
+          ]);
+        }
+
+
+
+        $tender->procuring_entity_id = $procuringEntity->id;
+        $tender->update();
       }
     }
 
@@ -429,14 +514,15 @@ class UpdateContracts extends Command {
             "release_id" => $release->id,
             "local_id"   => $aw->id
           ]);
-
-          $award->title          = $aw->title;
-          $award->description    = $aw->description;
-          $award->status         = $aw->status;
-          $award->date           = date("Y-m-d", strtotime($aw->date));
-          $award->value          = $aw->value->amount;
-          $award->currency       = $aw->value->currency;
-          $award->buyer_id       = $release->buyer_id;
+          $award->title              = $aw->title;
+          $award->description        = $aw->description;
+          $award->status             = $aw->status;
+          $award->date               = date("Y-m-d", strtotime($aw->date));
+          $award->value              = $aw->value->amount;
+          $award->currency           = $aw->value->currency;
+          $award->exchange_rate      = empty($aw->value->exchangeRate) ? null : $aw->value->exchangeRate;
+          $award->date_exchange_rate = empty($aw->value->dateexchangeRate) ? null : date("Y-m-d", strtotime($aw->value->dateexchangeRate));
+          $award->buyer_id           = $release->buyer_id;
 
           
           $award->multi_year     = empty($aw->multiYear) ? 0 : $aw->multiYear;
@@ -445,6 +531,7 @@ class UpdateContracts extends Command {
           
 
           $award->update();
+
           $this->saveItems($award, $aw);
           $this->saveDocuments($award, $aw);
           $this->saveSuppliers($award, $aw);
@@ -479,6 +566,25 @@ class UpdateContracts extends Command {
           $supplier->phone        = $sup->contactPoint->telephone;
           $supplier->fax          = $sup->contactPoint->faxNumber;
           $supplier->url          = $sup->contactPoint->url;
+
+
+          $supplier->contact()->firstOrCreate([
+            "name"       => $sup->contactPoint->name,
+            "email"      => $sup->contactPoint->email,
+            "telephone"  => $sup->contactPoint->telephone,
+            "fax_number" => $sup->contactPoint->faxNumber,
+            "url"        => $sup->contactPoint->url
+          ]);
+
+          $supplier->address()->firstOrCreate([
+            "street_address" => $sup->address->streetAddress,
+            "locality"       => $sup->address->locality,
+            "region"         => $sup->address->region,
+            "postal_code"    => $sup->address->postalCode,
+            "country_name"   => $sup->address->countryName
+          ]);
+
+
 
           $supplier->update();
         }
@@ -541,9 +647,16 @@ class UpdateContracts extends Command {
     // [ U P D A T E   I T E M S ]
     //
     //
+
     private function saveItems($parent, $data){
       if(count($data->items)){
         foreach($data->items as $it){
+
+          if(empty($it->id)){
+            // ignore the items that doesnt have id
+            continue;
+          }
+
           $item = $parent->items()->firstOrCreate([
             'local_id'  => $it->id
           ]);
@@ -552,7 +665,14 @@ class UpdateContracts extends Command {
           $item->description = $it->description;
           $item->unit        = $it->unit->name;
 
+          if(!empty($item->deliveryLocation)){
+            $item->lat = $it->deliveryLocation->geometry->coordinates[0][0];
+            $item->lng = $it->deliveryLocation->geometry->coordinates[0][1];
+            $item->point = "({$item->lat} {$item->lng})";
+          }
+
           $item->update();
+
         }
       }
     }
@@ -651,39 +771,45 @@ class UpdateContracts extends Command {
           "country_name"   => $_office->address->countryName,
         ]);
 
+        $offices[] = $office;
       }
+
+      return $offices;
     }
 
     //
     // [ G E T   L A S T   T H R E E   Y E A R S   O F   D A T A ]
     //
     //
-    private function getList(){
+    private function getList($offices = []){
       $contracts = [];
       
       // GET THE LIST FROM THE API
       for($i = 0; $i < self::MAX_YEARS; $i ++){
-        $year      = date("Y") - $i;
-        $data      = ['dependencia' => '0901', "ejercicio" => $year]; // harcoded stuff
-        $excercise = $this->apiCall($data, $this->apiContratos);
-        if(!is_array($excercise)){
-          $x = var_export($excercise, true);
-          $this->info($x);
-          $this->error($x);
-          $this->error("no está conectando con el api de contratos"); 
-          die(":D");
+        forEach($offices as $office){
+          $year      = date("Y") - $i;
+          $this->info("Se están descargando contratos para: " . $office->_id . " en el ejercicio " . $year);
+          $data      = ['dependencia' => $office->_id, "ejercicio" => $year]; // harcoded stuff
+          $excercise = $this->apiCall($data, $this->apiContratos);
+          if(!is_array($excercise)){
+            $x = var_export($excercise, true);
+            $this->info($x);
+            $this->error($x);
+            $this->error("no está conectando con el api de contratos"); 
+            die(":D");
+          }
+          $contracts = array_merge($contracts, $excercise);
         }
-        $contracts = array_merge($contracts, $excercise);
       }
 
       // SAVE THEM TO THE DB
       $response = [];
       forEach($contracts as $c){
         $contract = Contract::firstOrCreate([
-          'ocdsid'         => $c->ocdsID
+          'ocdsid' => $c->ocdsID
         ]);
         $contract->ejercicio      = (int)$c->ejercicio;
-        $contract->cvedependencia = (int)$c->cveDependencia;
+        $contract->cvedependencia = $c->cveDependencia;
         $contract->nomDependencia = $c->nomDependencia;
         $contract->update();
 
@@ -758,7 +884,8 @@ class UpdateContracts extends Command {
     DB::table('milestones')->truncate();
     DB::table('offices')->truncate();           
     DB::table('organizations')->truncate();     
-    DB::table('password_resets')->truncate();   
+    DB::table('password_resets')->truncate();
+    DB::table('procuring_entities')->truncate();
     DB::table('periods')->truncate();           
     DB::table('plannings')->truncate();         
     DB::table('provider_award')->truncate();    

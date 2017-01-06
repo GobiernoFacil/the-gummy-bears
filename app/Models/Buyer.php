@@ -36,4 +36,12 @@ class Buyer extends Model
       $q->where(["buyer_id" => $this->id, "is_latest" => 1]);
     });
   }
+
+  public function address(){
+    return $this->morphOne('App\Models\Address', 'address');
+  }
+
+  public function contact(){
+    return $this->morphOne('App\Models\ContactPoint', 'contact');
+  }
 }
