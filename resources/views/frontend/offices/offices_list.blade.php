@@ -14,6 +14,33 @@
 						<div class="col-sm-2"><p>Contacto</p></div>
 					</div>
 					<ul class="list">
+					@foreach ($buyers as $_buyer)
+					 <?php 
+					   // del controller llega el comprador, pero la info que se despliega es de la oficina,
+					   // por eso este mini-ugly-hack
+					   $buyer = $_buyer->publisher; 
+					 ?>
+						<li class="row">
+							<div class="col-sm-4">
+								<h3><a href="{{ url('dependencia/' . $_buyer->id) }}">{{$buyer->office->name}}</a></h3>
+							</div>
+							<div class="col-sm-3">
+								<p>{{$buyer->office->address->street_address}}, <br>{{$buyer->office->address->locality}}</p>
+								<p>
+								Ciudad de México C.P.{{$buyer->office->address->postal_code}}
+								</p>
+							</div>
+							<div class="col-sm-2">
+								<p>Tel.: {{$buyer->office->contact->telephone}}</p>
+								<p><a href="{{$buyer->office->contact->url}}">web</a></p>
+							</div>
+							<div class="col-sm-3">
+								<a href="{{ url('dependencia/' . $_buyer->id) }}" class="btn">Ver Dependencia</a>
+							</div>
+						</li>
+					@endforeach
+
+					<?php /*
 					@foreach ($buyers as $buyer)
 						<li class="row">
 							<div class="col-sm-4">
@@ -36,6 +63,7 @@
 							</div>
 						</li>
 					@endforeach
+					*/?>
 					</ul>
 					
 				</div>
