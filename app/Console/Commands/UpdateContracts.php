@@ -70,23 +70,25 @@ class UpdateContracts extends Command {
 
     if($endpoints == 'production'){
       // SERVER ENDPOINTS
-      $this->apiContratos   = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/listarcontratos';
-      //'http://10.1.129.11:9009/ocpcdmx/listarcontratos';
-      $this->apiContrato    = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/contratos';
-      //'http://10.1.129.11:9009/ocpcdmx/contratos';
-      $this->apiProveedores = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/cproveedores';
-      //'http://10.1.129.11:9009/ocpcdmx/cproveedores';
-      $this->dependencias = "http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/cdependencias";
+      //$this->apiContratos = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/listarcontratos';
+      $this->apiContratos   = 'http://10.1.129.11:9009/ocpcdmx/listarcontratos';
+      //$this->apiContrato  = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/contratos';
+      $this->apiContratos   = 'http://10.1.129.11:9009/ocpcdmx/contratos';
+      //$this->apiProveedores = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/cproveedores';
+      $this->apiContratos   = 'http://10.1.129.11:9009/ocpcdmx/cproveedores';
+      //$this->dependencias = "http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/cdependencias";
+      $this->dependencias   = "http://10.1.129.11:9009/ocpcdmx/cdependencias";
     }
     // PUBLIC ENDPOINTS
     else{
-      $this->apiContratos   = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/listarcontratos';
-      //'http://187.141.34.209:9009/ocpcdmx/listarcontratos';
-      $this->apiContrato    = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/contratos';
-      //'http://187.141.34.209:9009/ocpcdmx/contratos';
-      $this->apiProveedores = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/cproveedores';
-      //'http://187.141.34.209:9009/ocpcdmx/cproveedores';
-      $this->dependencias = "http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/cdependencias";
+      //$this->apiContratos = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/listarcontratos';
+      $this->apiContratos   = 'http://187.141.34.209:9009/ocpcdmx/listarcontratos';
+      //$this->apiContrato  = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/contratos';
+      $this->apiContratos   = 'http://187.141.34.209:9009/ocpcdmx/contratos';
+      //$this->apiProveedores = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/cproveedores';
+      $this->apiContratos   = 'http://187.141.34.209:9009/ocpcdmx/cproveedores';
+      //$this->dependencias = "http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/cdependencias";
+      $this->dependencias   = "http://10.1.129.11:9009/ocpcdmx/cdependencias";
     }
 	}
 
