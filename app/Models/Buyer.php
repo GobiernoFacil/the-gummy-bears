@@ -11,6 +11,10 @@ class Buyer extends Model
 {
   protected $fillable = ["local_id", "uri", "name"];
 
+  public function publisher(){
+    return $this->belongsTo("App\Models\Publisher");
+  }
+
   public function providers(){
     return $this->hasMany("App\Models\BuyerProvider");
   }

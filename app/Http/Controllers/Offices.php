@@ -5,14 +5,15 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
+use App\Models\Award;
+use App\Models\Buyer;
 use App\Models\Contract;
 use App\Models\ContractData;
 use App\Models\Planning;
-use App\Models\Award;
+use App\Models\Provider;
+use App\Models\Publisher;
 use App\Models\SingleContract;
 use App\Models\Supplier;
-use App\Models\Provider;
-use App\Models\Buyer;
 
 /*
  * El controller de dependencias
@@ -38,6 +39,7 @@ class Offices extends Controller {
 		$data['og_image']    = "img/og/contrato-cdmx.png";
 		$data['body_class']  = 'dependencia';
 		$data['buyers']   	 = $buyers;
+		//$data['_buyers'] = Publisher::with("office")->get();
 		
 		return view("frontend.offices.offices_list")->with($data);
 	}
@@ -50,6 +52,7 @@ class Offices extends Controller {
 	// dependencias/{id}
 	//
 	public function show($id){
+		//$publisher        = Publisher::find($id);
 		$buyer				    = Buyer::find($id);
 		$contracts 			  = $buyer->contracts()->with("data")->get();
 		$awards 			    = $buyer->awards;

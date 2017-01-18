@@ -67,9 +67,18 @@ class UpdateContracts extends Command {
 		parent::__construct();
 
     $endpoints = env('ENDPOINTS', 'production');
+    /*
+    http://grp-dcs.sap.finanzas.cdmx.gob.mx:8001/sap(bD1lcyZjPTIwMA==)/bc/bsp/sap/zocpcdmx/cdependencias
 
+http://grp-dcs.sap.finanzas.cdmx.gob.mx:8001/sap(bD1lcyZjPTIwMA==)/bc/bsp/sap/zocpcdmx/cproveedores
+
+http://grp-dcs.sap.finanzas.cdmx.gob.mx:8001/sap(bD1lcyZjPTIwMA==)/bc/bsp/sap/zocpcdmx/listarcontratos
+
+http://grp-dcs.sap.finanzas.cdmx.gob.mx:8001/sap(bD1lcyZjPTIwMA==)/bc/bsp/sap/zocpcdmx/contratos
+    */
     if($endpoints == 'production'){
       // SERVER ENDPOINTS
+
       //$this->apiContratos = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/listarcontratos';
       $this->apiContratos   = 'http://10.1.129.11:9009/ocpcdmx/listarcontratos';
       //$this->apiContrato  = 'http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/contratos';
@@ -89,6 +98,7 @@ class UpdateContracts extends Command {
       $this->apiContratos   = 'http://187.141.34.209:9009/ocpcdmx/cproveedores';
       //$this->dependencias = "http://grpap01.sap.finanzas.df.gob.mx:8000/sap(bD1lcyZjPTMwMA==)/bc/bsp/sap/zocpcdmx/cdependencias";
       $this->dependencias   = "http://10.1.129.11:9009/ocpcdmx/cdependencias";
+
     }
 	}
 
@@ -116,9 +126,9 @@ class UpdateContracts extends Command {
     foreach($contracts as $contract){
       $this->info('obteniendo la información de: ' . $contract->ocdsid);
       $data     = ['dependencia' => $contract->cvedependencia, 'contrato' => $contract->ocdsid];
-        $response = $this->apiCall($data, $this->apiContrato);
+      $response = $this->apiCall($data, $this->apiContrato);
 
-        if(!empty($response) && ! property_exists($response, 'error')){
+      if(!empty($response) && ! property_exists($response, 'error')){
           // [2.1] se actualizan los metadatos del contrato
           //       de hecho, solo se actualiza la fecha de publicación en formato Y-m-d
           $contract = $this->updateContract($contract, $response);
@@ -167,7 +177,9 @@ class UpdateContracts extends Command {
         ]);
         $this->info("se creó el release #{$release->local_id} de: {$contract->ocdsid}");
 
-        $buyer = $this->saveBuyer($rel);
+        $buyer               = $this->saveBuyer($rel);
+        $buyer->publisher_id = $contract->publisher_id;
+        $buyer->update();
         $this->info("se registró el comprador para el release #{$release->local_id} de: {$contract->ocdsid}");
         $release->buyer_id = $buyer ? $buyer->id : null;
         $release->update();
@@ -193,9 +205,9 @@ class UpdateContracts extends Command {
     private function saveBuyer($data){
 
       if($data->buyer){
-        $buyer = Buyer::where('local_id', $data->buyer->identifier->id)->first();
+        //$buyer = Buyer::where('local_id', $data->buyer->identifier->id)->first();
 
-        if(!$buyer){
+        //if(!$buyer){
           $buyer = Buyer::firstOrCreate([
             "local_id" => $data->buyer->identifier->id,
             "name"     => $data->buyer->name
@@ -221,7 +233,7 @@ class UpdateContracts extends Command {
           ]);
 
           $this->info("se registró a {$buyer->name} como comprador");
-        }
+        //}
         return $buyer;
       }
       else{

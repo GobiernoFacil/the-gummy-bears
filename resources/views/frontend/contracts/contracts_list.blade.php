@@ -67,7 +67,7 @@
 	</div>
 	<header>
 		<div class="col-sm-4">
-			<p><span>DEPENDENCIAS</span> <strong>01</strong></p>
+			<p><span>DEPENDENCIAS</span> <strong>{{$_buyers_count < 10 ? '0' . $_buyers_count : $_buyers_count }}</strong></p>
 		</div>
 		<div class="col-sm-4 center">
 			<p><span id="type">TOTAL DE CONTRATOS FIRMADOS</span> <strong id="type_total">{{ $contracts_number }}</strong></p>
