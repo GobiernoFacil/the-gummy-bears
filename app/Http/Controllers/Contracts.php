@@ -70,7 +70,7 @@ class Contracts extends Controller {
     $contracts_amount	   = SingleContract::where("currency", "MXN")->sum('amount');
 		$contracts_amount	   = $contracts_amount + SingleContract::where("currency_year", "MXN")->sum('amount_year');
 		
-		$contracts_number	   = SingleContract::all()->count();
+		$contracts_number	   = Contract::all()->count();//SingleContract::all()->count();
 		$contracts 			     = Contract::orderBy("published_date",'desc')->skip($page * self::PAGE_SIZE)->take(self::PAGE_SIZE)->get();
 		$json                = ContractData::with("release.tender")->get();
 		$_providers          = Provider::select("id", "rfc", "name","budget")->where("budget", ">", 0)->get();
