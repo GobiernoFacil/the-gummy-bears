@@ -8,6 +8,7 @@ use App\Models\Contract;
 use App\Models\ContractData;
 use App\Models\SingleContract;
 use App\Models\Provider;
+use App\Models\Buyer;
 
 /*
  * El controller de los contratos
@@ -69,8 +70,10 @@ class Contracts extends Controller {
 		
     $contracts_amount	   = SingleContract::where("currency", "MXN")->sum('amount');
 		$contracts_amount	   = $contracts_amount + SingleContract::where("currency_year", "MXN")->sum('amount_year');
-		
-		$contracts_number	   = Contract::all()->count();//SingleContract::all()->count();
+
+		$buyers              	= Buyer::all()->count();
+		$contracts_number    = Contract::all()->count();//SingleContract::all()->count();
+
 		$contracts 			     = Contract::orderBy("published_date",'desc')->skip($page * self::PAGE_SIZE)->take(self::PAGE_SIZE)->get();
 		$json                = ContractData::with("release.tender")->get();
 		$_providers          = Provider::select("id", "rfc", "name","budget")->where("budget", ">", 0)->get();
@@ -87,6 +90,7 @@ class Contracts extends Controller {
 		$data['contracts']  = $contracts;
 		$data['json']       = $json;
 		$data['_providers'] = $_providers;
+		$data['_buyers_count'] = $buyers;
 		
 		$data['contracts_amount']  = $contracts_amount;
 		$data['contracts_number']  = $contracts_number;
