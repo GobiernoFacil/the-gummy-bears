@@ -68,8 +68,8 @@ define(function(require){
                          "planning"  : d.planning,
                          "ocdsid"    : d.ocdsid,
                          "contracts" : d.contracts,
-                         "awards"    :d.awards,
-                         "tender"    :d.tender,
+                         "awards"    : d.awards,
+                         "tender"    : d.tender,
                          "type"      : "contract"
                        };
                      }),

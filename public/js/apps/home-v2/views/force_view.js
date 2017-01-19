@@ -222,6 +222,7 @@ define(function(require){
 
     update_render : function(index, opt){
       var data        = opt ? this.datab : this.data,
+          _opt        = opt ? "data-providers" : "data-contracts",
           radiusScale = d3.scale.pow()
                           .exponent(0.5)
                           .range([0, 125]),
@@ -241,6 +242,8 @@ define(function(require){
          
           bubbles     = null,
           nodes       = [];
+
+    console.log(data, data.length);
          
 	  /// actualiza cantidades en los títulos 
 	  $('#type_total').html(totprov);

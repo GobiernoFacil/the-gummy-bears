@@ -70,10 +70,18 @@
 			<p><span>DEPENDENCIAS</span> <strong>{{$_buyers_count < 10 ? '0' . $_buyers_count : $_buyers_count }}</strong></p>
 		</div>
 		<div class="col-sm-4 center">
-			<p><span id="type">TOTAL DE CONTRATOS FIRMADOS</span> <strong id="type_total">{{ $contracts_number }}</strong></p>
+			<p>
+			  <span id="type">TOTAL DE CONTRATOS FIRMADOS</span> 
+			  <strong id="type_total" data-contracts="{{$contracts_number}}" data-providers="{{ $_providers->count() }}">
+			    {{ $contracts_number }}
+			  </strong>
+			</p>
 		</div>
 		<div class="col-sm-4">
-			<p><span>MONTO TOTAL (MXN)</span>$<strong id="total_amount">{{ number_format(($contracts_amount/1000000),2,'.',',') }}</strong> millones </p>
+			<p>
+			  <span>MONTO TOTAL (MXN)</span>
+			  $<strong id="total_amount">{{ number_format(($contracts_amount/1000000),2,'.',',') }}</strong> millones 
+			</p>
 		</div>
 	</header>
 	<p id="publisher-name"></p>

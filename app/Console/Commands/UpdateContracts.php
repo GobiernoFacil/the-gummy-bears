@@ -674,7 +674,7 @@ http://grp-dcs.sap.finanzas.cdmx.gob.mx:8001/sap(bD1lcyZjPTIwMA==)/bc/bsp/sap/zo
             'local_id'  => $it->id
           ]);
 
-          $item->quantity    = $it->quantity;
+          $item->quantity    = empty($it->quantity) ? 0 : $it->quantity;
           $item->description = $it->description;
           $item->unit        = $it->unit->name;
 
