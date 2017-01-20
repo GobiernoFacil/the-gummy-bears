@@ -163,6 +163,7 @@
 				</div>
 				<ul id="licitaciones-costosas">
 					@foreach ($contract_data as $c)
+					  @if($c->release->singlecontracts->count())
 						<li class="row">
 								<span class="col-sm-8 col-xs-7">
 									<a href="{{ url('contrato/'. $c->ocdsid) }}">{{$c->release->singlecontracts[0]->description}}</a>
@@ -170,7 +171,8 @@
 								<span class="col-sm-4 col-xs-5 right">
 								${{ number_format($c->contracts,2,'.',',') }}
 								</span>
-							</li>					
+							</li>	
+							@endif				
 					@endforeach
 				</ul>
 				<div class="divider"></div>

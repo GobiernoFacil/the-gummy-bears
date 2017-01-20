@@ -154,7 +154,9 @@
 					<!--amount-->
 						<div class="col-sm-3 amount top">
 							<p><span>$</span> {{$budget}} <span>MXN</span></p>
-							<?php switch($r->tender->procurement_method){
+							<?php
+
+							switch(empty($r->tender) ? "" : $r->tender->procurement_method){
 								case "limited":
 									$procurement_method = "limitado";
 									break;
@@ -164,7 +166,9 @@
 								case "open":
 									$procurement_method = "abierto";
 									break;
-								
+								default:
+								  $procurement_method = "No está definido";
+									break;
 							}?>
 							<p class="procurement_method">Método de adquisición <strong>{{$procurement_method}}</strong></p>
 						</div>
@@ -236,12 +240,15 @@
 						</div>
 						<div class="col-sm-3">
 							<p class="list_t">Criterio:<br>
-									<?php switch($r->tender->award_criteria){
+									<?php switch(empty($r->tender) ? "" : $r->tender->award_criteria){
 										case "bestValueToGovernment":
 											$award_criteria = "Mejor oferta para el Gobierno";
 											break;
 										case "bestProposal":
 											$award_criteria = "Mejor propuesta";
+											break;
+										default:
+											$award_criteria = "No está definido";
 											break;
 									}?>
 									 {{$award_criteria}}

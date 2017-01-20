@@ -64,7 +64,7 @@ define(function(require){
         controller : this,
         data       : JSON.map(function(d){
                        return {
-                         "name"      : d.release.tender.title,
+                         "name"      : (d.release ? d.release.tender.title : ""),
                          "planning"  : d.planning,
                          "ocdsid"    : d.ocdsid,
                          "contracts" : d.contracts,
