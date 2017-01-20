@@ -142,7 +142,9 @@
               <p class="title_section">PROVEEDOR</p>
               @foreach($elcontrato->awards as $award)
                 @if ($contract->award_id == $award->local_id)
+                  @if($award->suppliers->count())
                   <p><a href="{{ url('proveedor/' . $award->suppliers[0]->rfc) }}"><?php echo $award->suppliers[0]->name;?></a></p>
+                  @endif
                 @endif
               @endforeach
             </div> 

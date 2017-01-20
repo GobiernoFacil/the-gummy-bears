@@ -18,7 +18,7 @@
     	
     	<!--status-->
         <div class="col-sm-3">
-	        <?php switch ($elcontrato->tender->status){
+	        <?php switch (empty($elcontrato->tender) ? "" : $elcontrato->tender->status){
         	  case "planned":
         	    $t_status = "PLANEADA";
         	    break;
@@ -34,6 +34,9 @@
         	  case "complete":
         	    $t_status = "COMPLETO";
         	    break;
+              default:
+                $t_status = "SIN INICIAR";
+                break;
         	}?>
 				<p class="title_section">Estatus de la licitación</p>
 				<p><span class="label {{ $elcontrato->tender->status }}">
@@ -72,7 +75,7 @@
         <!--método de licitación-->
         <div class="col-sm-4">
         	<p class="title_section">método de licitación</p>
-        	<?php switch ($elcontrato->tender->procurement_method){
+        	<?php switch (empty($elcontrato->tender) ? "" : $elcontrato->tender->procurement_method){
         	  case "selective":
         	    $procurementMethod = "Selectiva";
         	    break;
@@ -82,6 +85,9 @@
         	  case "limited":
         	    $procurementMethod = "Limitada";
         	    break;
+              default:
+                $procurementMethod = "Sin definir";
+                break;
         	}?>
         	<p>{{ $procurementMethod }}</p>
         </div>
@@ -113,7 +119,7 @@
     <div class="row divider">
 		<!--Método de Presentación-->
 		<div class="col-sm-4">
-		<?php switch ($elcontrato->tender->submission_method){
+		<?php switch (empty($elcontrato->tender) ? "" : $elcontrato->tender->submission_method){
     	  case "electronicAuction":
     	    $submission_method = "Licitación Electrónica";
     	    break;
@@ -126,6 +132,9 @@
     	  case "inPerson":
     	    $submission_method = "En Persona";
     	    break;
+          default:
+            $submission_method = "En Persona";
+            break;
     	}?>
     	  <p class="title_section">Método de Presentación</p>
     	  <p>{{$submission_method}}
