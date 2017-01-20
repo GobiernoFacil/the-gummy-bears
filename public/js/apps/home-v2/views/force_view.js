@@ -243,11 +243,11 @@ define(function(require){
           bubbles     = null,
           nodes       = [];
 
-    console.log(data, data.length);
+    //console.log(data, data.length);
          
 	  /// actualiza cantidades en los títulos 
-	  $('#type_total').html(totprov);
-	  $('#total_amount').html((totAmount/1000000).toFixed(2));
+	  $('#type_total').html(data.length/*totprov*/);
+	  // $('#total_amount').html((totAmount/1000000).toFixed(2));
         
       radiusScale.domain([0, maxAmount]);
       
