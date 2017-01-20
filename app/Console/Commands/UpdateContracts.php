@@ -272,7 +272,7 @@ http://grp-dcs.sap.finanzas.cdmx.gob.mx:8001/sap(bD1lcyZjPTIwMA==)/bc/bsp/sap/zo
         $tender->eligibility_criteria = $tn->eligibilityCriteria;
         $tender->submission_method    = count($tn->submissionMethod) ? implode(',',$tn->submissionMethod) : null; 
         $tender->submission_method_details = $tn->submissionmethoddetails;
-        $tender->number_of_tenderers  = $tn->numberOfTenderers;
+        $tender->number_of_tenderers  = empty($tn->numberOfTenderers) ? 0 : $tn->numberOfTenderers;
         $tender->buyer_id             = $release->buyer_id;
 
         $tender->update();
