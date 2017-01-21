@@ -79,6 +79,23 @@ class Search extends Controller {
         });
       })
 
+      // SEARCH ON PROVIDERS
+      ->orWhere(function($q) use($query){
+        $q->whereHas('tenders', function($q) use($query){
+          $q->whereHas('providers', function($qr) use($query){
+            $qr->where('name', 'like', '%' . $query . '%');
+          });
+        });
+      })
+      
+      ->orWhere(function($q) use($query){
+        $q->whereHas('tenders', function($q) use($query){
+          $q->whereHas('providers', function($qr) use($query){
+            $qr->where('rfc', 'like', '%' . $query . '%');
+          });
+        });
+      })
+
       // SEARCH ON AWARDS
       ->orWhere(function($q) use($query){
         $q->whereHas('awards', function($q) use($query){
