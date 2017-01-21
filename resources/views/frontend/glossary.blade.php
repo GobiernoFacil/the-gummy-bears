@@ -324,7 +324,7 @@
 							</ol>
 							<!--Descargar-->
 							<h2>¿Quieres saber más?</h2>
-							<p>Para más información sobre las Contrataciones Abiertas de la CDMX descarga  el <a href="{{ url('archivos/Cuadernillo-Contrataciones-Abiertas-CDMX.pdf')}}">cuadernillo de presentación de Contrataciones Abiertas</a>.</p>
+							<p>Para más información sobre las Contrataciones Abiertas de la CDMX descarga  el <a href="{{ url('archivos/CuadernilloContratacionesAbiertasEnero2017.pdf')}}">cuadernillo de presentación de Contrataciones Abiertas</a>.</p>
 							<div class="divider w"></div>
 					</div>
 				</div>
