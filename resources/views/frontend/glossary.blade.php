@@ -103,7 +103,7 @@
 									<p>
 										<ol>
 										<li>Es un ejercicio de transparencia donde se mejora la experiencia del usuario para interactuar con información que ya es pública</li>
-										<li>La CDMX es la primera Ciudad en el mundo en aplicar las 5 fases que marca el Estándar de Contrataciones Abiertas, lo cual muestra que los gobierno locales pueden crear grande impactos</li>
+										<li>La CDMX es la primera Ciudad en el mundo en aplicar las 5 fases que marca el Estándar de Contrataciones Abiertas, lo cual muestra que los gobiernos locales pueden crear grandes impactos</li>
 										<li>La página está hecha en código abierto, por lo que es replicable en cualquier nivel</li>
 										<li>No solamente se puede consultar la información a través de las visualizaciones que este sitio provee, sino que cualquier persona puede realizar cruces de información propio conectándose a la API</li>
 										<li>Al ser un estándar internacional el que se ha implementado, permitirá realizar cruces de información con aquellas ciudades o países que también lo hayan hecho</li>
@@ -205,21 +205,15 @@
 								<p>
 									El procedimiento administrativo por el que el Gobierno adquiere o renta bienes y servicios, así como la realización de obra pública y servicios relacionados con la misma, pueden ser los siguientes:
 									<ol>
-							  	<li><strong>Licitación pública (Abierta):</strong> Se publica una convocatoria en la <a href ="http://www.consejeria.df.gob.mx/index.php/gaceta" target="_blank">Gaceta Oficial de la Ciudad de México </a> y otros medios electrónicos según el caso para una contratación de algún servicio, adquisición o arrendamiento de obra o servicio, para que libremente los proveedores o concursantes presenten propuestas con el fin de asegurar al Gobierno las mejores condiciones en el aspecto administrativo, legal, técnico y económico.</li>
+							  		<li><strong>Licitación pública (Abierta):</strong> Se publica una convocatoria en la <a href ="http://www.consejeria.df.gob.mx/index.php/gaceta" target="_blank">Gaceta Oficial de la Ciudad de México </a> y otros medios electrónicos según el caso para una contratación de algún servicio, adquisición o arrendamiento de obra o servicio, para que libremente los proveedores o concursantes presenten propuestas con el fin de asegurar al Gobierno las mejores condiciones en el aspecto administrativo, legal, técnico y económico.</li>
 									<li><strong>Invitación restringida a cuando menos tres proveedores o concursantes (Limitada):</strong> Cuando la licitación pública no sea idónea para asegurar a la Administración Pública de la CDMX las mejores condiciones disponibles, se podrán contratar adquisiciones, arrendamientos de bienes o servicios y obra pública y servicios relacionadas con la misma a través de un procedimiento de invitación a cuando menos tres proveedores o concursantes. En este caso no se publica en la Gaceta Oficial ni en la página de la Institución, sino que se emiten invitaciones a las personas físicas o morales que se estiman por medio de un estudio de mercado tengan los precios más bajos tomando en consideración la calidad y cantidad de los bienes, obra pública o servicios a contratar. </li>
 									<li><strong>Adjudicación directa (Limitada):</strong> En caso de no presentarse el mínimo de propuestas señaladas en un procedimiento de invitación a cuando menos tres personas y se haya declarado desierto el procedimiento de licitación, el titular del área responsable de la contratación en la dependencia o entidad podrá adjudicar directamente el contrato siempre que no se modifiquen los requisitos establecidos en dichas invitaciones o en las bases de licitación. Esto se encuentra descrito en la Ley de Adquisiciones para el Distrito Federal en el artículo 55 y en la <a href="http://www.aldf.gob.mx/archivo-2d0009cb4b1cb3a4349753ad589d4ba0.pdf" target="_blank">Ley de Obras Públicas para el Distrito Federal </a>en los artículos 62 y 63 se establecen los criterios para el caso de obra pública y servicios relacionados con la misma.</li>
 									<li><strong>Convenio de colaboración (Selectiva):</strong> Existen instituciones de Gobierno que ya ofrecen el servicio que se está buscando y por ello se debe acudir a ésta. Esto lo establece el artículo primero de la Ley de Adquisiciones para el Distrito Federal. Un ejemplo de esto podría ser la Comisión Mexicana de Impresión (COMISA) o la Policía Bancaria e Industrial (PBI).  </li>
 									<li><strong>Adjudicación directa selectiva (Selectivo):</strong> Esta opción establece que hay proveedores que por tema de marca, patente o derechos de autor, solamente ellos pueden ofrecer el servicio o bien y por lo tanto es necesario recurrir a ellos. Ésta y cualquier otra consideración fuera de una licitación pública, las contempla el artículo 54 en sus diversas fracciones de la Ley de Adquisiciones. Asimismo se encuentra considerado en la Ley de Obras Públicas para el Distrito Federal.</li>
-							  </ol>
+							  		</ol>
 								</p>
 								<p>
-								De acuerdo con la Ley de Adquisiciones para el Distrito Federal, todo proceso de contratación debe ser analizado y aprobado por el Comité de Autorizaciones de Adquisiciones, Arrendamientos y Prestación de Servicios de la Administración Pública del Distrito Federal. El Comité cuenta con Subcomités de Adquisiciones, Arrendamientos y Prestación de Servicios en cada una de las dependencias, órganos desconcentrados y entidades del Gobierno de la Ciudad de México que se encargan de representar al Comité en cada uno de estos entes.
-								</p>
-								<p>
-								De igual forma, existen los Comités Delegacionales que tienen autonomía funcional del Comité y se rigen por el Reglamento de la Ley de Adquisiciones para el Distrito Federal. Sin embargo, sus funciones y atribuciones están encaminadas al mismo fin que las del Comité.
-								</p>
-								<p>
-								En el caso de obras públicas, según el Reglamento de la <a href ="http://www3.contraloriadf.gob.mx/prontuario/index.php/normativas/Template/ver_mas/64005/47/1/0" target="_blank">Ley de Obras Públicas del Distrito Federal </a>, en el Artículo 8A existe: el Comité Central, los Comités de las Entidades, los Subcomités de las dependencias y órganos desconcentrados y los subcomités delegacionales. Éstos se establecen para la toma de decisiones, emisión de dictámenes, generación de directrices y políticas internas en sus respectivas competencias, los cuales tendrán por objeto promover que las obras públicas se realicen de manera racional, óptima, eficiente y transparente, y que cumplan con lo establecido en la Ley, el Reglamento y demás disposiciones aplicables.
+								Los Artículos 54 y 55 de la Ley de Adquisiciones para el Distrito Federal; los artículos 61, 62 y 63 de Ley de Obras Públicas del Distrito Federal y los artículos 41, 42 y 43 de la ley de Obras Públicas y Servicios Relacionados con las Mismas, según aplique, establecen los casos en los que se podrá contratar a través de los procedimientos de Invitación Restringida cuando menos a tres proveedores, concursantes o personas.
 								</p>
 								<p>
 								Para más información puedes consultar la <a href="http://www.aldf.gob.mx/archivo-b23bfec910d4dd4b6b1f1fff8ab0e453.pdf" target="_blank"> Ley de Adquisiciones para el Distrito Federal</a>,  el <a href="http://www.consejeria.cdmx.gob.mx/images/leyes/reglamentos/REGLAMENTODELALEYDEADQUISICIONESPARAELDISTRITOFEDERALII.pdf" target="_blank">Reglamento de la Ley de Adquisiciones para el Distrito Federal</a>, la <a href="http://www.aldf.gob.mx/archivo-2d0009cb4b1cb3a4349753ad589d4ba0.pdf" target="_blank">Ley de Obras Públicas del Distrito Federal</a>, la <a href="http://www3.contraloriadf.gob.mx/prontuario/index.php/normativas/Template/ver_mas/65345/32/2/1" target="_blank">Ley de Obras Públicas y Servicios Relacionados con las Mismas</a> y sus respectivos reglamentos.
@@ -241,7 +235,7 @@
 								</li>
 								<li><strong><a id="contratos">¿Cuáles son los tipos de contratos que existen?</a></strong>
 									<p>
-										Se encontrarán  varios formatos de contratos en este portal y esto se debe a que el tipo de contrato se rige por el monto adjudicado, todos tienen la misma formalidad y están aprobados por la Consejería Jurídica y de Servicios Legales (CEJUR). Estos se encuentran en el punto 4.7 de la <a href="http://www.om.cdmx.gob.mx/circularuno_unobis/circularunoyunobis.pdf" target="_blank">Circular 1 </a>publicada en la Gaceta Oficial.
+										Se encontrarán  varios formatos de contratos en este portal y esto se debe a que el tipo de contrato se rige por el monto adjudicado, todos tienen la misma formalidad y están aprobados por la Consejería Jurídica y de Servicios Legales (CEJUR). Estos se encuentran en el punto 4.7 de la <a href="http://www.om.cdmx.gob.mx/storage/app/uploads/public/577/d90/213/577d9021394b5342049376.pdf" target="_blank">Circular 1 </a>publicada en la Gaceta Oficial.
 										<ol>
 											<li><strong>Facturas debidamente requisitada:</strong> Se utiliza cuando el monto a contratar es menor a 50 mil pesos.</li>
 										  <li><strong>Contrato Pedido:</strong> Contratos realizados por montos entre 50,001 pesos hasta 200,000 pesos.</li>
@@ -255,10 +249,12 @@
 									<li><strong>A base de precios unitarios:</strong> donde la remuneración que deba cubrirse al contratista se hará:<br>
 									<strong>a)</strong>  En el caso de obra, por unidad de concepto de trabajo terminado;<br>
 									<strong>b)</strong>  En el caso de servicios relacionados con la obra pública, por unidad de concepto de servicio realizado;<br>
-								  </li>
-									<li><strong>A precio alzado:</strong> en cuyo caso el importe del pago total fijo que deba cubrirse al contratista será por ministraciones que se establecerán en el contrato, en función de avances de trabajos realizados o de actividades o subactividades terminadas
-									Por administración: donde el importe de la remuneración que deba cubrirse al contratista se hará vía comprobantes, facturas, nómina pagada y un porcentaje de indirectos sobre lo anterior.
-								  </li>
+								 	 </li>
+									<li><strong>A precio alzado:</strong> en cuyo caso el importe del pago total fijo que deba cubrirse al contratista será por ministraciones que se establecerán en el contrato, en función de avances de trabajos realizados o de actividades o subactividades terminadas.
+									</li>
+									<li>
+									<strong>Por administración:</strong> donde el importe de la remuneración que deba cubrirse al contratista se hará vía comprobantes, facturas, nómina pagada y un porcentaje de indirectos sobre lo anterior.
+								  	</li>
 								</ol>
 									</p>
 								</li>
@@ -276,7 +272,14 @@
 											<li><a href="http://www3.contraloriadf.gob.mx/prontuario/index.php/normativas/Template/ver_mas/65345/32/2/1" target="_blank">Ley de Obras Públicas y Servicios Relacionados con las Mismas</a></li>
 											<li><a href="http://www.diputados.gob.mx/LeyesBiblio/regley/Reg_LOPSRM.pdf" target="_blank">Reglamento de la Ley de Obras Públicas y Servicios Relacionados con las Mismas</a></li>
 										  <li><a href="http://dof.gob.mx/nota_detalle.php?codigo=5282650&fecha=18/12/2012" target="_blank">Políticas, Bases y Lineamientos en Materia de Obras Públicas y Servicios Relacionados con las Mismas</a></li>
-								  </ol>
+										  <li><a href="http://dof.gob.mx/nota_detalle.php?codigo=4664221&fecha=03/07/1987" target="_blank">Reglamento de Construcciones para el Distrito Federal y sus Normas Técnicas Complementarias</a></li>
+											<li><a href="http://www3.contraloriadf.gob.mx/prontuario/resources/normatividad/63006.pdf" target="_blank">Normas de Construcción de la Administración Pública del Distrito Federal</a></li>
+											<li><a href="http://www.dof.gob.mx/nota_detalle.php?codigo=5282650&fecha=18/12/2012" target="_blank">Políticas Administrativas, Bases y Lineamientos en Materia de Obra Pública</a></li>
+											<li><a href="http://www.aldf.gob.mx/archivo-3cd1aa41964e3f9735705a55d1ba096e.pdf" target="_blank">Ley Ambiental de Protección a la Tierra en el Distrito Federal</a></li>
+											<li><a href="http://www.aldf.gob.mx/archivo-fb161f42cc12fcc2ce254cc18225a79e.pdf" target="_blank">Ley del Sistema de Protección Civil del Distrito Federal</a></li>
+											<li><a href="http://www.aldf.gob.mx/archivo-3a6419f3c20189c5c79382d35f87c41f.pdf" target="_blank">Ley de Desarrollo Urbano del Distrito Federal</a></li>
+											<li><a href="http://www.aldf.gob.mx/archivo-b28392e3c828c3108d8b0873830eb35d.pdf" target="_blank">Ley para la Integración al Desarrollo de las Personas con Discapacidad del Distrito Federal</a></li>
+									</ol>
 									</p>
 								</li>
 								<li><strong><a id="nuevos">¿Cada cuánto hay nuevos contratos en el portal?</a></strong>
@@ -294,7 +297,7 @@
 										A través de la API que se encuentra en la pestaña de <a href="{{url('datos-abiertos')}}" target="_blank">Usar los Datos</a> se pueden accesar los archivos .JSON para realizar cruces de información propios entre los mismo contratos y otras bibliotecas de información, para así crear herramientas o análisis adicionales a los que muestra este portal.
 									</p>
 									<p>
-									 Para más información sobre los términos que usa el Estándar dentro de los archivos .json se puede descargar este documento: <a href ="https://docs.google.com/document/d/1B9Quoo23vhephvbwdvnpO3E2Wuw-mHYDAhsTzj3Pxbw/edit?usp=sharing" target="_blank">Catálogo de elementos</a>.
+									 Para más información sobre los términos que usa el Estándar dentro de los archivos .json se puede descargar este documento: <a href ="{{url('archivos/CatalogosElementosEstandarContratacionesAbiertas-CDMX.pdf')}}" target="_blank">Catálogo de elementos</a>.
 								 </p>
 								 <p>
 									 Los Términos y Condiciones de uso de los datos de Contrataciones Abiertas de la Ciudad de México se pueden consultar <a href="{{url('privacidad')}}" target="_blank">aquí</a>.
