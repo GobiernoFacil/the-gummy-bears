@@ -51,7 +51,7 @@
 					<!--amount-->
 						<div class="col-sm-3 amount top">
 							<p><span>$</span> {{$budget}} <span>MXN</span></p>
-							<?php switch($r->tender->procurement_method){
+							<?php switch(empty($r->tender) ? "" : $r->tender->procurement_method){
 								case "limited":
 									$procurement_method = "limitado";
 									break;
@@ -60,6 +60,9 @@
 									break;
 								case "open":
 									$procurement_method = "abierto";
+									break;
+								default:
+									$procurement_method = "Sin definir";
 									break;
 								
 							}?>
