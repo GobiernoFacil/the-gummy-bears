@@ -15,6 +15,11 @@
 	  	</li>
 	  	@endif	  	
 		@if($elcontrato->singlecontracts->count())
+			@foreach($elcontrato->singlecontracts as $c)
+				@if($c->implementation->transactions->count())
+				<?php $implementation = 1;?>
+				@endif 
+			@endforeach
 		<!--contratación-->
 		<li {!! !empty($implementation) ? '' : 'class="active"'  !!}><a href="#"  id="btn-contract-nav" class="nav_stage {{ !empty($implementation) ?  '' : 'current'}}" data-id="contracts" data-title="Contratación">
 			<?php echo file_get_contents("img/nav_contratacion.svg"); ?></a>
