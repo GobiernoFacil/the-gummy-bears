@@ -225,7 +225,7 @@ define(function(require){
           _opt        = opt ? "data-providers" : "data-contracts",
           radiusScale = d3.scale.pow()
                           .exponent(0.5)
-                          .range([0, 125]),
+                          .range([0, 95]),
           that        = this,
           format      = d3.format('.3s'),
           maxAmount   = d3.max(data, function (d) { return +d[index]; }),
