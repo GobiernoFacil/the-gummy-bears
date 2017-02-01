@@ -55,6 +55,68 @@ class Offices extends Controller {
 		//$publisher        = Publisher::find($id);
 		$buyer				    = Buyer::find($id);
 		$contracts 			  = $buyer->contracts()->with("data")->get();
+		$implementation_num = $buyer->contracts()->whereHas("data", function($query){
+			                      $query->whereHas("release", function($p){
+			                      	$p->whereHas("singlecontracts", function($q){
+				                        $q->has("implementation");
+			                        });
+			                      });
+		                      })->count();
+
+		$contracting_num = $buyer->contracts()->whereHas("data", function($query){
+			                      $query->whereHas("release", function($p){
+			                      	$p->whereHas("singlecontracts", function($q){
+				                        $q->has("implementation");
+			                        });
+			                      });
+		                      }, "<", 1)->whereHas("data", function($query){
+
+		                      	$query->whereHas("release", function($p){
+			                      	$p->has("singlecontracts");
+			                      });
+
+		                      })->count();
+
+
+		$award_num = $buyer->contracts()->whereHas("data", function($query){
+			                      $query->whereHas("release", function($p){
+			                      	$p->has("singlecontracts");
+			                      });
+		                      }, "<", 1)->whereHas("data", function($query){
+
+		                      	$query->whereHas("release", function($p){
+			                      	$p->has("awards");
+			                      });
+
+		                      })->count();
+
+
+		$tender_num = $buyer->contracts()->whereHas("data", function($query){
+			                      $query->whereHas("release", function($p){
+			                      	$p->has("awards");
+			                      });
+		                      }, "<", 1)->whereHas("data", function($query){
+
+		                      	$query->whereHas("release", function($p){
+			                      	$p->has("tender");
+			                      });
+
+		                      })->count();
+
+
+		$planning_num = $buyer->contracts()->whereHas("data", function($query){
+			                      $query->whereHas("release", function($p){
+			                      	$p->has("tender");
+			                      });
+		                      }, "<", 1)->whereHas("data", function($query){
+
+		                      	$query->whereHas("release", function($p){
+			                      	$p->has("planning");
+			                      });
+
+		                      })->count();
+
+
 		$awards 			    = $buyer->awards;
 		$singlecont_count = $buyer->singlecontracts->count();
 		$providers			  = Provider::whereHas("buyers", function($q) use($buyer){
@@ -116,6 +178,12 @@ class Offices extends Controller {
 		$data['per_award']   	 	  = $per_award;
 		$data['per_contract']   	= $per_contract;	
 		$data['contract_data']   	= $contract_data;	
+
+		$data['implementation_num'] = $implementation_num;
+		$data['contracting_num']    = $contracting_num;
+		$data['award_num']          = $award_num;
+		$data['tender_num']         = $tender_num;
+		$data['planning_num']       = $planning_num;
 		
 		return view("frontend.offices.office")->with($data);
 	}

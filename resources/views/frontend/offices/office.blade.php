@@ -31,7 +31,20 @@
 							@endif
 						@endforeach
 						<?php
-							$total_procesos 	= $contracts->count();
+						/*
+						 * ESE COMPA, AQUÍ DEBERÍAN ESTAR BIEN/MÁS O MENOS  CALCULADOS LOS VALORES 
+						 * EN LAS VARIABLES QUE AQUÍ AGREGO (1 feb 2017)
+						 * 
+						 * 
+						 * $implementation_num;
+						 * $contracting_num;
+						 * $award_num;
+						 * $tender_num;
+						 * $planning_num;
+						 *
+						 *
+						*/
+							$total_procesos 	= $buyer->contracts()->count();//$total_procesos->count();
 							$etapa_adjudicacion = ($total_procesos - $singlecont_count);
 							$etapa_contratacion = $total_procesos - $etapa_implementacion;
 							$etapa_licitacion 	= $total_procesos - $total_procesos;
