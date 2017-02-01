@@ -8,12 +8,19 @@
 				<div class="row">
 					<div class="col-sm-9">
 						<p>DEPENDENCIA</p>
-						<h1 id="publisher-name"><a href="http://www.finanzas.df.gob.mx/">{{$buyer->name}}</a></h1>
+
+						<?php $publisher = $buyer->publisher; ?>
+
+						<h1 id="publisher-name">
+						  <a href="{{$publisher->office->contact->url}}">
+						    {{$buyer->name}}
+						  </a>
+						</h1>
 						<p class="address">
-						  <span id="address-streetAddress">Dr. Lavista 144,</span>
-						  <span id="address-locality">Delegación Cuauhtémoc,</span>
+						  <span id="address-streetAddress">{{$publisher->office->address->street_address}},</span>
+						  <span id="address-locality">{{$publisher->office->address->locality}},</span>
 						  <span id="address-region">Ciudad de México</span>
-						  C.P.<span id="address-postalCode">06720</span>
+						  C.P.<span id="address-postalCode">{{$publisher->office->address->postal_code}}</span>
 						</p>
 					</div>
 					<div class="col-sm-3">
