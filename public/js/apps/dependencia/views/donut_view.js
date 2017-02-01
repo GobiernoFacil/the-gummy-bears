@@ -60,7 +60,8 @@ define(function(require){
 		
 		var pie = d3.layout.pie()
 		    .sort(null)
-		    .value(function(d) { return d.total; });
+		    .value(function(d) { 
+			    return d.total; });
 		
 		var svg = d3.select("#donut").append("svg")
 		    .attr("width", width)
@@ -83,12 +84,12 @@ define(function(require){
 		    .attr("dy", ".35em")
 		    .text(function(d) { 
 		        if (d.data.total > 0) {
-		  	   return d.data.total;   
+					return d.data.total;   
 		        }
 		     })
 		     .attr("fill",function(d) { 
 		        if (d.data.stage != "planning") {
-		  	   return "white";   
+					return "white";   
 		        }
 		        else { return "black";}
 		     });

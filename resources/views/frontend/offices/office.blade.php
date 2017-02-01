@@ -24,12 +24,7 @@
 						</p>
 					</div>
 					<div class="col-sm-3">
-						<?php $etapa_implementacion = 0;?>
-						@foreach($buyer->singlecontracts as $c)
-							@if($c->implementation->transactions->count())
-								<?php $etapa_implementacion = $etapa_implementacion+1;?>
-							@endif
-						@endforeach
+					
 						<?php
 						/*
 						 * ESE COMPA, AQUÍ DEBERÍAN ESTAR BIEN/MÁS O MENOS  CALCULADOS LOS VALORES 
@@ -44,10 +39,12 @@
 						 *
 						 *
 						*/
-							$total_procesos 	= $buyer->contracts()->count();//$total_procesos->count();
-							$etapa_adjudicacion = ($total_procesos - $singlecont_count);
-							$etapa_contratacion = $total_procesos - $etapa_implementacion;
-							$etapa_licitacion 	= $total_procesos - $total_procesos;
+							$total_procesos 	  = ($planning_num+$implementation_num+$contracting_num+$award_num+$tender_num);//$total_procesos->count();
+							$etapa_planeacion 	  = $planning_num;
+							$etapa_implementacion = $implementation_num;
+							$etapa_adjudicacion   = $award_num;
+							$etapa_contratacion	  = $contracting_num;
+							$etapa_licitacion 	  = $tender_num;
 						?>
 						<p>TOTAL DE PROCESOS DE CONTRATACIÓN ABIERTOS</p>
 						<h2 id="licitaciones-total" class="subtitle">{{$total_procesos}}</h2>
@@ -66,7 +63,7 @@
 							</div>
 							<div class="col-sm-6">
 								<ul class="stage_list">
-									<li class="planning zero"><b><?php echo file_get_contents("img/nav_planeacion.svg"); ?></b> <strong>0</strong> en Planeación</li>
+									<li class="planning zero"><b><?php echo file_get_contents("img/nav_planeacion.svg"); ?></b> <strong>{{$etapa_planeacion}}</strong> en Planeación</li>
 									<li class="tender {{ $etapa_licitacion == 0 ? 'zero' : ''}}">
 									<b><?php echo file_get_contents("img/nav_licitacion.svg"); ?></b> 
 									<strong>{{$etapa_licitacion < 0 ? '0' : $etapa_licitacion}}</strong> en Licitación</li>
@@ -146,7 +143,7 @@
 			<div class="box">
 				<div class="row">
 					<div class="col-sm-8 col-xs-7">
-						<h3>Proveedores <span>(5 de {{$providers_count}})</span></h3>
+						<h3>Proveedores <span>({{ $providers_count > 0 ? '5' : '0'}} de {{$providers_count}})</span></h3>
 					</div>
 					<div class="col-sm-4 col-xs-5">
 						<p class="right">TOTAL (MXN)</p>
@@ -175,7 +172,7 @@
 			<div class="box">
 				<div class="row">
 					<div class="col-sm-8 col-xs-7">
-						<h3>Contratos <span>(5 de {{$singlecont_count}})</span></h3>
+						<h3>Contratos <span>({{ $singlecont_count > 0 ? '5' : '0'}} de {{$singlecont_count}})</span></h3>
 					</div>
 					<div class="col-sm-4 col-xs-5">
 						<p class="right">TOTAL (MXN)</p>
@@ -240,11 +237,11 @@
 </div>
 
 <script>
-	var DATA = [{"stage":"planning", "total":0},
+	var DATA = [{"stage":"planning", "total":{{$planning_num}}},
     			{"stage":"tender", "total":{{$etapa_licitacion}} },
     			{"stage":"awards", "total":{{$etapa_adjudicacion}} },
-    			{"stage":"contracting", "total":{{$etapa_contratacion}} },
-    			{"stage":"implmentation", "total":{{$etapa_implementacion}} },
+    			{"stage":"contracting", "total":{{$contracting_num}} },
+    			{"stage":"implmentation", "total":{{$implementation_num}} },
     			];
 </script>
 
