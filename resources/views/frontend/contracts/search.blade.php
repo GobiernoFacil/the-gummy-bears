@@ -33,6 +33,7 @@
 						$tender_start		= $r->tender->tender_start;
 						//buyer
 						$buyer_name  		= $r->buyer ? $r->buyer->name : '';
+						$buyer_id 			= $r->buyer ? $r->buyer->id : '';
 						//awards
 						$awards 			= $r->awards;
 						//single contracts 
@@ -104,7 +105,7 @@
 					<div class="icons">
 						<div class="col-sm-3">
 							<p class="list_t">Comprador: <br>
-								<a href="{{ $buyer_name ? url('dependencia/1')  : '#'}}">{{ $buyer_name ? $buyer_name : "No está definido" }}</a></p>
+								<a href="{{ $buyer_name ? url('dependencia/'.$buyer_id)  : '#'}}">{{ $buyer_name ? $buyer_name : "No está definido" }}</a></p>
 						</div>
 						<div class="col-sm-4">
 							@if($awards->count())
